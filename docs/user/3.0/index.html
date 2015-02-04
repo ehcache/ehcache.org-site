@@ -441,7 +441,7 @@ If you are looking to use the JSR-107, aka <code>javax.cache</code> API, you may
 </td>
 <td class="content">
 <strong>This is still work in progress</strong>. while this represents the API as it exists today, the plan is to only close it
-         down, when addressing the OSS Beta milestone. Today, the focus is on the 107 Alpha milestone, which aims
+         down, when addressing the <code>OSS Beta</code> milestone. Today, the focus is on the <code>107 Alpha</code> milestone, which aims
          at providing a TCK compliant on-heap implementation&#8230;&#8203;
 </td>
 </tr>
@@ -477,52 +477,52 @@ standaloneCache.close(); <b class="conum">(12)</b></code></pre>
 <div class="colist arabic">
 <ol>
 <li>
-<p>Static method org.ehcache.CacheManagerBuilder.newCacheManagerBuilder that returns a new org.ehcache.CacheManagerBuilder
+<p>Static method <code>org.ehcache.CacheManagerBuilder.newCacheManagerBuilder</code> that returns a new <code>org.ehcache.CacheManagerBuilder</code>
 instance;</p>
 </li>
 <li>
-<p>Using the builder to register a pre-configured Cache to be create when we .build() the actual CacheManager.
-The first String argument is the alias to use to interact with the Cache through the CacheManager; the second
-argument is the org.ehcache.config.CacheConfiguration to use to configure the Cache. We use the static
-.newCacheConfigurationBuilder() method on org.ehcache.config.CacheConfigurationBuilder to create a default config;</p>
+<p>Using the builder to register a pre-configured <code>Cache</code> to be create when we <code>.build()</code> the actual <code>CacheManager</code>.
+The first <code>String</code> argument is the alias to use to interact with the <code>Cache</code> through the <code>CacheManager</code>; the second
+argument is the <code>org.ehcache.config.CacheConfiguration</code> to use to configure the <code>Cache</code>. We use the static
+<code>.newCacheConfigurationBuilder()</code> method on <code>org.ehcache.config.CacheConfigurationBuilder</code> to create a default config;</p>
 </li>
 <li>
-<p>finally, invoking .build() returns a fully instantiated and initialized CacheManager we can use.</p>
+<p>finally, invoking <code>.build()</code> returns a fully instantiated and initialized <code>CacheManager</code> we can use.</p>
 </li>
 <li>
-<p>We can retrieve the preConfigured aliased Cache we declared in step 2. For type-safety, we ask for both key and
-value types to be passed in. If these differ from the ones we expect, the CacheManager throws a ClassCastException
-early in the application&#8217;s lifecycle. It also guards the Cache from being polluted by random types.</p>
+<p>We can retrieve the <code>preConfigured</code> aliased <code>Cache</code> we declared in step 2. For type-safety, we ask for both key and
+value types to be passed in. If these differ from the ones we expect, the <code>CacheManager</code> throws a <code>ClassCastException</code>
+early in the application&#8217;s lifecycle. It also guards the <code>Cache</code> from being polluted by random types.</p>
 </li>
 <li>
-<p>The CacheManager can also be used to create new Cache as needed. Just as in step 2, it requires passing in an
-alias as well as a CacheConfiguration. The instantiated and fully initialized Cache added will be returned and/or
-can be accessed through the CacheManager.getCache API.</p>
+<p>The <code>CacheManager</code> can also be used to create new <code>Cache</code> as needed. Just as in step 2, it requires passing in an
+alias as well as a <code>CacheConfiguration</code>. The instantiated and fully initialized <code>Cache</code> added will be returned and/or
+can be accessed through the <code>CacheManager.getCache</code> API.</p>
 </li>
 <li>
-<p>We can now use the newly added Cache to store and &#8230;&#8203;</p>
+<p>We can now use the newly added <code>Cache</code> to store and &#8230;&#8203;</p>
 </li>
 <li>
 <p>&#8230;&#8203; retrieve data.</p>
 </li>
 <li>
-<p>We can also CacheManager.remove() a given Cache. The CacheManager will not only remove it&#8217;s reference to the
-Cache, but will also close it. The Cache releases all locally held transient resources (such as memory).
-References held to this Cache become unusable.</p>
+<p>We can also <code>CacheManager.remove()</code> a given <code>Cache</code>. The <code>CacheManager</code> will not only remove it&#8217;s reference to the
+<code>Cache</code>, but will also close it. The <code>Cache</code> releases all locally held transient resources (such as memory).
+References held to this <code>Cache</code> become unusable.</p>
 </li>
 <li>
-<p>A new feature of Ehcache 3.0, is the ability to create StandaloneCache instances, i.e. ones not managed by a CacheManager;</p>
+<p>A new feature of Ehcache 3.0, is the ability to create <code>StandaloneCache</code> instances, i.e. ones not managed by a <code>CacheManager</code>;</p>
 </li>
 <li>
-<p>As there is nothing that manages them, it is up to you to StandaloneCache.init() them, prior to using them.</p>
+<p>As there is nothing that manages them, it is up to you to <code>StandaloneCache.init()</code> them, prior to using them.</p>
 </li>
 <li>
-<p>In order to release all transient resources (memory, threads, &#8230;&#8203;) a CacheManager provides to Cache instances
-it manages, you have to invoke CacheManager.close(), which in turns closes all Cache instances known at the time.</p>
+<p>In order to release all transient resources (memory, threads, &#8230;&#8203;) a <code>CacheManager</code> provides to <code>Cache</code> instances
+it manages, you have to invoke <code>CacheManager.close()</code>, which in turns closes all <code>Cache</code> instances known at the time.</p>
 </li>
 <li>
-<p>In the same vein, a StandaloneCache requires you to StandaloneCache.close() it explicitly. The CacheManager.close()
-in step #11, didn&#8217;t affect our StandaloneCache in any way.</p>
+<p>In the same vein, a <code>StandaloneCache</code> requires you to <code>StandaloneCache.close()</code> it explicitly. The <code>CacheManager.close()</code>
+in step #11, didn&#8217;t affect our <code>StandaloneCache</code> in any way.</p>
 </li>
 </ol>
 </div>
@@ -641,7 +641,7 @@ This includes things not covered by the 107 spec, such as <em>WriteBehind</em>, 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-04 14:31:12 EST
+Last updated 2015-02-04 15:03:58 EST
 </div>
 </div>
 </body>
