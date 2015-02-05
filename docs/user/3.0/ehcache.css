@@ -272,6 +272,26 @@ select {
     width: 100%
 }
 
+#preamble {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  background-color: #5d6e7e;
+  padding: 15px 10px;
+  border-left: 5px solid #f78b0e;
+  color: #eee;
+}
+
+#preamble a, #preamble a:active, #preamble a:visited {
+  color: #eee;
+}
+
+#preamble a:hover {
+  color: #f78b0e;
+}
+
+
 p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p {
     font-size: 1.21875em;
     line-height: 1.6

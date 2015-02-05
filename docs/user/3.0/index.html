@@ -16,6 +16,44 @@
 <h1>The new Ehcache 3.x line</h1>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="/">Home</a></dt>
+<dt class="hdlist1">User documentation</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./index.html">Getting started</a></p>
+</li>
+<li>
+<p><a href="./xml.html">XML Configuration</a></p>
+</li>
+<li>
+<p><a href="./107.html">javax.cache aka jsr-107</a></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Resources</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="./examples.html">Java examples</a></p>
+</li>
+<li>
+<p><a href="./xsds.html">Configuration XSD</a></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_getting_started_with_the_new_api">Getting started with the new API</h2>
 <div class="sectionbody">
@@ -50,22 +88,23 @@ If you are looking to use the JSR-107, aka <code>javax.cache</code> API, you may
 <h3 id="_configuring_it_all_in_java">Configuring it all in Java</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">CacheManager cacheManager
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">final CacheManager cacheManager
     = newCacheManagerBuilder() <b class="conum">(1)</b>
     .withCache("preConfigured", newCacheConfigurationBuilder().buildConfig(Long.class, String.class)) <b class="conum">(2)</b>
     .build(); <b class="conum">(3)</b>
 
-Cache&lt;Long, String&gt; preConfigured = cacheManager.getCache("preConfigured", Long.class, String.class); <b class="conum">(4)</b>
+final Cache&lt;Long, String&gt; preConfigured = cacheManager.getCache("preConfigured", Long.class, String.class); <b class="conum">(4)</b>
 
-Cache&lt;Long, String&gt; myCache = cacheManager.createCache("myCache", <b class="conum">(5)</b>
+final Cache&lt;Long, String&gt; myCache = cacheManager.createCache("myCache", <b class="conum">(5)</b>
     newCacheConfigurationBuilder().buildConfig(Long.class, String.class));
 
 myCache.put(1L, "da one!"); <b class="conum">(6)</b>
-String value = myCache.get(1L); <b class="conum">(7)</b>
+final String value = myCache.get(1L); <b class="conum">(7)</b>
 
 cacheManager.removeCache("preConfigured"); <b class="conum">(8)</b>
 
-StandaloneCache&lt;Long, String&gt; standaloneCache = newCacheBuilder(Long.class, String.class).build(); <b class="conum">(9)</b>
+final StandaloneCache&lt;Long, String&gt; standaloneCache = newCacheBuilder(Long.class, String.class)
+    .build(); <b class="conum">(9)</b>
 standaloneCache.init(); <b class="conum">(10)</b>
 
 cacheManager.close(); <b class="conum">(11)</b>
@@ -240,7 +279,7 @@ This includes things not covered by the 107 spec, such as <em>WriteBehind</em>, 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-04 15:03:58 EST
+Last updated 2015-02-05 12:15:11 EST
 </div>
 </div>
 </body>
