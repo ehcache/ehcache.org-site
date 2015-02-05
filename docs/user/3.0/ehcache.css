@@ -281,6 +281,8 @@ select {
   padding: 15px 10px;
   border-left: 5px solid #f78b0e;
   color: #eee;
+  z-index: 0;
+  width:225px;
 }
 
 #preamble a, #preamble a:active, #preamble a:visited {
@@ -653,6 +655,9 @@ p a > code:hover {
     position: relative;
     padding-left: .9375em;
     padding-right: .9375em
+    background-color: #fff;
+    z-index:10;
+    margin-left: 250px;
 }
 
 #header:before, #header:after, #content:before, #content:after, #footnotes:before, #footnotes:after, #footer:before, #footer:after {
