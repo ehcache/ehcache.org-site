@@ -29,10 +29,6 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
-body {
-    margin: 0
-}
-
 a {
     background: transparent
 }
@@ -195,7 +191,7 @@ html, body {
 body {
     background: #fff;
     color: #333;
-    padding: 0;
+    padding: 0 0 0 225px;
     margin: 0;
     font-family: "Noto Serif", "DejaVu Serif", serif;
     font-weight: 400;
@@ -657,7 +653,6 @@ p a > code:hover {
     padding-right: .9375em
     background-color: #fff;
     z-index:10;
-    margin-left: 250px;
 }
 
 #header:before, #header:after, #content:before, #content:after, #footnotes:before, #footnotes:after, #footer:before, #footer:after {
