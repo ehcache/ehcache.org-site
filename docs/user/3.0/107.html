@@ -163,11 +163,11 @@ constraint. All that&#8217;s needed is adding a <code>jsr107</code> service in y
   &lt;cache-template name="stringCache"&gt;
     &lt;key-type&gt;java.lang.String&lt;/key-type&gt;
     &lt;value-type&gt;java.lang.String&lt;/value-type&gt;
-    &lt;capacity&gt;2000&lt;/capacity&gt;
+    &lt;heap size="2000" unit="entries"/&gt;
   &lt;/cache-template&gt;
 
   &lt;cache-template name="tinyCache"&gt;
-    &lt;capacity&gt;20&lt;/capacity&gt;
+    &lt;heap size="20" unit="entries"/&gt;
   &lt;/cache-template&gt;
 &lt;/config&gt;</code></pre>
 </div>
@@ -211,7 +211,7 @@ See <a href="xsds.html#_jsr_107_extension">this xsd</a> for complete definition
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-23 17:53:08 CET
+Last updated 2015-03-24 16:57:07 CET
 </div>
 </div>
 </body>
