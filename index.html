@@ -42,9 +42,9 @@
       
       <h2>Ehcache 3 : Milestone 1 reached - With Offheap Storage</h2>
       
-      With offheap storage committed, Milestone 1 of Ehcache 3 has been <a href="http://blog.terracotta.org/2015/03/23/terracotta-strengthens-ehcache3-with-off-heap-storage">announced</a>.  
-      "Official" builds of m1 should be available on the project's GitHub release page early March 24.  
-      If you're anxious to get started, you can pull the code yourself, build it and get going.
+      With offheap storage committed, Milestone 1 of Ehcache 3 has been <a href="http://blog.terracotta.org/2015/03/23/terracotta-strengthens-ehcache3-with-off-heap-storage">announced</a>.
+      <br/>  
+      "Official" builds of m1 are available on the project's GitHub <a href="https://github.com/ehcache/ehcache3/releases/tag/v3.0.0.m1">release page</a> or from Maven Central - see below.
     </div>
   </div>
   <div id="start">
@@ -65,9 +65,11 @@
 
       You can download the jar directly from <a href="https://github.com/ehcache/ehcache3/releases">github</a> or getting it from Maven central:
 
-      <pre><code class="xml">    &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
-    &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-    &lt;version&gt;3.0.0.Alpha&lt;/version&gt;      </code></pre>
+      <pre><code class="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
+      &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
+      &lt;version&gt;3.0.0.Alpha&lt;/version&gt;
+    &lt;/dependency&gt;      </code></pre>
 
       <h3>Coding to the Ehcache 3 API</h3>
 
@@ -94,9 +96,11 @@
 
   You'll need the Ehcache distribution like mentioned <a href="#jars">above</a>, you'll also require the actual JSR-107 API:
 
-  <pre><code class="xml">    &lt;groupId>javax.cache&lt;/groupId>
+  <pre><code class="xml">  &lt;dependency>
+    &lt;groupId>javax.cache&lt;/groupId>
     &lt;artifactId>cache-api&lt;/artifactId>
-    &lt;version>1.0.0&lt;/version></code></pre>
+    &lt;version>1.0.0&lt;/version>
+  &lt;/dependency></code></pre>
 
   <h2>Not quite ready yet?</h2>
 
