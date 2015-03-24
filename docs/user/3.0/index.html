@@ -84,6 +84,8 @@ If you are looking to use the JSR-107, aka <code>javax.cache</code> API, you sho
 </div>
 <div class="sect2">
 <h3 id="_configuring_it_all_in_java">Configuring it all in Java</h3>
+<div class="sect3">
+<h4 id="_managed_cache">Managed cache</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-java" data-lang="java">CacheManager cacheManager
@@ -149,6 +151,9 @@ it manages, you have to invoke <code>CacheManager.close()</code>, which in turns
 </li>
 </ol>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_standalone_cache">Standalone cache</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-java" data-lang="java">StandaloneCache&lt;Long, String&gt; standaloneCache =
@@ -175,16 +180,45 @@ standaloneCache.close(); <b class="conum">(4)</b></code></pre>
 </li>
 <li>
 <p>In the same vein, a <code>StandaloneCache</code> requires you to <code>StandaloneCache.close()</code> it explicitly. If you would also use
-managed caches simultaneously, the <code>CacheManager.close()</code> operation would not impact the Standalone cache
- in step #11, did not affect our <code>StandaloneCache</code> in any way.</p>
+managed caches simultaneously, the <code>CacheManager.close()</code> operation would not impact the Standalone cache.</p>
 </li>
 </ol>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_off_heap">Off-heap</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder().withCache("tieredCache",
+    CacheConfigurationBuilder.newCacheConfigurationBuilder()
+        .withResourcePools(ResourcePoolsBuilder.newResourcePoolsBuilder()
+            .heap(10, EntryUnit.ENTRIES)
+            .offheap(10, MemoryUnit.MB) <b class="conum">(1)</b>
+            .build())
+        .buildConfig(Long.class, String.class)).build();
+
+cacheManager.close();</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>If you wish to use off-heap, you&#8217;ll have to define resource pool, giving the memory size you want to allocate.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Do not forget to define in the java options the -XX:MaxDirectMemorySize option, according to the off-heap size you intend to use.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_disk_persistence">Disk persistence</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-java" data-lang="java">PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder()
-    .with(new PersistenceConfiguration(new File("build/persistent-cache-data"))) <b class="conum">(1)</b>
+    .with(new PersistenceConfiguration(new File(System.getProperty("java.io.tmpdir") + "/myData"))) <b class="conum">(1)</b>
     .withCache("persistent-cache", CacheConfigurationBuilder.newCacheConfigurationBuilder()
+        .persistenceMode(CacheConfiguration.PersistenceMode.CREATE_IF_ABSENT)
         .withResourcePools(newResourcePoolsBuilder()
             .heap(10, EntryUnit.ENTRIES)
             .disk(100, EntryUnit.ENTRIES) <b class="conum">(2)</b>
@@ -207,25 +241,6 @@ data should be stored on disk to the <code>CacheManagerBuilder.persistence(Strin
 </li>
 </ol>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder().withCache("tieredCache",
-    CacheConfigurationBuilder.newCacheConfigurationBuilder()
-        .withResourcePools(ResourcePoolsBuilder.newResourcePoolsBuilder()
-            .heap(10, EntryUnit.ENTRIES)
-            .offheap(10, MemoryUnit.MB) <b class="conum">(1)</b>
-            .build())
-        .buildConfig(Long.class, String.class)).build();
-
-cacheManager.close();</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<ol>
-<li>
-<p>If you wish to use off-heap, you&#8217;ll have to define resource pool, giving the memory size you want to allocate.</p>
-</li>
-</ol>
 </div>
 </div>
 <div class="sect2">
@@ -343,7 +358,7 @@ This includes things not covered by the JSR-107 spec, such as <em>WriteBehind</e
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-24 13:13:36 CET
+Last updated 2015-03-24 14:40:27 CET
 </div>
 </div>
 </body>
