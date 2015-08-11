@@ -40,11 +40,17 @@
       We felt the new major version of the API should be based on the standardized API.
       JSR-107 serves as the basis for the new API but Ehcache 3.0 extends the specification in many aspects.
       
-      <h2>Ehcache 3 : Milestone 1 reached - With Offheap Storage</h2>
+      <h2>Ehcache 3 : Milestone 2 reached - Moar features</h2>
       
-      With offheap storage committed, Milestone 1 of Ehcache 3 has been <a href="http://blog.terracotta.org/2015/03/23/terracotta-strengthens-ehcache3-with-off-heap-storage">announced</a>.
-      <br/>  
-      "Official" builds of m1 are available on the project's GitHub <a href="https://github.com/ehcache/ehcache3/releases/tag/v3.0.0.m1">release page</a> or from Maven Central - see below.
+      Milestone 2 came with over 60 issues closed... including new features, such as:
+      <ul>
+        <li>Disk Persistence</li>
+        <li>Three-tiered Caching: heap, offheap &amp; disk</li>
+        <li>Write-Behind</li>
+        <li>Better builder pattern support</li>
+        <li>...</li>
+      </ul>
+      "Official" builds of m2 are available on the project's GitHub <a href="https://github.com/ehcache/ehcache3/releases/tag/v3.0.0.m2">release page</a> or from Maven Central - see below.
     </div>
   </div>
   <div id="start">
@@ -68,26 +74,28 @@
       <pre><code class="xml">  &lt;dependency&gt;
     &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
     &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-    &lt;version&gt;3.0.0.m1&lt;/version&gt;
+    &lt;version&gt;3.0.0.m2&lt;/version&gt;
   &lt;/dependency&gt;      </code></pre>
 
       <h3>Coding to the Ehcache 3 API</h3>
 
       <pre><code class="java">
-  CacheManager cacheManager = newCacheManagerBuilder()
-             .withCache("preConfigured", newCacheConfigurationBuilder().buildConfig(Long.class, String.class))
-             .build();
+    CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+        .withCache("preConfigured", 
+             CacheConfigurationBuilder.newCacheConfigurationBuilder().buildConfig(Long.class, String.class))
+        .build(true);
 
-  Cache&lt;Long, String&gt; preConfigured
-      = cacheManager.getCache("preConfigured", Long.class, String.class);
+    Cache&lt;Long, String&gt; preConfigured
+        = cacheManager.getCache("preConfigured", Long.class, String.class);
 
-  Cache&lt;Long, String&gt; myCache = cacheManager.createCache("myCache",
-      newCacheConfigurationBuilder().buildConfig(Long.class, String.class));
+    Cache&lt;Long, String&gt; myCache = cacheManager.createCache("myCache",
+        CacheConfigurationBuilder.newCacheConfigurationBuilder().buildConfig(Long.class, String.class));
 
-  myCache.put(1L, "da one!");
-  String value = myCache.get(1L);
+    myCache.put(1L, "da one!");
+    String value = myCache.get(1L);
 
-  cacheManager.close();
+    cacheManager.close();
+
   </code></pre>
 
   <h2>Using the JSR-107 API</h2>

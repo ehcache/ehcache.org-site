@@ -7,6 +7,7 @@
 <meta name="generator" content="Asciidoctor 1.5.2">
 <title>XML Configuration</title>
 <link rel="stylesheet" href="./ehcache.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
 <script>document.addEventListener('DOMContentLoaded', prettyPrint)</script>
@@ -32,7 +33,13 @@
 <p><a href="./xml.html">XML Configuration</a></p>
 </li>
 <li>
+<p><a href="./usermanaged.html">User managed caches</a></p>
+</li>
+<li>
 <p><a href="./107.html">javax.cache aka jsr-107</a></p>
+</li>
+<li>
+<p><a href="./management.html">Management and Monitoring</a></p>
 </li>
 </ul>
 </div>
@@ -138,7 +145,7 @@ can override these properties as it needs.</p>
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 We&#8217;ve setup a complete configuration <a href="examples.html#_xml_with_107_extension">example</a> to inspire you.
@@ -156,7 +163,7 @@ We&#8217;ve setup a complete configuration <a href="examples.html#_xml_with_107_
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 If you are obtaining your <code>CacheManager</code> through the JSR-107 API, what follows is done automatically
@@ -167,24 +174,27 @@ If you are obtaining your <code>CacheManager</code> through the JSR-107 API, wha
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">final URL myUrl = this.getClass().getResource("/my-config.xml"); <b class="conum">(1)</b>
-XmlConfiguration xmlConfig = new XmlConfiguration(myUrl); <b class="conum">(2)</b>
-CacheManager myCacheManager = CacheManagerBuilder.newCacheManager(xmlConfig); <b class="conum">(3)</b></code></pre>
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">final URL myUrl = this.getClass().getResource("/my-config.xml"); <i class="conum" data-value="1"></i><b>(1)</b>
+XmlConfiguration xmlConfig = new XmlConfiguration(myUrl); <i class="conum" data-value="2"></i><b>(2)</b>
+CacheManager myCacheManager = CacheManagerBuilder.newCacheManager(xmlConfig); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>Obtain a <code>URL</code> to your XML file&#8217;s location</p>
-</li>
-<li>
-<p>Instantiate an <code>XmlConfiguration</code> passing the XML file&#8217;s URL to it</p>
-</li>
-<li>
-<p>Using the static <code>org.ehcache.CacheManagerBuilder.newCacheManager(org.ehcache.config.Configuration)</code> allows you
-to create your <code>CacheManager</code> instance using the <code>Configuration</code> from the <code>XmlConfiguration</code></p>
-</li>
-</ol>
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Obtain a <code>URL</code> to your XML file&#8217;s location</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Instantiate an <code>XmlConfiguration</code> passing the XML file&#8217;s URL to it</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Using the static <code>org.ehcache.CacheManagerBuilder.newCacheManager(org.ehcache.config.Configuration)</code> allows you
+to create your <code>CacheManager</code> instance using the <code>Configuration</code> from the <code>XmlConfiguration</code></td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>We can also use <code>&lt;cache-template&gt;</code> declared in the XML file to seed instances of <code>CacheConfigurationBuilder</code>. In order
@@ -202,26 +212,28 @@ to use a <code>&lt;cache-template&gt;</code> element from a XML file, e.g. the <
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">CacheConfigurationBuilder&lt;String, Object&gt; cacheBuilder = xmlConfig.newCacheConfigurationBuilderFromTemplate("example", String.class, Object.class); <b class="conum">(1)</b>
-cacheBuilder.capacityConstraint(100L); <b class="conum">(2)</b></code></pre>
+<pre class="prettyprint highlight"><code class="language-java" data-lang="java">CacheConfigurationBuilder&lt;String, Object&gt; cacheBuilder = xmlConfig.newCacheConfigurationBuilderFromTemplate("example", String.class, Object.class); <i class="conum" data-value="1"></i><b>(1)</b>
+cacheBuilder.capacityConstraint(100L); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-<ol>
-<li>
-<p>Creates a builder, inheriting the capacity constraint of 120 entries, specializing the key type to <code>java.lang.String</code></p>
-</li>
-<li>
-<p>The inherent properties can be overridden by simply providing a different value prior to building the <code>CacheConfiguration</code></p>
-</li>
-</ol>
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Creates a builder, inheriting the capacity constraint of 120 entries, specializing the key type to <code>java.lang.String</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The inherent properties can be overridden by simply providing a different value prior to building the <code>CacheConfiguration</code></td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-24 10:40:52 CET
+Last updated 2015-06-05 11:48:35 EDT
 </div>
 </div>
 </body>
