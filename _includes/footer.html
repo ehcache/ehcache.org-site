@@ -4,8 +4,8 @@
   <div class="container">
 
     <div class="footer-col-wrapper">
-      <div class="footer-col  footer-col-1">
-        <img src="/images/Terracotta_Logo_sm.png">
+      <div class="footer-col footer-col-1">
+        <a href="http://www.terracotta.org"><img src="/images/Terracotta_Logo_sm.png"></a>
         <!--
         <ul class="contact-list">
           <li>{{ site.title }}</li>
@@ -66,3 +66,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
 
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
+
+<script type="text/javascript">
+        $('#{{ page.active_menu_id }}').addClass("active");
+        $('#{{ page.active_sub_menu_id }}').addClass("active");
+</script>

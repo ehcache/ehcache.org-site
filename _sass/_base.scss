@@ -98,16 +98,23 @@ hr {
 
 #banner {
     color: #f78b0e;
+    background-color: #fff;
     text-align: center;
 }
 
 #banner h1 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .beaker {
   border-bottom: 2px solid #f78b0e;
+}
+
+.submenu.active {
+  border: solid;
+  border-color: #f78b0e;
+  border-width: thin;
 }
 
 #intro {
@@ -165,7 +172,7 @@ hr {
 }
 
 #contentTitle {
-  background-image: url("/images/Terracotta_content-page_header.jpg");
+  background-image: url("/images/Terracotta_content-page_header_b.jpg");
   height: 100px;
 }
 
