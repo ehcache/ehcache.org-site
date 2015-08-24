@@ -2,7 +2,7 @@
 title: Ehcache
 email: tc-oss@softwareag.com
 description: Java's most widely used cache.
-baseurl: "/" # the subpath of your site, e.g. /blog/
+baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.ehcache.org" # the base hostname & protocol for your site
 twitter_username: ehcache
 github_username:  ehcache
