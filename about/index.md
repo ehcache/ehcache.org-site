@@ -3,6 +3,7 @@ layout: about_page
 title: About
 visible_title: "Ehcache: Java's Most Widely-Used Cache"
 permalink: /about/
+active_sub_menu_id: ehc_mnu_about_about
 ---
 
 {% include about_intro.html %}
