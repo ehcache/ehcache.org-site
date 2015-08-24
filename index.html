@@ -1,0 +1,40 @@
+---
+layout: home
+---
+
+
+  <div id="intro" class="jumbotron breaker">
+    <div class="container">
+      {% include about_intro.html %}
+      <hr/>
+      {% include home_announcement.html %}
+    </div>
+  </div>
+
+
+  <div id="start" class="jumbotron breaker">
+    <div class="container">
+
+      <div id="content">
+          <ul id="startguide-tabs" class="nav nav-tabs" data-tabs="tabs">
+              <li class="active"><a href="#ehc3" data-toggle="tab"><b class="sgtab">Ehcache 3 Quick Start</b></a></li>
+              <li><a href="#ehc2" data-toggle="tab"><b class="sgtab">Ehcache 2.x Quick Start</b></a></li>
+          </ul>
+          <div id="startguide-tab-content" class="tab-content">
+              <div class="tab-pane active" id="ehc3">
+                  {% include ehc3_quickstart.html %}
+              </div>
+              <div class="tab-pane" id="ehc2">
+                  {% include ehc2_quickstart.html %}
+              </div>
+          </div>
+      </div>
+
+      <script type="text/javascript">
+          jQuery(document).ready(function ($) {
+              $('#startguide-tabs').tab();
+          });
+      </script>
+
+
+   </div>

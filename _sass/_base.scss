@@ -1,0 +1,351 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/**
+ * Basic styling
+ */
+body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    font-weight: 300;
+    color: $text-color;
+    background-color: $background-color;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+    margin-bottom: $spacing-unit / 2;
+}
+
+
+
+/**
+ * Images
+ */
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+
+
+/**
+ * Figures
+ */
+figure > img {
+    display: block;
+}
+
+figcaption {
+    font-size: $small-font-size;
+}
+
+
+
+/**
+ * Lists
+ */
+ul, ol {
+    margin-left: $spacing-unit;
+}
+
+li {
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
+
+
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+h1, h2, h5, h6 {
+    color: #f78b0e;
+}
+
+h3, h4 {
+    color: #39505f;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+hr {
+}
+
+#banner {
+    color: #f78b0e;
+    text-align: center;
+}
+
+#banner h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.beaker {
+  border-bottom: 2px solid #f78b0e;
+}
+
+#intro {
+  background-color: #5d6e7e;
+  color: #eee;
+  padding: 15px 15px;
+  text-align: justify;
+  border-top: 2px solid #f78b0e;
+  border-bottom: 2px solid #f78b0e;
+}
+
+#intro h1, #intro h2, #intro h3 {
+  color: #fff;
+}
+
+#intro h1, #intro h2, #intro h3 {
+  color: #fff;
+}
+
+#intro hr {
+  margin-bottom: 20px;
+}
+
+#intro a {
+    color: #ffeeee;
+    text-decoration: none;
+
+    &:visited {
+        color: #ddcccc;
+    }
+
+    &:hover {
+        color: $text-color;
+        text-decoration: underline;
+    }
+}
+
+#start {
+  padding: 0 0 24px 0;
+  background-color: #fff;
+}
+
+#start h1, #start h2 {
+  color: #f78b0e;
+}
+
+#start h3 {
+  color: #666;
+}
+
+
+#start a, #start a:visited, #start a:active {
+  color: #f78b02;
+  text-decoration: none;
+}
+
+#contentTitle {
+  background-image: url("/images/Terracotta_content-page_header.jpg");
+  height: 100px;
+}
+
+#contentTitle h1, #contentTitle h2 {
+  color: #ffffff;
+  padding: 30px 15px;
+  font-weight: bold;
+}
+
+/**
+ * Links
+ */
+a {
+    color: $brand-color;
+    text-decoration: none;
+
+    &:visited {
+        color: darken($brand-color, 15%);
+    }
+
+    &:hover {
+        color: $text-color;
+        text-decoration: underline;
+    }
+}
+
+.sgtab  {
+
+  color: #666;
+}
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+    color: $grey-color;
+    border-left: 4px solid $grey-color-light;
+    padding-left: $spacing-unit / 2;
+    font-size: 18px;
+    letter-spacing: -1px;
+    font-style: italic;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+.copyleft {
+  float: right;
+  color: #557755;
+}
+.copyright {
+  float: right;
+  color: #555555;
+}
+
+/**
+ * Code formatting
+ */
+pre,
+code {
+    font-size: 15px;
+    border: 0px;
+    background-color: #eee;
+}
+
+code {
+    padding: 0px 0px;
+}
+
+pre {
+    padding: 0px 0px;
+    overflow-x: scroll;
+
+    > code {
+        border: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+
+
+/**
+ * Wrapper
+ */
+.wrapper {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    @extend %clearfix;
+
+    @include media-query($on-laptop) {
+        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+}
+
+
+
+/**
+ * Clearfix
+ */
+%clearfix {
+
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+
+/**
+ * Icons
+ */
+.icon {
+
+    > svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+
+        path {
+            fill: $grey-color;
+        }
+    }
+}
+
+
+table {
+  background: #fff;
+  width: 100%;
+  margin: 0 0 18px;
+  border: solid #ddd;
+  border-width: 0 0 1px 0;
+  border-radius: 5px;
+  box-shadow: #ccc 0px 0px 3px;
+}
+
+table tr {
+    // :border-right 1px solid #ddd
+}
+
+table thead {
+    background: #555;
+}
+
+table thead tr th {
+
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        line-height: 2px;
+        padding: 4px 5px 5px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+}
+
+tbody tr td {
+        color: #333;
+        padding: 4px 10px;
+        border-left: 1px solid #ddd;
+        vertical-align: top;
+}
+
+tbody tr th {
+        font-size: 12px;
+        line-height: 18px;
+}
+
+ tbody tr th .even {
+      background: #f5f5f5;
+ }
