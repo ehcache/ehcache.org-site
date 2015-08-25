@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs_page
 title: Documentation
 visible_title: "Ehcache Product Documentation"
 permalink: /documentation/
@@ -14,7 +14,7 @@ permalink: /documentation/
 
 ####Previous Versions
 
-| | 
+| |
 |:----|
 |<a href="/documentation/2.9/index" target="_blank">Ehcache 2.9.x</a>|
 |<a href="/documentation/2.8/index" target="_blank">Ehcache 2.8.x</a>|
@@ -25,7 +25,7 @@ permalink: /documentation/
 
 ####Other Documents
 
-| | 
+| |
 |:----|
 |<a href="/apidocs/2.10" target="_blank">Javadoc</a>|
 |<a href="http://www.terracotta.org/confluence/display/release/Home" target="_blank">Platform and Release Compatibility Tables</a>|
@@ -33,4 +33,3 @@ permalink: /documentation/
 
 
 If you don’t find what you’re looking for in the docs, post a question to the <a href="https://groups.google.com/forum/#!forum/ehcache-users" target="_blank">Ehcache support forums</a>.
-    

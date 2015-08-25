@@ -3,7 +3,7 @@ layout: page
 title: Downloads
 visible_title: "Download Ehcache"
 permalink: /downloads/
-active_sub_menu_id: ehc_mnu_about_about
+active_menu_id: ehc_mnu_download
 ---
 
 ## Direct/Manual Downloads
