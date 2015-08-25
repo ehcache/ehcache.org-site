@@ -22,9 +22,8 @@ Install Jekyll if you have not - follow instructions on the Jekyll home page (af
 
 * Community section stuff needs put in
 
-* Events section
+* Events and News pages to be combined
 
-* News section
 
 * Home page needs  ehcache 2.x quick start content
 
