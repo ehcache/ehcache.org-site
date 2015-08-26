@@ -1,7 +1,11 @@
 ---
+title: Documentation
+no_title_on_main_layout: true
 layout: default
 active_menu_id: ehc_mnu_docs
 ---
+
+
 <br/>
 
 <div class="container-fluid">
@@ -21,11 +25,13 @@ active_menu_id: ehc_mnu_docs
     <!-- main area -->
     <div class="col-xs-12 col-sm-9">
       <header class="post-header">
+        {% if page.no_title_on_main_layout %} {% else %}
         <h1 class="post-title">{% if page.visible_title %}{{ page.visible_title }} {% else %}{{ page.title }}{% endif %}</h1>
         <hr/>
+        {% endif %}
       </header>
       <article class="post-content">
-        {{ content }}
+        {{ content  | toc_generate }}
       </article>
     </div>
 

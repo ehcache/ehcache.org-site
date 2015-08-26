@@ -8,5 +8,34 @@ twitter_username: ehcache
 github_username:  ehcache
 github_facebook:  ehcache
 
+
 # Build settings
 markdown: kramdown
+
+
+defaults:
+  -
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      type: "drafts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: "documentation"
+      type: "pages"
+    values:
+      layout: "docs_page"

@@ -1,9 +1,10 @@
 ---
-layout: docs_page
 title: Documentation
 visible_title: "Ehcache Product Documentation"
 permalink: /documentation/
 ---
+
+# Documentation
 
 ####Current Product Documentation
 
@@ -16,10 +17,10 @@ permalink: /documentation/
 
 | |
 |:----|
-|<a href="/documentation/2.9/index" target="_blank">Ehcache 2.9.x</a>|
-|<a href="/documentation/2.8/index" target="_blank">Ehcache 2.8.x</a>|
-|<a href="/documentation/2.7/index" target="_blank">Ehcache 2.7.x</a>|
-|<a href="/documentation/2.6/index" target="_blank">Ehcache 2.6.x</a>|
+|<a href="/documentation/2.9/" target="_blank">Ehcache 2.9.x</a>|
+|<a href="/documentation/2.8/" target="_blank">Ehcache 2.8.x</a>|
+|<a href="/documentation/2.7/" target="_blank">Ehcache 2.7.x</a>|
+|<a href="/documentation/2.6/" target="_blank">Ehcache 2.6.x</a>|
 
 
 
