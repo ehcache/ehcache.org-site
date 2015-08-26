@@ -1,4 +1,4 @@
-Instructions for building/previewing
+### Instructions for building/previewing
 
 Install Jekyll if you have not - follow instructions on the Jekyll home page (after first installing Ruby)
 [http://jekyllrb.com/](http://jekyllrb.com/)
@@ -9,8 +9,10 @@ Install Jekyll if you have not - follow instructions on the Jekyll home page (af
 * "jekyll serve"   (then point your browser at http://localhost:4000"
 
 
+---
 
-TODOS:
+
+### TODOS:
 
 * "Features" page is really bad, outdated
 
@@ -20,9 +22,8 @@ TODOS:
 
 * Community section stuff needs put in
 
-* Events section
+* Events and News pages to be combined
 
-* News section
 
 * Home page needs  ehcache 2.x quick start content
 
