@@ -17,15 +17,13 @@
 
 ### TODOS:
 
-* "Features" page is really bad, outdated
+* "Features" page could still use some love, but isn't so bad anymore
 
 * "Downloads" page needs better organization, validate links are to what we want .  distinction between 2.x and 3.x things needs to be clear
 
-* Documentation - needs pulled in from existing site(s).  root page needs better layout, links to both 2.x and 3.x
+* Documentation - was pulled in from existing site - some links in older docs are broken due to bad (incomplete) URLs.  root page needs better layout, links to both 2.x and 3.x
 
 * Community section stuff needs put in
-
-* Events and News pages to be combined
 
 
 * Home page needs  ehcache 2.x quick start content
