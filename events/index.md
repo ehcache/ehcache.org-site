@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Events
+title: News & Events
 visible_title: "Events"
 permalink: /events/
-active_sub_menu_id: ehc_mnu_about_about
+active_sub_menu_id: ehc_mnu_events_events
 ---
 ## Upcoming Conferences & Events
 
