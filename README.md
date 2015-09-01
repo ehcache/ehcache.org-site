@@ -6,10 +6,10 @@
 * After installing jekyll, install nokogiri : "gem install nokogiri"
 
 
-* Clone this repository to your local system
+* Clone this repository to your local system (if you're going to contribute content, fork it first, and clone that)
 * cd into the "ehcache.github.io" directory
 * "git checkout ehcache.org" to switch to this branch
-* "jekyll serve"   (then point your browser at http://localhost:4000"
+* "jekyll serve -w"   ( then point your browser at http://localhost:4000" )
 
 
 ---
