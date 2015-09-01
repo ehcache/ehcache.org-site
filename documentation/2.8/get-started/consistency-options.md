@@ -2,7 +2,7 @@
 ---
 # Cache Consistency Options
 
- 
+
 
 
 ## Introduction
@@ -18,8 +18,8 @@ If, however, other data tiers are involved, it is possible for the second thread
 Leaving aside the issue of data also held in the Ehcache nodes, let us look at the server side consistency of the Terracotta Server Array (TSA).
 
 ### Server Deployment Topology
- Large datasets are handled with partitions that are managed automatically using a consistent hashing algorithm. The TSA has an active server that handles all requests for that partition. 
- 
+ Large datasets are handled with partitions that are managed automatically using a consistent hashing algorithm. The TSA has an active server that handles all requests for that partition.
+
 There is no dynamic resizing of clusters, so the consistent hash always resolves to the same stripe. A "stripe" or "Mirror Group" is configured in the the &lt;tc-config> to have one active server and one or more mirror servers. The active server propagates changes to the mirror server(s). A mirror server is a hot standby, which does not service any requests unless the active server goes down, in which case a mirror server can take over the role of active server.
 
 In the language of consistency protocols, the active and mirror are replicas - they should contain the same data.
@@ -109,10 +109,10 @@ Distributed Ehcache can have eventual consistency in the following ways:
 * Configured with `consistency="eventual"`.
 * Set programmatically with a bulk-loading mode, using `setNodeBulkLoadEnabled(boolean)`.
 * Configured with &lt;UnlockedReadsView>, a `CacheDecorator` that can be created like a view on a cache to show the latest writes visible to the local Ehcache node without respect for any locks.
-* Using bulk-loading Cache methods `putAll()`, `getAll()`, and `removeAll()`. 
+* Using bulk-loading Cache methods `putAll()`, `getAll()`, and `removeAll()`.
 Note that `putAll(Collection<Element>)` does not discriminate between new and existing elements, thus resulting in put notifications, not update notifications. These can also be used with strong consistency. If you can use them, there is no need to use bulk-load mode. See the [API documentation](http://ehcache.org/apidocs) for details.
 
-Ehcache B and C will eventually see the change made by Ehcache A, generally with a consistency window of 5 ms (with no partitions or interruptions). If a garbage collection (GC) happens on a TSA node, or Ehcache A or B, the inconsistency window is increased by the length of the GC. 
+Ehcache B and C will eventually see the change made by Ehcache A, generally with a consistency window of 5 ms (with no partitions or interruptions). If a garbage collection (GC) happens on a TSA node, or Ehcache A or B, the inconsistency window is increased by the length of the GC.
 
 If `setNodeBulkLoadEnabled(true)` is used, it prevents the TSA from updating Ehcache B and C. Instead, they are set to a 5 minute fixed `time to live` (TTL). The inconsistency window thus increases to 5 minutes plus the above.
 
@@ -142,7 +142,7 @@ Ehcache offers a rich set of data safety features. In this section we look at so
 We support the following Compare and Swap (CAS) operations:
 
 *   `cache.replace(Element old, Element new)`
-*   `cache.replace(Element)` 
+*   `cache.replace(Element)`
 *   `cache.putIfAbsent(Element)`
 *   `cache.removeElement(Element)`
 
@@ -231,14 +231,14 @@ preventing readers from reading stale data, but that will not help the next step
 *  CAS operations with eventual consistency. The CAS methods will not return until the data has been applied to the server, so
   it is not necessary to use synchronous writes.
 In a 50 step process, it is likely there are key milestones. Often it is desirable to record these in a database with the non-milestone
-   steps recorded in the cache. For these key milestones use the "Financial Order Processing - write to cache and database" pattern. 
+   steps recorded in the cache. For these key milestones use the "Financial Order Processing - write to cache and database" pattern.
 
 ### E-commerce web app with Non-sticky sessions
 Here a user makes reads and writes to a web application cluster. There are n servers where n > 1. The load balancer is non-sticky,
 so any of the n servers can be hit on the next HTTP operation.
 When a user submits using a HTML form, either a GET or POST is done based on the form action. And if it is an AJAX app, then
 requests are being done with `XMLHttpRequest` and any HTTP request method can be sent. If POST (form and AJAX) or PUT (AJAX) is used,
-no content is returned and a separate GET is required to refresh the view or AJAX app. 
+no content is returned and a separate GET is required to refresh the view or AJAX app.
 
 Sending a change and getting
 a view might happen with one request or two. If it happens with two, then the same server might respond to the second request or not.

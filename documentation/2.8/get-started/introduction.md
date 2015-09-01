@@ -2,7 +2,7 @@
 ---
 # Hello, Ehcache
 
- 
+
 
 ## Introduction
 Ehcache is a cache library introduced in 2003 to improve performance by reducing the load on underlying resources. Ehcache is not for both general-purpose caching and caching Hibernate (second-level cache), data access objects, security credentials, and web pages. It can also be used for SOAP and RESTful server caching, application persistence, and distributed caching.
@@ -11,10 +11,10 @@ Ehcache is a cache library introduced in 2003 to improve performance by reducing
 
 * **cache**: Wiktionary defines a cache as "a store of things that will be required in future, and can be retrieved rapidly." A cache is a collection of temporary data that either duplicates data located elsewhere or is the result of a computation. Data that is already in the cache can be repeatedly accessed with minimal costs in terms of time and resources.
 
-* **cache-hit**: <a name="cache-hit"></a>When a data element is requested of the cache and the element exists for 
+* **cache-hit**: <a name="cache-hit"></a>When a data element is requested of the cache and the element exists for
 the given key, it is referrred to as a cache hit (or simply 'hit').
 
-* **cache-miss**: <a name="cache-miss"></a>When a data element is requested of the cache and the element does not 
+* **cache-miss**: <a name="cache-miss"></a>When a data element is requested of the cache and the element does not
 exist for the given key, it is referred to as a cache miss (or simply
 'miss').
 
@@ -45,7 +45,7 @@ cost of obtaining that 20%, system performance will improve.
 ## Will an Application Benefit from Caching?
 
 Often the answer is yes, especially if the application is I/O bound. If an application is I/O bound and depends on the rate at which data can be obtained. If it is
-CPU bound, then the time taken principally depends on the speed of the CPU and main memory. Caching can improving performance and also reduce the load on a web server. 
+CPU bound, then the time taken principally depends on the speed of the CPU and main memory. Caching can improving performance and also reduce the load on a web server.
 
 ### Speeding up CPU-bound Applications
 
@@ -73,7 +73,7 @@ Network operations can be bound by a number of factors:
 * time to set up and tear down connections
 * latency, or the minimum round trip time
 * throughput limits
-* overhead for marshalling and unmarshalling 
+* overhead for marshalling and unmarshalling
 
 The caching of data can often help a lot with I/O bound applications. Some examples of Ehcache uses are:
 
@@ -158,7 +158,7 @@ The expected system speedup is thus:
 
 ### Cache Efficiency
 
-Cache entrie do not live forever. Some examples that come close are: 
+Cache entrie do not live forever. Some examples that come close are:
 
  * "static" web pages or web page fragments, like page footers
  * database reference data, such as the currencies in the world

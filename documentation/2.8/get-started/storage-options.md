@@ -1,7 +1,7 @@
 ---
 ---
 # Storage Options <a name="Storage-Options"/>
- 
+
 
 ## Introduction
 Ehcache has three storage tiers:

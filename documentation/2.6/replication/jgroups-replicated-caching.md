@@ -1,6 +1,8 @@
+---
+---
 # Replicated Caching using JGroups
 
- 
+
 
 ## Introduction
 
@@ -39,7 +41,7 @@ There are two things to configure:
 The main configuration happens in the JGroupsCacheManagerPeerProviderFactory connect sub-property.
 
 A connect property is passed directly to the JGroups channel and therefore all the protocol
-stacks and options available in JGroups can be set. 
+stacks and options available in JGroups can be set.
 
 ## Example configuration using UDP Multicast
 
@@ -56,7 +58,7 @@ There are two things to configure:
 The main configuration happens in the JGroupsCacheManagerPeerProviderFactory connect sub-property.
 
 A connect property is passed directly to the JGroups channel and therefore all the protocol
-stacks and options available in JGroups can be set. 
+stacks and options available in JGroups can be set.
 
 ## Example configuration using UDP Multicast
 
@@ -64,14 +66,14 @@ Suppose you have two servers in a cluster. You wish to replicated
 sampleCache11 and sampleCache12 and you wish to use UDP multicast as the underlying mechanism.
 The configuration for server1 and server2 are identical and will look like this:
 
-    
+
     <cacheManagerPeerProviderFactory
     class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
     properties="connect=UDP(mcast_addr=231.12.21.132;mcast_port=45566;):PING:
     MERGE2:FD_SOCK:VERIFY_SUSPECT:pbcast.NAKACK:UNICAST:pbcast.STABLE:FRAG:pbcast.GMS"
     propertySeparator="::"
     />
-    
+
 
 ## Example configuration using TCP Unicast
 
@@ -79,7 +81,7 @@ The TCP protocol requires the IP address of all servers to be known. They are co
 
 Suppose you have 2 servers host1 and host2, then the configuration is:
 
-    
+
     <cacheManagerPeerProviderFactory
     class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
     properties="connect=TCP(start_port=7800):
@@ -90,7 +92,7 @@ Suppose you have 2 servers host1 and host2, then the configuration is:
        pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;shun=false;
        print_local_addr=false;down_thread=true;up_thread=true)"
     propertySeparator="::" />
-    
+
 
 ## Protocol considerations.
 
@@ -109,7 +111,7 @@ done by adding a cacheEventListenerFactory element to each cache's
 configuration. The properties are identical to the one used for RMI replication.
 The listener factory *must* be of type `JGroupsCacheReplicatorFactory`.
 
-    
+
     <!-- Sample cache named sampleCache2. -->
     <cache name="sampleCache2"
       maxEntriesLocalHeap="10"
@@ -122,7 +124,7 @@ The listener factory *must* be of type `JGroupsCacheReplicatorFactory`.
       properties="replicateAsynchronously=true, replicatePuts=true,
       replicateUpdates=true, replicateUpdatesViaCopy=false, replicateRemovals=true" />
     </cache>
-    
+
 
 The configuration options are explained below:
 
@@ -144,8 +146,8 @@ The factory recognises the following properties:
 ## Complete Sample configuration
 
 A typical complete configuration for one replicated cache configured for UDP will look like:
- 
-    
+
+
     <Ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="../../../main/config/ehcache.xsd">
       <diskStore path="java.io.tmpdir/one"/>
@@ -177,14 +179,14 @@ A typical complete configuration for one replicated cache configured for UDP wil
           replicateRemovals=true" />
       </cache>
     </ehcache>
-    
+
 
 ## Common Problems
 
 If replication using JGroups doesn't work the way you have it configured try this configuration which
 has been extensively tested:
 
-    
+
     <cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"/>
     <cache name="sampleCacheAsync"
       maxEntriesLocalHeap="1000"
@@ -198,7 +200,7 @@ has been extensively tested:
           replicateUpdates=true, replicateUpdatesViaCopy=false,
           replicateRemovals=true" />
     </cache>
-    
+
 
 If this fails to replicate, see the example programs in the [JGroups documentation](http://www.jgroups.org/manual/html/ch02.html).
 

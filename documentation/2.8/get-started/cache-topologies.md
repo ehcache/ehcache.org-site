@@ -2,7 +2,7 @@
 ---
 # Cache Topologies <a name="Distributed-and-Replicated-Caching"/>
 
- 
+
 
 ## Introduction
 

@@ -1,6 +1,8 @@
+---
+---
 # Cache Eviction Algorithms
 
- 
+
 
 A cache eviction algorithm is a way of deciding which `Element` to evict when the cache is full.
 In Ehcache, the `MemoryStore` has a fixed limited size set by `maxElementsInMemory`
@@ -23,7 +25,7 @@ gives the *best* result.
 In 1966 Laszlo Belady showed that the most efficient caching algorithm would be to always discard the
 information that will not be needed for the longest time in the future. This it a theoretical result
 that is unimplementable without domain knowledge. The Least Recently Used ("LRU") algorithm is often used as
-a proxy. It works pretty well because of the locality of reference phenonemon and is the default in most caches. 
+a proxy. It works pretty well because of the locality of reference phenonemon and is the default in most caches.
 
 A variation of LRU is the default eviction algorithm in Ehcache.
 
@@ -42,7 +44,7 @@ evicts the smallest. Using the sample size of 15 elements, empirical testing sho
 that an Element in the lowest quartile of use is evicted 99% of the time.
 
  If probabilistic eviction does not suit your application, a true Least Recently Used
-deterministic algorithm is available by setting `java -Dnet.sf.ehcache.use.classic.lru=true`. 
+deterministic algorithm is available by setting `java -Dnet.sf.ehcache.use.classic.lru=true`.
 
 ### Least Frequently Used (LFU)
 
@@ -84,8 +86,8 @@ an Element if it has been hit more than 10 times.
 * There are three policies which can be configured: LRU, LFU and FIFO. However
 * many other policies are possible. That the policy has access to the whole element
 * enables policies based on the key, value, metadata, statistics, or a combination
-* of any of the above. 
-* 
+* of any of the above.
+*
 * It is safe to change the policy of a store at any time. The new policy takes
 * effect immediately.
 *
@@ -105,7 +107,7 @@ public interface Policy {
    */
   String getName();
   /**
-   * Finds the best eviction candidate based on the sampled elements. What 
+   * Finds the best eviction candidate based on the sampled elements. What
    * distinguishes this approach from the classic data structures approach is
    * that an Element contains metadata (e.g. usage statistics) which can be used
    * for making policy decisions, while generic data structures do not. It is

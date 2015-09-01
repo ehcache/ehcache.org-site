@@ -20,4 +20,3 @@ The following pages provide additional information about replicated caching with
 
 * [Replicated Caching FAQ](/documentation/2.8/faq#replicated-caching-faq)
 * [Hibernate and Replicated Caching](/documentation/2.8/integrations/hibernate#configuring-replicated-caching-using-rmi-jgroups-or-jms)
-

@@ -1,5 +1,7 @@
-#Replicated Caching using RMI
- 
+---
+---
+# Replicated Caching using RMI
+
 
 ## Introduction
 
@@ -82,7 +84,7 @@ required for each server is identical, so the configuration for both server1 and
     class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
     properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1,
     multicastGroupPort=4446, timeToLive=32"/>
-    
+
 ### Manual Peer Discovery <a name="Manual Peer Discovery"/>
 
 Manual peer configuration requires the IP address and port of each
@@ -107,20 +109,20 @@ configured. Do not include the server being configured in the list.
 Suppose you have two servers in a cluster, server1 and server2. You wish to distribute
 sampleCache11 and sampleCache12. The following is the configuration
 required for server1:
-    
+
     <cacheManagerPeerProviderFactory
     class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
     properties="peerDiscovery=manual,
     rmiUrls=//server2:40001/sampleCache11|//server2:40001/sampleCache12"/>
-    
+
 The following is the configuration required for server2:
 
-    
+
     <cacheManagerPeerProviderFactory
     class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
     properties="peerDiscovery=manual,
     rmiUrls=//server1:40001/sampleCache11|//server1:40001/sampleCache12"/>
-    
+
 
 ## Configuring the CacheManagerPeerListener
 
@@ -141,12 +143,12 @@ listener component is RMICacheManagerPeerListener which is configured
 using RMICacheManagerPeerListenerFactory. It is configured as per the
 following example:
 
-    
+
     <cacheManagerPeerListenerFactory
     class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
     properties="hostName=localhost, port=40001,
     socketTimeoutMillis=2000"/>
-    
+
 
 Valid properties are:
 
@@ -173,7 +175,7 @@ which then replicates messages to the other CacheManager peers. This is
 done by adding a cacheEventListenerFactory element to each cache's
 configuration.
 
-    
+
     <!-- Sample cache named sampleCache2. -->
     <cache name="sampleCache2"
       maxEntriesLocalHeap="10"
@@ -186,7 +188,7 @@ configuration.
     properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,
     replicateUpdatesViaCopy=false, replicateRemovals=true "/>
     </cache>
-    
+
 
 class - use net.sf.ehcache.distribution.RMICacheReplicatorFactory
 
@@ -205,7 +207,7 @@ The factory recognises the following properties:
 To reduce typing if you want default behaviour, which is replicate everything in asynchronous mode, you can leave off
 the `RMICacheReplicatorFactory` properties as per the following example:
 
-    
+
     <!-- Sample cache named sampleCache4. All missing RMICacheReplicatorFactory properties
         default to true -->
     <cache name="sampleCache4"
@@ -216,7 +218,7 @@ the `RMICacheReplicatorFactory` properties as per the following example:
        <cacheEventListenerFactory
            class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/>
     </cache>
-    
+
 
 ## Configuring Bootstrap from a Cache Peer
 
@@ -276,13 +278,13 @@ The test uses five ehcache.xml files representing five CacheManagers set up to r
  Using the multicast IP protocol, the timeToLive value indicates the scope or range in which a packet may be forwarded.
 
 By convention:
-    
+
 0 is restricted to the same host  
 1 is restricted to the same subnet  
 32 is restricted to the same site  
 64 is restricted to the same region  
 128 is restricted to the same continent  
 255 is unrestricted
-    
+
 The default value in Java is 1, which propagates to the same subnet. Change the
 timeToLive property to restrict or expand propagation.

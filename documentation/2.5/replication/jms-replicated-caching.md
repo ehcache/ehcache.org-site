@@ -1,6 +1,8 @@
+---
+---
 # Replicated Caching using JMS
 
- 
+
 
 ## Introduction
 
@@ -76,9 +78,9 @@ The JMS PeerProviderFactory uses JNDI to maintain message queue independence.
 Refer to the manual for full configuration examples using ActiveMQ and Open Message Queue.
 
 Valid properties are:
-* initialContextFactoryName (mandatory) - the name of the factory used to create 
+* initialContextFactoryName (mandatory) - the name of the factory used to create
   the message queue initial context.
-* providerURL (mandatory) - the JNDI configuration information for the service 
+* providerURL (mandatory) - the JNDI configuration information for the service
   provider to use.
 * topicConnectionFactoryBindingName (mandatory) - the JNDI binding name for the
   TopicConnectionFactory
@@ -86,7 +88,7 @@ Valid properties are:
 * securityPrincipalName - the JNDI java.naming.security.principal
 * securityCredentials - the JNDI java.naming.security.credentials
 * urlPkgPrefixes - the JNDI java.naming.factory.url.pkgs
-* userName - the user name to use when creating the TopicConnection to the Message 
+* userName - the user name to use when creating the TopicConnection to the Message
   Queue
 * password - the password to use when creating the TopicConnection to the Message
   Queue
@@ -106,7 +108,7 @@ Usage is best illustrated with concrete examples for Active MQ and Open MQ.
 ###### Configuring the JMSCacheManagerPeerProviderFactory for Active MQ
 
 This configuration works with Active MQ out of the box.
-    
+
     <cacheManagerPeerProviderFactory
            class="net.sf.ehcache.distribution.jms.JMSCacheManagerPeerProviderFactory"
            properties="initialContextFactoryName=ExampleActiveMQInitialContextFactory,
@@ -115,13 +117,13 @@ This configuration works with Active MQ out of the box.
                topicBindingName=ehcache"
            propertySeparator=","
            />
-    
+
 
 You need to provide your own ActiveMQInitialContextFactory for the initialContextFactoryName.
 An example which should work for most purposes is:
 
-    
-    public class ExampleActiveMQInitialContextFactory 
+
+    public class ExampleActiveMQInitialContextFactory
       extends ActiveMQInitialContextFactory {
         /**
          * {@inheritDoc"/>
@@ -129,10 +131,10 @@ An example which should work for most purposes is:
         @Override
         @SuppressWarnings("unchecked")
         public Context getInitialContext(Hashtable environment)
-          throws NamingException 
+          throws NamingException
         {
     	  Map<String, Object> data = new ConcurrentHashMap<String, Object>();
-    	  String factoryBindingName = 
+    	  String factoryBindingName =
             (String)environment.get(JMSCacheManagerPeerProviderFactory
               .TOPIC_CONNECTION_FACTORY_BINDING_NAME);
     	  try {
@@ -142,19 +144,19 @@ An example which should work for most purposes is:
                                       + " with message "
     				      + e.getMessage());
     	  "/>
-    	  String topicBindingName = 
+    	  String topicBindingName =
             (String)environment.get(JMSCacheManagerPeerProviderFactory
     	      .TOPIC_BINDING_NAME);
     	  data.put(topicBindingName, createTopic(topicBindingName));
     	  return createContext(environment, data);
         "/>
     }  
-        
+
 
 ###### Configuring the JMSCacheManagerPeerProviderFactory for {Open MQ"/>
 This configuration works with an out of the box Open MQ.
 
-    
+
     <cacheManagerPeerProviderFactory
       class="net.sf.ehcache.distribution.jms.JMSCacheManagerPeerProviderFactory"
       properties="initialContextFactoryName=com.sun.jndi.fscontext.RefFSContextFactory,
@@ -163,7 +165,7 @@ This configuration works with an out of the box Open MQ.
                topicBindingName=ehcache"
            propertySeparator=","
            />
-    
+
 
 To set up the Open MQ file system initial context to work with this example use the
 following `imqobjmgr` commands to create the requires objects in the context.
@@ -182,7 +184,7 @@ This is the same as configuring any of the cache replicators. The class should b
 
 See the following example:
 
-    
+
     <cache name="sampleCacheAsync"
      maxEntriesLocalHeap="1000"
      eternal="false"
@@ -199,7 +201,7 @@ See the following example:
                       asynchronousReplicationIntervalMillis=1000"
           propertySeparator=","/>
     </cache>
-    
+
 
 ### External JMS Publishers
 Anything that can publish to a message queue can also add cache entries to ehcache. These are called non-cache
@@ -257,20 +259,20 @@ Messages should be sent to the topic that Ehcache is listening on. In these samp
 
 All samples get a Topic Connection using the following method:
 
-    
+
     private TopicConnection getMQConnection() throws JMSException {
-      com.sun.messaging.ConnectionFactory factory = 
+      com.sun.messaging.ConnectionFactory factory =
         new com.sun.messaging.ConnectionFactory();
       factory.setProperty(ConnectionConfiguration.imqAddressList, "localhost:7676");
       factory.setProperty(ConnectionConfiguration.imqReconnectEnabled, "true");
       TopicConnection myConnection = factory.createTopicConnection();
       return myConnection;
     "/>
-    
+
 
 #### PUT a Java Object into an Ehcache JMS Cluster
 
-    
+
     String payload = "this is an object";
     TopicConnection connection = getMQConnection();
     connection.start();
@@ -291,13 +293,13 @@ All samples get a Topic Connection using the following method:
     publisher.send(message);
 
     connection.stop();
-    
+
 
 Ehcache will create an Element in cache "sampleCacheAsync" with key "1234" and a Java class String value of "this is an object".
 
 #### PUT XML into an Ehcache JMS Cluster
 
-    
+
     TopicConnection connection = getMQConnection();
     connection.start();
     TopicSession publisherSession = connection.createTopicSession(false,
@@ -323,7 +325,7 @@ Ehcache will create an Element in cache "sampleCacheAsync" with key "1234" and a
     publisher.send(message);
 
     connection.stop();
-    
+
 
 Ehcache will create an Element in cache "sampleCacheAsync" with key "1234" and a value of type MimeTypeByteArray.
 
@@ -334,7 +336,7 @@ encoded in bytes, using the platform's default charset.
 
 #### PUT arbitrary bytes into an Ehcache JMS Cluster
 
-    
+
     byte[] bytes = new byte[]{0x34, (byte) 0xe3, (byte) 0x88};
     TopicConnection connection = getMQConnection();
     connection.start();
@@ -352,7 +354,7 @@ encoded in bytes, using the platform's default charset.
     Topic topic = publisherSession.createTopic("EhcacheTopicDest");
     TopicPublisher publisher = publisherSession.createPublisher(topic);
     publisher.send(message);
-    
+
 
 Ehcache will create an Element in cache "sampleCacheAsync" with key "1234" in and a value of type MimeTypeByteArray.
 
@@ -366,7 +368,7 @@ bytes.
     TopicConnection connection = getMQConnection();
     connection.start();
 
-    TopicSession publisherSession = connection.createTopicSession(false, 
+    TopicSession publisherSession = connection.createTopicSession(false,
       Session.AUTO_ACKNOWLEDGE);
 
     ObjectMessage message = publisherSession.createObjectMessage();
@@ -377,12 +379,12 @@ bytes.
     Topic topic = publisherSession.createTopic("EhcacheTopicDest");
     TopicPublisher publisher = publisherSession.createPublisher(topic);
     publisher.send(message);
-    
+
 Ehcache will remove the Element with key "1234"  from cache "sampleCacheAsync" from the cluster.
 
 #### REMOVE_ALL
 
-    
+
     TopicConnection connection = getMQConnection();
     connection.start();
 
@@ -420,7 +422,7 @@ examples using ActiveMQ and Open Message Queue.
 
 It is configured as per the following example:
 
-    
+
     <cacheLoaderFactory class="net.sf.ehcache.distribution.jms.JMSCacheLoaderFactory"
       properties="initialContextFactoryName=com.sun.jndi.fscontext.RefFSContextFactory,
       providerURL=file:///tmp,
@@ -430,7 +432,7 @@ It is configured as per the following example:
       getQueueBindingName=ehcacheGetQueue,
       timeoutMillis=20000
       defaultLoaderArgument=/>
-    
+
 
 Valid properties are:
 
@@ -451,7 +453,7 @@ this default value will be used. The argument is passed in the JMS request as a 
 
 ### Example Configuration Using Active MQ
 
-    
+
     <cache name="sampleCacheNorep"
       maxEntriesLocalHeap="1000"
       eternal="false"
@@ -464,7 +466,7 @@ this default value will be used. The argument is passed in the JMS request as a 
        replicateUpdates=false, replicateUpdatesViaCopy=false,
        replicateRemovals=false, loaderArgument=sampleCacheNorep"
        propertySeparator=","/>
-    <cacheLoaderFactory 
+    <cacheLoaderFactory
       class="net.sf.ehcache.distribution.jms.JMSCacheLoaderFactory"
       properties="initialContextFactoryName=net.sf.ehcache.distribution.jms.
            TestActiveMQInitialContextFactory,
@@ -475,11 +477,11 @@ this default value will be used. The argument is passed in the JMS request as a 
            getQueueBindingName=ehcacheGetQueue,
            timeoutMillis=10000"/>
     </cache>
-    
+
 
 ### Example Configuration Using Open MQ
 
-    
+
     <cache name="sampleCacheNorep"
       maxEntriesLocalHeap="1000"
       eternal="false"
@@ -492,7 +494,7 @@ this default value will be used. The argument is passed in the JMS request as a 
                     replicateUpdates=false, replicateUpdatesViaCopy=false,
                     replicateRemovals=false"
                     propertySeparator=","/>
-      <cacheLoaderFactory 
+      <cacheLoaderFactory
         class="net.sf.ehcache.distribution.jms.JMSCacheLoaderFactory"
         properties="initialContextFactoryName=com.sun.jndi.fscontext.RefFSContextFactory,
                     providerURL=file:///tmp,
@@ -504,7 +506,7 @@ this default value will be used. The argument is passed in the JMS request as a 
                     userName=test,
                     password=test"/>
     </cache>
-    
+
 
 ## Configuring Clients for Message Queue Reliability
 

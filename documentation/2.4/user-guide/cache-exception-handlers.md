@@ -1,7 +1,9 @@
+---
+---
 # Cache Exception Handlers
 
 
- 
+
 
 ## Introduction
 By default, most cache operations will propagate a runtime CacheException on failure. An interceptor,

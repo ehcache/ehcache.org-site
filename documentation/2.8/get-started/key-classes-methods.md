@@ -1,7 +1,7 @@
 ---
 ---
-# Key Classes and Methods 
- 
+# Key Classes and Methods
+
 
 
 ## Introduction
@@ -9,7 +9,7 @@
 Ehcache consists of a `CacheManager`, which manages caches. Caches contain Elements,
 which are essentially name value pairs. Caches are physically implemented, either in-memory or on disk. The logical representations of these components are actualized mostly through the classes discussed below. The methods provided by these classes are largely responsible for providing programmatic access to working with Ehcache.
 
-### CacheManager 
+### CacheManager
 
 Creation of, access to, and removal of caches is controlled by the `CacheManager`.
 
@@ -83,4 +83,3 @@ The APIs are identical except for the return methods from Element. Two new metho
 Element: getObjectValue and getKeyValue are the only API differences between the Serializable and Object APIs. This
 makes it very easy to start with caching Objects and then change your Objects to Seralizable to participate in
 the extra features when needed. Also a large number of Java classes are simply not Serializable.
-

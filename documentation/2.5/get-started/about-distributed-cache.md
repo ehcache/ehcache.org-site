@@ -1,10 +1,21 @@
+---
+---
 # About Distributed Cache
 
- 
+
+Distributed caching is available with the [Terracotta Server](http://terracotta.org/downloads/open-source/catalog) - please use Ehcache 2.10 or greater with it.
+
+
+# The below documentation is much dated
+
+
+# About Distributed Cache
+
+
 
 
 ## Introduction
-Distributed Cache, formally called Terracotta Distributed Ehcache, is Ehcache running in a Terracotta cluster. Distributed caching is the recommended method of operating Ehcache in a clustered or scaled-out application environment, as it enables data sharing among multiple CacheManagers and their caches in multiple JVMs. 
+Distributed Cache, formally called Terracotta Distributed Ehcache, is Ehcache running in a Terracotta cluster. Distributed caching is the recommended method of operating Ehcache in a clustered or scaled-out application environment, as it enables data sharing among multiple CacheManagers and their caches in multiple JVMs.
 
 You can find [tutorials](http://terracotta.org/documentation/enterprise-ehcache/get-started), [installation procedures](http://terracotta.org/documentation/enterprise-ehcache/installation-guide), [best practices](http://terracotta.org/documentation/best-practices), details on the [Terracotta Server Array](http://terracotta.org/documentation/terracotta-server-array/introduction), and more in the Terracotta documentation.
 

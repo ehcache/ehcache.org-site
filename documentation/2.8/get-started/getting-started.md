@@ -2,7 +2,7 @@
 ---
 # Using Ehcache
 
- 
+
 
 ## Introduction
 Ehcache can be used directly. It also supports use with the popular Hibernate Object/Relational tool and caching with the Java EE Servlet. This page is a quick guide to get you started. The rest of the documentation can be explored for a deeper understanding.

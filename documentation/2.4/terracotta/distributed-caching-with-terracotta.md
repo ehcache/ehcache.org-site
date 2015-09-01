@@ -1,4 +1,7 @@
-Distributed Caching using the Terracotta Server Array
+---
+---
+
+# Distributed Caching using the Terracotta Server Array
 
 Terracotta has been integrated with Ehcache since Ehcache 1.4.
 From version 1.7 Ehcache has been seamlessly integrated with Terracotta 3.1.1 and takes just a few lines of config in ehcache.xml to get up and running.

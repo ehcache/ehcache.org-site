@@ -37,7 +37,3 @@ The following pages get you up and running:
 * [Using Ehcache](/documentation/2.8/get-started/getting-started)
 * [About Distributed Cache](/documentation/2.8/get-started/about-distributed-cache#code-samples) Code Samples
 * [Building From Source](/documentation/2.8/get-started/building)
-
-
-
-
