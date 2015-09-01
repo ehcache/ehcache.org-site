@@ -21,7 +21,9 @@
 
 * "Downloads" page needs better organization, validate links are to what we want .  distinction between 2.x and 3.x things needs to be clear
 
-* Documentation - was pulled in from existing site - some links in older docs are broken due to bad (incomplete) URLs.  root page needs better layout, links to both 2.x and 3.x
+* Documentation 
+**was pulled in from existing ehcache.org site - some links in older docs are broken due to bad (incomplete) URLs.  root page needs better layout, links to both 2.x and 3.x
+** ehcache 3.0 docs need put in
 
 * Community section stuff needs put in
 
