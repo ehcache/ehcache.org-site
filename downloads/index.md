@@ -8,26 +8,60 @@ active_menu_id: ehc_mnu_download
 
 ## Direct/Manual Downloads
 
-The ehcache module distribution is the main Ehcache distribution.
 
-[Ehcache 2.10.0](http://ehcache.org/downloads/destination?name=ehcache-2.10.0-distribution.tar.gz&bucket=tcdistributions&file=ehcache-2.10.0-distribution.tar.gz)
+#### Ehcache 2.x
+
+> [Ehcache 2.10.0](http://s3.amazonaws.com/tcdistributions/ehcache-2.10.0-distribution.tar.gz)  .tar.gz
 
 
 For more information on this release, see the [release notes](http://www.terracotta.org/confluence/display/release/Home).
 
 For JSR107 support with Ehcache 2, use the [ehcache-jcache](https://github.com/ehcache/ehcache-jcache/releases) module.
 
---
+---
 
-Milestone releases of Ehcache 3 are available on the project's [GitHub release page](https://github.com/ehcache/ehcache3/releases).
+#### Ehcache 3
+
+> [Ehcache 3.0 Milestone 2](https://github.com/ehcache/ehcache3/releases/download/v3.0.0.m2/ehcache-3.0.0.m2.jar) .jar
+
+More files related to milestone releases of Ehcache 3 are available on the project's [GitHub release page](https://github.com/ehcache/ehcache3/releases).
 
 ---
 
-<p><a href="http://sourceforge.net/projects/ehcache/files/" title="">Older Ehcache artifacts on SourceForge &rsaquo;</a></p>
-
-<hr/>
 
 ## Maven
+
+### Maven Snippet
+
+#### Ehcache 2
+
+To include Ehcache 2.x in your project, use:
+
+
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>2.3.1</version>
+      <type>pom</type>
+    </dependency>
+
+_Note: Be sure to substitute the version number above with the version number of Ehcache that you want to use._
+
+#### Ehcache 3
+
+To include Ehcache 3.x in your project, use:
+
+    <dependency>
+      <groupId>org.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>3.0.0.m2</version>
+    </dependency>
+
+_Note: Be sure to substitute the version number above with the version number of Ehcache that you want to use._
+
+---
+
+### General Maven Info
 
 #### Releases
 
@@ -48,18 +82,17 @@ You can browse the snapshot repo <a href="http://oss.sonatype.org/content/reposi
 
 To get snapshots you will need to add the following repository to your maven config:
 
-<pre>
-&lt;repositories&gt;
-  &lt;repository&gt;
-    &lt;id&gt;sourceforge&lt;/id&gt;
-    &lt;url&gt;http://oss.sonatype.org/content/groups/sourceforge/&lt;/url&gt;
-    &lt;releases&gt;
-      &lt;enabled&gt;true&lt;/enabled&gt;
-    &lt;/releases&gt;
-    &lt;snapshots&gt;
-      &lt;enabled&gt;true&lt;/enabled&gt;
-    &lt;/snapshots&gt;
-  &lt;/repository&gt;
-...
-&lt;/repositories&gt;
-</pre>
+
+    <repositories>
+      <repository>
+        <id>sourceforge</id>
+        <url>http://oss.sonatype.org/content/groups/sourceforge/</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+      </repository>
+    ...
+    </repositories>
