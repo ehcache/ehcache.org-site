@@ -1,36 +1,45 @@
 ---
 title: Documentation
-visible_title: "Ehcache Product Documentation"
+visible_title: "Ehcache Documentation"
 permalink: /documentation/
 ---
 
 # Documentation
 
-####Current Product Documentation
+<a name="current_version"/>
 
-| | | |
-|:----|:------|:-----|
-|Ehcache 2.10.x|<a href="/generated/2.10.0/html/ehc-all" target="_blank">HTML</a>|<a href="/documentation/2.10/pdf/index" target="_blank">PDF</a>|
+#### Current Documentation
 
+| | |
+|:----|:--|
+|[Ehcache 2.10.x User Guide](/generated/2.10.0/html/ehc-all){:target="_blank"} (HTML)  also available as [PDF](/documentation/2.10/pdf/index.html){: target="_blank"}|[JavaDoc](/apidocs/2.10/index.html)|
+|[Platform and Release Compatibility Tables](http://www.terracotta.org/confluence/display/release/Home){: target="_blank"}||
+|[License](http://localhost:4000/about/license.html) (Apache 2.0)||
+|[Legal Notices](http://documentation.softwareag.com/legal/){: target="_blank"}||
 
-####Previous Versions
+If you don’t find what you’re looking for in the docs, post a question to the [Ehcache support forums](https://groups.google.com/forum/#!forum/ehcache-users){: target="_blank"}.
 
-| |
-|:----|
-|<a href="/documentation/2.9/" target="_blank">Ehcache 2.9.x</a>|
-|<a href="/documentation/2.8/" target="_blank">Ehcache 2.8.x</a>|
-|<a href="/documentation/2.7/" target="_blank">Ehcache 2.7.x</a>|
-|<a href="/documentation/2.6/" target="_blank">Ehcache 2.6.x</a>|
+---
 
+<a name="historical_versions"/>
 
+#### Historical Versions
 
-####Other Documents
-
-| |
-|:----|
-|<a href="/apidocs/2.10" target="_blank">Javadoc</a>|
-|<a href="http://www.terracotta.org/confluence/display/release/Home" target="_blank">Platform and Release Compatibility Tables</a>|
-|<a href="http://documentation.softwareag.com/legal/" target="_blank">Legal Notices</a>|
-
-
-If you don’t find what you’re looking for in the docs, post a question to the <a href="https://groups.google.com/forum/#!forum/ehcache-users" target="_blank">Ehcache support forums</a>.
+| | |
+|:----|:--|
+|[Ehcache 2.9.x User Guide](/documentation/2.9/)|[JavaDoc](/apidocs/2.9/index.html){:target="_blank"}|
+|[Ehcache 2.8.x User Guide](/documentation/2.8/)|[JavaDoc](/apidocs/2.8.5/index.html){:target="_blank"}|
+|[Ehcache 2.7.x User Guide](/documentation/2.7/)|[JavaDoc](/apidocs/2.7.6/index.html){:target="_blank"}|
+|[Ehcache 2.6.x User Guide](/documentation/ehcache-2.6.x-documentation.pdf) (pdf)|[JavaDoc](/apidocs/2.6.9/index.html){:target="_blank"}|
+|[Ehcache 2.5.x User Guide](/documentation/ehcache-2.5.x-documentation.pdf) (pdf)|[JavaDoc](/apidocs/2.5.2/index.html){:target="_blank"}|
+|[Ehcache 2.4.1 User Guide](/documentation/EhcacheUserGuide-2.4.1.pdf) (pdf)|[JavaDoc](/apidocs/2.4.4/index.html){:target="_blank"}|
+|[Ehcache 2.4 User Guide](/documentation/EhcacheUserGuide-2.4.pdf) (pdf)||
+|[Ehcache 2.0 - 2.3 User Guide](/documentation/EhcacheUserGuide-2.0-2.3.pdf) (pdf)||
+|[Ehcache 1.7.1 User Guide](/documentation/EhcacheUserGuide-1.7.1.pdf) (pdf)||
+|[Ehcache 1.6 User Guide](/documentation/EhcacheUserGuide-1.6.pdf) (pdf)||
+|[Ehcache 1.5 User Guide](/documentation/EhcacheUserGuide-1.5.pdf) (pdf)||
+|[Ehcache 1.4 User Guide](/documentation/EhcacheUserGuide-1.4.pdf) (pdf)||
+|[Ehcache 1.3.0 User Guide](/documentation/EhcacheUserGuide-1.3.0.pdf) (pdf)||
+|[Ehcache 1.2.4 User Guide](/documentation/EhcacheUserGuide-1.2.4.pdf) (pdf)||
+|[Ehcache 1.2.4 User Guide](/documentation/EhcacheUserGuide-1.2.4.pdf) (pdf)||
+|[Ehcache 1.2.3 User Guide](/documentation/EhcacheUserGuide-1.2.3.pdf) (pdf)||
