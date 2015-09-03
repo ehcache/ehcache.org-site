@@ -6,7 +6,8 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.ehcache.org" # the base hostname & protocol for your site
 twitter_username: ehcache
 github_username:  ehcache
-github_facebook:  ehcache
+linkedin_username: terracotta
+facebook_username:  Terracotta
 
 
 # Build settings
