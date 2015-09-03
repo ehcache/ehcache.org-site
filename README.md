@@ -17,9 +17,11 @@
 
 ### TODOS:
 
-* "Features" page could still use some love, but isn't so bad anymore
+* "About" -> "Features" page:
+  * could still use some love, but isn't so bad anymore
 
-* "Downloads" page needs better organization, validate links are to what we want .  distinction between 2.x and 3.x things needs to be clear
+* "Downloads" page:
+  * validate links are to what we want .
 
 * Documentation 
   * was pulled in from existing ehcache.org site - some links in older docs are broken due to bad (incomplete) URLs.  root page needs better layout, links to both 2.x and 3.x
