@@ -27,8 +27,6 @@
   * was pulled in from existing ehcache.org site - some links in older docs are broken due to bad (incomplete) URLs.  root page needs better layout, links to both 2.x and 3.x
   * ehcache 3.0 docs need put in
 
-* Community section stuff needs put in
-
 
 * Home page needs  ehcache 2.x quick start content
 
