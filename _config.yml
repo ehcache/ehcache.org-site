@@ -35,6 +35,12 @@ defaults:
       layout: "post"
   -
     scope:
+      path: "community"
+      type: "pages"
+    values:
+      layout: "community_page"
+  -
+    scope:
       path: "documentation"
       type: "pages"
     values:

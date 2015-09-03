@@ -1,0 +1,38 @@
+---
+title: Ehcache Community
+layout: default
+no_title_on_main_layout: true
+active_menu_id: ehc_mnu_community
+---
+
+
+<br/>
+
+<div class="container-fluid">
+
+  <div class="row row-offcanvas row-offcanvas-left">
+
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li id="ehc_mnu_community_overview" class="submenu"><a href="/community/">Community Overview</a></li>
+          <li id="ehc_mnu_community_contribute" class="submenu"><a href="/community/contribute.html">Contributing</a></li>
+        </ul>
+    </div>
+
+    <!-- main area -->
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+        {% if page.no_title_on_main_layout %} {% else %}
+        <h1 class="post-title">{% if page.visible_title %}{{ page.visible_title }} {% else %}{{ page.title }}{% endif %}</h1>
+        <hr/>
+        {% endif %}
+      </header>
+      <article class="post-content">
+        {{ content }}
+      </article>
+    </div>
+
+  </div>
+
+</div>
