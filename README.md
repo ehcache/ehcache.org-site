@@ -30,4 +30,3 @@
 
 * Home page needs  ehcache 2.x quick start content
 
-* Footer - haven't really done anything about it yet
