@@ -25,7 +25,7 @@ Authorship record of code modules and/or documentation is maintained to give cre
 
 ## Submitting Contributions
 
-Have you built a great new feature for Ehcache? Or excited to help out with features we have on our road-map? Drop us a note on the forum or file a feature enhancement request in our issue tracker and let us know about it. We gladly, and regularly accept contributions. Contributor's are given credit for their work, though they must be willing (for licensing purposes) to release copyright of the work. A "[Contributor Agreement](https://confluence.terracotta.org/download/attachments/27918462/Terracotta%20Individual%20Contributor%20Agreement%20v3.pdf?version=1&modificationDate=1393442245216&api=v2)" document must be filled-out and sent to Terracotta - indicating that you assign the copyright of the work to the Ehcache project. This document only needs to be filled out once per contributor - not once for each contribution.
+Have you built a great new feature for Ehcache? Or excited to help out with features we have on our road-map? Drop us a note on the forum or file a feature enhancement request in our issue tracker and let us know about it. We gladly, and regularly accept contributions. Contributor's are given credit for their work, though they must be willing (for licensing purposes) to release copyright of the work. A "[Contributor Agreement](https://confluence.terracotta.org/download/attachments/27918462/Terracotta%20Individual%20Contributor%20Agreement%20v4.docx)" document must be filled-out and sent to Terracotta - indicating that you assign the copyright of the work to the Ehcache project. This document only needs to be filled out once per contributor - not once for each contribution.
 
 
 ## Becoming an Ehcache Developer
