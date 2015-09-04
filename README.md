@@ -3,8 +3,10 @@
 * Install Jekyll if you have not - follow instructions on the Jekyll home page (after first installing Ruby)
 [http://jekyllrb.com/](http://jekyllrb.com/)
 
-* After installing jekyll, install nokogiri : "gem install nokogiri"
-
+* After installing jekyll, install some gems:
+  * nokogiri : "gem install nokogiri"
+  * asciidoctor: " gem install jasciidoctor"
+  * jekyll-asciidoc: " gem install jekyll-asciidoc"
 
 * Clone this repository to your local system (if you're going to contribute content, fork it first, and clone that)
 * cd into the "ehcache.github.io" directory
