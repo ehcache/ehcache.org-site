@@ -26,7 +26,6 @@
   * validate links are to what we want .
 
 * Documentation 
-  * was pulled in from existing ehcache.org site - some links in older docs are broken due to bad (incomplete) URLs.  root page needs better layout, links to both 2.x and 3.x
-  * ehcache 3.0 docs need put in  (james working on this)
+  * was pulled in from existing ehcache.org site - some links in older docs are broken due to bad (incomplete) URLs.
 
 
