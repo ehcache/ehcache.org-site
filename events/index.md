@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: events_page
 title: News & Events
 visible_title: "Events"
 permalink: /events/
