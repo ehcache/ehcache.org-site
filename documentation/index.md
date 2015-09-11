@@ -37,7 +37,7 @@ If you don’t find what you’re looking for in the docs, post a question to th
 |:----|:--|
 |[Ehcache 2.9.x User Guide](/documentation/2.9/)|[JavaDoc](/apidocs/2.9/index.html){:target="_blank"}|
 |[Ehcache 2.8.x User Guide](/documentation/2.8/)|[JavaDoc](/apidocs/2.8.5/index.html){:target="_blank"}|
-|[Ehcache 2.7.x User Guide](/documentation/2.7/)|[JavaDoc](/apidocs/2.7.6/index.html){:target="_blank"}|
+|Ehcache 2.7.x |[JavaDoc](/apidocs/2.7.6/index.html){:target="_blank"}|
 |[Ehcache 2.6.x User Guide](/documentation/ehcache-2.6.x-documentation.pdf) (pdf)|[JavaDoc](/apidocs/2.6.9/index.html){:target="_blank"}|
 |[Ehcache 2.5.x User Guide](/documentation/ehcache-2.5.x-documentation.pdf) (pdf)|[JavaDoc](/apidocs/2.5.2/index.html){:target="_blank"}|
 |[Ehcache 2.4.1 User Guide](/documentation/EhcacheUserGuide-2.4.1.pdf) (pdf)|[JavaDoc](/apidocs/2.4.4/index.html){:target="_blank"}|
