@@ -11,7 +11,7 @@ active_menu_id: ehc_mnu_download
 
 #### Ehcache 2.x
 
-> [Ehcache 2.10.0](http://s3.amazonaws.com/tcdistributions/ehcache-2.10.0-distribution.tar.gz)  .tar.gz
+> [Ehcache 2.10.0](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.0-distribution.tar.gz)  .tar.gz
 
 
 For more information on this release, see the [release notes](http://www.terracotta.org/confluence/display/release/Home).
@@ -37,13 +37,13 @@ More files related to milestone releases of Ehcache 3 are available on the proje
 
 To include Ehcache 2.x in your project, use:
 
-
-    <dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>2.3.1</version>
-      <type>pom</type>
-    </dependency>
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
+      &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
+      &lt;version&gt;2.3.1&lt;/version&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+    &lt;/dependency&gt;
+</code></pre>
 
 _Note: Be sure to substitute the version number above with the version number of Ehcache that you want to use._
 
@@ -51,11 +51,12 @@ _Note: Be sure to substitute the version number above with the version number of
 
 To include Ehcache 3.x in your project, use:
 
-    <dependency>
-      <groupId>org.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
-      <version>3.0.0.m2</version>
-    </dependency>
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
+      &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
+      &lt;version&gt;3.0.0.m2&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
 
 _Note: Be sure to substitute the version number above with the version number of Ehcache that you want to use._
 
@@ -82,17 +83,17 @@ You can browse the snapshot repo <a href="http://oss.sonatype.org/content/reposi
 
 To get snapshots you will need to add the following repository to your maven config:
 
-
-    <repositories>
-      <repository>
-        <id>sourceforge</id>
-        <url>http://oss.sonatype.org/content/groups/sourceforge/</url>
-        <releases>
-          <enabled>true</enabled>
-        </releases>
-        <snapshots>
-          <enabled>true</enabled>
-        </snapshots>
-      </repository>
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;repositories&gt;
+      &lt;repository&gt;
+        &lt;id&gt;sourceforge</id&gt;
+        &lt;url&gt;http://oss.sonatype.org/content/groups/sourceforge/&lt;/url&gt;
+        &lt;releases&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+        &lt;/releases&gt;
+        &lt;snapshots&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+        &lt;/snapshots&gt;
+      &lt;/repository&gt;
     ...
-    </repositories>
+    &lt;/repositories&gt;
+</code></pre>
