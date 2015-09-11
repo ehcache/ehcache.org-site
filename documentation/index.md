@@ -16,7 +16,7 @@ permalink: /documentation/
 |stable release - [Ehcache 2.10.x User Guide](/generated/2.10.0/html/ehc-all)   also available as [PDF](/documentation/2.10/pdf/index.html)|[JavaDoc](/apidocs/2.10/index.html){:target="_blank"} |
 |---| &nbsp; |
 |[Platform and Release Compatibility Tables](http://www.terracotta.org/confluence/display/release/Home){: target="_blank"}||
-|[License](http://localhost:4000/about/license.html) (Apache 2.0)||
+|[License](/about/license.html) (Apache 2.0)||
 |[Legal Notices](http://documentation.softwareag.com/legal/){: target="_blank"}||
 
 If you don’t find what you’re looking for in the docs, post a question to the [Ehcache support forums](https://groups.google.com/forum/#!forum/ehcache-users){: target="_blank"}.
