@@ -31,22 +31,6 @@ the operation will be replicated provided the key is Serializable, even if the E
 If you use the UDP multicast stack there is no additional configuration. If you use a TCP stack
 you will need to specify the initial hosts in the cluster.
 
-## Configuration
-
-There are two things to configure:
-
-* The JGroupsCacheManagerPeerProviderFactory which is done once per CacheManager and therefore once per ehcache.xml file.
-* The JGroupsCacheReplicatorFactory which is added to each cache's configuration.
-
-The main configuration happens in the JGroupsCacheManagerPeerProviderFactory connect sub-property.
-
-A connect property is passed directly to the JGroups channel and therefore all the protocol
-stacks and options available in JGroups can be set.
-
-## Example configuration using UDP Multicast
-
-If you use the UDP multicast stack there is no additional configuration. If you use a TCP stack
-you will need to specify the initial hosts in the cluster.
 
 ## Configuration
 
