@@ -1,7 +1,7 @@
 ---
 ---
 # Persistence and Restartability <a name="Fast-Restart"/>
- 
+
 
 ## Introduction
 
@@ -13,33 +13,33 @@ Fast Restart provides enterprise-ready crash resilience with an option to store 
 
 2. A persistent store on disk always contains a real-time copy of the cache, providing true fault tolerance. Even with BigMemory, where terabytes of data can be held in memory, the synchronous backup of data to disk provides the equivalent of a hot mirror right at the application and server nodes.
 
-3. A consistent copy of the cache on local disk provides many possibilities for business requirements, such as working with different datasets according to time-based needs or moving datasets around to different locations. It can range from a simple key-value persistence mechanism with fast read performance, to an operational store with in-memory speeds during operation for both reads and writes. 
- 
- 
+3. A consistent copy of the cache on local disk provides many possibilities for business requirements, such as working with different datasets according to time-based needs or moving datasets around to different locations. It can range from a simple key-value persistence mechanism with fast read performance, to an operational store with in-memory speeds during operation for both reads and writes.
+
+
 ## Cache Persistence Implementation
 Ehcache has a RestartStore which provides fast restartability and options for cache persistence. The RestartStore implements an on-disk mirror of the in-memory cache. After any restart, data that was last in the cache will automatically load from disk into the RestartStore, and from there the data will be available to the cache.
- 
+
 Cache persistence on disk is configured by adding the `<persistence>` sub-element to a cache configuration. The `<persistence>` sub-element includes two attributes: `strategy` and `synchronousWrites`.
 
     <cache>
        <persistence strategy=”localRestartable|localTempSwap|none|distributed” synchronousWrites=”false|true”/>
     </cache>
- 
+
 ###Strategy Options
 The options for the `strategy` attribute are:
 
 *  **"localRestartable"** &mdash; Enables the RestartStore and copies all cache entries (on-heap and/or off-heap) to disk. This option provides fast restartability with fault tolerant cache persistence on disk. This option is available for [BigMemory Go](http://terracotta.org/products/bigmemorygo) only.
 
-*  **"distributed"** &mdash; Defers to the `<terracotta>` configuration for persistence settings. This option is for [BigMemory Max](http://terracotta.org/products/bigmemorymax) only. 
+*  **"distributed"** &mdash; Defers to the `<terracotta>` configuration for persistence settings. This option is for [BigMemory Max](http://terracotta.org/products/bigmemorymax) only.
 
-*  **"localTempSwap"** &mdash; Enables temporary local disk usage. This option provides an extra tier for storage during cache operation, but this disk storage is not persisted. After a restart, the disk tier is cleared of any cache data. 
+*  **"localTempSwap"** &mdash; Enables temporary local disk usage. This option provides an extra tier for storage during cache operation, but this disk storage is not persisted. After a restart, the disk tier is cleared of any cache data.
 
 *  **"none"** &mdash; Does not offload cache entries to disk. With this option, all of the cache is kept in memory. This is the default mode.
 
 ###Synchronous Writes Options
 If the `strategy` attribute is set to "localRestartable", then the `synchronousWrites` attribute may be configured. The options for `synchronousWrites` are:
 
-*  **synchronousWrites=”false”** &mdash; This option provides an eventually consistent copy of the cache on disk at all times. Writes to disk happen when efficient, and cache operations proceed without waiting for acknowledgement of writing to disk. After a restart, the cache is recovered as it was when last synced. This option is faster than `synchronousWrites="true"`, but after a crash, the last 2-3 seconds of written data may be lost. 
+*  **synchronousWrites=”false”** &mdash; This option provides an eventually consistent copy of the cache on disk at all times. Writes to disk happen when efficient, and cache operations proceed without waiting for acknowledgement of writing to disk. After a restart, the cache is recovered as it was when last synced. This option is faster than `synchronousWrites="true"`, but after a crash, the last 2-3 seconds of written data may be lost.
 
 	If not specified, the default for `synchronousWrites` is "false".
 
@@ -51,16 +51,16 @@ If the `strategy` attribute is set to "localRestartable", then the `synchronousW
 
 
 ###DiskStore Path
-The path to the directory where any required disk files will be created is configured with the `<diskStore>` sub-element of the Ehcache configuration. 
+The path to the directory where any required disk files will be created is configured with the `<diskStore>` sub-element of the Ehcache configuration.
 
 For "localTempSwap", if the DiskStore path is not specified, a default path is used for the disk storage tier, and the default path will be auto-resolved in the case of a conflict with another CacheManager.
- 
+
 ## Configuration Examples
 This section presents possible disk usage configurations for open-source Ehcache 2.6 and higher.
 
 ###Temporary Disk Storage
 
-The "localTempSwap" persistence strategy allows the cache to use the local disk during cache operation. The disk storage is temporary and is cleared after a restart. 
+The "localTempSwap" persistence strategy allows the cache to use the local disk during cache operation. The disk storage is temporary and is cleared after a restart.
 
     <ehcache>
       <diskStore path="/auto/default/path"/>
@@ -68,16 +68,16 @@ The "localTempSwap" persistence strategy allows the cache to use the local disk 
         <persistence strategy=”localTempSwap”/>
       </cache>
     </ehcache>  
-   
-**Note**: With the "localTempSwap" strategy, you can use `maxEntriesLocalDisk` or `maxBytesLocalDisk` at either the Cache or CacheManager level to control the size of the disk tier. 
+
+**Note**: With the "localTempSwap" strategy, you can use `maxEntriesLocalDisk` or `maxBytesLocalDisk` at either the Cache or CacheManager level to control the size of the disk tier.
 
 ###In-memory Only Cache
 When the persistence strategy is "none", all cache stays in memory (with no overflow to disk nor persistence on disk).
 
     <cache>
       <persistence strategy=”none”/>
-    </cache>	
-        
+    </cache>
+
 
 ###Programmatic Configuration Example
 The following is an example of how to programmatically configure cache persistence on disk:
@@ -127,8 +127,6 @@ After upgrading from a version of Ehcache previous to 2.6, it is strongly recomm
 
 **Note**: If any of the elements above are specified in the same configuration with either the `<persistence>` sub-element or the `<terracotta>` sub-element, it will cause an Invalid Configuration Exception.
 
-After upgrading, however, it is not mandatory to add the `<persistence>` sub-element. In Ehcache 2.6 or higher, disk persistence configuration elements from previous Ehcache versions will continue to be available with the same functionality, as long as the `<persistence>` sub-element has not been specified. 
+After upgrading, however, it is not mandatory to add the `<persistence>` sub-element. In Ehcache 2.6 or higher, disk persistence configuration elements from previous Ehcache versions will continue to be available with the same functionality, as long as the `<persistence>` sub-element has not been specified.
 
-For cache persistence on disk, you should continue to use the `overflowToDisk` and `diskPersistent` attributes. For more information, refer to [Persistence](http://ehcache.org/documentation/2.8/2.5/get-started/storage-options#Persistence) in the Ehcache 2.5 documentation.
-
-
+For cache persistence on disk, you should continue to use the `overflowToDisk` and `diskPersistent` attributes. For more information, refer to [Persistence](http://ehcache.org/documentation/2.8/get-started/storage-options.html#Persistence) in the Ehcache documentation.

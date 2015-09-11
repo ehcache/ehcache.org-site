@@ -2,7 +2,7 @@
 ---
 # Caching Empty Values
 
- 
+
 
 ## Introduction
 This page discusses why caching empty values can be desirable to deflect load from the database.

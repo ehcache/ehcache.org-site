@@ -2,7 +2,7 @@
 ---
 #Caching Methods with Spring 3 Annotations
 
- 
+
 
 ##Introduction
 This page explains adding caching to methods using the Ehcache Annotations for Spring project.

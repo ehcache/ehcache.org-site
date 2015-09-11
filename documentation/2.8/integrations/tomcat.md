@@ -2,7 +2,7 @@
 ---
 # Tomcat Issues and Best Practices <a name="tomcat-issues-and-best-practices"/>
 
- 
+
 
 ##Introduction
 Ehcache is probably used most commonly with Tomcat. This page documents some known issues with Tomcat
@@ -23,10 +23,10 @@ The Tomcat and RMI class loaders do not get along that well. Move ehcache.jar to
 In development, there appears to be class loader memory leak as I continually redeploy my web application.
 There are lots of causes of memory leaks on redeploy. Moving Ehcache out of the WAR and into `$TOMCAT/common/lib fixes this leak`.
 
-## RMI CacheException - problem starting listener for RMICachePeer 
-I get the following error: 
+## RMI CacheException - problem starting listener for RMICachePeer
+I get the following error:
 
-    net.sf.ehcache.CacheException: Problem starting listener for RMICachePeer ... java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: Files/Apache. 
+    net.sf.ehcache.CacheException: Problem starting listener for RMICachePeer ... java.rmi.UnmarshalException: error unmarshalling arguments; nested exception is: java.net.MalformedURLException: no protocol: Files/Apache.
 
 What is going on?
 This issue occurs to any RMI listener started on Tomcat whenever Tomcat has spaces in its installation path.
@@ -37,5 +37,4 @@ The presence of multiple &lt;Host> entries in Tomcat's server.xml prevents repli
 The issue is with adding multiple hosts on a single Tomcat connector. If one of the hosts is localhost and another starts with v,
 then the caching between machines when hitting localhost stops working correctly.
 The workaround is to use a single &lt;Host> entry or to make sure they don't start with "v".
-Why this issue occurs is presently unknown, but it is Tomcat-specific. 
- 
+Why this issue occurs is presently unknown, but it is Tomcat-specific.

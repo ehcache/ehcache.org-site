@@ -7,4 +7,4 @@ BigMemory gives Java applications instant, effortless access to a large memory f
 
 Rather than stack lots of 1-4 GB JVMs on a single machine in an effort to minimize the GC problem, with BigMemory you can increase application density, running a smaller number of larger-memory JVMs. This simpler deployment model eases application scale out and provides a more sustainable, efficient solution as your dataset inevitably grows.
 
-[BigMemory Go](http://terracotta.org/products/bigmemorygo) has all of the advantages of BigMemory for standalone applications requiring vertical scaling, while [BigMemory Max](http://terracotta.org/products/bigmemorymax) brings a flexible data-consistency model and massive horizontal scaling to distributed applications. 
+[BigMemory Go](http://terracotta.org/products/bigmemorygo) has all of the advantages of BigMemory for standalone applications requiring vertical scaling, while [BigMemory Max](http://terracotta.org/products/bigmemorymax) brings a flexible data-consistency model and massive horizontal scaling to distributed applications.

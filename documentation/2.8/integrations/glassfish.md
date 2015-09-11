@@ -2,7 +2,7 @@
 ---
 # Glassfish How To & FAQ <a name="glassfish-how-to-and-faq"/>
 
- 
+
 
 ##Introduction
 The maintainer uses Ehcache in production with Glassfish. This page explains how to package a sample application using Ehcache and deploy to Glassfish.
@@ -46,7 +46,7 @@ asadmin start-domain domain1
 You can then run the web tests in the web package or point your browser at `http://localhost:9080`.
 See [this page](https://glassfish.java.net/downloads/quickstart/index.html) for a quickstart to Glassfish.
 
-## Troubleshooting <a name="glassfish-faq} 
+## Troubleshooting <a name="glassfish-faq"/>
 
 ### How to get around the EJB Container restrictions on thread creation
 When Ehcache is running in the EJB Container, for example for Hibernate caching, it is in technical breach of
@@ -61,5 +61,5 @@ In domain.xml ensure that the following is **not** included.
 ### Ehcache throws an IllegalStateException in Glassfish
 Ehcache page caching versions below Ehcache 1.3 get an IllegalStateException in Glassfish. This issue was fixed in Ehcache 1.3.
 
-### PayloadUtil reports `Could not ungzip. Heartbeat will not be working. Not in GZIP format` 
+### PayloadUtil reports `Could not ungzip. Heartbeat will not be working. Not in GZIP format`
 This exception is thrown when using Ehcache with my Glassfish cluster, but Ehcache and Glassfish clustering have nothing to do with each other. The error is caused because Ehcache has received a multicast message from the Glassfish cluster. Ensure that Ehcache clustering has its own unique multicast address (different from Glassfish).

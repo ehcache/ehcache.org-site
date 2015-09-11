@@ -1,7 +1,7 @@
 ---
 ---
 # How to Size Caches
- 
+
 
 ## Introduction
 Tuning Ehcache often involves sizing cached data appropriately. Ehcache provides a number of ways to size the different data tiers using simple cache-configuration sizing attributes. These sizing attributes affect local memory and disk resources, allowing them to be set differently on each node.
@@ -57,7 +57,7 @@ If the sizes specified by caches for any tier take exactly the entire CacheManag
 ### Local Heap
 A size must be provided for local heap, either in the CacheManager (`maxBytesLocalHeap` only) or in each individual cache (`maxBytesLocalHeap` or `maxEntriesLocalHeap`). Not doing so causes an InvalidConfigurationException.
 
-If pool is configured, it can be combined with a local-heap setting in an individual cache. This allows the cache to claim a specified portion of the heap setting configured in the pool. However, in this case the cache setting must use `maxBytesLocalHeap` (same as the CacheManager). 
+If pool is configured, it can be combined with a local-heap setting in an individual cache. This allows the cache to claim a specified portion of the heap setting configured in the pool. However, in this case the cache setting must use `maxBytesLocalHeap` (same as the CacheManager).
 
 In any case, every cache **must** have a local-heap setting, either configured explicitly or taken from the pool configured in the CacheManager.
 
@@ -88,11 +88,11 @@ The following configuration sets pools for all of this CacheManager's caches:
             maxBytesLocalOffHeap="10G"
             maxBytesLocalDisk="50G">
     ...
-    
+
     <cache name="Cache1" ... </cache>
     <cache name="Cache2" ... </cache>
     <cache name="Cache3" ... </cache>
-    
+
     </ehcache>
 
 CacheManager CM1 automatically allocates these pools equally among its three caches. Each cache gets one third of the allocated heap, off-heap, and local disk. Note that at the CacheManager level, resources can be allocated in bytes only.
@@ -106,7 +106,7 @@ You can explicitly allocate resources to specific caches:
             maxBytesLocalOffHeap="10G"
             maxBytesLocalDisk="60G">
     ...
-    
+
     <cache name="Cache1" ...
             maxBytesLocalHeap="50M"
             ...
@@ -117,7 +117,7 @@ You can explicitly allocate resources to specific caches:
            ...
       </cache>
     <cache name="Cache3" ... </cache>
-    
+
     </ehcache>
 
 In the example above, Cache1 reserves 50Mb of the 100Mb local-heap pool; the other caches divide the remaining portion of the pool equally. Cache2 takes half of the local off-heap pool; the other caches divide the remaining portion of the pool equally. Cache3 receives 25Mb of local heap, 2.5Gb of off-heap, and 20Gb of the local disk.
@@ -133,7 +133,7 @@ If a CacheManager does not pool a particular resource, that resource can still b
             Name="CM2"
             maxBytesLocalHeap="100M">
     ...
-    
+
     <cache name="Cache4" ...
             maxBytesLocalHeap="50M"
             maxEntriesLocalDisk="100000"
@@ -145,7 +145,7 @@ If a CacheManager does not pool a particular resource, that resource can still b
            ...
       </cache>
     <cache name="Cache6" ... </cache>
-    
+
     </ehcache>
 
 CacheManager CM2 creates one pool (local heap). Its caches all use the local heap and are constrained by the pool setting, as expected. However, cache configuration can allocate other resources as desired. In this example, Cache4 allocates disk space for its data, and Cache5 allocates off-heap space for its data. Cache6 gets 25Mb of local heap only.
@@ -159,19 +159,19 @@ The following configuration sets pools for each tier:
             maxBytesLocalOffHeap="10G"
             maxBytesLocalDisk="50G">
     ...
-    
+
     <!-- Cache1 gets 400Mb of heap, 2.5Gb of off-heap, and 5Gb of disk. -->
-    <cache name="Cache1" ... 
+    <cache name="Cache1" ...
     maxBytesLocalHeap="40%">
     </cache>
-    
+
     <!-- Cache2 gets 300Mb of heap, 5Gb of off-heap, and 5Gb of disk. -->
-    <cache name="Cache2" ... 
+    <cache name="Cache2" ...
     maxBytesLocalOffHeap="50%">
     </cache>
-    
+
     <!-- Cache2 gets 300Mb of heap, 2.5Gb of off-heap, and 40Gb of disk. -->
-    <cache name="Cache3" ... 
+    <cache name="Cache3" ...
     maxBytesLocalDisk="80%">
     </cache>
     </ehcache>
@@ -192,7 +192,7 @@ The CacheManager in this example does not pool any resources.
             Name="CM3"
            ... >
     ...
-    
+
     <cache name="Cache7" ...
             maxBytesLocalHeap="50M"
             maxEntriesLocalDisk="100000"
@@ -204,11 +204,11 @@ The CacheManager in this example does not pool any resources.
            maxBytesLocalOffHeap="10G"
            ...
       </cache>
-    <cache name="Cache9" ... 
+    <cache name="Cache9" ...
            maxBytesLocalHeap="50M"
     ...
     </cache>
-    
+
     </ehcache>
 
 Caches can be configured to use resources as necessary. Note that every cache in this example must declare a value for local heap. This is because no pool exists for the local heap; implicit (CacheManager configuration) or explicit (cache configuration) local-heap allocation is required.
@@ -216,7 +216,7 @@ Caches can be configured to use resources as necessary. Note that every cache in
 ### Overflows
 Caches that do not specify overflow will overflow if a pool is set for off-heap and disk.
 
-    <ehcache maxBytesLocalHeap="1g" maxBytesLocalOffHeap="4g"      
+    <ehcache maxBytesLocalHeap="1g" maxBytesLocalOffHeap="4g"
            maxBytesLocalDisk="100g" >
 
     <cache name="explicitlyAllocatedCache1"
@@ -240,15 +240,15 @@ Caches that do not specify overflow will overflow if a pool is set for off-heap 
      	   timeToLiveSeconds="100">
           <persistence strategy="localRestartable"/>
     </cache>
-    
+
     <!-- Overflows automatically to off-heap and disk because no specific override and resources are set at the CacheManager level -->
     <cache name="automaticallyAllocatedCache1"
      	   timeToLiveSeconds="100">
     </cache>
-    
+
 
 ## Sizing Distributed Caches
-Distributed caches, available with [BigMemory Max](http://terracotta.org/products/bigmemorymax), can be sized as noted above, except that they do not use the local disk and therefore cannot be configured with *LocalDisk sizing attributes. Distributed caches use the storage resources (off-heap and disk) available on the Terracotta Server Array. 
+Distributed caches, available with [BigMemory Max](http://terracotta.org/products/bigmemorymax), can be sized as noted above, except that they do not use the local disk and therefore cannot be configured with *LocalDisk sizing attributes. Distributed caches use the storage resources (off-heap and disk) available on the Terracotta Server Array.
 
 Cache-configuration sizing attributes behave as local configuration, which means that every node can load its own sizing attributes for the same caches. That is, while some elements and attributes are fixed by the first Ehcache configuration loaded in the cluster, cache-configuration sizing attributes can vary across nodes for the same cache.
 
@@ -295,7 +295,7 @@ The Terracotta Server Array will now evict myCache entries to stay within the li
 
 ## Overriding Size Limitations
 
-Pinned caches can override the limits set by cache-configuration sizing attributes, potentially causing OutOfMemory errors. This is because pinning prevents flushing of cache entries to lower tiers. For more information on pinning, see [Pinning, Eviction, and Expiration](/documentation/2.8/configuration/data-life).
+Pinned caches can override the limits set by cache-configuration sizing attributes, potentially causing OutOfMemory errors. This is because pinning prevents flushing of cache entries to lower tiers. For more information on pinning, see [Pinning, Eviction, and Expiration](/documentation/2.8/configuration/data-life.html).
 
 
 ## Built-In Sizing Computation and Enforcement
@@ -314,7 +314,7 @@ Shared references will be measured by each class that references it. This will r
 
 #### Ignoring for Size Calculations
 
-For the purposes of measurement, references can be ignored using the `@IgnoreSizeOf` annotation. The annotation may be declared at the class level, on a field, or on a package. You can also specify a file containing the fully qualified names of classes, fields, and packages to be ignored. 
+For the purposes of measurement, references can be ignored using the `@IgnoreSizeOf` annotation. The annotation may be declared at the class level, on a field, or on a package. You can also specify a file containing the fully qualified names of classes, fields, and packages to be ignored.
 
 This annotation is not inherited, and must be added to any subclasses that should also be excluded from sizing.
 

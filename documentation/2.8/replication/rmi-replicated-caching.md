@@ -254,7 +254,7 @@ old value
 Ehcache's own integration tests provide complete examples of RMI-based replication.
 
   The best example is the integration test for cache replication. You can see it online here:
-  [http://ehcache.org/xref-test/net/sf/ehcache/distribution/RMICacheReplicatorTest.html](http://ehcache.org/xref-test/net/sf/ehcache/distribution/RMICacheReplicatorTest.html)
+  [https://fisheye.terracotta.org/browse/Ehcache/branches/ehcache-2.8.x/ehcache-core/src/test/java/net/sf/ehcache/distribution](https://fisheye.terracotta.org/browse/Ehcache/branches/ehcache-2.8.x/ehcache-core/src/test/java/net/sf/ehcache/distribution)
 
 The test uses five ehcache.xml files representing five CacheManagers set up to replicate using RMI.
 

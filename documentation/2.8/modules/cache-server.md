@@ -2,10 +2,10 @@
 ---
 # Cache Server <a name="Cache-Server"/>
 
- 
+
 
 ## Introduction
-Ehcache comes with a Cache Server, available as a WAR for most web containers, or as a standalone server. 
+Ehcache comes with a Cache Server, available as a WAR for most web containers, or as a standalone server.
 
 **Note**: If using with Terracotta BigMemory, the Cache Server works only with versions prior to 4.0. The Cache Server does not work with BigMemory 4.0 and higher.
 
@@ -72,7 +72,7 @@ Gets the element value.
 #### HEAD /\{cache\}/\{element\"/>
 Gets the element's metadata.
 
-#### PUT /\{cache\}/\{element\ <a name="GET} /
+#### PUT /\{cache\}/\{element\"/>
 Lists the Caches in the CacheManager.
 
 ### Cache Resource Operations
@@ -138,7 +138,7 @@ and the Element will be examined to determine its MIME Type.
 Because anything that can be PUT into the cache server must be Serializable, it can also be distributed
 in a cache cluster i.e. it will be Serializable.
 
-### {RESTful Code Samples"/>
+### RESTful Code Samples"
 These are RESTful code samples in multiple languages.
 
 #### Curl Code Samples
@@ -699,7 +699,7 @@ You will see something like the following.
 ![Ehcache Image](/images/documentation/JConsoleExample.png)
 **CacheStatistics MBeans in JConsole**
 
-Of course, from there you can hook the Cache Server up to your monitoring tool of choice. See [Management and Monitoring using JMX](/documentation/2.8/operations/jmx) for more information.
+Of course, from there you can hook the Cache Server up to your monitoring tool of choice. See [Management and Monitoring using JMX](/documentation/2.8/operations/jmx.html) for more information.
 
 ## Download <a name="Download"/>
 Download the ehcache-standalone-server from [sourceforge.net](http://sourceforge.net/projects/ehcache/files/ehcache-server).

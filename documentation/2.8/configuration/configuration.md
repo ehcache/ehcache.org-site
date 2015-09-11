@@ -3,7 +3,7 @@
 # Cache Configuration
 
 
- 
+
 
 ## Introduction
 Caches can be configured in Ehcache either declaratively in XML, or by creating caches programmatically and specifying their parameters in the constructor.
@@ -18,11 +18,11 @@ While both approaches are fully supported, it is generally a good idea to separa
 * Configuration errors can be checked for at start-up, rather than causing a runtime error.
 * A defaultCache configuration exists and will always be loaded.
 
-    While a defaultCache configuration is not required, an error is generated if caches are created by name (programmatically) with no defaultCache loaded. 
+    While a defaultCache configuration is not required, an error is generated if caches are created by name (programmatically) with no defaultCache loaded.
 
-The Ehcache documentation focuses on XML declarative configuration. Programmatic configuration is explored in certain examples and is documented in [Javadocs](http://ehcache.org/apidocs/2.8.4/).
+The Ehcache documentation focuses on XML declarative configuration. Programmatic configuration is explored in certain examples and is documented in [Javadocs](/apidocs/2.8.5/).
 
-Ehcache is redistributed by many projects, some of which might not provide an up-to-date sample Ehcache XML configuration file. If so, [download Ehcache](http://ehcache.org/downloads). The latest ehcache.xml and ehcache.xsd are provided in the distribution.
+Ehcache is redistributed by many projects, some of which might not provide an up-to-date sample Ehcache XML configuration file. If so, [download Ehcache](/downloads). The latest ehcache.xml and ehcache.xsd are provided in the distribution.
 
 ## Dynamically Changing Cache Configuration
 
@@ -48,7 +48,7 @@ This example shows how to dynamically modify the cache configuration of a runnin
     config.setTimeToLiveSeconds(120);
     config.setmaxEntriesLocalHeap(10000);
     config.setmaxEntriesLocalDisk(1000000);
-    
+
 Dynamic cache configurations can also be frozen to prevent future changes:
 
     Cache cache = manager.getCache("sampleCache");
@@ -61,14 +61,14 @@ In `ehcache.xml`, you can disable dynamic configuration by setting the `<ehcache
 
 Initially, Ehcache only permitted sizing of caches in the Java heap (the OnHeap store) and the disk (DiskStore). [BigMemory](http://terracotta.org/products) introduced the OffHeap store, where sizing of caches is also allowed.
 
-To learn more about sizing caches, see [How to Size Caches](/documentation/2.8/configuration/cache-size).
+To learn more about sizing caches, see [How to Size Caches](/documentation/2.8/configuration/cache-size.html).
 
 
 ### Pinning of Caches and Elements in Memory (2.5 and higher)
-Pinning of caches or specific elements is discussed in [Pinning, Expiration, and Eviction](/documentation/2.8/configuration/data-life).
+Pinning of caches or specific elements is discussed in [Pinning, Expiration, and Eviction](/documentation/2.8/configuration/data-life.html).
 
 
-## Cache Warming for multi-tier Caches 
+## Cache Warming for multi-tier Caches
 **(Ehcache 2.5 and higher)**
 
 When a cache starts up, the stores are always empty. Ehcache provides a BootstrapCacheLoader mechanism to overcome this. The BootstrapCacheLoader is run before the cache is set to alive. If synchronous, loading completes before the CacheManager starts, or if asynchronous, the CacheManager starts but loading continues aggressively rather than waiting for elements to be requested, which is a lazy loading approach.
@@ -194,5 +194,3 @@ settings.
 The sample `ehcache.xml` is included in the Ehcache distribution and can also be downloaded from [http://ehcache.org/ehcache.xml](http://ehcache.org/ehcache.xml). It contains comments to help you configure each element.
 
 Note that some elements documented in the sample Ehcache XML file pertain only to [BigMemory](http://terracotta.org/products) and are not valid for the open-source version of Ehcache.
-
-

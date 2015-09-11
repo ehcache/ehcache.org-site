@@ -1,13 +1,13 @@
 ---
 ---
 # JDBC Caching <a name="JDBC-Caching"/>
- 
+
 
 ##Introduction
 Ehcache can easily be combined with your existing JDBC code.  Whether
-you access JDBC directly, or have a DAO/DAL layer, Ehcache can be 
-combined with your existing data access pattern to speed up frequently 
-accessed data to reduce page load times, improve performance, and 
+you access JDBC directly, or have a DAO/DAL layer, Ehcache can be
+combined with your existing data access pattern to speed up frequently
+accessed data to reduce page load times, improve performance, and
 reduce load from your database.
 
 This page discusses how to add caching to a JDBC application using
@@ -38,10 +38,10 @@ public Collection<V> findXXX(...);
 
 ### Instantiate a cache and add a member variable
 
-Your DAO is probably already being managed by Spring or Guice, so simply 
+Your DAO is probably already being managed by Spring or Guice, so simply
 add a setter method to your DAO layer such as `setCache(Cache cache)`.
-Configure the cache as a bean in your Spring or Guice config, and then 
-use the the frameworks injection methodology to inject an instance of 
+Configure the cache as a bean in your Spring or Guice config, and then
+use the the frameworks injection methodology to inject an instance of
 the cache.
 
 If you are not using a DI framework such as Spring or Guice, then you will
@@ -57,21 +57,21 @@ access patterns:
 * cache-aside
 * cache-as-sor
 
-You can read more about these in these [cache-as-sor](/documentation/2.8/get-started/getting-started#cache-as-sor-example) and [Concepts cache-aside](/documentation/2.8/get-started/getting-started#cache-aside) sections.
+You can read more about these in these [cache-as-sor](/documentation/2.8/get-started/getting-started.html#cache-as-sor-example) and [Concepts cache-aside](/documentation/2.8/get-started/getting-started#cache-aside) sections.
 
 ## Putting it all together - an example
 
-Here is some example code that demonstrates a DAO based cache using a 
+Here is some example code that demonstrates a DAO based cache using a
 cache aside methodology wiring it together with Spring.
 
 This code implements a PetDao modeled after the Spring Framework PetClinic
 sample application.
 
-It implements a standard pattern of creating an abstract 
-GenericDao implementation which all Dao implementations will 
+It implements a standard pattern of creating an abstract
+GenericDao implementation which all Dao implementations will
 extend.  
 
-It also uses Spring's SimpleJdbcTemplate to make the job of accessing 
+It also uses Spring's SimpleJdbcTemplate to make the job of accessing
 the database easier.
 
 Finally, to make Ehcache easier to work with in Spring, it implements
@@ -85,7 +85,7 @@ will be available shortly.
 Simple get/put wrapper interface.
 
 <pre>
-public interface CacheWrapper&lt;K, V&gt; 
+public interface CacheWrapper&lt;K, V&gt;
 {
  void put(K key, V value);
  V get(K key);
@@ -96,7 +96,7 @@ public interface CacheWrapper&lt;K, V&gt;
 The wrapper implementation.  Holds the name so caches can be named.
 
 <pre>
-public class EhCacheWrapper&lt;K, V&gt; implements CacheWrapper&lt;K, V&gt; 
+public class EhCacheWrapper&lt;K, V&gt; implements CacheWrapper&lt;K, V&gt;
 {
     private final String cacheName;
     private final CacheManager cacheManager;
@@ -109,7 +109,7 @@ public class EhCacheWrapper&lt;K, V&gt; implements CacheWrapper&lt;K, V&gt;
     {
 	getCache().put(new Element(key, value));
     "/>
-    public V get(final K key, CacheEntryAdapter&lt;V&gt; adapter) 
+    public V get(final K key, CacheEntryAdapter&lt;V&gt; adapter)
     {
 	Element element = getCache().get(key);
 	if (element != null) {
@@ -117,7 +117,7 @@ public class EhCacheWrapper&lt;K, V&gt; implements CacheWrapper&lt;K, V&gt;
 	"/>
 	return null;
     "/>
-    public Ehcache getCache() 
+    public Ehcache getCache()
     {
 	return cacheManager.getEhcache(cacheName);
     "/>
@@ -167,13 +167,13 @@ The Pet Dao implementation, really it doesn't need to do anything unless
 specific methods not available via GenericDao are cacheable.
 
 <pre>
-public class PetDaoImpl extends GenericDao&lt;Integer, Pet&gt; implements PetDao 
+public class PetDaoImpl extends GenericDao&lt;Integer, Pet&gt; implements PetDao
 {
 /** ... **/
 "/>
 </pre>
 
-We need to configure the JdbcTemplate, Datasource, CacheManager, PetDao, 
+We need to configure the JdbcTemplate, Datasource, CacheManager, PetDao,
 and the Pet cache using the spring configuration file.
 
 #### application.xml

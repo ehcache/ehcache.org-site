@@ -7,12 +7,12 @@
 ## Introduction
 This page is intended for those who want to create their own Ehcache or distributed Ehcache build rather than use the packed kit.
 
-## Building from Source <a name="building-from-source}
+## Building from Source <a name="building-from-source"/>
 
-These instructions work for each of the [modules](http://ehcache.org/modules), except for `ehcache-jmsreplication`, which requires installation of a message queue. See [Replicated Caching using JMS](/documentation/2.8/replication/jms-replicated-caching) for details.
+These instructions work for each of the modules, except for `ehcache-jmsreplication`, which requires installation of a message queue. See [Replicated Caching using JMS](/documentation/2.8/replication/jms-replicated-caching.html) for details.
 
 
-### Building an Ehcache distribution from source <a name="building-an-ehcache-distribution-from-source}
+### Building an Ehcache distribution from source <a name="building-an-ehcache-distribution-from-source"/>
 
 To build Ehcache from source:
 
@@ -21,7 +21,7 @@ To build Ehcache from source:
 1. From within the ehcache/core directory, type `mvn -Dmaven.test.skip=true install`
 
 
-### Running Tests for Ehcache <a name="running-tests-for-ehcache}
+### Running Tests for Ehcache <a name="running-tests-for-ehcache"/>
 
 To run the test suite for Ehcache:
 
@@ -33,7 +33,7 @@ To run the test suite for Ehcache:
 
 ## Java Requirements and Dependencies
 
-### Java Requirements <a name="Java-Requirements}
+### Java Requirements <a name="Java-Requirements"/>
 * Current Ehcache releases require Java 1.5 and 1.6 at runtime.
 * Ehcache 1.5 requires Java 1.4. Java 1.4 is not supported with Terracotta distributed Ehcache.
 * The ehcache-monitor module, which provides management and monitoring, will work with Ehcache 1.2.3 but only for Java 1.5 or higher.
@@ -41,7 +41,7 @@ To run the test suite for Ehcache:
 ### Mandatory Dependencies
 * Ehcache core 1.6 through to 1.7.0 has no dependencies.
 * Ehcache core 1.7.1 depends on SLF4J ([http://www.slf4j.org](http://www.slf4j.org)), an increasingly commonly used logging framework
-which provides a choice of concrete logging implementation. See the page on [Logging](/documentation/2.8/operations/logging) for configuration details.
+which provides a choice of concrete logging implementation. See the page on [Logging](/documentation/2.8/operations/logging.html) for configuration details.
 
 Other modules have dependencies as specified in their maven POMs.
 

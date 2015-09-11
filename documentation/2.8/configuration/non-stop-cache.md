@@ -14,7 +14,7 @@ Use cases include:
 * Setting timeouts on cache operations.
 
     For example, say you use the cache rather than a mainframe. The SLA calls for 3 seconds. There is a temporary network interruption that delays the response to a cache request. With the timeout you can return after 3 seconds. The lookup is then done against the mainframe. This could also be useful for write-through, writes to disk, or synchronous writes.
-    
+
 * Automatically responding to cluster topology events to take a pre-configured action.
 
 * Allowing Availability over Consistency within the CAP theorem when a network partition occurs.

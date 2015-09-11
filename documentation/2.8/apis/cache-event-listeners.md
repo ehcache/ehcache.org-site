@@ -3,7 +3,7 @@
 # Cache Event Listeners
 
 
- 
+
 
 ## Introduction
 Cache listeners allow implementers to register callback methods that
@@ -60,7 +60,7 @@ the responsibility of the implementer to safely handle the potential
 performance and thread safety issues depending on what their listener
 is doing.
 
-## Implementing a CacheEventListenerFactory and CacheEventListener <a name="Implementing-a-CacheEventListenerFactory} 
+## Implementing a CacheEventListenerFactory and CacheEventListener <a name="Implementing-a-CacheEventListenerFactory"/>
 A CacheEventListenerFactory is an abstract factory for creating
 cache event listeners. Implementers should provide their own concrete
 factory, extending this abstract factory. It can then be configured in `ehcache.xml`.
@@ -201,13 +201,13 @@ Two other methods are also available:
 
 * `void notifyElementEvicted(Ehcache cache, Element element)`
 
-    Called immediately after an element is evicted from the cache. Eviction, which happens when a cache entry is deleted from a store, should not be confused with removal, which is a result of calling `Cache.removeElement(Element)`. 
+    Called immediately after an element is evicted from the cache. Eviction, which happens when a cache entry is deleted from a store, should not be confused with removal, which is a result of calling `Cache.removeElement(Element)`.
 
 * `void notifyRemoveAll(Ehcache cache)`
 
-    Called during `Ehcache.removeAll()` to indicate that all elements have been removed from the cache in a bulk operation. The usual `notifyElementRemoved(net.sf.ehcache.Ehcache, net.sf.ehcache.Element)` is not called. Only one notification is emitted because performance considerations do not allow for serially processing notifications where potentially millions of elements have been bulk deleted. 
+    Called during `Ehcache.removeAll()` to indicate that all elements have been removed from the cache in a bulk operation. The usual `notifyElementRemoved(net.sf.ehcache.Ehcache, net.sf.ehcache.Element)` is not called. Only one notification is emitted because performance considerations do not allow for serially processing notifications where potentially millions of elements have been bulk deleted.
 
-The implementations need to be placed in the classpath accessible to Ehcache. See the chapter on [Classloading](/documentation/2.8/apis/class-loading) for details on how the loading
+The implementations need to be placed in the classpath accessible to Ehcache. See the chapter on [Classloading](/documentation/2.8/apis/class-loading.html) for details on how the loading
 of these classes will be done.
 
 

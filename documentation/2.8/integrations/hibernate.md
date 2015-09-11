@@ -3,7 +3,7 @@
 # Using Hibernate and BigMemory Go
 
 
- 
+
 
 
 
@@ -31,7 +31,7 @@ documentation.
 
 ## Download and Install <a name="Downloading-and-Installing-Ehcache"/>
 
-The Hibernate provider is in the ehcache-core module. Download [the latest version](http://sourceforge.net/projects/ehcache/files/ehcache-core) of the Ehcache core module. 
+The Hibernate provider is in the ehcache-core module. Download [the latest version](http://sourceforge.net/projects/ehcache/files/ehcache-core) of the Ehcache core module.
 
 ## Build with Maven
 
@@ -153,7 +153,7 @@ Configuration.setProperty("hibernate.cache.region.factory_class",
                      "net.sf.ehcache.hibernate.EhCacheRegionFactory")
 ~~~
 
-For Hibernate 4, use `org.hibernate.cache.ehcache.EhCacheRegionFactory` instead of `net.sf.ehcache.hibernate.EhCacheRegionFactory`. 
+For Hibernate 4, use `org.hibernate.cache.ehcache.EhCacheRegionFactory` instead of `net.sf.ehcache.hibernate.EhCacheRegionFactory`.
 
 
 ## Putting it all together
@@ -175,7 +175,7 @@ An equivalent Spring configuration file would contain:
 <prop key="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</prop>
 ~~~
 
-For Hibernate 4, use `org.hibernate.cache.ehcache.EhCacheRegionFactory` instead of `net.sf.ehcache.hibernate.EhCacheRegionFactory`. 
+For Hibernate 4, use `org.hibernate.cache.ehcache.EhCacheRegionFactory` instead of `net.sf.ehcache.hibernate.EhCacheRegionFactory`.
 
 
 ## Configure Hibernate Entities to use Second-Level Caching <a name="Configure-Hibernate-Entities-to-use-Second-Level-Caching"/>
@@ -417,7 +417,7 @@ They act like a non-locking read only cache.
 We have  demo application showing how to use the Hibernate CacheRegionFactory.
 
 ### Hibernate Tutorial
-Check out from the [Terracotta Forge](http://svn.terracotta.org/svn/forge/projects/hibernate-tutorial-web/trunk). 
+Check out from the [Terracotta Forge](http://svn.terracotta.org/svn/forge/projects/hibernate-tutorial-web/trunk).
 
 ## Performance Tips <a name="Performance-Tips"/>
 
@@ -442,7 +442,7 @@ Use these where the chance of getting a cache hit is high.
 
 ### If I'm using BigMemory Go with my app and with Hibernate for second-level caching, should I try to use the CacheManager created by Hibernate for my app's caches?
 
-While you could share the resource file between the two CacheManagers, a clear separation between the two is recommended. Your app may have a different lifecycle than Hibernate, and in each case your CacheManager [Automatic Resource Control (ARC)](/documentation/2.8/bigmemorygo/get-started#configuring-bigmemory-go) settings may need to be different.
+While you could share the resource file between the two CacheManagers, a clear separation between the two is recommended. Your app may have a different lifecycle than Hibernate, and in each case your CacheManager [Automatic Resource Control (ARC)](/documentation/2.8/bigmemorygo/get-started.html#configuring-bigmemory-go) settings may need to be different.
 
 ### Should I use the provider in the Hibernate distribution or in BigMemory Go's Ehcache?
 Since Hibernate 2.1, Hibernate has included an Ehcache `CacheProvider`. That provider
@@ -482,5 +482,3 @@ on the next read of that object.  This is obviously non-fatal, but could cause a
 So, in summary the Hibernate messages are not problematic.
 The underlying cause is the probabilistic evictor can theoretically evict recently loaded items. You can also use the deterministic evictor to avoid this problem. Specify the `java -Dnet.sf.ehcache.use.classic.lru=true`
 system property to turn on classic LRU which contains a deterministic evictor.
-
-

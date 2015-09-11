@@ -2,7 +2,7 @@
 ---
 # Logging <a name="Logging"/>
 
- 
+
 
 ## Introduction
 As of 1.7.1, Ehcache uses the the slf4j logging facade, so you can plug in your own logging framework. This page covers Ehcache logging. For more information about slf4j in general, refer to the [slf4j](http://www.slf4j.org) site.
@@ -36,7 +36,7 @@ Additional concrete logging implementations can be downloaded from [http://www.s
 
 ## Recommended Logging Levels
 Ehcache seeks to trade off informing production support developers or important messages and cluttering the log. <a id="ERROR"></a>ERROR messages should not occur in normal production and indicate that action should be taken.
- 
+
 <a id="WARN"></a>WARN messages generally indicate a configuration change should be made or an unusual event has occurred.
  DEBUG and TRACE messages are for development use. All DEBUG level statements
 are surrounded with a guard so that no performance cost is incurred unless the logging

@@ -2,7 +2,7 @@
 ---
 # Ehcache Write-Behind
 
- 
+
 
 ##Introduction
 This page addresses the problem of database write overload and explains how the Ehcache Write-behind feature can be the solution.
@@ -39,4 +39,4 @@ In an un-clustered cache, the write-behind queue is stored in local memory. If t
 
 In a clustered cache, the write-behind queue is managed by Terracotta Server Array. The background thread on each JVM will check the shared queue and save each data change left in the queue. With clustered Ehcache, this background process is scaled across the cluster for both performance and high availability reasons. If one client JVM were to go down, any changes it put into the write-behind queue can always be loaded by threads in other clustered JVMs, therefore will be applied to the database without any data loss.
 
-There are many advanced configurations for Write-behind Cache. Because of the nature of asynchronous writing, there are also restrictions on when Write-Behind Cache can be used. For more information, see [write-through caching](/documentation/2.8/apis/write-through-caching).
+There are many advanced configurations for Write-behind Cache. Because of the nature of asynchronous writing, there are also restrictions on when Write-Behind Cache can be used. For more information, see [write-through caching](/documentation/2.8/apis/write-through-caching.html).

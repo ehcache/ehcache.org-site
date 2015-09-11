@@ -2,7 +2,7 @@
 ---
 # Using Grails and Ehcache <a name="using-grails-and-ehcache"/>
 
- 
+
 
 ## Introduction
 Grails 1.2RC1 and higher use Ehcache as the default Hibernate second level cache. However earlier versions of Grails
@@ -19,7 +19,7 @@ cache.provider_class='org.hibernate.cache.EhCacheProvider'
 "/>
 </code></pre>
 
-## Overriding Defaults 
+## Overriding Defaults
 As is usual with Hibernate, it will use the `defaultCache` configuration as a template to create new caches as required.
 For production use you often want to customise the cache configuration. To do so, add an ehcache.xml configuration file
 to the `conf` directory (the same directory that contains `DataSource.groovy`).

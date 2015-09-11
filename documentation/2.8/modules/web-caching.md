@@ -2,7 +2,7 @@
 ---
 # Web Caching <a name="Web-Caching"/>
 
- 
+
 
 ## Introduction
 Ehcache provides a set of general purpose web caching filters in the `ehcache-web` module.
@@ -130,7 +130,7 @@ that is only applicable to the entire page.
      <param-value>SimplePageFragmentCachingFilter</param-value>
     </init-param>
      </filter>
-     
+
      <filter>
     <filter-name>SimpleCachingHeadersPageCachingFilter</filter-name>    <filter-class>net.sf.ehcache.constructs.web.filter.SimpleCachingHeadersPageCachingFilter
     </filter-class>
@@ -143,10 +143,10 @@ that is only applicable to the entire page.
      <param-value>CachedPage2Cache</param-value>
     </init-param>
      </filter>
-     
+
      <!-- This is a filter chain. They are executed in the order below.
           Do not change the order. -->
-          
+
      <filter-mapping>
     <filter-name>CachePage1CachingFilter</filter-name>
     <url-pattern>/CachedPage.jsp</url-pattern>
@@ -154,17 +154,17 @@ that is only applicable to the entire page.
     <dispatcher>INCLUDE</dispatcher>
     <dispatcher>FORWARD</dispatcher>
      </filter-mapping>
-     
+
      <filter-mapping>
     <filter-name>SimplePageFragmentCachingFilter</filter-name>
     <url-pattern>/include/Footer.jsp</url-pattern>
      </filter-mapping>
-     
+
      <filter-mapping>
     <filter-name>SimplePageFragmentCachingFilter</filter-name>
     <url-pattern>/fragment/CachedFragment.jsp</url-pattern>
      </filter-mapping>
-     
+
      <filter-mapping>
     <filter-name>SimpleCachingHeadersPageCachingFilter</filter-name>
     <url-pattern>/CachedPage2.jsp</url-pattern>
@@ -220,14 +220,14 @@ Thrown when it is detected that a caching filter's doFilter
   method is reentered by the same thread. Reentrant calls will block indefinitely because the first request has not yet
   unblocked the cache.
 
-### ResponseHeadersNotModifiableException 
+### ResponseHeadersNotModifiableException
 Same as [FilterNonReentrantException](#FilterNonReentrantException).
 
 ### AlreadyGzippedException <a name="AlreadyGzippedException"/>
 This exception is thrown when a gzip is attempted on already gzipped content.
 
 The web package performs gzipping operations. One cause of problems on web browsers
-  is getting content that is double or triple gzipped. They will either get unreadable content or a blank page. 
+  is getting content that is double or triple gzipped. They will either get unreadable content or a blank page.
 
 ### ResponseHeadersNotModifiableException <a name="ResponseHeadersNotModifiableException"/>
 A gzip encoding header needs to be added for gzipped content. The `HttpServletResponse#setHeader()` method

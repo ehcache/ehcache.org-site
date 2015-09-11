@@ -2,7 +2,7 @@
 ---
 # Explicit Locking <a name="explicit-locking"/>
 
- 
+
 
 ## Introduction
 This package contains an implementation of an Ehcache which provides for explicit locking,

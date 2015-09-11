@@ -2,7 +2,7 @@
 ---
 #Echache Wrapper
 
- 
+
 
 ##Introduction
 This page provides an example of a simple class to make accessing Ehcache easier for simple use cases.
@@ -24,31 +24,31 @@ You can still get the Ehcache cache in case you want access to the full API.
     public interface CacheWrapper<K, V>
     {
       void put(K key, V value);
-    
+
       V get(K key);
     "/>
-    
+
     import net.sf.ehcache.CacheManager;
     import net.sf.ehcache.Ehcache;
     import net.sf.ehcache.Element;
-    
-    public class EhcacheWrapper<K, V> implements CacheWrapper<K, V> 
+
+    public class EhcacheWrapper<K, V> implements CacheWrapper<K, V>
     {
         private final String cacheName;
         private final CacheManager cacheManager;
-    
+
         public EhcacheWrapper(final String cacheName, final CacheManager cacheManager)
         {
             this.cacheName = cacheName;
             this.cacheManager = cacheManager;
         "/>
-    
+
         public void put(final K key, final V value)
         {
             getCache().put(new Element(key, value));
         "/>
-    
-        public V get(final K key) 
+
+        public V get(final K key)
         {
             Element element = getCache().get(key);
             if (element != null) {
@@ -56,8 +56,8 @@ You can still get the Ehcache cache in case you want access to the full API.
             "/>
             return null;
         "/>
-    
-        public Ehcache getCache() 
+
+        public Ehcache getCache()
         {
             return cacheManager.getEhcache(cacheName);
         "/>

@@ -3,7 +3,7 @@
 # BlockingCache and SelfPopulatingCache <a name="blockingcache-and-selfpopulatingcache"/>
 
 
- 
+
 
 ## Introduction
 The `net.sf.ehcache.constructs` package contains some applied caching classes which use the core classes to solve everyday caching problems. Two of these are BlockingCache and SelfPopulatingCache.
@@ -14,7 +14,7 @@ what they do, they tend to gravitate to popular pages. These pages are not stati
 goes stale in a few minutes. Or imagine you have collections of data which go stale in a few minutes. In each
 case the data is extremely expensive to calculate.
 Let's say each request thread asks for the same thing. That is a lot of work. Now, add a cache. Get each thread
-to check the cache; if the data is not there, go and get it and put it in the cache. 
+to check the cache; if the data is not there, go and get it and put it in the cache.
 
 Now, imagine that there are so
 many users contending for the same data that in the time it takes the first user to request the data and put it in
@@ -33,4 +33,4 @@ Enter the SelfPopulatingCache. The name SelfPopulatingCache is synonymous with P
 common caching term. SelfPopulatingCache though always is in addition to a BlockingCache.
 SelfPopulatingCache uses a `CacheEntryFactory`, that given a key, knows how to populate the entry.
 Note: JCache inspired getWithLoader and getAllWithLoader directly in `Ehcache` which work with a `CacheLoader` may be used as an alternative
-to SelfPopulatingCache. 
+to SelfPopulatingCache.

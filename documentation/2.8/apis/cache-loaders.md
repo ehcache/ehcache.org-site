@@ -2,7 +2,7 @@
 ---
 # Cache Loaders <a name="Cache-Loaders"/>
 
- 
+
 
 A `CacheLoader` is an interface which specifies `load` and `loadAll` methods with a variety of parameters.
 CacheLoaders come from JCache, but are a frequently requested feature, so they have been incorporated into the core
@@ -22,7 +22,7 @@ CacheLoaders are similar to the CacheEntryFactory used in SelfPopulatingCache. H
 to ehcache. The CacheLoader functionality is available right in a Cache, Ehcache or JCache and follows a more industry
  standard convention.
 CacheLoaders may be set either declaratively in the ehcache.xml configuration file or programmatically. This becomes the
-default CacheLoader. Some of the methods invoking loaders enable an override CacheLoader to be passed in as a parameter. 
+default CacheLoader. Some of the methods invoking loaders enable an override CacheLoader to be passed in as a parameter.
 More than one cacheLoader can be registered, in which case the loaders form a chain which are executed
 in order. If a loader returns null, the next in chain is called.
 
@@ -48,10 +48,10 @@ factory class CacheLoaderFactory, which is reproduced below:
 /**
 * An abstract factory for creating cache loaders. Implementers should provide their own
 * concrete factory extending this factory.
-* 
+*
 * There is one factory method for JSR107 Cache Loaders and one for Ehcache ones. The Ehcache
 * loader is a sub interface of the JSR107 Cache Loader.
-* 
+*
 * Note that both the JCache and Ehcache APIs also allow the CacheLoader to be set
 * programmatically.
 * @author Greg Luck
@@ -102,7 +102,7 @@ during cache initialization, and `dispose()` is called on disposal of a cache.
 public interface CacheLoader extends net.sf.jsr107cache.CacheLoader {
 /**
 * Load using both a key and an argument.
-* 
+*
 * JCache will call through to the load(key) method, rather than this method,
 * where the argument is null.
 *
@@ -114,7 +114,7 @@ public interface CacheLoader extends net.sf.jsr107cache.CacheLoader {
 Object load(Object key, Object argument) throws CacheException;
 /**
 * Load using both a key and an argument.
-* 
+*
 * JCache will use the loadAll(key) method where the argument is null.
 *
 * @param keys     the keys to load objects for
@@ -132,7 +132,7 @@ String getName();
 /**
 * Creates a clone of this extension. This method will only be called by Ehcache before a
 * cache is initialized.
-* 
+*
 * Implementations should throw CloneNotSupportedException if they do not support clone
 * but that will stop them from being used with defaultCache.
 *
@@ -142,7 +142,7 @@ String getName();
 public CacheLoader clone(Ehcache cache) throws CloneNotSupportedException;
 /**
 * Notifies providers to initialise themselves.
-* 
+*
 * This method is called during the Cache's initialise method after it has changed it's
 * status to alive. Cache operations are legal in this method.
 *
@@ -152,7 +152,7 @@ void init();
 /**
 * Providers may be doing all sorts of exotic things and need to be able to clean up on
 * dispose.
-* 
+*
 * Cache operations are illegal when this method is called. The cache itself is partly
 * disposed when this method is called.
 *
@@ -167,7 +167,7 @@ public Status getStatus();
 </code></pre>
 
 The implementations need to be placed in the classpath accessible to ehcache.
-See the chapter on [Classloading](/documentation/2.8/user-guide/class-loading) for details on how classloading
+See the chapter on [Classloading](/documentation/2.8/user-guide/class-loading.html) for details on how classloading
 of these classes will be done.
 
 ## Programmatic Configuration
@@ -178,7 +178,7 @@ of loaders:
 /**
 * Register a {@link CacheLoader} with the cache. It will then be tied into the cache
 *   lifecycle.
-* 
+*
 * If the CacheLoader is not initialised, initialise it.
 *
 * @param cacheLoader A Cache Loader to register

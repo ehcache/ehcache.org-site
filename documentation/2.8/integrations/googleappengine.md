@@ -1,8 +1,8 @@
 ---
 ---
-# Google App Engine (GAE) Caching <a name="google-app-engine-caching} 
+# Google App Engine (GAE) Caching <a name="google-app-engine-caching"/>
 
- 
+
 
 ##Introduction
 The ehcache-googleappengine module combines the speed of Ehcache with the scale of Google's memcache and provide the best of both worlds:
@@ -96,7 +96,7 @@ For example:
     </static-files>
 
 You can get acceleration for dynamic files using Ehcache's caching filters as you usually would.
-See  [Web Caching](/documentation/2.8/modules/web-caching) for more information.
+See  [Web Caching](/documentation/2.8/modules/web-caching.html) for more information.
 
 ## Troubleshooting <a name="google-app-engine-faq"/>
 

@@ -1,6 +1,6 @@
 ---
 ---
-# Bulk Loading in Ehcache <a name="Bulk-Loading}
+# Bulk Loading in Ehcache <a name="Bulk-Loading"/>
 
 
 Ehcache has a bulk loading-mode that dramatically speeds up bulk loading into caches using the Terracotta Server Array (TSA). Bulk loading is designed to be used for:

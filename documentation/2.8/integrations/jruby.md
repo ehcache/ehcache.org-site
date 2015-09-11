@@ -2,7 +2,7 @@
 ---
 # JRuby and Rails Caching <a name="rails-and-jruby-caching"/>
 
- 
+
 
 
 ## Introduction
@@ -17,9 +17,9 @@ Ehcache JRuby integration is provided by the jruby-ehcache gem.  To install it, 
     jgem install jruby-ehcache
 
  Note that you may need to use "sudo" to install gems on your system.
- 
+
 ### Installation for Rails
- 
+
  If you want Rails caching support, you should also install the correct gem for your Rails version:
 
     jgem install jruby-ehcache-rails2 # for Rails 2
@@ -32,7 +32,7 @@ An alternative installation is to simply add the appropriate jruby-ehcache-rails
 *   JRuby 1.5 and higher
 *   Rails 2 for the jruby-ehcache-rails2
 *   Rails 3 for the jruby-ehcache-rails3
-*   Ehcache 2.4.6 is the declared dependency, although any version of Ehcache will work. 
+*   Ehcache 2.4.6 is the declared dependency, although any version of Ehcache will work.
 
 The jruby-ehcache gem comes bundled with the ehcache-core.jar. To use a different version of Ehcache, place the Ehcache jar in the same Classpath as JRuby (for standalone JRuby) or in the Rails lib directory (for Rails).
 
@@ -100,7 +100,7 @@ The following caching options are supported in JRuby:
 <tr><td> elementEvictionData</td><td>ElementEvictionData
 
 </td><td>Sets this element’s eviction data instance.</td></tr>
-    
+
 <tr><td>eternal</td><td>boolean
 
 </td><td>Sets whether the element is eternal.</td></tr>
@@ -108,7 +108,7 @@ The following caching options are supported in JRuby:
 <tr><td>timeToIdle, tti</td><td>int
 
 </td><td>Sets time to idle.</td></tr>
-    
+
 <tr><td> timeToLive, ttl, expiresIn</td><td>int
 
 </td><td>Sets time to Live.</td></tr>
@@ -135,7 +135,7 @@ The following caching options are supported in JRuby:
 end</code></pre>
 
 As you can see from the example, you create a cache using CacheManager.new, and you can control the "time to live" value of a
-cache entry using the :ttl option in cache.put. 
+cache entry using the :ttl option in cache.put.
 
 
 ## Using Ehcache from within Rails
@@ -179,9 +179,9 @@ Rails.cache.read("answer")  # => '42'</code></pre>
 
 Using this API, your code can be agnostic about the underlying provider, or even switch providers based on the current environment
 (e.g. memcached in development mode, Ehcache in production).
-The write method also supports options in the form of a Hash passed as the final parameter. 
+The write method also supports options in the form of a Hash passed as the final parameter.
 
-See the [Supported Properties](/documentation/2.8/integrations/jruby#supported-properties) table above for the options that are supported. These options are passed to the write method as Hash options using either camelCase or underscore notation,
+See the [Supported Properties](/documentation/2.8/integrations/jruby.html#supported-properties) table above for the options that are supported. These options are passed to the write method as Hash options using either camelCase or underscore notation,
 as in the following example:
 
 <pre><code>Rails.cache.write('key', 'value', :time_to_idle => 60.seconds, :timeToLive => 600.seconds)
@@ -222,7 +222,7 @@ Here are the basic steps for configuring a Rails application to use Ehcache:
 
          expire_action :action => 'show', :id => params[:id]
          expire_action :action => 'index'
-         
+
     Under destroy, add the following:
 
           expire_action :action => 'index'
@@ -236,7 +236,7 @@ Here are the basic steps for configuring a Rails application to use Ehcache:
          config.action_controller.perform_caching = true
          config.cache_store = :ehcache_store
 
-6. Run the Bundle Install command. 
+6. Run the Bundle Install command.
 
          jruby -S bundle install
 
@@ -245,7 +245,7 @@ Here are the basic steps for configuring a Rails application to use Ehcache:
          jruby -S rake db:create db:migrate
 
 8. (Optional) Set up the Ehcache monitor. This involves the following four steps:
-    * Install the Ehcache Monitor from [Downloads](http://ehcache.org/downloads/catalog).
+    * Install the Ehcache Monitor from [Downloads](/downloads).
     * Start the Ehcache Monitor server.
     * Connect the application to the monitor server by copying the ehcache-probe JAR (bundled with the Ehcache Monitor) to your Rails lib directory.
     * Create an ehcache.xml file in the Rails application config directory. In the ehcache.xml file, add the following:
@@ -254,19 +254,19 @@ Here are the basic steps for configuring a Rails application to use Ehcache:
                 class="org.terracotta.ehcachedx.monitor.probe.ProbePeerListenerFactory"
                 properties="monitorAddress=localhost, monitorPort=9889, memoryMeasurement=true"/>
 
-Now you are ready to start the application with the following command: 
-    
+Now you are ready to start the application with the following command:
+
     jruby -S rails server
-    
+
 Once the application is started, populate the cache by adding, editing, and deleting contacts. To see the Contacts address book, enter the following in your browser:
-    
+
     http://localhost:3000/contacts
-    
+
 To view cache activity and statistics in the Ehcache monitor, enter the following in your browser:
 
     http://localhost:9889/monitor
 
-For more information about how to use the monitor, refer to the [Ehcache Monitor](/documentation/2.8/operations/monitor) page. 
+For more information about how to use the monitor, refer to the [Ehcache Monitor](/documentation/2.8/operations/monitor.html) page.
 
 
 ### Adding BigMemory under Rails
@@ -281,7 +281,7 @@ BigMemory provides in-memory data management with a large additional cache locat
 
     When `overflowToOffHeap` is set to true, it enables the cache to utilize off-heap memory storage to improve performance. Off-heap memory is not subject to Java GC cycles and has a size limit set by the Java property MaxDirectMemorySize.
 
-    `maxBytesLocalOffHeap` sets the amount of off-heap memory available to the cache, and is in effect only if overflowToOffHeap is true. For more information about sizing caches, refer to [How To Size Caches](/documentation/2.8/configuration/cache-size).
+    `maxBytesLocalOffHeap` sets the amount of off-heap memory available to the cache, and is in effect only if overflowToOffHeap is true. For more information about sizing caches, refer to [How To Size Caches](/documentation/2.8/configuration/cache-size.html).
 
 3. Also in the ehcache.xml file, set `maxEntriesLocalHeap` to at least 100 elements when using an off-heap store to avoid performance degradation. Lower values for `maxEntriesLocalHeap` trigger a warning to be logged.
 
@@ -290,9 +290,8 @@ BigMemory provides in-memory data management with a large additional cache locat
 
         jruby -J-Dcom.tc.productkey.path=/path/to/key -J-XX:MaxDirectMemorySize=2G -S rails server
 
-    This will configure a system property that points to the location of the license key, and it will set the direct memory size. The `maxDirectMemorySize` must be at least 256M larger than total off-heap memory (the unused portion will still be available for other uses). 
+    This will configure a system property that points to the location of the license key, and it will set the direct memory size. The `maxDirectMemorySize` must be at least 256M larger than total off-heap memory (the unused portion will still be available for other uses).
 
-For additional configuration options, refer to the [BigMemory](/documentation/2.8/configuration/bigmemory#advanced-configuration-options) page.
+For additional configuration options, refer to the [BigMemory](/documentation/2.8/configuration/bigmemory#advanced-configuration-options.html) page.
 
 Note that only Serializable cache keys and values can be placed in the store, similar to DiskStore. Serialization and deserialization take place on putting and getting from the store. This is handled automatically by the jruby-ehcache gem.
-

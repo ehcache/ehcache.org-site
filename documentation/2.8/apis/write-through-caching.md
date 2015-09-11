@@ -2,7 +2,7 @@
 ---
 # Write-through and Write-behind Caching with the CacheWriter <a name="Write-through-and-Write-behind-Caching-with-the-CacheWriter"/>
 
- 
+
 
 ## Introduction
 Write-through caching is a caching pattern where writes to the cache cause writes to an underlying resource. The cache acts as a facade
@@ -87,7 +87,7 @@ The simplest solution is to ensure that the entire dataset is in the cache. This
   in the areas of expiry and eviction.
 
 #### Eviction
-Eviction or flushing of elements, occurs when the maximum elements for the cache have been exceeded. Be sure to size the cache appropriately to avoid eviction or flushing. See [How to Size Caches](/documentation/2.8/configuration/cache-size) for more information.
+Eviction or flushing of elements, occurs when the maximum elements for the cache have been exceeded. Be sure to size the cache appropriately to avoid eviction or flushing. See [How to Size Caches](/documentation/2.8/configuration/cache-size.html) for more information.
 
 #### Expiry
 Even if all of the dataset can fit in the cache, it could be evicted if Elements expire. Accordingly, both `timeToLive` and
@@ -170,7 +170,7 @@ This configuration can also be achieved through the `Cache` constructor in Java:
        .className("com.company.MyCacheWriterFactory")
        .properties("just.some.property=test; another.property=test2")
        .propertySeparator(";"))));
-    
+
 Instead of relying on a `CacheWriterFactoryConfiguration` to create a `CacheWriter`, it's also possible to explicitly
 register a `CacheWriter` instance from within Java code. This allows you to refer to local resources like database
 connections or file handles.
@@ -210,16 +210,16 @@ For example, following is the method signature for `cache.putWithWriter(...)`.
     /**
     * Put an element in the cache writing through a CacheWriter. If no CacheWriter has been
     * set for the cache, then this method has the same effect as cache.put().
-    * 
+    *
     * Resets the access statistics on the element, which would be the case if it has previously
     * been gotten from a cache, and is now being put back.
-    * 
+    *
     * Also notifies the CacheEventListener, if the writer operation succeeds, that:
-    * 
+    *
     * - the element was put, but only if the Element was actually put.
     * - if the element exists in the cache, that an update has occurred, even if the element
     * would be expired if it was requested
-    * 
+    *
     *
     * @param element An object. If Serializable it can fully participate in replication and the
     * DiskStore.
@@ -351,7 +351,7 @@ in their implementation.
      * @param e the RuntimeException thrown by the Writer when the last retry attempt was being executed
      */
     void throwAway(Element element, SingleOperationType operationType, RuntimeException e);
-    
+
     "/>
 
 ## FAQ

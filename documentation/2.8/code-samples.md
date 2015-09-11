@@ -3,7 +3,7 @@
 #Code Samples
 
 
- 
+
 
 
 ## Introduction
@@ -13,7 +13,7 @@ If you have suggestions or ideas for more code samples, please tell us about the
 
 
 ## Using the CacheManager <a name="Using-the-CacheManager"/>
-All usages of Ehcache start with the creation of a CacheManager. See [Key Classes and Methods](/documentation/2.8/get-started/key-classes-methods#cm-creation) for details on how to create CacheManagers.
+All usages of Ehcache start with the creation of a CacheManager. See [Key Classes and Methods](/documentation/2.8/get-started/key-classes-methods.html#cm-creation) for details on how to create CacheManagers.
 
 ### Singleton versus Instance
 
@@ -94,7 +94,7 @@ singletonManager.addCache(memoryOnlyCache);
 Cache test = singletonManager.getCache("testCache");
 </pre>
 
-See the cache [constructor](http://ehcache.org/xref/net/sf/ehcache/Cache.html) for the full parameters  for a new Cache.
+See the cache [constructor](/apidocs/2.8/net/sf/ehcache/Cache.html) for the full parameters  for a new Cache.
 
 Remove cache called sampleCache1:
 
@@ -119,7 +119,7 @@ Shutdown a CacheManager instance, assuming you have a reference to the CacheMana
 manager.shutdown();
 </pre>
 
-See the [CacheManagerTest](http://ehcache.org/xref-test/net/sf/ehcache/CacheManagerTest.html) for more examples.
+See the [CacheManagerTest](https://fisheye.terracotta.org/browse/Ehcache/branches/ehcache-2.8.x/ehcache-core/src/test/java/net/sf/ehcache/CacheManagerTest.java?hb=true) for more examples.
 
 ## Creating Caches Programmatically
 
@@ -277,8 +277,8 @@ Cache cache = manager.getCache("sampleCache1");
 int hits = cache.getMissCountExpired();
 </pre>
 
-These are just the most commonly used methods. See [CacheTest](http://ehcache.org/xref-test/net/sf/ehcache/CacheTest.html) for more examples.
-See [Cache](http://ehcache.org/xref/net/sf/ehcache/Cache.html) for the full API.
+These are just the most commonly used methods. See [CacheTest](https://fisheye.terracotta.org/browse/Ehcache/branches/ehcache-2.8.x/ehcache-core/src/test/java/net/sf/ehcache/CacheTest.java?hb=true) for more examples.
+See [Cache](/apidocs/2.8.5/net/sf/ehcache/Cache.html) for the full API.
 
 ### Dynamically Modifying Cache Configurations
 This example shows how to dynamically modify the cache configuration of an already running cache:
@@ -300,7 +300,7 @@ cache.disableDynamicFeatures();
 </pre>
 
 ### Transactions
-A cache will automatically participate in the ongoing UserTransaction when configured in [transactionalMode XA](/documentation/2.8/apis/transactions).
+A cache will automatically participate in the ongoing UserTransaction when configured in [transactionalMode XA](/documentation/2.8/apis/transactions.html).
 
 Note that XA Transactional caches are supported only for local Ehcache, [BigMemory Go](http://terracotta.org/documentation/2.8/bigmemorygo/api/jta), and  [BigMemory Max](http://terracotta.org/documentation/2.8/bigmemorymax/api/jta). Replication architectures such as RMI, JMS, or JGroups are not supported, as there is no locking in those architectures.
 
@@ -320,12 +320,12 @@ ManagementService.registerMBeans(manager, mBeanServer, false, false, false, true
 ## More examples
 
 ### JCache Examples
-See the examples in [JCache](/documentation/2.8/integrations/jsr107).
+See the examples in [JCache](/documentation/2.8/integrations/jsr107.html).
 
 ### Cache Server Examples
-See the examples in [Cache Server](/documentation/2.8/modules/cache-server).
+See the examples in [Cache Server](/documentation/2.8/modules/cache-server.html).
 
 ### Browse the JUnit Tests
 Ehcache comes with a comprehensive JUnit test suite, which not only tests the code, but shows you how to use ehcache.
-A link to [browsable unit test source code](http://ehcache.org/xref-test/index.html) for the major Ehcache classes is given per section. The unit tests are also
+A link to [browsable unit test source code](https://fisheye.terracotta.org/browse/Ehcache/branches/ehcache-2.8.x/ehcache-core/src/test/java/net/sf/ehcache) for the major Ehcache classes is given per section. The unit tests are also
   in the src.zip in the Ehcache tarball.

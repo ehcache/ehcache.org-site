@@ -32,7 +32,7 @@ With Ehcache 2.5.2 and higher, the behavior of the CacheManager creation methods
 * `CacheManager.create(Configuration configuration)` &ndash; Create a singleton CacheManager with the passed-in configuration, or return the existing singleton.
 * `new CacheManager(Configuration configuration)` &ndash; Create a new CacheManager, or throw an exception if the CacheManager named in the configuration already exists or if the parameter (configuration) is null.
 
-See the [Ehcache API documentation](http://ehcache.org/apidocs/2.8.4/net/sf/ehcache/CacheManager) for more information on these methods, including options for passing in configuration. For examples, see [Code Samples](/documentation/2.8/code-samples#Using-the-CacheManager).
+See the [Ehcache API documentation](http://ehcache.org/apidocs/2.8.4/net/sf/ehcache/CacheManager) for more information on these methods, including options for passing in configuration. For examples, see [Code Samples](/documentation/2.8/code-samples.html#Using-the-CacheManager).
 
 ##### Singleton Mode
 

@@ -2,7 +2,7 @@
 ---
 # Web Page and Web Page Fragment Caching
 
- 
+
 
 ## Introduction
 
@@ -87,4 +87,4 @@ Now start your application server. Pages should be cached.
 
 ## More details
 
-For more details and configuration options pertaining to web page and web page fragment caching, see the [Web Caching page](/documentation/2.8/modules/web-caching) in the user documentation.
+For more details and configuration options pertaining to web page and web page fragment caching, see the [Web Caching page](/documentation/2.8/modules/web-caching.html) in the user documentation.

@@ -1,7 +1,7 @@
 ---
 ---
 # Class loading and Class Loaders
- 
+
 
 ## Introduction
 Class loading, within the plethora of environments that Ehcache can be running, is a somewhat vexed issue.
@@ -49,7 +49,7 @@ public static Object createNewInstance(String className) throws CacheException {
 /**
  * Gets the <code>ClassLoader</code> that all classes in ehcache, and extensions,
  *  should use for classloading. All ClassLoading in Ehcache should use this one.
- * This is the only thing that seems to work for all of the class loading 
+ * This is the only thing that seems to work for all of the class loading
  * situations found in the wild.
  * @return the thread context class loader.
  */
@@ -86,9 +86,9 @@ placed at the root of the classpath, i.e. not in any package.
 
 ## Classloading with Terracotta clustering
 
-If Terracotta clustering is being used with valueMode="serialization" then 
-keys and values will be moved across the cluster in byte[] and deserialized 
-on other nodes. 
+If Terracotta clustering is being used with valueMode="serialization" then
+keys and values will be moved across the cluster in byte[] and deserialized
+on other nodes.
 
 The classloaders used (in order) to instantiate those classes will be:
 

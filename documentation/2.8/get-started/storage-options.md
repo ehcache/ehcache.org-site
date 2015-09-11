@@ -12,7 +12,7 @@ Ehcache has three storage tiers:
 
 This page presents these cache storage tiers and provides the suitable element types for each storage option.
 
-For information about sizing the tiers, refer to [Cache Configuration Sizing Attributes](/documentation/2.8/configuration/cache-size#cache-configuration-sizing-attributes).
+For information about sizing the tiers, refer to [Cache Configuration Sizing Attributes](/documentation/2.8/configuration/cache-size.html#cache-configuration-sizing-attributes).
 
 ## MemoryStore
 The `MemoryStore` is always enabled. It is not directly manipulated, but is a component of every cache.
@@ -36,7 +36,7 @@ memory size, an existing element is either:
 * deleted, if overflow is not enabled, or
 * evaluated for spooling to another tier, if overflow is enabled.
 
-Overflow options are discussed [here](/documentation/2.8/configuration/fast-restart#strategy-options).
+Overflow options are discussed [here](/documentation/2.8/configuration/fast-restart.html#strategy-options).
 
 If overflow is enabled, a check for expiry is carried out. Expired elements
 are deleted; unexpired elements are spooled. The eviction of an item from
@@ -59,7 +59,7 @@ There is a convenient method
 which can provide an estimate of the size in bytes of the `MemoryStore`, [calculateInMemorySize()](http://ehcache.org/apidocs/2.8.4/net/sf/ehcache/Cache.html#calculateInMemorySize%28%29).
 It returns the serialized size of the cache. However, do not use this method in production, as it is very slow. It is only meant to provide a rough estimate.
 
-An alternative would be to have an expiry thread. This is a trade-off between lower memory use and short locking periods and CPU utilization. The design is in favour of the latter. For those concerned with memory use, simply reduce the cache's size in memory (see [How to Size Caches](/documentation/2.8/configuration/cache-size) for more information).
+An alternative would be to have an expiry thread. This is a trade-off between lower memory use and short locking periods and CPU utilization. The design is in favour of the latter. For those concerned with memory use, simply reduce the cache's size in memory (see [How to Size Caches](/documentation/2.8/configuration/cache-size.html) for more information).
 
 ## BigMemory (Off-Heap Store)
 
@@ -77,7 +77,7 @@ The MemoryStore still holds the hottest subset of data from the off-heap store, 
 
 The DiskStore provides a disk spooling facility that can be used for additional storage during cache operation and for persisting caches through system restarts.
 
-For more information about cache persistence on disk, refer to the [Persistence and Restartability](/documentation/2.8/configuration/fast-restart) page.
+For more information about cache persistence on disk, refer to the [Persistence and Restartability](/documentation/2.8/configuration/fast-restart.html) page.
 
 #### DiskStores are Optional
 

@@ -2,7 +2,7 @@
 ---
 # Shutting Down Ehcache <a name="Shutting-Down-Ehcache"/>
 
- 
+
 
 ## Introduction
 If you are using persistent disk stores (Open Source), or distributed caching, care should be taken to shutdown Ehcache.
@@ -65,7 +65,7 @@ systems. e.g. `kill -SIGKILL pid` or `kill -9 pid`
 * A `TerminateProcess` call is sent to the process on Windows systems.
 
 ## Dirty Shutdown
-If shut down dirty, all in-memory data will be retained if Ehcache is configured for restartability. For more information, refer to [Persistence and Restartability](/documentation/2.8/configuration/fast-restart).
+If shut down dirty, all in-memory data will be retained if Ehcache is configured for restartability. For more information, refer to [Persistence and Restartability](/documentation/2.8/configuration/fast-restart.html).
 
 If using Open Source disk persistence when shut down dirty, then any persistent disk stores will be corrupted. They will be deleted, with a log message, on the next startup.
 Replications waiting to happen to other nodes in a distributed cache will also not get written.

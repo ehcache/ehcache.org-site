@@ -2,7 +2,7 @@
 ---
 #Thundering Herd
 
- 
+
 
 ##Introduction
 When many readers simultaneously request the same data element, there can be a database read overload, sometimes called the "Thundering Herd" problem. This page addresses how to prevent it in a single JVM or a clustered configuration.
@@ -13,7 +13,7 @@ Many readers read an empty value from the cache and subseqeuntly try to load it 
 
 ##Solution
 
-Implement the [cache-as-sor](/documentation/2.8/get-started/concepts#cache-as-sor) pattern by using a [BlockingCache or SelfPopulatingCache](/documentation/2.8/apis/constructs) included with Ehcache.
+Implement the [cache-as-sor](/documentation/2.8/get-started/concepts.html#cache-as-sor) pattern by using a [BlockingCache or SelfPopulatingCache](/documentation/2.8/apis/constructs.html) included with Ehcache.
 
 Using the BlockingCache Ehcache will automatically block all threads that are simultaneously requesting a particular value and let one and only one thread through to the database. Once that thread has populated the cache, the other threads will be allowed to read the cached value.
 

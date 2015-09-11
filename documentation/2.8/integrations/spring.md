@@ -2,7 +2,7 @@
 ---
 # Using Spring and BigMemory Go
 
- 
+
 
 ##Introduction
 BigMemory Go's Ehcache has had excellent Spring integration for years. Spring 3.1 includes an Ehcache implementation. See the [ Spring 3.1 JavaDoc](http://static.springsource.org/spring/docs/3.1.0.M1/javadoc-api/org/springframework/cache/ehcache/package-summary.html).

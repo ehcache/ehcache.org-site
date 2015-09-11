@@ -110,7 +110,7 @@ Distributed Ehcache can have eventual consistency in the following ways:
 * Set programmatically with a bulk-loading mode, using `setNodeBulkLoadEnabled(boolean)`.
 * Configured with &lt;UnlockedReadsView>, a `CacheDecorator` that can be created like a view on a cache to show the latest writes visible to the local Ehcache node without respect for any locks.
 * Using bulk-loading Cache methods `putAll()`, `getAll()`, and `removeAll()`.
-Note that `putAll(Collection<Element>)` does not discriminate between new and existing elements, thus resulting in put notifications, not update notifications. These can also be used with strong consistency. If you can use them, there is no need to use bulk-load mode. See the [API documentation](http://ehcache.org/apidocs) for details.
+Note that `putAll(Collection<Element>)` does not discriminate between new and existing elements, thus resulting in put notifications, not update notifications. These can also be used with strong consistency. If you can use them, there is no need to use bulk-load mode. See the [API documentation](/apidocs/2.8) for details.
 
 Ehcache B and C will eventually see the change made by Ehcache A, generally with a consistency window of 5 ms (with no partitions or interruptions). If a garbage collection (GC) happens on a TSA node, or Ehcache A or B, the inconsistency window is increased by the length of the GC.
 

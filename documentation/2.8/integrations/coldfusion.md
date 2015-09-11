@@ -2,7 +2,7 @@
 ---
 # Using Coldfusion and BigMemory Go
 
- 
+
 
 ##Introduction
 ColdFusion ships with BigMemory Go's Ehcache. The ColdFusion community has actively engaged with Ehcache and have put out lots of great blogs. Here are three to get you
@@ -49,4 +49,3 @@ It will cache a CF object in Ehcache and the set expiration time to 30 seconds. 
     Author: #myBook["author"]#<br />
     ISBN: #myBook["ISBN"]#
     </cfoutput>
-

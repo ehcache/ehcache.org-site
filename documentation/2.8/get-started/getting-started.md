@@ -9,7 +9,7 @@ Ehcache can be used directly. It also supports use with the popular Hibernate Ob
 
 ## General-Purpose Caching
 
-* Download [Ehcache&nbsp;&rsaquo;](http://ehcache.org/downloads)
+* Download [Ehcache&nbsp;&rsaquo;](/downloads)
 
     Beginning with Ehcache 1.7.1, Ehcache
 depends on SLF4J ([http://www.slf4j.org](http://www.slf4j.org)) for logging. SLF4J is a logging framework with a choice of concrete logging implementations. See the chapter on Logging for configuration details.
@@ -17,8 +17,8 @@ depends on SLF4J ([http://www.slf4j.org](http://www.slf4j.org)) for logging. SLF
 * Use Java 1.5 or 1.6.
 * Place the Ehcache jar into your classpath.
 * Configure ehcache.xml and place it in your classpath.
-* Optionally, configure an appropriate [logging](/documentation/2.8/operations/logging) level.
-  See the [Code Samples](/documentation/2.8/recipes) chapter for more information on direct interaction with ehcache.
+* Optionally, configure an appropriate [logging](/documentation/2.8/operations/logging.html) level.
+  See the [Code Samples](/documentation/2.8/recipes/index.html) chapter for more information on direct interaction with ehcache.
 
 ## Cache Usage Patterns
 
@@ -118,7 +118,7 @@ transaction in context of the thread, the write to the database is covered
 by the transaction in scope.
 More details (including configuration settings) can be found in the User
 Guide chapter on
-[Write-through and Write-behind Caching](/documentation/2.8/apis/write-through-caching).
+[Write-through and Write-behind Caching](/documentation/2.8/apis/write-through-caching.html).
 
 ### write-behind
 The write-behind pattern changes the timing of the write to the
@@ -133,7 +133,7 @@ transaction.
 This often-times means that a new transaction must be created to commit
 the data to the system-of-record that is separate from the main transaction.
 More details (including configuration settings) can be found in the User
-Guide chapter on [Write-through and Write-behind Caching](/documentation/2.8/apis/write-through-caching).
+Guide chapter on [Write-through and Write-behind Caching](/documentation/2.8/apis/write-through-caching.html).
 
 ### cache-as-sor example
 
@@ -224,7 +224,7 @@ By default, the copy operation will be performed using standard Java object seri
 applications this might not be good (or fast) enough. You can configure your own `CopyStrategy` which will be used to perform
 these copy operations. For example, you could easily implement use cloning rather than Serialization.
 
-More information on configuration can be found here: [copyOnRead and copyOnWrite cache configuration](/documentation/2.8/configuration/configuration#copyonread-and-copyonwrite-cache-configuration).
+More information on configuration can be found here: [copyOnRead and copyOnWrite cache configuration](/documentation/2.8/configuration/configuration.html#copyonread-and-copyonwrite-cache-configuration).
 
 ## Specific Technologies
 
@@ -241,7 +241,7 @@ The distributed-cache documentation covers how to configure Ehcache in a Terraco
 * Perform the same steps as for general-purpose caching (above).
 * Create caches in ehcache.xml.
 
-See the [Hibernate Caching](/documentation/2.8/integrations/hibernate) chapter for more information.
+See the [Hibernate Caching](/documentation/2.8/integrations/hibernate.html) chapter for more information.
 
 
 ### Caching with Java EE Servlet
@@ -254,7 +254,7 @@ or create a subclass of PageFragmentCachingFilter.
 * Configure the web.xml. Declare the filters created above and create filter mapping associating the filter with
 a URL.
 
-See the [Web Caching](/documentation/2.8/modules/web-caching) chapter for more information.
+See the [Web Caching](/documentation/2.8/modules/web-caching.html) chapter for more information.
 
 ### RESTful and SOAP Caching with the Cache Server
 
@@ -263,14 +263,14 @@ See the [Web Caching](/documentation/2.8/modules/web-caching) chapter for more i
 * Type `startup.sh` to start the server with the log in the foreground.
   By default it will listen on port 8080,
  will have both RESTful and SOAP web services enabled, and will use a sample Ehcache configuration from the WAR module.
-* See the [code samples](/documentation/2.8/modules/cache-server#restful-code-samples) on the Cache Server page. You can use Java or any other programming language with the Cache Server.
+* See the [code samples](/documentation/2.8/modules/cache-server.html#restful-code-samples) on the Cache Server page. You can use Java or any other programming language with the Cache Server.
 
-See the [Cache Server](/documentation/2.8/modules/cache-server) page for more information.
+See the [Cache Server](/documentation/2.8/modules/cache-server.html) page for more information.
 
 ### JCache style caching
 
 Ehcache contains an early draft implementation of JCache contained in the net.sf.ehcache.jcache package.
-See the [JSR107](/documentation/2.8/integrations/jsr107) chapter for usage.
+See the [JSR107](/documentation/2.8/integrations/jsr107.html) chapter for usage.
 
 ### Spring, Cocoon, Acegi and other frameworks
 

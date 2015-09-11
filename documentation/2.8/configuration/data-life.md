@@ -77,7 +77,7 @@ Note the following about the myCache configuration:
 
 * Accessing an entry in myCache that has been idle for more than an hour (`timeToIdleSeconds`) causes that element to be evicted.
 * If an entry expires but is not accessed, and no resource constraints force eviction, then the expired entry remains in place.
-* Entries in myCache can remain in the cache forever if accessed at least once per 60 minutes (`timeToLiveSeconds`). However, unexpired entries may still be flushed based on  other limitations (see [How to Size Caches](/documentation/2.8/configuration/cache-size)).
+* Entries in myCache can remain in the cache forever if accessed at least once per 60 minutes (`timeToLiveSeconds`). However, unexpired entries may still be flushed based on  other limitations (see [How to Size Caches](/documentation/2.8/configuration/cache-size.html)).
 * In all, myCache can store a maximum of 10000 entries (`maxEntriesLocalDisk`). This is the effective maximum number of entries myCache is allowed. Note, however, that this value may be exceeded as it is overridden by settings such as pinning.
 
 ### Pinning Overrides Cache Sizing

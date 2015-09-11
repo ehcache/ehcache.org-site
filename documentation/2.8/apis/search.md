@@ -2,11 +2,11 @@
 ---
 # Ehcache Search API
 
- 
+
 
 ## Introduction
 
-The Ehcache Search API allows you to execute arbitrarily complex queries against caches with pre-built indexes. The development of alternative indexes on values provides the ability for data to be looked up based on multiple criteria instead of just keys. 
+The Ehcache Search API allows you to execute arbitrarily complex queries against caches with pre-built indexes. The development of alternative indexes on values provides the ability for data to be looked up based on multiple criteria instead of just keys.
 
 [BigMemory Go](http://terracotta.org/products/bigmemorygo) (called "standalone Ehcache with BigMemory" in this document) and [BigMemory Max](http://terracotta.org/products/bigmemorygo) (called "distributed" Ehcache in this document) use indexing. The Ehcache Search API also queries open-source Ehcache (called "standalone Ehcache without BigMemory" in this document) using a direct search method. For more information, refer to the [Implementation and Performance](#implementation-and-performance) section below.
 
@@ -52,7 +52,7 @@ You might want to do this if you have a mix of types for your keys or values. Th
 an exception if types are mixed.
 
 
-If you think that you will want to add search attributes after the cache is initialized, you can explicitly indicate the dynamic search configuration. Set the `allowDynamicIndexing` attribute to "true" to enable use of the dynamic attributes extractor (described in the [Defining Attributes](/documentation/2.8/apis/search#defining-attributes) section below):
+If you think that you will want to add search attributes after the cache is initialized, you can explicitly indicate the dynamic search configuration. Set the `allowDynamicIndexing` attribute to "true" to enable use of the dynamic attributes extractor (described in the [Defining Attributes](/documentation/2.8/apis/search.html#defining-attributes) section below):
 
 ~~~
 <cache name="cacheName" ...>
@@ -98,7 +98,7 @@ The following example shows how to programmatically create the cache configurati
     // Now create the attributes and queries, then execute.
     ...
 
-To learn more about the Ehcache Search API, see the `net.sf.ehcache.search*` packages in this [Javadoc](http://ehcache.org/apidocs/2.8.4/index.html).
+To learn more about the Ehcache Search API, see the `net.sf.ehcache.search*` packages in this [Javadoc](/apidocs/2.8.5/index.html).
 
 
 ## Defining Attributes
@@ -199,7 +199,7 @@ Assuming that we have previously created Person objects containing attributes su
 
 	cacheCfg.addSearchable(searchable);
 	config.addCache(cacheCfg);
-	
+
 	CacheManager cm = new CacheManager(config);
 	Ehcache cache = cm.getCache(“PersonCache”);
 	final String attrNames[] = {“first_name”, “age”};
@@ -222,17 +222,17 @@ Given the code above, the newly put element would be indexed on values of name a
 
 #####Dynamic Search Rules
 
-* In order to use the `DynamicAttributesExtractor`, the cache must be configured to be searchable and dynamically indexable (refer to [Making a Cache Searchable](/documentation/2.8/apis/search#making-a-cache-searchable) above). 
+* In order to use the `DynamicAttributesExtractor`, the cache must be configured to be searchable and dynamically indexable (refer to [Making a Cache Searchable](/documentation/2.8/apis/search.html#making-a-cache-searchable) above).
 
 * A dynamically searchable cache must have a dynamic extractor registered before data is added to it. (This is to prevent potential races between extractor registration and cache loading which might result in an incomplete set of indexed data, leading to erroneous search results.)
 
-* Each call on the `DynamicAttributesExtractor` method replaces the previously registered extractor, as there can be at most one extractor instance configured for each such cache. 
+* Each call on the `DynamicAttributesExtractor` method replaces the previously registered extractor, as there can be at most one extractor instance configured for each such cache.
 
 * If a dynamically searchable cache is initially configured with a predefined set of search attributes, then this set of attributes will always be queried for extracted values, regardless of whether or not there is a dynamic search attribute extractor configured.
 
-* The initial search configuration takes precedence over dynamic attributes, so if the dynamic attribute extractor returns an attribute name already used in the initial searchable configuration, an exception will be thrown. 
+* The initial search configuration takes precedence over dynamic attributes, so if the dynamic attribute extractor returns an attribute name already used in the initial searchable configuration, an exception will be thrown.
 
-* Clustered Ehcache clients do not share dynamic extractor instances or implementations. In a clustered searchable deployment, the initially configured attribute extractors cannot vary from one client to another, and this is enforced by propagating them across the cluster. However, for dynamic attribute extractors, each clustered client maintains its own dynamic extractor instance, not shared with the others. Each distributed application using dynamic search must therefore maintain its own attribute extraction consistency. 
+* Clustered Ehcache clients do not share dynamic extractor instances or implementations. In a clustered searchable deployment, the initially configured attribute extractors cannot vary from one client to another, and this is enforced by propagating them across the cluster. However, for dynamic attribute extractors, each clustered client maintains its own dynamic extractor instance, not shared with the others. Each distributed application using dynamic search must therefore maintain its own attribute extraction consistency.
 
 ## Creating a Query
 Ehcache Search uses a fluent, object-oriented Query API, following DSL principles, which should feel familiar and natural to Java programmers.
@@ -270,7 +270,7 @@ To add a criteria with a different logical operator, explicitly nest it within a
                 );
 
 More complex compound expressions can be further created with extra nesting.
-See the [Expression JavaDoc](http://ehcache.org/xref/net/sf/ehcache/search/expression/package-frame.html) for a complete list of expressions.
+See the [Expression JavaDoc](/apidocs/2.8.5/net/sf/ehcache/search/expression/package-frame.html) for a complete list of expressions.
 
 ### List of Operators
 Operators are available as methods on attributes, so they are used by adding a ".". For example, "lt" means "less than" and is used as `age.lt(10)`, which is a shorthand way of saying `age LessThan(10)`.
@@ -306,7 +306,7 @@ Note: For Strings, the operators are case-insensitive.
 Queries return a `Results` object which contains a list of objects of class `Result`. Each `Element` in the cache found with a query will be represented as a `Result` object. So if a query finds
 350 elements, there will be 350 `Result` objects. An exception to this would be if no keys or attributes are included but
 aggregators are -- in this case, there will be exactly one `Result` present.
- 
+
 A Result object can contain:
 
 *    the Element key - when `includeKeys()` is added to the query,
@@ -320,7 +320,7 @@ For example, to find the sum of the age attribute:
 
     query.includeAggregator(age.sum());
 
-For a complete list of aggregators, refer to the [Aggregators JavaDoc](http://ehcache.org/xref/net/sf/ehcache/search/aggregator/package-frame.html).
+For a complete list of aggregators, refer to the [Aggregators JavaDoc](/apidocs/2.8.5/net/sf/ehcache/search/aggregator/package-frame.html).
 
 ### Ordering Results
 Query results may be ordered in ascending or descending order by adding an `addOrderBy` clause to the query, which takes
@@ -331,7 +331,7 @@ as parameters the attribute to order by and the ordering direction. For example,
 
 ### Grouping Results
 With Ehcache 2.6 and higher, query results may be grouped similarly to using an SQL GROUP BY statement. The Ehcache GroupBy feature provides the option to group results according to specified attributes by adding an `addGroupBy` clause to the query, which takes as parameters the attributes to group by. For example, you can group results by department and location like this:
-    
+
     Query q = cache.createQuery();
     Attribute<String> dept = cache.getSearchAttribute(“dept”);
     Attribute<String> loc = cache.getSearchAttribute(“location”);
@@ -340,7 +340,7 @@ With Ehcache 2.6 and higher, query results may be grouped similarly to using an 
     q.addCriteria(cache.getSearchAttribute(“salary”).gt(100000));
     q.includeAggregator(Aggregators.count());
     q.addGroupBy(dept, loc);
- 	
+
 
 The GroupBy clause groups the results from `includeAttribute()` and allows aggregate functions to be performed on the grouped attributes. To retrieve the attributes that are associated with the aggregator results, you can use:
 
@@ -351,11 +351,11 @@ The GroupBy clause groups the results from `includeAttribute()` and allows aggre
 ####GroupBy Rules
 Grouping query results adds another step to the query--first results are returned, and second the results are grouped. This necessitates the following rules and considerations when using GroupBy:
 
-*  In a query with a GroupBy clause, any attribute specified using `includeAttribute()` should also be included in the GroupBy clause. 
+*  In a query with a GroupBy clause, any attribute specified using `includeAttribute()` should also be included in the GroupBy clause.
 *  Special KEY or VALUE attributes may not be used in a GroupBy clause. This means that `includeKeys()` and `includeValues()` may not be used in a query that has a GroupBy clause.
 *  Adding a GroupBy clause to a query changes the semantics of any aggregators passed in, so that they apply only within each group.
 *  As long as there is at least one aggregation function specified in a query, the grouped attributes are not required to be included in the result set, but they are typically requested anyway to make result processing easier.
-*  An `addCriteria()` clause applies to all results prior to grouping. 
+*  An `addCriteria()` clause applies to all results prior to grouping.
 *  If OrderBy is used with GroupBy, the ordering attributes are limited to those listed in the GroupBy clause.
 
 
@@ -384,7 +384,7 @@ In the distributed implementation with Terracotta, resources may be used to hold
 
 ### Interrogating Results
 To determine what was returned by a query, use one of the interrogation methods on `Results`:
- 
+
 * `hasKeys()`
 * `hasValues()`
 * `hasAttributes()`
@@ -396,7 +396,7 @@ We have created [a simple standalone sample application](http://github.com/sharr
 
     git clone git://github.com/sharrissf/Ehcache-Search-Sample.git
 
-The [Ehcache Test Sources](http://ehcache.org/xref-test/net/sf/ehcache/search/package-summary.html) page has further examples
+The [Ehcache Test Sources](https://fisheye.terracotta.org/browse/Ehcache/branches/ehcache-2.8.x/ehcache-core/src/test/java/net/sf/ehcache/search) page has further examples
 on how to use each Ehcache Search feature.
 
 ## Scripting Environments
@@ -440,7 +440,7 @@ Search operations perform in O(log n / number of shards) time.
 Performance is excellent but can be improved simply by adding more servers to the FX array. Also, because Search results are returned over the network, and the data returned could potentially be very large, techniques to limit return size are recommended. For more information, refer to [Best Practices](#best-practices).
 
 ### Standalone Ehcache with BigMemory
-As of version 2.6, standalone Ehcache with BigMemory uses a Search index that is maintained at the local node. The index is stored under a directory in the DiskStore and is available whether or not persistence is enabled. Any overflow from the on-heap tier of the cache, whether to the off-heap tier or to the disk tier, is searched using indexes. 
+As of version 2.6, standalone Ehcache with BigMemory uses a Search index that is maintained at the local node. The index is stored under a directory in the DiskStore and is available whether or not persistence is enabled. Any overflow from the on-heap tier of the cache, whether to the off-heap tier or to the disk tier, is searched using indexes.
 
 Search operations perform in O(log(n)) time. For tips that can aid performance, refer to [Best Practices](#best-practices).
 
@@ -470,14 +470,14 @@ Execute Time: 180ms
 
 
 ##Best Practices for Optimizing Searches
-1. Construct searches wisely by including only the data that is actually required. 
+1. Construct searches wisely by including only the data that is actually required.
   *  Only use `includeKeys()` and/or `includeAttribute()` if those values are actually required for your application logic.
-  *  If you don’t need values or attributes, be careful not to burden your queries with unnecessary work. For example, if `result.getValue()` is not called in the search results, then don't use `includeValues()` in the original query. 
-  *  Consider if it would be sufficient to get attributes or keys on demand. For example, instead of running a search query with `includeValues()` and then `result.getValue()`, run the query for keys and include `cache.get()` for each individual key. 
+  *  If you don’t need values or attributes, be careful not to burden your queries with unnecessary work. For example, if `result.getValue()` is not called in the search results, then don't use `includeValues()` in the original query.
+  *  Consider if it would be sufficient to get attributes or keys on demand. For example, instead of running a search query with `includeValues()` and then `result.getValue()`, run the query for keys and include `cache.get()` for each individual key.
 
   **Note**: As of Ehcache 2.6, `includeKeys()` and `includeValues()` have lazy deserialization, which means that keys and values are de-serialized only when `result.getKey()` or `result.getValue()` is called. This provides better latency overall, with a time cost only when the key is needed. However, there is still some time cost with `includeKeys()` and `includeValues()`, so consider carefully when constructing your queries.
-  
- 
+
+
 2. Searchable keys and values are automatically indexed by default. If you will not be including them in your query, turn off automatic indexing with the following:
 
         <cache name="cacheName" ...>
@@ -485,16 +485,16 @@ Execute Time: 180ms
           ...
           </searchable>
         </cache>
- 
-3. Limit the size of the results set with `query.maxResults(int number_of_results)`. Another recommendation for managing the size of the result set is to use a built-in Aggregator function to return a summary statistic (see the `net.sf.ehcache.search.aggregator` package in this <a href="http://ehcache.org/apidocs/2.8.4/index.html">Javadoc</a>).
- 
+
+3. Limit the size of the results set with `query.maxResults(int number_of_results)`. Another recommendation for managing the size of the result set is to use a built-in Aggregator function to return a summary statistic (see the `net.sf.ehcache.search.aggregator` package in this <a href="/apidocs/2.8.5/index.html">Javadoc</a>).
+
 4. Make your search as specific as possible. Queries with "ILike" criteria and fuzzy (wildcard) searches may take longer than more specific queries. Also, if you are using a wildcard, try making it the trailing part of the string instead of the leading part (`"321*"` instead of `"*123"`). If you want leading wildcard searches, then you should create a `<searchAttribute>` with the string value reversed in it, so that your query can use the trailing wildcard instead.
 
 5. When possible, use the query criteria "Between" instead of "LessThan" and "GreaterThan", or "LessThanOrEqual" and "GreaterThanOrEqual". For example, instead of using `le(startDate)` and `ge(endDate)`, try `not(between(startDate,endDate))`.  
- 
-6. Index dates as integers. This can save time and may even be faster if you have to do a conversion later on. 
 
-7. Searches of eventually consistent caches are faster because queries are executed immediately, without waiting for pending transactions at the local node to commit. **Note**: This means that if a thread adds an element into an eventually consistent cache and immediately runs a query to fetch the element, it will not be visible in the search results until the update is published to the server. 
+6. Index dates as integers. This can save time and may even be faster if you have to do a conversion later on.
+
+7. Searches of eventually consistent caches are faster because queries are executed immediately, without waiting for pending transactions at the local node to commit. **Note**: This means that if a thread adds an element into an eventually consistent cache and immediately runs a query to fetch the element, it will not be visible in the search results until the update is published to the server.
 
 
 
@@ -518,9 +518,7 @@ There are several ways unexpected results could present:
 *   Because the cache is always updated before the search index, it is possible that a value reference may refer to a value that has been removed from the cache. If this happens, the value will be null but the key and attributes which were supplied by the now stale cache index will be non-null. Because values in Ehcache are also allowed to be null, you cannot tell whether your value is null because it has been removed from the cache since the index was last updated or because it is a null value.
 
 #### Recommendations
-Because the state of the cache can change between search executions, the following is recommended: 
+Because the state of the cache can change between search executions, the following is recommended:
 
 *	Add all of the aggregators you want for a query at once, so that the returned aggregators are consistent.
 *	Use null guards when accessing a cache with a key returned from a search.
-
-

@@ -10,7 +10,7 @@ The Ehcache API is used in the following topologies:
 
 * Standalone &ndash; The cached data set is held in the application node. Any other application nodes are independent with no communication between them. If standalone caching is being used where there are multiple application nodes running the same application, then there is Weak Consistency between them. They contain consistent values for immutable data or after the time to live on an Element has completed and the Element needs to be reloaded. Standalone nodes can be run with open-source Ehcache or, to add off-heap memory and other features, with [BigMemory Go](http://terracotta.org/products/bigmemorygo).
 
-* Distributed &ndash; The data is held in a Terracotta Server Array with a subset of recently used data held in each application cache node. The distributed topology, available with [BigMemory Max](http://terracotta.org/products/bigmemorymax), supports a very rich set of [consistency modes](/documentation/2.8/get-started/consistency-options).
+* Distributed &ndash; The data is held in a Terracotta Server Array with a subset of recently used data held in each application cache node. The distributed topology, available with [BigMemory Max](http://terracotta.org/products/bigmemorymax), supports a very rich set of [consistency modes](/documentation/2.8/get-started/consistency-options.html).
 
 * Replicated – The cached data set is held in each application node and data is copied or invalidated across the cluster without locking. Replication can be either asynchronous or synchronous, where the writing thread blocks while propagation occurs. The only consistency mode available in this topology is Weak Consistency. nodes can be run with open-source Ehcache.
 

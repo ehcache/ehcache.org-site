@@ -2,12 +2,12 @@
 ---
 # Tuning Garbage Collection
 
- 
+
 
 ## Introduction
 Applications that use Ehcache can be expected to use large heaps. Some Ehcache applications have heap sizes greater than 6 GB.
 Ehcache works well at this scale. However, large heaps or long held objects, which is what a cache is composed of, can place strain on the
-default Garbage Collector (GC). With Ehcache 2.3 and higher, this problem can be solved with [BigMemory](/documentation/2.8/configuration/bigmemory) in-memory data management, which provides an additional store outside
+default Garbage Collector (GC). With Ehcache 2.3 and higher, this problem can be solved with [BigMemory](/documentation/2.8/configuration/bigmemory.html) in-memory data management, which provides an additional store outside
 of the heap.
 
 ## Detecting Garbage Collection Problems
@@ -34,7 +34,7 @@ java ... -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC
 -XX:NewSize=<1/4 of total heap size> -XX:SurvivorRatio=16
 ~~~
 
-Note that it is better to use `-XX:+DisableExplicitGC`, instead of calling `System.gc()`. It also helps to use the low pause collector `-XX:+UseConcMarkSweepGC`. 
+Note that it is better to use `-XX:+DisableExplicitGC`, instead of calling `System.gc()`. It also helps to use the low pause collector `-XX:+UseConcMarkSweepGC`.
 
 ## Distributed Caching Garbage Collection Tuning
 
@@ -48,4 +48,3 @@ The default in JDK 6 was increased to 1 hour. The following system properties co
 ~~~
 
 Increase the interval as required in your application.
- 

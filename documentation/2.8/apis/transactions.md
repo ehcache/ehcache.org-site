@@ -3,7 +3,7 @@
 # Transactions in Ehcache
 
 
- 
+
 
 
 ## Introduction
@@ -46,7 +46,7 @@ can afford to live with stale data for a brief period of time.
 * `xa_strict`
     Same as xa but use it only if you need strict XA disaster recovery guarantees. In this mode, the cached data can never
 get out of sync with the other resources participating in the transactions, even in case of a crash but you pay a high
-price in performance to get that extra safety. 
+price in performance to get that extra safety.
 
 ## Requirements
 The objects you are going to store in your transactional cache must:
@@ -64,7 +64,7 @@ The allowed values are:
 
 * `xa_strict`
 * `xa`
-* `local` 
+* `local`
 * `off`
 
 The default value is off.
@@ -84,7 +84,7 @@ Enabling a cache for `xa_strict` transactions is shown in the following example:
 ### Transactional Caches with Spring
 Note the following when using Spring:
 
-* If you access the cache from an @Transactional Spring-annotated method, then begin/commit/rollback statements are not required in application code as they are emitted by Spring. 
+* If you access the cache from an @Transactional Spring-annotated method, then begin/commit/rollback statements are not required in application code as they are emitted by Spring.
 * Both Spring and Ehcache need to access the transaction manager internally, and therefore you must inject your chosen transaction manager into Spring's PlatformTransactionManager as well as use an appropriate lookup strategy for Ehcache.
 * The Ehcache default lookup strategy may not be able to detect your chosen transaction manager. For example, it cannot detect the WebSphere transaction manager (see [Transactions Managers](#transaction-managers)).
 * Configuring a `<tx:method>` with read-only=true could be problematic with certain transaction managers such as WebSphere.
@@ -112,7 +112,7 @@ transactions data, so recovery errors after a crash may be reported by the trans
 ### Recovery
 At any time after something went wrong, an `XAResource` may be asked to recover. Data that has been prepared may either be committed or rolled back
 during recovery. In accordance with XA, data that has not yet been `prepared` is discarded.
-The recovery guarantee differs depending on the xa mode. 
+The recovery guarantee differs depending on the xa mode.
 
 #### xa Mode
 With `xa`, the cache doesn't get registered as an {XAResource} with the transaction manager but merely can follow the flow of a JTA
@@ -153,7 +153,7 @@ The following snippet from our SimpleTX servlet shows a complete transaction.
        "/>
        rollbackTransaction(ut);
     "/>
-    
+
 The source code for the demo can be checked out from the [Terracotta Forge](http://svn.terracotta.org/svn/forge/projects/ehcache-jta-sample/trunk). A README.txt explains how to get the JTA Sample app going.
 
 ### XA Banking Application
@@ -283,7 +283,7 @@ following rules apply:
 * The following transactions will block on the cache operation until either the first transaction completes or the transaction timeout occurs.
 
 Under the covers, when an element is involved in a transaction, it is replaced with a new element with a marker that is locked, along
-with the transaction ID. 
+with the transaction ID.
 
 ### What granularity of locking is used?
 Ehcache standalone up to 2.3 used page level locking, where each segment in the `CompoundStore` is locked. From 2.4, it is one

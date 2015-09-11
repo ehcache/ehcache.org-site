@@ -2,7 +2,7 @@
 ---
 # Cache Decorators
 
- 
+
 
 ## Introduction
 Ehcache 1.2 introduced the Ehcache interface, of which Cache is an implementation. It is possible and encouraged
@@ -126,14 +126,14 @@ with `CacheManager.addDecoratedCache()`.
 * decorated one.
 * <p/>
 * This method adds the decorated cache assuming it has a different name. If another
-* cache (decorated or not) with the same name already exists, it will throw 
+* cache (decorated or not) with the same name already exists, it will throw
 * {@link ObjectExistsException}. For replacing existing
 * cache with another decorated cache having same name, please use
 * {@link #replaceCacheWithDecoratedCache(Ehcache, Ehcache)"/>
 * <p/>
 * Note that any overridden Ehcache methods by the decorator will take on new
 * behaviours without casting. Casting is only required for new methods that the
-* decorator introduces. For more information see the well known Gang of Four 
+* decorator introduces. For more information see the well known Gang of Four
 * Decorator pattern.
 *
 * @param decoratedCache
@@ -169,4 +169,4 @@ SelfPopulatingCache extends BlockingCache. Multiple threads attempting to access
 
 ### Caches with Exception Handling
 
-These are decorated. See [Cache Exception Handlers](/documentation/2.8/apis/cache-exception-handlers) for full details. 
+These are decorated. See [Cache Exception Handlers](/documentation/2.8/apis/cache-exception-handlers.html) for full details.

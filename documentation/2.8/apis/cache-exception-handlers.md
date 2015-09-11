@@ -3,7 +3,7 @@
 # Cache Exception Handlers
 
 
- 
+
 
 ## Introduction
 By default, most cache operations will propagate a runtime CacheException on failure. An interceptor,
@@ -102,7 +102,7 @@ interface, which is reproduced below:
     "/>
 
 The implementations need to be placed in the classpath accessible to Ehcache.
-See the chapter on [Classloading](/documentation/2.8/user-guide/class-loading) for details on how classloading
+See the chapter on [Classloading](/documentation/2.8/apis/class-loading.html) for details on how classloading
 of these classes will be done.
 
 ## Programmatic Configuration

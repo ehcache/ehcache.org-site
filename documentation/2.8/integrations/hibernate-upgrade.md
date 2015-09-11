@@ -2,13 +2,13 @@
 ---
 # Upgrading From Ehcache versions prior to 2.0  <a name="Upgrading-From-Ehcache-versions-prior-to-20"/>
 
- 
+
 
 ##Introduction
 This page contains notes for users upgrading from older versions Ehcache prior to 2.0.
 
 ## Support for Hibernate 3.3 SPI
-Beginning with  Ehcache 2.0 there is support for the Hibernate 3.3 SPI implementation. 
+Beginning with  Ehcache 2.0 there is support for the Hibernate 3.3 SPI implementation.
 This is important because Hibernate 3.3 has an updated caching SPI. Although still present in 3.3, the Hibernate 3.2 caching SPI has been deprecated.
 
 ## Support for Hibernate 3.5 SPI

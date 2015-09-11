@@ -2,7 +2,7 @@
 ---
 #Data Freshness and Expiration
 
- 
+
 
 ## Introduction
 This page addresses how to maintain cache "freshness" by configuring TTL and data expiration properly.
@@ -27,7 +27,7 @@ The data expiration method is the simplest and most straightforward.
 
 It gives you the programmer the most control over the data synchronization, and doesn't require cooperation from any external systems, you simply set a data expiration policy and let Ehcache expire data from the cache, thus allowing fresh reads to re-populate and re-synchronize the cache.
 
-If you choose the data expiration method, you can read more about the cache configuration settings at [cache eviction algorithms](/documentation/2.8/apis/cache-eviction-algorithms) and [timeToIdle and timeToLive configuration settings](/documentation/2.8/configuration/configuration).
+If you choose the data expiration method, you can read more about the cache configuration settings at [cache eviction algorithms](/documentation/2.8/apis/cache-eviction-algorithms.html) and [timeToIdle and timeToLive configuration settings](/documentation/2.8/configuration/configuration.html).
 The most important concern to consider when using the expiration method is balancing data-freshness with database load. The shorter you make the expiration settings - meaning the more "fresh" you try to make the data - the more load you will incur on the database.
 
 Try out some numbers and see what kind of load your application generates. Even modestly short values such as 5 or 10 minutes will afford significant load reductions.

@@ -6,23 +6,23 @@ The Ehcache Technical FAQ answers frequently asked questions on how to use Ehcac
 
 * [Release Notes](http://www.terracotta.org/confluence/display/release/Home) &ndash; Lists features and issues for specific versions of Ehcache and other Terracotta products.
 * [Compatibility Information](http://www.terracotta.org/confluence/display/release/Home) &ndash; Includes tables on compatible versions of Ehcache and other Terracotta products, JVMs, and application servers.
-* [General Information](http://www.ehcache.org/about) &ndash; For feature descriptions and news about Ehcache. 
+* [General Information](http://www.ehcache.org/about) &ndash; For feature descriptions and news about Ehcache.
 * [Ehcache Forums](https://groups.google.com/forum/#!forum/ehcache-users) &ndash; If your question doesn't appear below, consider posting it on the Ehcache Forum.
 
 This FAQ is organized into the following sections:
 
- 
+
 
 
 
 ## CONFIGURATION
 
- 
 
-###<a id"96514">General Ehcache</a>
 
-#### Where is the source code? 
- The source code is distributed in the root directory of the download. 
+### General Ehcache
+
+#### Where is the source code?
+ The source code is distributed in the root directory of the download.
 It is also available through [SVN](http://svn.terracotta.org/svn/ehcache/).
 
 #### Can you use more than one instance of Ehcache in a single VM?
@@ -38,7 +38,7 @@ where you want different configurations.
 #### What elements are mandatory in ehcache.xml?
  The documentation has been updated with comprehensive coverage of the
 schema for Ehcache and all elements and attributes, including whether
-they are mandatory. See the [Configuration](http://ehcache.org/documentation/2.7/configuration/configuration) page.
+they are mandatory. See the [Configuration](/documentation/2.7/configuration/configuration) page.
 
 #### How is auto-versioning of elements handled?
 Automatic element versioning works only with unclustered MemoryStore caches. Distributed caches or caches that use off-heap or disk stores cannot use auto-versioning.
@@ -49,7 +49,7 @@ To enable auto-versioning, set the system property `net.sf.ehcache.element.versi
 The Ehcache Fast Restart feature provides the option to store a fully consistent copy of the in-memory data on the local disk at all times. After any kind of shutdown — planned or unplanned — the next time your application starts up, all of the data that was in memory is still available and very quickly accessible. To configure your cache for disk persistence, use the "localRestartable" persistence strategy. For more information, refer to [Persistence and Restartability](/documentation/2.7/configuration/fast-restart).
 
 
-### <a id"96514">Replicated Caching</a>
+### Replicated Caching
 
 #### What is the minimum configuration to get replicated caching going?
  The minimum configuration you need to get replicated caching going is:
@@ -88,7 +88,7 @@ by calling the notifyCacheAdded event.
     getCache().getCacheManager().getCacheManagerEventListenerRegistry().notifyCacheAdded("cacheName");
 
 
-### <a id"96514">Distributed Caching</a>
+### Distributed Caching
 
 #### What stores are available and how are they configured?
 The Terracotta server provides an additional store, generally referred to as the Level 2 or L2 store.
@@ -100,16 +100,16 @@ is not used, and the cache should be configured for 'distributed' persistence st
 can be further configured with the `tc-config.xml`.
 
 #### What is the recommended way to write to a database?
-There are two patterns available: write-through and write-behind caching. In write-through caching, writes to the cache cause writes to an underlying resource. The cache acts as a facade to the underlying resource. With this pattern, it often makes sense to read through the cache too. Write-behind caching uses the same client API; however, the write happens asynchronously. 
+There are two patterns available: write-through and write-behind caching. In write-through caching, writes to the cache cause writes to an underlying resource. The cache acts as a facade to the underlying resource. With this pattern, it often makes sense to read through the cache too. Write-behind caching uses the same client API; however, the write happens asynchronously.
 
 While file systems or a web-service clients can underlie the facade of a write-through cache, the most common underlying resource is a database.
 
 
-#### How do I make the Terracotta URL available in different environments using different Terracotta servers? 
+#### How do I make the Terracotta URL available in different environments using different Terracotta servers?
 
 You can externalize the value of the `terracottaConfig url` from the ehcache.xml file by using a system property for the `url` attribute. Add this in your ehcache.xml config file:
 
-    <terracottaConfig url="${my.terracotta.server.url}"/> 
+    <terracottaConfig url="${my.terracotta.server.url}"/>
 
 and define my.terracotta.server.url as a system property.
 
@@ -124,21 +124,20 @@ It has been deprecated. Use the "consistency" attribute instead.
 Any configuration files using coherent=true will be mapped to consistency=strong, and coherent=false
 will be mapped to consistency=eventual.
 
-#### Should I use the following directive when doing distributed caching? 
+#### Should I use the following directive when doing distributed caching?
 
       <cacheManagerEventListenerFactory class="" properties=""/>
 
 No, it is unrelated. It is for listening to changes in your local CacheManager.
 
-{/toc-zone}
 
 
 
 ## DEVELOPMENT
 
- 
 
-###<a id"96514">General Ehcache</a>
+
+### General Ehcache
 
 #### Can I use Ehcache as a memory cache only?
  Yes. Just set the persistence strategy of cache to "none".
@@ -152,7 +151,7 @@ setting the maxSize to 0 now gives an infinite capacity.
 multiple threads. It is inherently not thread-safe to modify the value.
 It is safer to retrieve a value, delete the cache element and then
 reinsert the value.
- The [UpdatingCacheEntryFactory](http://ehcache.org/apidocs/2.7.6/net/sf/ehcache/constructs/blocking/UpdatingCacheEntryFactory.html)
+ The [UpdatingCacheEntryFactory](/apidocs/2.7.6/net/sf/ehcache/constructs/blocking/UpdatingCacheEntryFactory.html)
 does work by modifying the contents of values in place in the
 cache. This is outside of the core of Ehcache and is targeted at
 high performance CacheEntryFactories for SelfPopulatingCaches.
@@ -162,9 +161,9 @@ high performance CacheEntryFactories for SelfPopulatingCaches.
  If an attempt is made to replicate or overflow a non-serializable element to disk, the element is removed and a warning is logged.
 
 #### What is the difference between TTL, TTI, and eternal?
- These are three cache attributes that can be used to build an effective eviction configuration. It is advised to test and tune these values to help optimize cache performance. TTI `timeToIdleSeconds` is the maximum number of seconds that an element can exist in the cache without being accessed, while TTL `timeToLiveSeconds` is the maximum number of seconds that an element can exist in the cache whether or not is has been accessed. If the `eternal` flag is set, elements are allowed to exist in the cache eternally and none are evicted. The eternal setting overrides any TTI or TTL settings. 
- These attributes are set for the entire cache in the configuration file. If you want to set them per element, you must do it programmatically. 
- For more information, see [Setting Expiration](http://ehcache.org/documentation/2.7/configuration/data-life#24283).
+ These are three cache attributes that can be used to build an effective eviction configuration. It is advised to test and tune these values to help optimize cache performance. TTI `timeToIdleSeconds` is the maximum number of seconds that an element can exist in the cache without being accessed, while TTL `timeToLiveSeconds` is the maximum number of seconds that an element can exist in the cache whether or not is has been accessed. If the `eternal` flag is set, elements are allowed to exist in the cache eternally and none are evicted. The eternal setting overrides any TTI or TTL settings.
+ These attributes are set for the entire cache in the configuration file. If you want to set them per element, you must do it programmatically.
+ For more information, see [Setting Expiration](/documentation/2.7/configuration/data-life#24283).
 
 #### If null values are stored in the cache, how can my code tell the difference between "intentional" nulls and non-existent entries?
 
@@ -198,7 +197,7 @@ diskExpiryThreadIntervalSeconds to a very large value.
 
 
 
-### <a id"96514">Replicated Caching</a>
+### Replicated Caching
 
 #### How many threads does Ehcache use, and how much memory does that consume?
 The amount of memory consumed per thread is determined by the Stack Size. This is set using -Xss.
@@ -213,13 +212,13 @@ If you are not doing any of the above, no extra threads are created.
 With JDK versions prior to JDK1.5, the number of RMI registries is limited to one per virtual machine, and therefore Ehcache is limited to one CacheManager per virtual machine operating in a replicated cache topology. Because this is the expected deployment configuration, however,
 there should be no practical effect. The telltale error is `java.rmi.server.ExportException: internal error: ObjID already in use`
 On JDK1.5 and higher, it is possible to have multiple CacheManagers per VM, each participating in the same or different replicated cache topologies.
-Indeed the replication tests do this with 5 CacheManagers on the same VM, all run from JUnit. 
+Indeed the replication tests do this with 5 CacheManagers on the same VM, all run from JUnit.
 
 
-### <a id"96514">Distributed Caching</a>
+### Distributed Caching
 
 #### Is expiry the same in distributed Ehcache?
-`timeToIdle` and `timeToLive` work as usual. Note however that the `eternal` attribute, when set to "true", overrides `timeToLive` and `timeToIdle` so that no expiration can take place. 
+`timeToIdle` and `timeToLive` work as usual. Note however that the `eternal` attribute, when set to "true", overrides `timeToLive` and `timeToIdle` so that no expiration can take place.
 Note also that expired elements are *not* necessarily evicted elements, and that evicted elements are *not* necessarily expired elements.
 See the [Terracotta documentation](http://www.terracotta.org/documentation/2.7/enterprise-ehcache/reference-guide) for more information on expiration and eviction in a distributed cache.
 Ehcache 1.7 introduced a less fine-grained age recording in Element
@@ -229,7 +228,7 @@ In Ehcache, elements can have overridden TTI and TTLs. Terracotta distributed Eh
 #### What eviction strategies are supported?
 Standalone Ehcache supports LRU, LFU and FIFO eviction strategies, as well as custom evictors. For more information, refer to [Cache Eviction Algorthims](/documentation/2.7/apis/cache-eviction-algorithms).
 
-**Note**: There is no user selection of eviction algorithms with clustered caches. The attribute MemoryStoreEvictionPolicy is ignored (a clock eviction policy is used instead), and if allowed to remain in a clustered cache configuration, the MemoryStoreEvictionPolicy may cause an exception. 
+**Note**: There is no user selection of eviction algorithms with clustered caches. The attribute MemoryStoreEvictionPolicy is ignored (a clock eviction policy is used instead), and if allowed to remain in a clustered cache configuration, the MemoryStoreEvictionPolicy may cause an exception.
 
 #### How does the TSA eviction algorithm work?
 The Terracotta Server Array algorithm is optimised for fast server-side performance.
@@ -258,15 +257,14 @@ An element in Ehcache is guaranteed to `.equals()` another as it moves between s
 However in identity mode, Terracotta makes a further guarantee that the key and the value `==`. This is achieved
 using extensions to the Java Memory Model.
 
-{/toc-zone}
 
 
 
 ## ENVIRONMENT AND INTEROPERABILITY
 
- 
 
-###<a id"96514">General Ehcache</a>
+
+### General Ehcache
 
 #### What version of JDK does Ehcache run with?
 
@@ -297,7 +295,7 @@ See the [OSGi section](http://terracotta.org/documentation/2.7/enterprise-ehcach
 
 
 #### Is Ehcache compatible with Google App Engine?
-Version 1.6 is compatible. See [Google App Engine Caching](http://ehcache.org/documentation/2.7/integrations/googleappengine).
+Version 1.6 is compatible. See [Google App Engine Caching](/documentation/2.7/integrations/googleappengine).
 
 #### Why is ActiveMQ retaining temporary destinatons?
 ActiveMQ seems to have a bug in at least ActiveMQ 5.1, where it does not cleanup temporary queues, even though they have been
@@ -311,9 +309,9 @@ tests fine.
 #### I am using Tomcat 5, 5.5 or 6 and I am having a problem. What can I do?
 Tomcat is such a common deployment option for applications using Ehcache that there is a page on known
 issues and recommended practices.
-See [Tomcat Issues and Best Practices](http://ehcache.org/documentation/2.7/integrations/tomcat).
+See [Tomcat Issues and Best Practices](/documentation/2.7/integrations/tomcat).
 
-### <a id"96514">Replicated Caching</a>
+### Replicated Caching
 
 #### With replicated caching on Ubuntu or Debian, why am I see the warning below?
 
@@ -337,7 +335,7 @@ Some app servers do not permit the creation of message listeners. This issue has
 Websphere 4 did allow it. Tomcat allows it. Glassfish Allows it. Jetty allows it.
 Usually there is a way to turn off strict support for EJB checks in your app server. See your vendor documentation.
 
-### <a id"96514">Distributed Caching</a>
+### Distributed Caching
 
 #### Why is JRockit slow?
 JRockit has an has a bug where it reports the younggen size instead of the old to our CacheManager so we over-aggressively
@@ -350,18 +348,17 @@ For the latest compatibility information, see [Release Information](http://www.t
 A local CacheEventListener will work locally, but other nodes in a Terracotta cluster are not notified unless the
 TerracottaCacheEventReplicationFactory event listener is registered for the cache.
 
-{/toc-zone}
 
 
 
 ## OPERATIONS
 
- 
 
-###<a id"96514">General Ehcache</a>
+
+### General Ehcache
 
 #### How do you get an element without affecting statistics?
- Use the [Cache.getQuiet()](http://ehcache.org/apidocs/2.7.6/net/sf/ehcache/Cache.html#getQuiet%28java.io.Serializable%29) method. It returns an element without updating statistics.
+ Use the [Cache.getQuiet()](/apidocs/2.7.6/net/sf/ehcache/Cache.html#getQuiet%28java.io.Serializable%29) method. It returns an element without updating statistics.
 
 #### Is there a simple way to disable Ehcache when testing?
 Set the system property `net.sf.ehcache.disabled=true` to disable Ehcache. This can easily be done using `-Dnet.sf.ehcache.disabled=true` in the command line. If Ehcache is disabled, no elements will be added to a cache.
@@ -387,7 +384,7 @@ This is not possible. However, you can achieve the same result as follows:
 Ehcache, you should call CacheManager.getInstance().shutdown() so that
 the threads are stopped and cache memory is released back to the JVM. However, if the CacheManager does not get shut down, it should not be a problem.
 There is a shutdown hook which calls the shutdown on JVM exit. This is
-explained in the documentation [here](http://ehcache.org/documentation/2.7/operations/shutdown).
+explained in the documentation [here](/documentation/2.7/operations/shutdown).
 
 #### Can you use Ehcache after a CacheManager.shutdown()?
  Yes. When you call CacheManager.shutdown() is sets the singleton in
@@ -408,12 +405,12 @@ Statistics gathering is disabled by default in order to optimize performance. Yo
 
     To function, certain features in the Developers Console require statistics to be enabled.
 
-Statistics should be enabled when using the [Ehcache Monitor](http://ehcache.org/documentation/2.7/operations/monitor).
+Statistics should be enabled when using the [Ehcache Monitor](/documentation/2.7/operations/monitor).
 
 #### How do I detect deadlocks in Ehcache?
 Ehcache does not experience deadlocks. However, deadlocks in your application code can be detected with certain tools, such as [JConsole](/documentation/2.7/operations/jmx#JConsole-Example).
 
-### <a id"96514">Replicated Caching</a>
+### Replicated Caching
 
 #### How can I see if replicated caching is working?
 You should see the listener port open on each server.
@@ -427,7 +424,7 @@ If you see nothing happening while cache operations should be going through, ena
 Finally, the debugger in Ehcache 1.5 has been improved to provide far more information on the caches that are
   replicated and events which are occurring.
 
-### <a id"96514">Distributed Caching</a>
+### Distributed Caching
 
 #### How do I change a distributed cache configuration?
 Terracotta clusters remember the configuration settings. You need to delete the cluster to change cache settings of Terracotta distributed
@@ -451,15 +448,14 @@ These are time-based gauges, based on once-per-second measurements. These are di
  and throw a timeout to the application. This is however somewhat messy, since the application threads may receive a
  timeout but the "Terracotta transaction" may still make it through to the L2.
 
-{/toc-zone}
 
 
 
 ## TROUBLESHOOTING
 
- 
 
-###<a id"96514">General Ehcache</a>
+
+### General Ehcache
 
 #### I have created a new cache and its status is STATUS_UNINITIALISED. How do I initialise it?
 You need to add a newly created cache to a CacheManager before it gets initialised. Use code like the following:
@@ -495,7 +491,7 @@ It was configured for temporary disk swapping that is cleared after a restart. F
 A clustered cache created programmatically on one application node does not automatically appear on another node in the cluster. The expected behavior is that caches (whether clustered or not) added programmatically on one client are not visible on other clients. CacheManagers are not clustered, only caches are. So if you want to add a cache programmatically, you would have to add it on all the clients. If that cache is configured to be Terracotta clustered, then it will use the same store, and changes applied to cache entries on one client will automatically reflect on the second client.
 
 
-### <a id"96514">Replicated Caching</a>
+### Replicated Caching
 
 #### I see log messages about SoftReferences. What are these about and how do I stop getting the messages?
 Ehcache uses SoftReferences with asynchronous RMI-based replication, so that replicating caches do not run out of memory if the network
@@ -510,20 +506,20 @@ message in the receiving CachePeer.
 Having done the above, SoftReferences will then only be reclaimed if there is some interruption to replication and the message queue
  gets dangerously high.
 
-### <a id"96514">Distributed Caching</a>
+### Distributed Caching
 
 #### Why isn't the local node's disk used with Terracotta clustered caches?
 Because the TSA itself provides both disk persistence (if required) and scale out, the local DiskStore
-is not available with Terracotta clustered caches. 
+is not available with Terracotta clustered caches.
 
 #### `Cache.removeAll()` seems to take a long time. Why?
 
-When `removeAll()` is used with distributed caches, the operation has to clear entries in the Terracotta Server Array as well as in the client. Additional time is required for this operation to complete. 
+When `removeAll()` is used with distributed caches, the operation has to clear entries in the Terracotta Server Array as well as in the client. Additional time is required for this operation to complete.
 
 #### I have TTL/TTI not configured or set to 0 (eternal) and have created Elements with a specific TTL which is being ignored. Why?
 TTL/TTI are meant to control the relevancy of data for business reasons, not as an operational constraint for managing resources. Without the occurrence of so-called "inline" eviction, which happens whenever an expired element is accessed, it is possible for expired elements
-to continue existing in the Terracotta Server Array. This is to minimize the high cost of checking 
-individual elements for expiration. To force Terracotta servers to inspect element TTL/TTIs (which *lowers* performance), set 
+to continue existing in the Terracotta Server Array. This is to minimize the high cost of checking
+individual elements for expiration. To force Terracotta servers to inspect element TTL/TTIs (which *lowers* performance), set
 `ehcache.storageStrategy.dcv2.perElementTTITTL.enabled` = true" in system properties.
 
 
@@ -543,15 +539,14 @@ There are a few ways to try to solve this, in order of preference:
 2. Add BigMemory to allow data sets that cannot fit in heap&mdash;but can fit in memory&mdash;to remain very close to your application.
 3. Tune the [concurrency of the cache](/documentation/2.7/configuration/distributed-cache-configuration#70873). It may be set too high for a small data set.
 
-{/toc-zone}
 
 
 
 ## SPECIFIC ERRORS AND WARNINGS
 
- 
 
-###<a id"96514">General Ehcache</a>
+
+### General Ehcache
 
 #### I am using Java 6 and getting a java.lang.VerifyError on the Backport Concurrent classes. Why?
 The backport-concurrent library is used in Ehcache to provide java.util.concurrency facilities for Java 4 - Java 6.
@@ -576,19 +571,19 @@ To eliminate the warning:
 * Use a separate configuration per instance.
 * If you only want one instance, use the singleton creation methods, i.e., `CacheManager.getInstance()`. In Hibernate, there is a special provider for this called
  `net.sf.ehcache.hibernate.SingletonEhCacheProvider`.
- See [Hibernate](http://ehcache.org/documentation/2.7/integrations/hibernate).
+ See [Hibernate](/documentation/2.7/integrations/hibernate).
 
 #### What does the following error mean? "Caches cannot be added by name when default cache config is not specified in the config. Please add a default cache config in the configuration."
-From Ehcache 2.4, the `defaultCache` is optional. When you try to programmatically add a cache by name, `CacheManager.add(String name)`, a default cache is expected to exist in the CacheManager configuration. To fix this error, add a defaultCache to the CacheManager's configuration. 
+From Ehcache 2.4, the `defaultCache` is optional. When you try to programmatically add a cache by name, `CacheManager.add(String name)`, a default cache is expected to exist in the CacheManager configuration. To fix this error, add a defaultCache to the CacheManager's configuration.
 
-### <a id"96514">Replicated Caching</a>
+### Replicated Caching
 
 #### Why do I get a RemoteCacheException in a replicated cache topology?
 
 The error is `net.sf.ehcache.distribution.RemoteCacheException: Error doing put to remote peer. Message was: Error unmarshaling return header; nested exception is: java.net.SocketTimeoutException: Read timed out.`
 This is typically solved by increasing `socketTimeoutMillis`. This setting is the amount of time a sender
 should wait for the call to the remote peer to complete. How long it takes depends on the network and
-the size of the elements being replicated. 
+the size of the elements being replicated.
 The configuration that controls this is the `socketTimeoutMillis` setting in `cacheManagerPeerListenerFactory`.
 120000 seems to work well for most scenarios.
 
@@ -600,13 +595,10 @@ The configuration that controls this is the `socketTimeoutMillis` setting in `ca
 
 
 
-### <a id"96514">Distributed Caching</a>
+### Distributed Caching
 
 #### When I start Ehcache I get "WARN - Can't connect to server[localhost:9510:s1]. Retrying...".
 You have not configured a Terracotta server for Ehcache to connect to, or that server isn't reachable.
 
 #### I get a net.sf.ehcache.CacheException: Terracotta cache classes are not available.
 You need to include the ehcache-terracotta jar in your classpath.
-
-{/toc-zone}
-

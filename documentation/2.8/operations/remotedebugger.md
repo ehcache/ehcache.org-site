@@ -2,7 +2,7 @@
 ---
 # Remote Network debugging and monitoring for Replicated Caches <a name="Remote-Network-debugging-and-monitoring-for-Distributed-Caches"/>
 
- 
+
 
 ## Introduction
 The `ehcache-1.x-remote-debugger.jar` can be used to debug replicated cache operations. When started with the same configuration as the
@@ -11,7 +11,7 @@ it can help to identify the cause of cluster problems.
 
 ## Packaging
 From version 1.5 it is packaged in its own distribution tarball along with a maven module.
-It is provided as an executable JAR on the [download page](http://ehcache.org/downloads/catalog).
+It is provided as an executable JAR on the [download page](/downloads).
 
 ## Limitations
 This version of the debugger has been tested only with the default RMI based replication.
