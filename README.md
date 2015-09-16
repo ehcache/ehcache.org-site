@@ -14,6 +14,11 @@
 * "jekyll serve -w"   ( then point your browser at http://localhost:4000" )
 
 
+* To generate the *full* site including Ehcache 3 docs, you need to do the following:
+  * within the root your clone of this repository, the contents of ehcache3 repository needs to be linked/or copied as "_eh3"
+  * within the root your clone of this repository, the contents of ehcache3 repository's docs/src/docs/asciidoc/user folder needs to be linked/or copied as "documentation/3.0"
+  
+
 ---
 
 
@@ -21,11 +26,5 @@
 
 * "About" -> "Features" page:
   * could still use some love, but isn't so bad anymore
-
-* "Downloads" page:
-  * validate links are to what we want .
-
-* Documentation 
-  * was pulled in from existing ehcache.org site - some links in older docs are broken due to bad (incomplete) URLs.
 
 
