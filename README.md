@@ -1,5 +1,7 @@
 ### Instructions for building/previewing
 
+* On Mac OS X, install Xcode command line tools by executing: `xcode-select --install`
+
 * Install Jekyll if you have not - follow instructions on the Jekyll home page (after first installing Ruby)
 [http://jekyllrb.com/](http://jekyllrb.com/)
 
