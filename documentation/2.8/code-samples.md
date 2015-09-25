@@ -94,7 +94,7 @@ singletonManager.addCache(memoryOnlyCache);
 Cache test = singletonManager.getCache("testCache");
 </pre>
 
-See the cache [constructor](/apidocs/2.8/net/sf/ehcache/Cache.html) for the full parameters  for a new Cache.
+See the cache [constructor](/apidocs/2.8.5/net/sf/ehcache/Cache.html) for the full parameters  for a new Cache.
 
 Remove cache called sampleCache1:
 
