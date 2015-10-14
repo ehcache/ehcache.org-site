@@ -17,7 +17,7 @@ JSR107 and the roadmap ahead.
 You can also use this occasion to meet and directly talk about your use cases with them and also get to know how you
 can become part of the large open source ecosystem around Ehcache.
 
-[View flier with address and other details](ehcache_bangalore_meetup.pdf).
+[View flier with address and other details](ehcache_a3_poster.jpg).
 
 
 ### JavaOne : October 25-29, 2015 : San Francisco, CA
@@ -37,4 +37,4 @@ Speakers to be announced - look for great sessions on Off-heap storage and makin
 ### SpringOne 2GX : September 14-17, 2015: Washington, DC
 [Alex Snaps and Chris Dennis](https://2015.event.springone2gx.com/schedule/sessions/bringing_javax_cache_ing_to_your_application.html) speak about Bringing javax.cache’ing to your application.
 
-A recording should become available through the SpringOne 2GX conference
+A recording should become available soon through the SpringOne 2GX conference organizers.
