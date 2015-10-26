@@ -11,7 +11,7 @@ active_menu_id: ehc_mnu_download
 
 #### Ehcache 2.x
 
-> [Ehcache 2.10.0](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.0-distribution.tar.gz)  .tar.gz
+> [Ehcache 2.10.1](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.1-distribution.tar.gz)  .tar.gz
 
 
 For more information on this release, see the [release notes](http://www.terracotta.org/confluence/display/release/Home).
@@ -40,7 +40,7 @@ To include Ehcache 2.x in your project, use:
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;2.3.1&lt;/version&gt;
+      &lt;version&gt;2.10.1&lt;/version&gt;
       &lt;type&gt;pom&lt;/type&gt;
     &lt;/dependency&gt;
 </code></pre>
