@@ -8,7 +8,7 @@ active_sub_menu_id: ehc_mnu_about_about
 
 {% include about_intro.html %}
 
-Checkout [Ehcache 3](http://ehcache.github.io/) which is under active development with milestone builds available now. It natively complies with JSR107 (JCache spec), supports offheap storage, and has many other additions and improvements.
+Checkout [Ehcache 3](/documentation/3.0/) which is under active development with milestone builds available now. It natively complies with JSR107 (JCache spec), supports offheap storage, and has many other additions and improvements.
 
 Terracotta actively develops, maintains, and supports Ehcache as a professional open source project available under an Apache 2 license.  Contributors are welcome to join our community.
 
