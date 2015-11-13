@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/integrations/glassfish.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,154 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="glassfish-how-to-&amp;-faq-">Glassfish How To &amp; FAQ <a name="glassfish-how-to-and-faq" id="glassfish-how-to-and-faq"></a></h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#glassfish-how-to-&amp;-faq-">
+                        <span class="toctext">Glassfish How To &amp; FAQ </span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#versions">
+                              <span class="toctext">Versions</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#deployment">
+                              <span class="toctext">Deployment</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-5">
+                           <a href="#troubleshooting-&lt;a-name=”glassfish-faq}">
+                              <span class="toctext">Troubleshooting <a name="”glassfish-faq}&lt;/span" id="”glassfish-faq}&lt;/span"></a></span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>The maintainer uses Ehcache in production with Glassfish. This page explains how to package a sample application using Ehcache and deploy to Glassfish.</p>
+
+<h2 id="versions">Versions</h2>
+<p>Ehcache has been tested with and is used in production with Glassfish V1, V2 and V3.
+In particular:</p>
+
+<ul>
+  <li>Ehcache 1.4 - 1.7 has been tested with Glassfish 1 and 2.</li>
+  <li>Ehcache 2.0 has been tested with Glassfish 3.</li>
+</ul>
+
+<h2 id="deployment">Deployment</h2>
+<p>Ehcache comes with a sample web application which is used to test the page caching. The page caching is the only area
+that is sensitive to the Application Server. For Hibernate and general caching, it is only dependent on your Java version.</p>
+
+<p>You need:</p>
+
+<ul>
+  <li>An Ehcache core installation</li>
+  <li>A Glassfish installation</li>
+  <li>A <code>GLASSFISH_HOME</code> environment variable defined.</li>
+  <li><code>$GLASSFISH_HOME/bin</code> added to your <code>PATH</code></li>
+</ul>
+
+<p>Run the following from the Ehcache <code>core</code> directory:</p>
+
+<pre>
+   <code># To package and deploy to domain1:
+ant deploy-default-web-app-glassfish
+
+# Start domain1:
+asadmin start-domain domain1
+
+# Stop domain1:
+asadmin stop-domain domain1
+
+# Overwrite the config with our own which changes the port to 9080:
+ant glassfish-configuration
+
+# Start domain1:
+asadmin start-domain domain1
+</code>
+</pre>
+
+<p>You can then run the web tests in the web package or point your browser at <code>http://localhost:9080</code>.
+See <a href="https://glassfish.java.net/downloads/quickstart/index.html">this page</a> for a quickstart to Glassfish.</p>
+
+<h2 id="troubleshooting-&lt;a-name=”glassfish-faq}">Troubleshooting &lt;a name=”glassfish-faq}</h2>
+
+<h3 id="how-to-get-around-the-ejb-container-restrictions-on-thread-creation">How to get around the EJB Container restrictions on thread creation</h3>
+<p>When Ehcache is running in the EJB Container, for example for Hibernate caching, it is in technical breach of
+the EJB rules. Some app servers let you override this restriction.
+I am not exactly sure how this in done in Glassfish. For a number of reasons we run Glassfish
+without the Security Manager, and we do not have any issues.
+In domain.xml ensure that the following is <strong>not</strong> included.</p>
+
+<pre>
+   <code>&lt;jvm-options&gt;-Djava.security.manager&lt;/jvm-options&gt;
+</code>
+</pre>
+
+<h3 id="ehcache-throws-an-illegalstateexception-in-glassfish">Ehcache throws an IllegalStateException in Glassfish</h3>
+<p>Ehcache page caching versions below Ehcache 1.3 get an IllegalStateException in Glassfish. This issue was fixed in Ehcache 1.3.</p>
+
+<h3 id="payloadutil-reports-could-not-ungzip-heartbeat-will-not-be-working-not-in-gzip-format">PayloadUtil reports <code>Could not ungzip. Heartbeat will not be working. Not in GZIP format</code></h3>
+<p>This exception is thrown when using Ehcache with my Glassfish cluster, but Ehcache and Glassfish clustering have nothing to do with each other. The error is caused because Ehcache has received a multicast message from the Glassfish cluster. Ensure that Ehcache clustering has its own unique multicast address (different from Glassfish).</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +353,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

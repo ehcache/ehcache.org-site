@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/recipes/wrapper.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,148 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="echache-wrapper">Echache Wrapper</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#echache-wrapper">
+                        <span class="toctext">Echache Wrapper</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#problem">
+                              <span class="toctext">Problem</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#solution">
+                              <span class="toctext">Solution</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-5">
+                           <a href="#discussion">
+                              <span class="toctext">Discussion</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>This page provides an example of a simple class to make accessing Ehcache easier for simple use cases.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Using the full Ehcache API can be more tedious than using just a simple, value-based cache (like a HashMap) because of the Element class that holds values.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Implement a simple cache wrapper to hide the use of the Element class.</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Here’s a simple class you can use to simplify using Ehcache in certain simple use cases.</p>
+
+<p>You can still get the Ehcache cache in case you want access to the full API.</p>
+
+<pre>
+   <code>public interface CacheWrapper&lt;K, V&gt;
+{
+  void put(K key, V value);
+
+  V get(K key);
+"/&gt;
+
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Ehcache;
+import net.sf.ehcache.Element;
+
+public class EhcacheWrapper&lt;K, V&gt; implements CacheWrapper&lt;K, V&gt; 
+{
+    private final String cacheName;
+    private final CacheManager cacheManager;
+
+    public EhcacheWrapper(final String cacheName, final CacheManager cacheManager)
+    {
+        this.cacheName = cacheName;
+        this.cacheManager = cacheManager;
+    "/&gt;
+
+    public void put(final K key, final V value)
+    {
+        getCache().put(new Element(key, value));
+    "/&gt;
+
+    public V get(final K key) 
+    {
+        Element element = getCache().get(key);
+        if (element != null) {
+            return (V) element.getValue();
+        "/&gt;
+        return null;
+    "/&gt;
+
+    public Ehcache getCache() 
+    {
+        return cacheManager.getEhcache(cacheName);
+    "/&gt;
+"/&gt;
+</code>
+</pre>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +347,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

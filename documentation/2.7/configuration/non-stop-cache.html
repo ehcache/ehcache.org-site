@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/configuration/non-stop-cache.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,76 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <p><a id="96087"></a>
+# Nonstop (Non-Blocking) Cache <a name="nonstop"></a></p>
+
+<p>A nonstop cache allows certain cache operations to proceed on clients that have become disconnected from the cluster or if a cache operation cannot complete by the nonstop timeout value. This is useful in meeting SLA requirements, responding to node failures, building a more robust High Availability cluster, and more.</p>
+
+<p>One way clients go into nonstop mode is when they receive a “cluster offline” event. Note that a nonstop cache can go into nonstop mode even if the node is not disconnected, such as when a cache operation is unable to complete within the timeout allotted by the nonstop configuration.</p>
+
+<p>Nonstop can be used in conjunction with <a href="http://terracotta.org/documentation/2.7/terracotta-server-array/high-availability#71266">rejoin</a>.</p>
+
+<p>Use cases include:</p>
+
+<ul>
+  <li>
+    <p>Setting timeouts on cache operations.</p>
+
+    <p>For example, say you use the cache rather than a mainframe. The SLA calls for 3 seconds. There is a temporary network interruption which delays the response to a cache request. With the timeout you can return after 3 seconds. The lookup is then done against the mainframe. This could also be useful for write-through, writes to disk, or synchronous writes.</p>
+  </li>
+  <li>
+    <p>Automatically responding to cluster topology events to take a pre-configured action.</p>
+  </li>
+  <li>
+    <p>Allowing Availability over Consistency within the CAP theorem when a network partition occurs.</p>
+  </li>
+  <li>
+    <p>Providing graceful degradation to user applications when Distributed Cache becomes unavailable.</p>
+  </li>
+</ul>
+
+<p>Nonstop caches are available with <a href="http://terracotta.org/products/bigmemorymax">BigMemory Max</a>.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +275,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

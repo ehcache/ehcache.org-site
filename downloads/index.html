@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Downloads</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/downloads/">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,7 +113,7 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Downloads</h1>
       </div>
       <div>
         <br/>
@@ -121,28 +121,102 @@
 <div class="container">
 
   <header class="post-header">
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">Download Ehcache </h1>
   </header>
 
   <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
+    <h2 id="directmanual-downloads">Direct/Manual Downloads</h2>
 
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
+<h4 id="ehcache-2x">Ehcache 2.x</h4>
 
-      <p>Perhaps one of these suggestions will set you on your way?</p>
+<blockquote>
+  <p><a href="http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.1-distribution.tar.gz">Ehcache 2.10.1</a>  .tar.gz</p>
+</blockquote>
 
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
+<p>For more information on this release, see the <a href="http://www.terracotta.org/confluence/display/release/Home">release notes</a>.</p>
 
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
-    </div>
-  </div>
+<p>For JSR107 support with Ehcache 2, use the <a href="https://github.com/ehcache/ehcache-jcache/releases">ehcache-jcache</a> module.</p>
+
+<hr />
+
+<h4 id="ehcache-3">Ehcache 3</h4>
+
+<blockquote>
+  <p><a href="https://github.com/ehcache/ehcache3/releases/download/v3.0.0.m3/ehcache-3.0.0.m3.jar">Ehcache 3.0 Milestone 3</a> .jar</p>
+</blockquote>
+
+<p>More files related to milestone releases of Ehcache 3 are available on the project’s <a href="https://github.com/ehcache/ehcache3/releases">GitHub release page</a>.</p>
+
+<hr />
+
+<h2 id="maven">Maven</h2>
+
+<h3 id="maven-snippet">Maven Snippet</h3>
+
+<h4 id="ehcache-2">Ehcache 2</h4>
+
+<p>To include Ehcache 2.x in your project, use:</p>
+
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
+      &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
+      &lt;version&gt;2.10.1&lt;/version&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+    &lt;/dependency&gt;
+</code></pre>
+
+<p><em>Note: Be sure to substitute the version number above with the version number of Ehcache that you want to use.</em></p>
+
+<h4 id="ehcache-3-1">Ehcache 3</h4>
+
+<p>To include Ehcache 3.x in your project, use:</p>
+
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
+      &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
+      &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
+      &lt;version&gt;3.0.0.m3&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
+
+<p><em>Note: Be sure to substitute the version number above with the version number of Ehcache that you want to use.</em></p>
+
+<hr />
+
+<h3 id="general-maven-info">General Maven Info</h3>
+
+<h4 id="releases">Releases</h4>
+
+<p>Ehcache publishes releases for all modules to the SourceForge Maven repository at:</p>
+
+<p><a href="http://oss.sonatype.org/">http://oss.sonatype.org/</a></p>
+
+<p>You can browse the repo <a href="http://oss.sonatype.org/content/repositories/sourceforge-releases/net/sf/ehcache">here ›</a>
+From there the releases are immediately synced with the Maven central repository.</p>
+
+<h4 id="snapshots">Snapshots</h4>
+
+<p>Ehcache publishes regular snapshots for all modules to the SourceForge Maven repository mentioned above</p>
+
+<p>Note that snapshots are recommended for developer testing only.</p>
+
+<p>You can browse the snapshot repo <a href="http://oss.sonatype.org/content/repositories/sourceforge-snapshots/net/sf/ehcache">here ›</a></p>
+
+<p>To get snapshots you will need to add the following repository to your maven config:</p>
+
+<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;repositories&gt;
+      &lt;repository&gt;
+        &lt;id&gt;sourceforge&lt;/id&gt;
+        &lt;url&gt;http://oss.sonatype.org/content/groups/sourceforge/&lt;/url&gt;
+        &lt;releases&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+        &lt;/releases&gt;
+        &lt;snapshots&gt;
+          &lt;enabled&gt;true&lt;/enabled&gt;
+        &lt;/snapshots&gt;
+      &lt;/repository&gt;
+    ...
+    &lt;/repositories&gt;
+</code></pre>
 
   </article>
 
@@ -237,7 +311,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_download').addClass("active");
         $('#').addClass("active");
 </script>
 

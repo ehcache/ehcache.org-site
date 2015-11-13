@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/recipes/writebehind.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,125 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="ehcache-write-behind">Ehcache Write-Behind</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#ehcache-write-behind">
+                        <span class="toctext">Ehcache Write-Behind</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#problem">
+                              <span class="toctext">Problem</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#solution">
+                              <span class="toctext">Solution</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-5">
+                           <a href="#discussion">
+                              <span class="toctext">Discussion</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>This page addresses the problem of database write overload and explains how the Ehcache Write-behind feature can be the solution.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>It’s easy to understand how a cache can help reduce database loads and improve application performance in a read-mostly scenario. In read-mostly use-cases, every time the application needs to access data, instead of going to the database, data can be loaded from in-memory cache, which can be hundreds, or even thousands, of times faster than database.</p>
+
+<p>However, for scenarios that require frequent updates to the stored data, to keep the data in cache and database in sync, every update to the cached data must invoke a simultaneous update to the database at the same time. Updates to the database are almost always slower, so this slows the effective update rate to the cache and thus the performance in general. When many write requests come in at the same time, the database can easily become a bottleneck or, even worse, be killed by heavy writes in a short period of time.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>The Write-behind feature provided by Ehcache allows quick cache writes with ensured consistency between cache data and database.</p>
+
+<p>The idea is that when writing data into the cache, instead of writing the data into database at the same time, the write-behind cache saves the changed data into a queue and lets a backend thread to do the writing later. Therefore, the cache-write process can proceed without waiting for the database-write and, thus, be finished much faster. Any data that has been changed can be persisted into database eventually. In the mean time, any read from cache will still get the latest data.</p>
+
+<p>A cache configured to perform asynchronous persistence, such as this, is called a Write-behind Cache.</p>
+
+<p>There are many benefits of a Write-behind Cache. For example:</p>
+
+<ul>
+  <li>Offload database writes</li>
+  <li>Spread writes out to flatten peaks</li>
+  <li>Consolidate multiple writes into fewer database writes</li>
+</ul>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>To implement a Write-Behind using Ehcache, one needs to register a CacheWriterFactory for Write-behind Cache and set the writeMode property of the cache to “write_behind”.</p>
+
+<p>CacheWriterFactory can create a writer for any data source(s), such as file, email, JMS or database. Typically, the database is the most common example of a data source.</p>
+
+<p>Once a cache is configured as a Write-Behind cache, whenever a Cache.put is called to add or modify data, the cache will first update the cache data, just like a normal cache does, then it will save the change into a queue. A backend thread should be started when the cache is initialized and it will keep pulling data from the queue and it will call a Writer instance created by the CacheWriterFactory to persist the new data asynchronously.</p>
+
+<p>In an un-clustered cache, the write-behind queue is stored in local memory. If the JVM dies, any data still in the queue will be lost.</p>
+
+<p>In a clustered cache, the write-behind queue is managed by Terracotta Server Array. The background thread on each JVM will check the shared queue and save each data change left in the queue. With clustered Ehcache, this background process is scaled across the cluster for both performance and high availability reasons. If one client JVM were to go down, any changes it put into the write-behind queue can always be loaded by threads in other clustered JVMs, therefore will be applied to the database without any data loss.</p>
+
+<p>There are many advanced configurations for Write-behind Cache. Because of the nature of asynchronous writing, there are also restrictions on when Write-Behind Cache can be used. For more information, see <a href="/documentation/2.7/apis/write-through-caching">write-through caching</a>.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +324,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.8 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.8/integrations/coldfusion.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,124 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.8 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.8/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.8/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.8/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.8/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.8/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.8/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.8/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.8/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.8/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.8/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.8/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.8.5/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="using-coldfusion-and-bigmemory-go">Using Coldfusion and BigMemory Go</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#using-coldfusion-and-bigmemory-go">
+                        <span class="toctext">Using Coldfusion and BigMemory Go</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#example-integration">
+                              <span class="toctext">Example Integration</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>ColdFusion ships with BigMemory Go’s Ehcache. The ColdFusion community has actively engaged with Ehcache and have put out lots of great blogs. Here are three to get you
+started.
+For a short introduction, see <a href="http://www.coldfusionjedi.com/index.cfm/2009/7/18/ColdFusion-9-and-Caching-Enhancements">Raymond Camden’s blog</a>.
+For more in-depth analysis, see <a href="http://www.brooks-bilson.com/blogs/rob/index.cfm/2009/7/21/Caching-Enhancements-in-ColdFusion-9--Part-1-Why-Cache">Rob Brooks-Bilson’s nine-part Blog Series</a> or <a href="http://www.aaronwest.net/blog/index.cfm/2009/11/17/14-Days-of-ColdFusion-9-Caching-Day-1--Caching-a-Full-Page">14 days of ColdFusion caching</a>, by Aaron West, covering a different topic each day.</p>
+
+<h2 id="example-integration">Example Integration</h2>
+<p>To integrate BigMemory Go with ColdFusion, first add the BigMemory Go jars to your web application lib directory.</p>
+
+<p>The following code demonstrates how to call Ehcache from ColdFusion.
+It will cache a CF object in Ehcache and the set expiration time to 30 seconds. If you refresh the page many times within 30 seconds, you will see the data from cache. After 30 seconds, you will see a cache miss, then the code will generate a new object and put in cache again.</p>
+
+<pre>
+   <code>&lt;CFOBJECT type="JAVA" class="net.sf.ehcache.CacheManager" name="cacheManager"&gt;
+&lt;cfset cache=cacheManager.getInstance().getCache("MyBookCache")&gt;
+&lt;cfset myBookElement=#cache.get("myBook")#&gt;
+&lt;cfif IsDefined("myBookElement")&gt;
+   &lt;cfoutput&gt;
+    myBookElement: #myBookElement#&lt;br /&gt;
+   &lt;/cfoutput&gt;
+   &lt;cfif IsStruct(myBookElement.getObjectValue())&gt;
+           &lt;strong&gt;Cache Hit&lt;/strong&gt;&lt;p/&gt;
+           &lt;!-- Found the object from cache --&gt;
+           &lt;cfset myBook = #myBookElement.getObjectValue()#&gt;
+   &lt;/cfif&gt;
+&lt;/cfif&gt;
+&lt;cfif IsDefined("myBook")&gt;
+&lt;cfelse&gt;
+&lt;strong&gt;Cache Miss&lt;/strong&gt;
+   &lt;!-- object not found in cache, go ahead create it --&gt;
+   &lt;cfset myBook = StructNew()&gt;
+   &lt;cfset a = StructInsert(myBook, "cacheTime", LSTimeFormat(Now(), 'hh:mm:sstt'), 1)&gt;
+   &lt;cfset a = StructInsert(myBook, "title", "EhCache Book", 1)&gt;
+   &lt;cfset a = StructInsert(myBook, "author", "Greg Luck", 1)&gt;
+   &lt;cfset a = StructInsert(myBook, "ISBN", "ABCD123456", 1)&gt;
+   &lt;CFOBJECT type="JAVA" class="net.sf.ehcache.Element" name="myBookElement"&gt;
+   &lt;cfset myBookElement.init("myBook", myBook)&gt;
+   &lt;cfset cache.put(myBookElement)&gt;
+&lt;/cfif&gt;
+&lt;cfoutput&gt;
+Cache time: #myBook["cacheTime"]#&lt;br /&gt;
+Title: #myBook["title"]#&lt;br /&gt;
+Author: #myBook["author"]#&lt;br /&gt;
+ISBN: #myBook["ISBN"]#
+&lt;/cfoutput&gt;
+</code>
+</pre>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +323,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/arc/">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,118 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="automatic-resource-control-overview">Automatic Resource Control Overview</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#automatic-resource-control-overview">
+                        <span class="toctext">Automatic Resource Control Overview</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#arc-table-of-contents">
+                              <span class="toctext">ARC Table of Contents</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#additional-information-about-arc">
+                              <span class="toctext">Additional Information about ARC</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<p>Automatic Resource Control (ARC) is an intelligent approach to caching with fine-grained controls for tuning cache performance. ARC offers a wealth of benefits, including:</p>
+
+<ul>
+  <li>Sizing limitations on in-memory caches to avoid OutOfMemory errors</li>
+  <li>Pooled (CacheManager-level) sizing – no requirement to size caches individually</li>
+  <li>Differentiated tier-based sizing for flexibility</li>
+  <li>Sizing by bytes, entries, or percentages for more flexibility</li>
+  <li>Keeping hot or eternal data where it can substantially boost performance</li>
+</ul>
+
+<p>The following sections provide a documentation Table of Contents and additional information sources for ARC.</p>
+
+<h2 id="arc-table-of-contents">ARC Table of Contents</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Topic</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/configuration/cache-size">Dynamic Sizing of Memory</a></td>
+      <td style="text-align: left">Tuning Ehcache often involves sizing cached data appropriately. Ehcache provides a number of ways to size the different data tiers using simple cache-configuration sizing attributes. This page explains simplified tuning of cache size by configuring dynamic allocation of memory and automatic load balancing.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/configuration/data-life">Pinning Caches and Entries</a></td>
+      <td style="text-align: left">The architecture of an Ehcache node can include a number of tiers that store data. One of the most important aspects of managing cached data involves managing the life of the data in each tier. This page covers managing data life in Ehcache and the Terracotta Server Array, including the pinning features of Automatic Resource Control (ARC).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="additional-information-about-arc">Additional Information about ARC</h2>
+<p>The following page provides information on ARC in an enterprise environment:</p>
+
+<ul>
+  <li><a href="http://terracotta.org/documentation/2.7/4.0/bigmemorymax/get-started/quick-start#additional-configuration-topics">ARC Introduction</a></li>
+  <li><a href="http://terracotta.org/documentation/2.7/bigmemorymax/code-samples#example-6-automatic-resource-control-arc">ARC Code Sample</a></li>
+</ul>
+
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +317,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

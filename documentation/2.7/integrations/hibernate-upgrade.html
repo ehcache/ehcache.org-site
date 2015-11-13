@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/integrations/hibernate-upgrade.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,126 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="upgrading-from-ehcache-versions-prior-to-2.0--">Upgrading From Ehcache versions prior to 2.0  <a name="Upgrading-From-Ehcache-versions-prior-to-20" id="Upgrading-From-Ehcache-versions-prior-to-20"></a></h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#upgrading-from-ehcache-versions-prior-to-2.0--">
+                        <span class="toctext">Upgrading From Ehcache versions prior to 2.0  </span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#support-for-hibernate-3.3-spi">
+                              <span class="toctext">Support for Hibernate 3.3 SPI</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#support-for-hibernate-3.5-spi">
+                              <span class="toctext">Support for Hibernate 3.5 SPI</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-5">
+                           <a href="#backward-compatibility">
+                              <span class="toctext">Backward Compatibility</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-6">
+                           <a href="#unification-with-terracotta’s-hibernate-3.2-provider">
+                              <span class="toctext">Unification with Terracotta’s Hibernate 3.2 Provider</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>This page contains notes for users upgrading from older versions Ehcache prior to 2.0.</p>
+
+<h2 id="support-for-hibernate-3.3-spi">Support for Hibernate 3.3 SPI</h2>
+<p>Beginning with  Ehcache 2.0 there is support for the Hibernate 3.3 SPI implementation. 
+This is important because Hibernate 3.3 has an updated caching SPI. Although still present in 3.3, the Hibernate 3.2 caching SPI has been deprecated.</p>
+
+<h2 id="support-for-hibernate-3.5-spi">Support for Hibernate 3.5 SPI</h2>
+<p>The SPI further changes in Hibernate 3.5. The Ehcache 2.0 implementation is forward-compatible with Hibernate 3.5.</p>
+
+<h2 id="backward-compatibility">Backward Compatibility</h2>
+<p>The <code>EhCacheProvider</code> class, which implements the 3.2 API is provided for backward compatibility.
+Anyone already using Ehcache with Hibernate will be using this version. We encourage you to upgrade
+to the new class, <code>net.sf.ehcache.hibernate.EhCacheRegionFactory</code> in preparation for when Hibernate drops support for
+the old SPI. In recognition of this, we have marked <code>net.sf.ehcache.hibernate.EhCacheProvider</code> as deprecated.
+The new cache region factory takes advantage of the new SPI to provide higher performance. The old
+SPI had heavy synchronization to ensure all of the different caching providers were thread-safe.
+The new SPI leaves that to the implementer. Ehcache does not require extra synchronization, so this
+overhead is avoided.</p>
+
+<h2 id="unification-with-terracotta’s-hibernate-3.2-provider">Unification with Terracotta’s Hibernate 3.2 Provider</h2>
+<p>In September 2009 Terracotta released its Hibernate Caching Provider which was set as follows:</p>
+
+<pre>
+   <code>&lt;property name="hibernate.cache.provider_class"&gt;
+org.terracotta.hibernate.TerracottaHibernateCacheProvider&lt;/property&gt;
+</code>
+</pre>
+
+<p>It features high performance clustered Hibernate caching using the Terracotta Server Array.
+The new 3.3 EhCacheRegionFactory replaces that provider and the old Ehcache provider - it is a superset
+of both and also implements the new SPI. The Hibernate provider required a Java agent.
+That is not required in the new provider.
+We recommend existing Terracotta Hibernate users upgrade to the Ehcache 2.0 provider.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +325,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

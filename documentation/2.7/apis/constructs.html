@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/apis/constructs.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,111 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="blockingcache-and-selfpopulatingcache-">BlockingCache and SelfPopulatingCache <a name="blockingcache-and-selfpopulatingcache" id="blockingcache-and-selfpopulatingcache"></a></h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#blockingcache-and-selfpopulatingcache-">
+                        <span class="toctext">BlockingCache and SelfPopulatingCache </span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#blocking-cache-">
+                              <span class="toctext">Blocking Cache </span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#selfpopulatingcache-">
+                              <span class="toctext">SelfPopulatingCache </span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>The <code>net.sf.ehcache.constructs</code> package contains some applied caching classes which use the core classes to solve everyday caching problems. Two of these are BlockingCache and SelfPopulatingCache.</p>
+
+<h2 id="blocking-cache-">Blocking Cache <a name="blocking-cache" id="blocking-cache"></a></h2>
+<p>Imagine you have a very busy web site with thousands of concurrent users. Rather than being evenly distributed in
+what they do, they tend to gravitate to popular pages. These pages are not static, they have dynamic data which
+goes stale in a few minutes. Or imagine you have collections of data which go stale in a few minutes. In each
+case the data is extremely expensive to calculate.
+Let’s say each request thread asks for the same thing. That is a lot of work. Now, add a cache. Get each thread
+to check the cache; if the data is not there, go and get it and put it in the cache.</p>
+
+<p>Now, imagine that there are so
+many users contending for the same data that in the time it takes the first user to request the data and put it in
+the cache, 10 other users have done the same thing. The upstream system, whether a JSP or velocity page, or interactions
+with a service layer or database are doing 10 times more work than they need to.
+Enter the BlockingCache.
+It is blocking because all threads requesting the same key wait for the first thread to complete. Once the first
+thread has completed the other threads simply obtain the cache entry and return.
+The BlockingCache can scale up to very busy systems. Each thread can either wait indefinitely, or you can specify a timeout
+using the <code>timeoutMillis</code> constructor argument.</p>
+
+<h2 id="selfpopulatingcache-">SelfPopulatingCache <a name="selfpopulatingcache" id="selfpopulatingcache"></a></h2>
+<p>You want to use the BlockingCache, but the requirement to always release the lock creates gnarly code. You also
+want to think about what you are doing without thinking about the caching.
+Enter the SelfPopulatingCache. The name SelfPopulatingCache is synonymous with Pull-through cache, which is a
+common caching term. SelfPopulatingCache though always is in addition to a BlockingCache.
+SelfPopulatingCache uses a <code>CacheEntryFactory</code>, that given a key, knows how to populate the entry.
+Note: JCache inspired getWithLoader and getAllWithLoader directly in <code>Ehcache</code> which work with a <code>CacheLoader</code> may be used as an alternative
+to SelfPopulatingCache.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +310,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

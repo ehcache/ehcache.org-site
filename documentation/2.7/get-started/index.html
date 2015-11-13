@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/get-started/">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,149 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="getting-started-overview">Getting Started Overview</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#getting-started-overview">
+                        <span class="toctext">Getting Started Overview</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#“getting-started”-table-of-contents">
+                              <span class="toctext">“Getting Started” Table of Contents</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#getting-started-in-theory-and-practice">
+                              <span class="toctext">Getting Started in Theory and Practice</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<p>The following sections provide a documentation Table of Contents and additional information sources for getting started with Ehcache.</p>
+
+<h2 id="“getting-started”-table-of-contents">“Getting Started” Table of Contents</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Topic</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/introduction">Hello, Ehcache</a></td>
+      <td style="text-align: left">Introduction to caching with Ehcache and the benefits of caching.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/cache-topologies">Cache Topologies</a></td>
+      <td style="text-align: left">This overview of the Ehcache caching topologies highlights the differences between distributed and replicated caching.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/key-classes-methods">Key Classes and Methods</a></td>
+      <td style="text-align: left">Definitions of terms, key Ehcache classes, and cache usage patterns, as well as explanations of the CacheManager and the Ehcache interface.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/about-distributed-cache">About Distributed Cache</a></td>
+      <td style="text-align: left">Distributed Ehcache combines an in-process Ehcache with the Terracotta Server Array acting as a backing cache store. This page details architecture and development for Distributed Ehcache running in a Terracotta cluster.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/consistency-options">Consistency Options</a></td>
+      <td style="text-align: left">Explanation of the Distributed Ehcache consistency models in terms of standard distributed systems theory, plus use cases and recommended practices.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/storage-options">Storage Options</a></td>
+      <td style="text-align: left">Description of the three storage options for Ehcache–MemoryStore, OffHeapStore, and DiskStore–plus suitable Element types, configuration examples, and performance considerations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/getting-started">Using Ehcache</a></td>
+      <td style="text-align: left">A quick guide to get you started with the packed Ehcache kit and using Ehcache with several popular platforms.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/get-started/building">Building From Source</a></td>
+      <td style="text-align: left">Create your own Ehcache or distributed Ehcache build, rather than using the packed kit.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="getting-started-in-theory-and-practice">Getting Started in Theory and Practice</h2>
+<p>The following pages cover general caching theory:</p>
+
+<ul>
+  <li><a href="/documentation/2.7/get-started/introduction">Hello, Ehcache</a></li>
+  <li><a href="/documentation/2.7/get-started/cache-topologies">Cache Topologies</a></li>
+  <li><a href="/documentation/2.7/get-started/about-distributed-cache">About Distributed Cache</a></li>
+</ul>
+
+<p>The following pages provide background information that will help you to make informed decisions when configuring Ehcache:</p>
+
+<ul>
+  <li><a href="/documentation/2.7/get-started/concepts">Cache Concepts</a></li>
+  <li><a href="/documentation/2.7/get-started/consistency-options">Cache Consistency Options</a></li>
+  <li><a href="/documentation/2.7/get-started/storage-options">Storage Options</a></li>
+</ul>
+
+<p>The following pages get you up and running:</p>
+
+<ul>
+  <li><a href="/documentation/2.7/get-started/getting-started">Using Ehcache</a></li>
+  <li><a href="/documentation/2.7/get-started/about-distributed-cache#code-samples">About Distributed Cache</a> Code Samples</li>
+  <li><a href="/documentation/2.7/get-started/building">Building From Source</a></li>
+</ul>
+
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +348,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

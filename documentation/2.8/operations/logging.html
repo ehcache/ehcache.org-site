@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.8 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.8/operations/logging.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,124 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.8 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.8/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.8/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.8/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.8/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.8/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.8/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.8/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.8/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.8/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.8/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.8/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.8.5/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="logging-">Logging <a name="Logging" id="Logging"></a></h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#logging-">
+                        <span class="toctext">Logging </span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#slf4j-logging-">
+                              <span class="toctext">SLF4J Logging </span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#recommended-logging-levels">
+                              <span class="toctext">Recommended Logging Levels</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>As of 1.7.1, Ehcache uses the the slf4j logging facade, so you can plug in your own logging framework. This page covers Ehcache logging. For more information about slf4j in general, refer to the <a href="http://www.slf4j.org">slf4j</a> site.</p>
+
+<h2 id="slf4j-logging-">SLF4J Logging <a name="SLF4J-Logging" id="SLF4J-Logging"></a></h2>
+<p>With slf4j, users must choose a concrete logging implementation at deploy time. The options include Maven and the download kit.</p>
+
+<h3 id="concrete-logging-implementation-use-in-maven">Concrete Logging Implementation Use in Maven</h3>
+<p>The maven dependency declarations are reproduced here for convenience. Add <em>one</em> of these to your Maven pom.</p>
+
+<pre>
+   <code>&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-jdk14&lt;/artifactId&gt;
+    &lt;version&gt;1.5.8&lt;/version&gt;
+&lt;/dependency&gt;
+ &lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+    &lt;version&gt;1.5.8&lt;/version&gt;
+&lt;/dependency&gt;
+ &lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+    &lt;version&gt;1.5.8&lt;/version&gt;
+&lt;/dependency&gt;
+</code>
+</pre>
+
+<h3 id="concrete-logging-implemenation-use-in-the-download-kit">Concrete Logging Implemenation Use in the Download Kit</h3>
+<p>We provide the slf4j-api and slf4j-jdk14 jars in the kit along with the ehcache jars so that, if the app does not already
+use SLF4J, you have everything you need.
+Additional concrete logging implementations can be downloaded from <a href="http://www.slf4j.org">http://www.slf4j.org</a>.</p>
+
+<h2 id="recommended-logging-levels">Recommended Logging Levels</h2>
+<p>Ehcache seeks to trade off informing production support developers or important messages and cluttering the log. <a id="ERROR"></a>ERROR messages should not occur in normal production and indicate that action should be taken.</p>
+
+<p><a id="WARN"></a>WARN messages generally indicate a configuration change should be made or an unusual event has occurred.
+ DEBUG and TRACE messages are for development use. All DEBUG level statements
+are surrounded with a guard so that no performance cost is incurred unless the logging
+level is set.
+Setting the logging level to DEBUG should provide more information on the source of any problems.
+Many logging systems enable a logging level change to be made without restarting the application.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +323,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 
