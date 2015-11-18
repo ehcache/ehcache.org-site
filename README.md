@@ -33,6 +33,19 @@ This is the source code/files for the ehcache.org website.  The files in this re
 
 ---
 
+### Making Changes to the content
+
+If you want to make changes to the website, make them here (in this repository) - as this is where all the source/files for the website are kept.
+
+For instance:
+
+* If there is a new release being made, generated javadoc (from the product build) should be put into the "apidocs" directory
+* New official docs should be put into the "documentation" and/or "generated" directories as appropriate
+* Pay attention to the content of the _config.yml file in the root of this repository as there are properties there that control various things just as which exact version of javadoc to show for what (e.g. at the time of this writing we link to "2.8.5" javadoc for all "2.8" documentation).
+
+
+---
+
 ### Deploying changes to the live webserver
 
 ehcache.org is served/hosted by github.   The webserver does NOT serve the content from this repository.  It serves the exact content of the repository at:  https://github.com/ehcache/ehcache.github.io
