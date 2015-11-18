@@ -31,6 +31,7 @@ This is the source code/files for the ehcache.org website.  The files in this re
 * "About" -> "Features" page:
   * could still use some love, but isn't so bad anymore
 
+---
 
 ### Deploying changes to the live webserver
 
