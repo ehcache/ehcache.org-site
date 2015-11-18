@@ -56,7 +56,7 @@ ehcache.org is served/hosted by github.   The webserver does NOT serve the conte
 * After the site content is built, it will be in the _site directory
 * Clone a local copy (or if you have one already, pull in all updates) of the ehcache.github.io repository
 * Create a branch for your updates, and switch to (checkout) that branch
-* Copy all content from the _site directory you just built from this repository into the root of your new branch of the other repository - this will mean some existing files get overwritten, and some new files get added.
+* Copy all content from the _site directory you just built from this repository into the root of your new branch of the other repository - this will mean some existing files get overwritten, and some new files get added.  If you need to remove files (if you removed files on the source side which are no longer in the built site - you'll need to manually delete them from your branch).
 * Commit your changes and make a pull request to get the content of that branch into the master branch of the ehcache.github.io repository (which will then make it "live").
 
 
