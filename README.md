@@ -44,6 +44,8 @@ For instance:
 * Pay attention to the content of the _config.yml file in the root of this repository as there are properties there that control various things just as which exact version of javadoc to show for what (e.g. at the time of this writing we link to "2.8.5" javadoc for all "2.8" documentation).
 
 
+* After making your changes, commit them (remember to do your work in a branch) and create a pull request.
+
 ---
 
 ### Deploying changes to the live webserver
