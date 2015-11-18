@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/integrations/">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,143 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="integrations-overview">Integrations Overview</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#integrations-overview">
+                        <span class="toctext">Integrations Overview</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#integrations-table-of-contents">
+                              <span class="toctext">Integrations Table of Contents</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#additional-information-about-integrating-ehcache">
+                              <span class="toctext">Additional Information about Integrating Ehcache</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<p>The following sections provide a documentation Table of Contents and additional information sources about integrating Ehcache.</p>
+
+<h2 id="integrations-table-of-contents">Integrations Table of Contents</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Topics</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/coldfusion">ColdFusion</a></td>
+      <td style="text-align: left">ColdFusion ships with Ehcache. This page covers integrating ColdFusion versions 9, 9.0.1, and 8 with Ehcache.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/spring">Spring Caching</a></td>
+      <td style="text-align: left">Ehcache simplifies caching in Spring. This page covers integrating Spring with Ehcache. Additional information may be found in <a href="/documentation/2.7/recipes/spring-annotations">Recipes</a>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/hibernate">Hibernate Caching</a></td>
+      <td style="text-align: left">Ehcache easily integrates with the Hibernate Object/Relational persistence and query service. This page provides everything you need to configure Ehcache for Hibernate, and it includes performance tips and FAQs.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/jruby">JRuby and Rails</a></td>
+      <td style="text-align: left">ruby-ehcache is a JRuby Ehcache library which makes a commonly used subset of Ehcache’s API available to JRuby. All of the strength of Ehcache is there, including BigMemory and the ability to cluster with Terracotta. It can be used directly via its own API, or as a Rails caching provider.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/googleappengine">Google App Engine</a></td>
+      <td style="text-align: left">The ehcache-googleappengine module combines the speed of Ehcache with the scale of Google’s memcache. This page provides setup and troubleshooting information for configuring Google App Engine (GAE) caching.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/tomcat">Tomcat</a></td>
+      <td style="text-align: left">Ehcache is probably used most commonly with Tomcat. This page documents some known issues with Tomcat, as well as recommended practices.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/jdbc">JDBC Caching</a></td>
+      <td style="text-align: left">Ehcache can easily be combined with your existing JDBC code. Whether you access JDBC directly, or have a DAO/DAL layer, Ehcache can be combined with your existing data access pattern to speed up frequently accessed data to reduce page load times, improve performance, and reduce load from your database. This page discusses how to add caching to a JDBC application with the commonly used DAO/DAL layer patterns.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/openjpa-provider">OpenJPA</a></td>
+      <td style="text-align: left">Ehcache easily integrates with the OpenJPA persistence framework. This page provides installation and configuration information.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/grails">Grails</a></td>
+      <td style="text-align: left">Grails 1.2RC1 and higher use Ehcache as the default Hibernate second level cache, and earlier versions of Grails ship with the Ehcache library and are very simple to enable. This page shows how to configure Grails to use Ehcache.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/glassfish">Glassfish</a></td>
+      <td style="text-align: left">The maintainer uses Ehcache in production with Glassfish. This page is a how-to for working with Glassfish.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.7/integrations/jsr107">JSR107 (JCACHE)</a></td>
+      <td style="text-align: left">JSR107 is currently being drafted and will continue to change until finalised. This support page has links to sites with information about JSR107 and its Ehcache implementation, JCACHE.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="additional-information-about-integrating-ehcache">Additional Information about Integrating Ehcache</h2>
+<p>The following page provides additional information about integration:</p>
+
+<ul>
+  <li><a href="/documentation/2.7/recipes/spring-annotations">Spring Annotations</a></li>
+</ul>
+
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +342,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

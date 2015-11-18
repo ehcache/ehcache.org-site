@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.8 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.8/recipes/spring-annotations.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,151 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.8 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.8/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.8/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.8/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.8/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.8/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.8/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.8/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.8/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.8/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.8/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.8/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.8.5/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="caching-methods-with-spring-3-annotations">Caching Methods with Spring 3 Annotations</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#caching-methods-with-spring-3-annotations">
+                        <span class="toctext">Caching Methods with Spring 3 Annotations</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#problem">
+                              <span class="toctext">Problem</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#solution">
+                              <span class="toctext">Solution</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-5">
+                           <a href="#discussion">
+                              <span class="toctext">Discussion</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>This page explains adding caching to methods using the Ehcache Annotations for Spring project.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>You’d like to cache methods of your application with minimal code changes and use configuration to control the cache settings.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Use the <a href="http://code.google.com/p/ehcache-spring-annotations/">Ehcache Annotations for Spring project at code.google.com</a> to dynamically configure caching of method return values.</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>The Ehcache Annotations for Spring project is a successor to the Spring-Modules project. This project will allow you to configure caching of method calls dynamically using just configuration.</p>
+
+<p>The way it works is that the parameter values of the method will be used as a composite key into the cache, caching the return value of the method.</p>
+
+<p>For example, suppose you have a method: <code>Dog getDog(String name)</code>.</p>
+
+<p>Once caching is added to this method, all calls to the method will be cached using the “name” parameter as a key.</p>
+
+<p>So, assume at time t0 the application calls this method with the name equal to “fido”. Since “fido” doesn’t exist, the method is allowed to run, generating the “fido” Dog object, and returning it. This object is then put into the cache using the key “fido”.</p>
+
+<p>Then assume at time t1 the application calls this method with the name equal to “spot”. The same process is repeated, and the cache is now populated with the Dog object named “spot”.</p>
+
+<p>Finally, at time t2 the application again calls the method with the name “fido”. Since “fido” exists in the cache, the “fido” Dog object is returned from the cache instead of calling the method.</p>
+
+<p>To implement this in your application, follow these steps:</p>
+
+<p>
+   <strong>Step 1:</strong>
+</p>
+
+<p>Add the jars to your application as listed on the <a href="http://code.google.com/p/ehcache-spring-annotations">Ehcache Annotations for Spring project site</a>.</p>
+
+<p>
+   <strong>Step 2:</strong>
+</p>
+
+<p>Add the Annotation to methods you would like to cache. Lets assume you are using the Dog getDog(String name) method from above:</p>
+
+<pre>
+   <code>@Cacheable(cacheName="getDog")
+Dog getDog(String name)
+{
+    ....
+"/&gt; **Step 3:**
+</code>
+</pre>
+
+<p>Configure Spring. You must add the following to your Spring configuration file in the beans declaration section:</p>
+
+<pre>
+   <code>&lt;ehcache:annotation-driven cache-manager="ehCacheManager" /&gt;
+</code>
+</pre>
+
+<p>More details can be found at:</p>
+
+<ul>
+  <li><a href="http://code.google.com/p/ehcache-spring-annotations">Ehcache Annotations for Spring project</a></li>
+  <li><a href="http://code.google.com/p/ehcache-spring-annotations/wiki/UsingCacheable">the project getting started page</a></li>
+  <li><a href="http://www.jeviathon.com/2010/04/caching-java-methods-with-spring-3.html">this blog</a></li>
+</ul>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +350,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

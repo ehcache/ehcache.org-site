@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.8 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.8/operations/shutdown.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,167 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.8 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.8/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.8/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.8/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.8/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.8/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.8/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.8/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.8/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.8/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.8/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.8/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.8.5/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="shutting-down-ehcache-">Shutting Down Ehcache <a name="Shutting-Down-Ehcache" id="Shutting-Down-Ehcache"></a></h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#shutting-down-ehcache-">
+                        <span class="toctext">Shutting Down Ehcache </span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#servletcontextlistener">
+                              <span class="toctext">ServletContextListener</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#the-shutdown-hook">
+                              <span class="toctext">The Shutdown Hook</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-5">
+                           <a href="#dirty-shutdown">
+                              <span class="toctext">Dirty Shutdown</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>If you are using persistent disk stores (Open Source), or distributed caching, care should be taken to shutdown Ehcache.
+Note that Hibernate automatically shuts down its Ehcache <code>CacheManager</code>.
+The recommended way to shutdown the Ehcache is:</p>
+
+<ul>
+  <li>to call <code>CacheManager.shutdown()</code></li>
+  <li>in a web app, register the Ehcache <code>ShutdownListener</code></li>
+</ul>
+
+<p>Though not recommended, Ehcache also lets you register a JVM shutdown hook.</p>
+
+<h2 id="servletcontextlistener">ServletContextListener</h2>
+<p>Ehcache proivdes a ServletContextListener that shutsdown CacheManager. Use this when you want to shutdown
+Ehcache automatically when the web application is shutdown.
+To receive notification events, this class must be configured in the deployment
+descriptor for the web application.
+To do so, add the following to web.xml in your web application:</p>
+
+<pre>
+   <code>&lt;listener&gt;
+  &lt;listener-class&gt;net.sf.ehcache.constructs.web.ShutdownListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+</code>
+</pre>
+
+<h2 id="the-shutdown-hook">The Shutdown Hook</h2>
+<p>Ehcache CacheManager can optionally register a shutdown hook.
+To do so, set the system property <code>net.sf.ehcache.enableShutdownHook=true</code>.
+This will shutdown the CacheManager when it detects the Virtual Machine shutting down and
+it is not already shut down.</p>
+
+<p>Use the shutdown hook where:</p>
+
+<ul>
+  <li>you need guaranteed orderly shutdown, when for example using persistent disk stores,
+   or distributed caching.</li>
+  <li>the CacheManager is not already being shutdown by a framework you are using or by your application.</li>
+</ul>
+
+<p><strong>Note</strong>: Shutdown hooks are inherently problematic. The JVM is shutting down, so sometimes things that can never be null are. Ehcache guards against as many of these as it can, but the shutdown hook should be the last option to use.</p>
+
+<p>The shutdown hook is on CacheManager and simply calls the shutdown method.
+The sequence of events is:</p>
+
+<ul>
+  <li>call dispose for each registered CacheManager event listener.</li>
+  <li>
+    <p>call dispose for each Cache.</p>
+
+    <p>Each Cache will:</p>
+  </li>
+  <li>shutdown the MemoryStore. The MemoryStore will flush to the DiskStore.</li>
+  <li>shutdown the DiskStore. If the DiskStore is persistent, it will write the entries and index to disk.</li>
+  <li>shutdown each registered CacheEventListener.</li>
+  <li>set the Cache status to shutdown, preventing any further operations on it.</li>
+  <li>set the CacheManager status to shutdown, preventing any further operations on it.</li>
+</ul>
+
+<p>The shutdown hook runs when:</p>
+
+<ul>
+  <li>A program exists normally. For example,  <code>System.exit()</code> is called, or the last non-daemon thread exits.</li>
+  <li>the Virtual Machine is terminated. e.g. CTRL-C. This corresponds to <code>kill -SIGTERM pid</code> or <code>kill -15 pid</code> on Unix systems.</li>
+</ul>
+
+<p>The shutdown hook will not run when:</p>
+
+<ul>
+  <li>the Virtual Machine aborts</li>
+  <li>A SIGKILL signal is sent to the Virtual Machine process on Unix
+systems. e.g. <code>kill -SIGKILL pid</code> or <code>kill -9 pid</code></li>
+  <li>A <code>TerminateProcess</code> call is sent to the process on Windows systems.</li>
+</ul>
+
+<h2 id="dirty-shutdown">Dirty Shutdown</h2>
+<p>If shut down dirty, all in-memory data will be retained if Ehcache is configured for restartability. For more information, refer to <a href="/documentation/2.8/configuration/fast-restart.html">Persistence and Restartability</a>.</p>
+
+<p>If using Open Source disk persistence when shut down dirty, then any persistent disk stores will be corrupted. They will be deleted, with a log message, on the next startup.
+Replications waiting to happen to other nodes in a distributed cache will also not get written.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +366,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

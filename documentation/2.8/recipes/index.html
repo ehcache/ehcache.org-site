@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.8 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.8/recipes/">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,125 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.8 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.8/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.8/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.8/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.8/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.8/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.8/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.8/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.8/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.8/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.8/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.8/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.8/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.8.5/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="recipes-overview">Recipes Overview</h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#recipes-overview">
+                        <span class="toctext">Recipes Overview</span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#recipes-table-of-contents">
+                              <span class="toctext">Recipes Table of Contents</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<p>The recipes here are concise examples for specific use cases that will help you get started with Ehcache.</p>
+
+<p>The following sections provide a documentation Table of Contents and additional information about Recipes.</p>
+
+<h2 id="recipes-table-of-contents">Recipes Table of Contents</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Recipe</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/pagecaching.html">Web Page and Fragment Caching</a></td>
+      <td style="text-align: left">How to use the included Servlet Filters to cache web pages and web page fragments.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/grails.html">Configure a Grails App for Clustering</a></td>
+      <td style="text-align: left">How to configure a Grails Application for clustered Hibernate 2nd Level Cache.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/expiration.html">Data Freshness and Expiration</a></td>
+      <td style="text-align: left">How to maintain cache “freshness” by configuring TTL and data expiration properly.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/cachenull.html">Caching Empty Values</a></td>
+      <td style="text-align: left">Why caching empty values can be desirable to deflect load from the database.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/thunderingherd.html">Database Read Overload</a></td>
+      <td style="text-align: left">When many readers simultaneously request the same data element, it is called the “Thundering Herd” problem.  How to prevent it in a single JVM or a clustered configuration.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/writebehind.html">Database Write Overload</a></td>
+      <td style="text-align: left">Writing to the database is a bottleneck. Configure the Ehcach Write-behind feature to offload database writes.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/spring-annotations.html">Caching methods with Spring Annotations</a></td>
+      <td style="text-align: left">Adding caching to methods using the Ehcache Annotations for Spring project.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="/documentation/2.8/recipes/wrapper.html">Cache Wrapper</a></td>
+      <td style="text-align: left">A simple class to make accessing Ehcache easier for simple use cases.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+## Let’s Add More</p>
+
+<p>If you have suggestions or ideas for more recipes, please tell us about them using the <a href="https://groups.google.com/forum/#!forum/ehcache-users">forums</a>.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +324,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 

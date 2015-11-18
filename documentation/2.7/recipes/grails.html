@@ -10,11 +10,11 @@
   <link rel="shortcut icon"  type="image/x-icon" href="/images/favicon.ico">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
-  <title>Ehcache</title>
+  <title>Ehcache 2.7 Documentation</title>
 
   <meta name="description" content="Java's most widely used cache.">
 
-  <link rel="canonical" href="http://www.ehcache.org/404.html">
+  <link rel="canonical" href="http://www.ehcache.org/documentation/2.7/recipes/grails.html">
   <link rel="alternate" type="application/rss+xml" title="Ehcache" href="http://www.ehcache.org/feed.xml" />
 
 
@@ -113,38 +113,160 @@
 
     <div class="container-fluid">
       <div id="contentTitle">
-        <h1></h1>
+        <h1>Ehcache 2.7 Documentation</h1>
       </div>
       <div>
         <br/>
 
-<div class="container">
+<div class="container-fluid">
 
-  <header class="post-header">
-    <h1 class="post-title"></h1>
-  </header>
+  <div class="row row-offcanvas row-offcanvas-left">
 
-  <article class="post-content">
-      <div id="intro" class="jumbotron breaker">
-    <div class="container">
-      <h3><i class="fa fa-chain-broken"></i>  <i class="fa fa-frown-o"></i>   Sorry!</h3>
-
-      <p>We've recently been heavily re-working the Ehcache.org website, and some links have gone astray.</p>
-
-      <p>Perhaps one of these suggestions will set you on your way?</p>
-
-      <ul>
-        <li><a href="/downloads">Downloads</a></li>
-        <li><a href="/documentation">Documentation</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/events">News and Events</a></li>
-      </ul>
-
-      <p>Please consider letting us know about our dust :  tc-oss@softwareag.com 
+    <!-- sidebar -->
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <ul class="nav">
+          <li class="submenu"><a href="/documentation/2.7/index.html">Docs Overview</a></li>
+          <li class="submenu"><a href="/documentation/2.7/get-started/index.html">Getting Started</a></li>
+          <li class="submenu"><a href="/documentation/2.7/configuration/index.html">Configuration</a></li>
+          <li class="submenu"><a href="/documentation/2.7/bigmemory/index.html">BigMemory</a></li>
+          <li class="submenu"><a href="/documentation/2.7/arc/index.html">Auto Resource Control (ARC)</a></li>
+          <li class="submenu"><a href="/documentation/2.7/apis/index.html">APIs</a></li>
+          <li class="submenu"><a href="/documentation/2.7/operations/index.html">Operations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/replication/index.html">Replication</a></li>
+          <li class="submenu"><a href="/documentation/2.7/modules/index.html">Modules</a></li>
+          <li class="submenu"><a href="/documentation/2.7/integrations/index.html">Integrations</a></li>
+          <li class="submenu"><a href="/documentation/2.7/recipes/index.html">Recipes</a></li>
+          <li class="submenu"><a href="/documentation/2.7/code-samples.html">Code Samples</a></li>
+          <li class="submenu"><a href="/documentation/2.7/faq.html">FAQ</a></li>
+          <li class="submenu"><a href="/apidocs/2.7.6/index.html" target="_blank">JavaDoc</a></li>
+        </ul>
     </div>
-  </div>
 
-  </article>
+    <!-- main area -->
+
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+         
+      </header>
+      <article class="post-content">
+        <h1 id="using-grails-and-ehcache-">Using Grails and Ehcache <a name="using-grails-and-ehcache" id="using-grails-and-ehcache"></a></h1><div id="toc-container">
+   <table class="toc" id="toc">
+      <tbody>
+         <tr>
+            <td>
+               <ul>
+                  <li class="toc_level-1 toc_section-1">
+                     <a href="#using-grails-and-ehcache-">
+                        <span class="toctext">Using Grails and Ehcache </span>
+                     </a>
+                     <ul>
+                        <li class="toc_level-2 toc_section-2">
+                           <a href="#introduction">
+                              <span class="toctext">Introduction</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-3">
+                           <a href="#configuring-ehcache-as-the-second-level-hibernate-cache">
+                              <span class="toctext">Configuring Ehcache As the Second Level Hibernate Cache</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-4">
+                           <a href="#overriding-defaults">
+                              <span class="toctext">Overriding Defaults</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-5">
+                           <a href="#springcache-plugin">
+                              <span class="toctext">Springcache Plugin</span>
+                           </a>
+                        </li>
+                        <li class="toc_level-2 toc_section-6">
+                           <a href="#clustering-web-sessions">
+                              <span class="toctext">Clustering Web Sessions</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>Grails 1.2RC1 and higher use Ehcache as the default Hibernate second level cache. However earlier versions of Grails
+ship with the Ehcache library and are very simple to enable.
+ The following steps show how to configure Grails to use Ehcache. For 1.2RC1 and higher, some of these steps are already done for you.</p>
+
+<h2 id="configuring-ehcache-as-the-second-level-hibernate-cache">Configuring Ehcache As the Second Level Hibernate Cache</h2>
+<p>Edit <code>DataSource.groovy</code> as follows:</p>
+
+<pre>
+   <code>hibernate {
+cache.use_second_level_cache=true
+cache.use_query_cache=true
+cache.provider_class='org.hibernate.cache.EhCacheProvider'
+"/&gt;
+</code>
+</pre>
+
+<h2 id="overriding-defaults">Overriding Defaults</h2>
+<p>As is usual with Hibernate, it will use the <code>defaultCache</code> configuration as a template to create new caches as required.
+For production use you often want to customise the cache configuration. To do so, add an ehcache.xml configuration file
+to the <code>conf</code> directory (the same directory that contains <code>DataSource.groovy</code>).
+A sample ehcache.xml which works with the Book demo app and is good as a starter configuration for Grails is shown below:</p>
+
+<pre>
+   <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="ehcache.xsd" &gt;
+	&lt;diskStore path="/path/to/store/data"/&gt;
+	&lt;cacheManagerEventListenerFactory class="" properties=""/&gt;
+	&lt;defaultCache
+       maxEntriesLocalHeap="10000"
+       eternal="false"
+       timeToLiveSeconds="120"&gt;
+       &lt;persistence strategy="none"/&gt;
+	&lt;/defaultCache&gt;
+	&lt;cache name="Book"
+      maxEntriesLocalHeap="10000"
+      timeToIdleSeconds="300"
+       /&gt;
+	&lt;cache name="org.hibernate.cache.UpdateTimestampsCache"
+      maxEntriesLocalHeap="10000"
+      timeToIdleSeconds="300"
+       /&gt;
+	&lt;cache name="org.hibernate.cache.StandardQueryCache"
+      maxEntriesLocalHeap="10000"
+      timeToIdleSeconds="300"
+       /&gt;
+&lt;/ehcache&gt;
+</code>
+</pre>
+
+<h2 id="springcache-plugin">Springcache Plugin</h2>
+<p>The Springcache plugin allows you to easily add the following functionality to your Grails project:</p>
+
+<ul>
+  <li>Caching of Spring bean methods (typically Grails service methods).</li>
+  <li>Caching of page fragments generated by Grails controllers.</li>
+  <li>Cache flushing when Spring bean methods or controller actions are invoked.</li>
+</ul>
+
+<p>The plugin depends on the Ehcache and Ehcache-Web libraries.
+See <a href="http://grails.org/plugin/springcache">Springcache Plugin</a>, a part of the Grails
+project, for more information.</p>
+
+<h2 id="clustering-web-sessions">Clustering Web Sessions</h2>
+<p>This is handled by Terracotta Web Sessions.
+See <a href="http://gquick.blogspot.com/2010/03/clustering-grails-app-with-terracotta.html">this blog</a>
+for a great intro on getting this going with Grails and Tomcat.</p>
+
+      </article>
+    </div>
+
+  </div>
 
 </div>
 
@@ -237,7 +359,7 @@
 <!--  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.0/jquery.scrollTo.min.js"/> -->
 
 <script type="text/javascript">
-        $('#').addClass("active");
+        $('#ehc_mnu_docs').addClass("active");
         $('#').addClass("active");
 </script>
 
