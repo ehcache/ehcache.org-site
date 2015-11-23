@@ -17,7 +17,7 @@
       <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;3.0.0.m3&lt;/version&gt;
+      &lt;version&gt;3.0.0.m4&lt;/version&gt;
     &lt;/dependency&gt;      </code></pre>
 
       <h3>Coding to the Ehcache 3 API</h3>
@@ -41,7 +41,7 @@
 
       </code></pre>
 
-      <h2>Using the JSR-107 API</h2>
+      <h2 id="using_jsr107_api">Using the JSR-107 API</h2>
 
       <h3>Downloading the jars</h3>
 
@@ -51,6 +51,14 @@
       &lt;groupId>javax.cache&lt;/groupId>
       &lt;artifactId>cache-api&lt;/artifactId>
       &lt;version>1.0.0&lt;/version>
+    &lt;/dependency></code></pre>
+
+      You will also need an extra jar which provides to Ehcache the management capabilities required by JSR-107:
+
+      <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency>
+      &lt;groupId>org.terracotta&lt;/groupId>
+      &lt;artifactId>management-model&lt;/artifactId>
+      &lt;version>2.0.0&lt;/version>
     &lt;/dependency></code></pre>
 
      <h2>Not quite ready yet?</h2>
