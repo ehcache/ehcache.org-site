@@ -29,6 +29,7 @@ asciidoctor:
     - pygments-css=style
     - icons=font
     - sourcedir=/_eh3
+    - sectanchors
 
 
 defaults:
