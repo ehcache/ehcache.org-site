@@ -137,7 +137,7 @@ Ehcache has full support for high performance distributed caching.
 ### Distributed Caching with Terracotta
 
 Simple yet powerful clustered caching. Just two lines of configuration is all that is required. For more
-information see [Distributed Caching With Terracotta](/documentation/configuration/distributed-cache-configuration  "Configuring Distributed Cache").
+information see [Distributed Caching With Terracotta](http://terracotta.org/generated/4.3.1/html/bmm-all/#page/bigmemory-max-webhelp%2Fco-cfgdist_about_distributed_config.html%23  "Configuring Distributed Cache").
 
 
 ---
@@ -189,14 +189,14 @@ Ehcache is popularly used as Hibernate's second-level cache.
 
 Ehcache-1.6 is compatible with Google App Engine.
 
-See the [Google App Engine How-To](/generated/2.10.0/html/ehc-all/#page/Ehcache_Documentation_Set%2Fto-gae_using_ehcache_with_the_google_app_engine.html%23).
+See the [Google App Engine How-To](/generated/2.10.1/html/ehc-all/#page/Ehcache_Documentation_Set%2Fto-gae_using_ehcache_with_the_google_app_engine.html%23).
 
 
 ### Transactional support through JTA
 
 Ehcache supports JTA and is a fully XA compliant resource participating in the transaction, two-phase commit and recovery. Ehcache also supports local transactions.
 
-See the complete [transaction documentation](/generated/2.10.0/html/ehc-all/#page/Ehcache_Documentation_Set%2Fto-tx_transaction_support.html%23).
+See the complete [transaction documentation](/generated/2.10.1/html/ehc-all/#page/Ehcache_Documentation_Set%2Fto-tx_transaction_support.html%23).
 
 
 ---
