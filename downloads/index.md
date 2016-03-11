@@ -22,7 +22,7 @@ For JSR107 support with Ehcache 2, use the [ehcache-jcache](https://github.com/e
 
 #### Ehcache 3
 
-> [Ehcache 3.0 Milestone 3](https://github.com/ehcache/ehcache3/releases/download/v3.0.0.m3/ehcache-3.0.0.m3.jar) .jar
+> [Ehcache 3.0 Milestone 5](https://github.com/ehcache/ehcache3/releases/download/v3.0.0.m5/ehcache-3.0.0.m5.jar) .jar
 
 More files related to milestone releases of Ehcache 3 are available on the project's [GitHub release page](https://github.com/ehcache/ehcache3/releases).
 
@@ -54,7 +54,7 @@ To include Ehcache 3.x in your project, use:
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;3.0.0.m3&lt;/version&gt;
+      &lt;version&gt;3.0.0.m5&lt;/version&gt;
     &lt;/dependency&gt;
 </code></pre>
 
@@ -75,7 +75,7 @@ From there the releases are immediately synced with the Maven central repository
 
 #### Snapshots
 
-Ehcache publishes regular snapshots for all modules to the SourceForge Maven repository mentioned above
+Ehcache publishes regular snapshots for all modules to the Sonatype Maven repository mentioned above
 
 Note that snapshots are recommended for developer testing only.
 
