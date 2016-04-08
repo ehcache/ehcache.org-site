@@ -30,6 +30,8 @@ asciidoctor:
     - icons=font
     - sourcedir=/_eh3
     - sectanchors
+    - idprefix
+    - idseparator=-
 
 
 defaults:
