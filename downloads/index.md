@@ -22,7 +22,7 @@ For JSR107 support with Ehcache 2, use the [ehcache-jcache](https://github.com/e
 
 #### Ehcache 3
 
-> [Ehcache 3.0 Release Candidate 2](https://github.com/ehcache/ehcache3/releases/download/v3.0.0.rc1/ehcache-3.0.0.rc2.jar) .jar
+> [Ehcache 3.0 Release Candidate 3](https://github.com/ehcache/ehcache3/releases/download/v3.0.0.rc3/ehcache-3.0.0.rc3.jar) .jar
 
 More files related to milestone releases of Ehcache 3 are available on the project's [GitHub release page](https://github.com/ehcache/ehcache3/releases).
 
@@ -54,7 +54,7 @@ To include Ehcache 3.x in your project, use:
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;3.0.0.rc2&lt;/version&gt;
+      &lt;version&gt;3.0.0.rc3&lt;/version&gt;
     &lt;/dependency&gt;
 </code></pre>
 

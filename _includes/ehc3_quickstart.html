@@ -17,7 +17,7 @@
       <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;3.0.0.rc2&lt;/version&gt;
+      &lt;version&gt;3.0.0.rc3&lt;/version&gt;
     &lt;/dependency&gt;      </code></pre>
 
       <h3>Coding to the Ehcache 3 API</h3>
@@ -25,7 +25,8 @@
       <pre class="prettyprint highlight"><code class="language-java" data-lang="java">
       CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
           .withCache("preConfigured",
-               CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class)
+               CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+                                              ResourcePoolsBuilder.heap(100))
                .build())
           .build(true);
 
@@ -33,7 +34,8 @@
           = cacheManager.getCache("preConfigured", Long.class, String.class);
 
       Cache&lt;Long, String&gt; myCache = cacheManager.createCache("myCache",
-          CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class).build());
+          CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+                                        ResourcePoolsBuilder.heap(100)).build());
 
       myCache.put(1L, "da one!");
       String value = myCache.get(1L);
