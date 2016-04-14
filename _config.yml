@@ -29,6 +29,9 @@ asciidoctor:
     - pygments-css=style
     - icons=font
     - sourcedir=/_eh3
+    - sectanchors
+    - idprefix
+    - idseparator=-
 
 
 defaults:
@@ -86,4 +89,4 @@ defaults:
     values:
       layout: "docs3x_page"
       ehc_version: "3.0"
-      ehc_javadoc_version: "3.0.0.m4"
+      ehc_javadoc_version: "3.0.0.rc3"

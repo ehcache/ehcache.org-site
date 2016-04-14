@@ -12,7 +12,7 @@ permalink: /documentation/
 
 | | |
 |:----|:--|
-|check it out! - [Ehcache 3.0 (milestone 4) User Guide](/documentation/3.0/) |[JavaDoc](/apidocs/3.0.0.m4/index.html){:target="_blank"} |
+|check it out! - [Ehcache 3.0 (release candidate 3) User Guide](/documentation/3.0/) |[JavaDoc](/apidocs/3.0.0.rc3/index.html){:target="_blank"} |
 |stable release - [Ehcache 2.10.x User Guide](/generated/2.10.1/html/ehc-all)   also available as [PDF](/documentation/2.10.1/pdf/index.html)|[JavaDoc](/apidocs/2.10.1/index.html){:target="_blank"} |
 |---| &nbsp; |
 |[Platform and Release Compatibility Tables](http://www.terracotta.org/confluence/display/release/Home){: target="_blank"}||
