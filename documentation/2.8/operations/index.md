@@ -14,7 +14,6 @@ The following sections provide a documentation Table of Contents and additional 
 |[JMX Management](/documentation/2.8/operations/jmx.html)|As an alternative to the Ehcache Monitor, JMX creates a standard way of instrumenting classes and making them available to a management and monitoring infrastructure.|
 |[Logging](/documentation/2.8/operations/logging.html)|Ehcache uses the the slf4j logging facade, so you can plug in your own logging framework. This page also provides recommended logging levels.|
 |[Shutting Down Ehcache](/documentation/2.8/operations/shutdown.html)|If you are using persistent disk stores, or distributed caching, care should be taken when shutting down Ehcache. This page covers the ServletContextListener, the shutdown hook, and dirty shutdown.|
-|[RMI Cache Remote Debugger](/documentation/2.8/operations/remotedebugger.html)|The Remote Debugger can be used to debug replicated cache operations. When started with the same configuration as the cluster, it will join the cluster and then report cluster events for the cache of interest. By providing a window into the cluster, it can help to identify the cause of cluster problems.|
 
 
 
