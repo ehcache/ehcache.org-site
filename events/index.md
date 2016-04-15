@@ -5,9 +5,20 @@ visible_title: "Events"
 permalink: /events/
 active_sub_menu_id: ehc_mnu_events_events
 ---
-## Upcoming Conferences & Events
 
+## Upcoming Conferences & Events
 Meet our team and join our sessions at the following conferences and meetups.
+
+### Devoxx France : April 20 - 22, 2016 : Paris, France
+
+[Louis Jacoment](http://cfp.devoxx.fr/2016/speaker/louis_jacomet) speaks about _Ehcache3: Out of It's Element_
+- Full description on Devoxx FR website at link
+
+[Ludovic Orban](http://cfp.devoxx.fr/2016/speaker/ludovic_orban) speaks about _Terracotta's Offheap For Dummies_
+- Full description on Devoxx FR website at link
+
+## Recent Events
+
 
 ### Devoxx Morocco : November 16-18, 2015 : Casablanca, Morocco
 [Louis Jacomet](http://cfp.devoxx.ma/2015/talk/FDX-7262/Ehcache3:_JSR107_on_steroids) speaks about _Ehcache3: JSR-107 on Steroids_
@@ -29,8 +40,6 @@ Session on Monday November 9th at 1.30pm - Full description on the Devoxx websit
 Terracotta open sourced it’s core offheap library earlier this year. [...] What follows will be an explanation of how well understood CS concepts from managed and unmanaged programing environments combine to produce a stable, reliable, and useful library.
 
 Session on Thursday November 12th at 5.50pm - Full description on the Devoxx website
-
-## Recent Events
 
 ### JavaOne : October 25-29, 2015 : San Francisco, CA
 [Alex Snaps](https://events.rainfocus.com/oow15/catalog/oracle.jsp?event=javaone&search=snaps&search.event=javaoneEvent) spoke about _Ehcache3:JSR 107 on Steroids [CON10204]_
