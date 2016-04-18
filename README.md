@@ -5,8 +5,8 @@
 
 * After installing jekyll, install some gems:
   * nokogiri : "gem install nokogiri"
-  * asciidoctor: " gem install jasciidoctor"
-  * jekyll-asciidoc: " gem install jekyll-asciidoc"
+  * asciidoctor: "gem install asciidoctor"
+  * jekyll-asciidoc: "gem install jekyll-asciidoc"
 
 * Clone this repository to your local system (if you're going to contribute content, fork it first, and clone that)
 * cd into the "ehcache.github.io" directory
@@ -29,3 +29,6 @@
   * could still use some love, but isn't so bad anymore
 
 
+### Troubleshooting:
+
+* On OSX El Captain, gem installation could fail with a permission error. See: http://stackoverflow.com/questions/32659348/operation-not-permitted-when-on-root-el-capitan-rootless-disabled
