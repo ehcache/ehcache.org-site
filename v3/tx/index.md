@@ -4,4 +4,4 @@ title: "Ehcache Transactions Namespace"
 permalink: /v3/tx/
 ---
 
-* [ehcache-tx-ext-3.0.xsd](/xml/ehcache-tx-ext-3.0.xsd)
+* [ehcache-tx-ext-3.0.xsd](/schema/ehcache-tx-ext-3.0.xsd)
