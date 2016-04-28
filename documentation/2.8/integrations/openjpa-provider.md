@@ -4,7 +4,7 @@
 
 
 
-##Introduction
+## Introduction
 Ehcache easily integrates with the [OpenJPA](http://openjpa.apache.org/) persistence framework. This page provides installation and configuration information.
 
 ## Installation
@@ -74,7 +74,7 @@ to create caches.
 For production, we recommend configuring a cache configuration in ehcache.xml for each cache, so that
 it may be correctly tuned.
 
-##Troubleshooting
+## Troubleshooting
 
 To verify that that OpenJPA is using Ehcache:
 
@@ -83,5 +83,5 @@ To verify that that OpenJPA is using Ehcache:
 
 If there are still problems, verify in the logs and that your ehcache.xml file is being used. (It could be that if the ehcache.xml file is not found, ehcache-failsafe.xml is used by default.)
 
-##For Further Information
+## For Further Information
 For more on caching in OpenJPA, refer to the [Apache OpenJPA project](http://openjpa.apache.org/builds/1.0.2/apache-openjpa-1.0.2/docs/manual/ref_guide_caching.html).

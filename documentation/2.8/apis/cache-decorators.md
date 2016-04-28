@@ -20,9 +20,9 @@ Note that, for backward compatibility, `CacheManager.getCache(String name)` has 
 
 Cache decorators are created as follows:
 
-<pre>
+~~~ java
 BlockingCache newBlockingCache = new BlockingCache(cache);
-</pre>
+~~~
 
 The class must implement Ehcache.
 
@@ -37,11 +37,11 @@ The properties will be parsed according to the delimiter (default is comma ',') 
 
 It is configured as per the following example:
 
-<pre>
-   &lt;cacheDecoratorFactory
+~~~ xml
+<cacheDecoratorFactory
 		class="com.company.SomethingCacheDecoratorFactory"
-		properties="property1=36 ..." /&gt;
-</pre>
+		properties="property1=36 ..." />
+~~~
 
 Note that from version 2.2, decorators can be configured against the `defaultCache`. This is very useful for frameworks
  like Hibernate that add caches based on the `defaultCache`.
@@ -56,9 +56,9 @@ Note that decorators created via configuration in ehcache.xml have already been 
 A built-in way is to replace the Cache in CacheManager with the decorated one. This is achieved as in the following
 example:
 
-<pre>
+~~~ java
 cacheManager.replaceCacheWithDecoratedCache(cache, newBlockingCache);
-</pre>
+~~~
 
 The `CacheManager` `{replaceCacheWithDecoratedCache}` method requires that the decorated cache be built from
  the underlying cache from the same name.
@@ -72,19 +72,19 @@ A word of caution. This method should be called in an appropriately synchronized
 attempt to use it. All threads must be referencing the same decorated cache. An example of a suitable init method is
 found in `CachingFilter`:
 
-<pre>
+~~~ java
 /**
-* The cache holding the web pages. Ensure that all threads for a given cache name
-* are using the same instance of this.
-*/
+ * The cache holding the web pages. Ensure that all threads for a given cache name
+ * are using the same instance of this.
+ */
 private BlockingCache blockingCache;
 /**
-* Initialises blockingCache to use
-*
-* @throws CacheException The most likely cause is that a cache has not been
-*                        configured in Ehcache's configuration file ehcache.xml
-*                        for the filter name
-*/
+ * Initialises blockingCache to use
+ *
+ * @throws CacheException The most likely cause is that a cache has not been
+ *                        configured in Ehcache's configuration file ehcache.xml
+ *                        for the filter name
+ */
 public void doInit() throws CacheException {
   synchronized (this.getClass()) {
     if (blockingCache == null) {
@@ -94,16 +94,16 @@ public void doInit() throws CacheException {
         //decorate and substitute
         BlockingCache newBlockingCache = new BlockingCache(cache);
         getCacheManager().replaceCacheWithDecoratedCache(cache, newBlockingCache);
-      "/>
+      }
       blockingCache = (BlockingCache) getCacheManager().getEhcache(getCacheName());
-    "/>
-  "/>
-"/>
-</pre>
+    }
+  }
+}
+~~~
 
-<pre>
+~~~ java
 Ehcache blockingCache = singletonManager.getEhcache("sampleCache1");
-</pre>
+~~~
 
 The returned cache will exhibit the decorations.
 
@@ -114,34 +114,34 @@ Sometimes you want to add a decorated cache but retain access to the underlying 
 The way to do this is to create a decorated cache and then call `cache.setName(new_name)` and then add it to `CacheManager`
 with `CacheManager.addDecoratedCache()`.
 
-<pre>
+~~~ java
 /**
-* Adds a decorated {@link Ehcache} to the CacheManager. This method neither creates
-* the memory/disk store nor initializes the cache. It only adds the cache reference
-* to the map of caches held by this cacheManager.
-* <p/>
-* It is generally required that a decorated cache, once constructed, is made available
-* to other execution threads. The simplest way of doing this is to either add it to
-* the cacheManager with a different name or substitute the original cache with the
-* decorated one.
-* <p/>
-* This method adds the decorated cache assuming it has a different name. If another
-* cache (decorated or not) with the same name already exists, it will throw
-* {@link ObjectExistsException}. For replacing existing
-* cache with another decorated cache having same name, please use
-* {@link #replaceCacheWithDecoratedCache(Ehcache, Ehcache)"/>
-* <p/>
-* Note that any overridden Ehcache methods by the decorator will take on new
-* behaviours without casting. Casting is only required for new methods that the
-* decorator introduces. For more information see the well known Gang of Four
-* Decorator pattern.
-*
-* @param decoratedCache
-* @throws ObjectExistsException
-*             if another cache with the same name already exists.
-*/
+ * Adds a decorated {@link Ehcache} to the CacheManager. This method neither creates
+ * the memory/disk store nor initializes the cache. It only adds the cache reference
+ * to the map of caches held by this cacheManager.
+ * <p/>
+ * It is generally required that a decorated cache, once constructed, is made available
+ * to other execution threads. The simplest way of doing this is to either add it to
+ * the cacheManager with a different name or substitute the original cache with the
+ * decorated one.
+ * <p/>
+ * This method adds the decorated cache assuming it has a different name. If another
+ * cache (decorated or not) with the same name already exists, it will throw
+ * {@link ObjectExistsException}. For replacing existing
+ * cache with another decorated cache having same name, please use
+ * {@link #replaceCacheWithDecoratedCache(Ehcache, Ehcache)"/>
+ * <p/>
+ * Note that any overridden Ehcache methods by the decorator will take on new
+ * behaviours without casting. Casting is only required for new methods that the
+ * decorator introduces. For more information see the well known Gang of Four
+ * Decorator pattern.
+ *
+ * @param decoratedCache
+ * @throws ObjectExistsException
+ *             if another cache with the same name already exists.
+ */
 public void addDecoratedCache(Ehcache decoratedCache) throws ObjectExistsException {
-</pre>
+~~~
 
 ## Built-in Decorators
 

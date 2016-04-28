@@ -7,7 +7,7 @@
 ## Introduction
 This page discusses why caching empty values can be desirable to deflect load from the database.
 
-##Problem
+## Problem
 
 Your application is querying the database excessively only to find that there is no result. Since there is no result, there is nothing to cache.
 

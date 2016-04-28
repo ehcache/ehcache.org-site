@@ -4,7 +4,7 @@
 
 
 
-##Introduction
+## Introduction
 Ehcache is probably used most commonly with Tomcat. This page documents some known issues with Tomcat
 and recommended practices.
 Ehcache's own caching and gzip filter integration tests run against Tomcat 5.5 and Tomcat 6. Tomcat will

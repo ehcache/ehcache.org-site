@@ -4,7 +4,7 @@
 
 
 
-##Introduction
+## Introduction
 This page addresses the problem of database write overload and explains how the Ehcache Write-behind feature can be the solution.
 
 ## Problem

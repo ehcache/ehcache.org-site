@@ -25,7 +25,7 @@ Cache persistence on disk is configured by adding the `<persistence>` sub-elemen
        <persistence strategy=”localRestartable|localTempSwap|none|distributed” synchronousWrites=”false|true”/>
     </cache>
  
-###Strategy Options
+### Strategy Options
 The options for the `strategy` attribute are:
 
 *  **"localRestartable"** &mdash; Enables the RestartStore and copies all cache entries (on-heap and/or off-heap) to disk. This option provides fast restartability with fault tolerant cache persistence on disk. This option is available for [BigMemory Go](http://terracotta.org/products/bigmemorygo) only.
@@ -36,7 +36,7 @@ The options for the `strategy` attribute are:
 
 *  **"none"** &mdash; Does not offload cache entries to disk. With this option, all of the cache is kept in memory. This is the default mode.
 
-###Synchronous Writes Options
+### Synchronous Writes Options
 If the `strategy` attribute is set to "localRestartable", then the `synchronousWrites` attribute may be configured. The options for `synchronousWrites` are:
 
 *  **synchronousWrites=”false”** &mdash; This option provides an eventually consistent copy of the cache on disk at all times. Writes to disk happen when efficient, and cache operations proceed without waiting for acknowledgement of writing to disk. After a restart, the cache is recovered as it was when last synced. This option is faster than `synchronousWrites="true"`, but after a crash, the last 2-3 seconds of written data may be lost. 
@@ -50,7 +50,7 @@ If the `strategy` attribute is set to "localRestartable", then the `synchronousW
 **Note**: The `synchronousWrites` attribute is also available in the `<terracotta>` sub-element. If configured in both places, it must have the same value.  
 
 
-###DiskStore Path
+### DiskStore Path
 The path to the directory where any required disk files will be created is configured with the `<diskStore>` sub-element of the Ehcache configuration. 
 
 For "localTempSwap", if the DiskStore path is not specified, a default path is used for the disk storage tier, and the default path will be auto-resolved in the case of a conflict with another CacheManager.
@@ -58,7 +58,7 @@ For "localTempSwap", if the DiskStore path is not specified, a default path is u
 ## Configuration Examples
 This section presents possible disk usage configurations for open-source Ehcache 2.6 and higher.
 
-###Temporary Disk Storage
+### Temporary Disk Storage
 
 The "localTempSwap" persistence strategy allows the cache to use the local disk during cache operation. The disk storage is temporary and is cleared after a restart. 
 
@@ -71,7 +71,7 @@ The "localTempSwap" persistence strategy allows the cache to use the local disk 
    
 **Note**: With the "localTempSwap" strategy, you can use `maxEntriesLocalDisk` or `maxBytesLocalDisk` at either the Cache or CacheManager level to control the size of the disk tier. 
 
-###In-memory Only Cache
+### In-memory Only Cache
 When the persistence strategy is "none", all cache stays in memory (with no overflow to disk nor persistence on disk).
 
     <cache>
@@ -79,7 +79,7 @@ When the persistence strategy is "none", all cache stays in memory (with no over
     </cache>	
         
 
-###Programmatic Configuration Example
+### Programmatic Configuration Example
 The following is an example of how to programmatically configure cache persistence on disk:
 
     Configuration cacheManagerConfig = new Configuration()
@@ -99,7 +99,7 @@ The following is an example of how to programmatically configure cache persisten
 
 
 ## Compatibility with Previous Versions
-###Comparison of Disk Usage Options
+### Comparison of Disk Usage Options
 The following table summarizes the configuration options for disk usage in Ehcache 2.6 and higher as compared with previous versions.
 
 | Disk Usage | Ehcache 2.6 (and higher) | Ehcache 2.5 and Earlier |
@@ -117,7 +117,7 @@ The following table summarizes the configuration options for disk usage in Ehcac
 **In Ehcache 2.5 and earlier, cache persistence on disk for standalone Ehcache is configured with the `overflowToDisk` and `diskPersistent` attributes. If both are set to "true", cached data is saved to disk asynchronously and can be recovered after a clean shutdown or planned flush. To prevent corrupt or inconsistent data from being returned, checking measures are performed upon a restart, and if any discrepancy is found, the cache that was stored on disk is emptied and must be reloaded from the data source.
 
 
-###Upgrading from Ehcache 2.5 and Earlier
+### Upgrading from Ehcache 2.5 and Earlier
 
 After upgrading from a version of Ehcache previous to 2.6, it is strongly recommended to add the `<persistence>` sub-element to your cache configuration, and to delete, disable, or edit out disk persistence configuration elements from previous versions. The previous elements include:
 
