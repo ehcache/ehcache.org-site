@@ -222,7 +222,7 @@ Assuming that we have previously created Person objects containing attributes su
 
 Given the code above, the newly put element would be indexed on values of name and age fields, but not gender. If, at a later time, you would like to start indexing the element data on gender, you would need to create a new `DynamicAttributesExtractor` instance that extracts that field for indexing.
 
-#####Dynamic Search Rules
+##### Dynamic Search Rules
 
 * In order to use the `DynamicAttributesExtractor`, the cache must be configured to be searchable and dynamically indexable (refer to [Making a Cache Searchable](/documentation/2.7/apis/search#making-a-cache-searchable) above). 
 
@@ -346,7 +346,7 @@ The GroupBy clause groups the results from `includeAttribute()` and allows aggre
 		String loc = singleResult.getAttribute(loc);
 
 
-####GroupBy Rules
+#### GroupBy Rules
 Grouping query results adds another step to the query--first results are returned, and second the results are grouped. This necessitates the following rules and considerations when using GroupBy:
 
 *  In a query with a GroupBy clause, any attribute specified using `includeAttribute()` should also be included in the GroupBy clause. 
@@ -467,7 +467,7 @@ Execute Time: 180ms
 </code></pre>
 
 
-##Best Practices for Optimizing Searches
+## Best Practices for Optimizing Searches
 1. Construct searches wisely by including only the data that is actually required. 
   *  Only use `includeKeys()` and/or `includeAttribute()` if those values are actually required for your application logic.
   *  If you don’t need values or attributes, be careful not to burden your queries with unnecessary work. For example, if `result.getValue()` is not called in the search results, then don't use `includeValues()` in the original query. 

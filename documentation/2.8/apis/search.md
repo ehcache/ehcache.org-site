@@ -29,7 +29,7 @@ Caches can be made searchable, on a per cache basis, either by configuration or 
 
 Caches are made searchable by adding a `<searchable/>` tag to the ehcache.xml.
 
-~~~
+~~~ xml
 <cache name="cache2" maxBytesLocalHeap="16M" eternal="true" maxBytesLocalOffHeap="256M">
 	<persistence strategy="localRestartable"/>
 	<searchable/>
@@ -40,7 +40,7 @@ This configuration will scan keys and values and, if they are of supported searc
 attributes called "key" and "value" respectively. If you do not want automatic indexing of keys and values,
 you can disable it with:
 
-~~~
+~~~ xml
 <cache name="cacheName" ...>
 	<searchable keys="false" values="false"/>
 	   ...
@@ -54,7 +54,7 @@ an exception if types are mixed.
 
 If you think that you will want to add search attributes after the cache is initialized, you can explicitly indicate the dynamic search configuration. Set the `allowDynamicIndexing` attribute to "true" to enable use of the dynamic attributes extractor (described in the [Defining Attributes](/documentation/2.8/apis/search.html#defining-attributes) section below):
 
-~~~
+~~~ xml
 <cache name="cacheName" ...>
 	<searchable allowDynamicIndexing="true">
 	   ...
@@ -65,7 +65,7 @@ If you think that you will want to add search attributes after the cache is init
 Often keys or values will not be directly searchable and instead you will need to extract searchable attributes out of them.
 The following example shows this more typical case.  Attribute Extractors are explained in more detail in the following section.
 
-~~~
+~~~ xml
 <cache name="cache3" maxEntriesLocalHeap="10000" eternal="true" maxBytesLocalOffHeap="10G">
 	<persistence strategy="localRestartable"/>
 	<searchable>
@@ -80,23 +80,25 @@ The following example shows this more typical case.  Attribute Extractors are ex
 
 The following example shows how to programmatically create the cache configuration, with search attributes.
 
-    Configuration cacheManagerConfig = new Configuration();
-    CacheConfiguration cacheConfig = new CacheConfiguration("myCache", 0).eternal(true);
-    Searchable searchable = new Searchable();
-    cacheConfig.addSearchable(searchable);
-    // Create attributes to use in queries.
-    searchable.addSearchAttribute(new SearchAttribute().name("age"));
-    // Use an expression for accessing values.
-    searchable.addSearchAttribute(new SearchAttribute()
-        .name("first_name")
-        .expression("value.getFirstName()"));
-    searchable.addSearchAttribute(new SearchAttribute().name("last_name").expression("value.getLastName()"));
-         searchable.addSearchAttribute(new SearchAttribute().name("zip_code").expression("value.getZipCode()"));
-    cacheManager = new CacheManager(cacheManagerConfig);
-    cacheManager.addCache(new Cache(cacheConfig));
-    Ehcache myCache = cacheManager.getEhcache("myCache");
-    // Now create the attributes and queries, then execute.
-    ...
+~~~ java
+Configuration cacheManagerConfig = new Configuration();
+CacheConfiguration cacheConfig = new CacheConfiguration("myCache", 0).eternal(true);
+Searchable searchable = new Searchable();
+cacheConfig.addSearchable(searchable);
+// Create attributes to use in queries.
+searchable.addSearchAttribute(new SearchAttribute().name("age"));
+// Use an expression for accessing values.
+searchable.addSearchAttribute(new SearchAttribute()
+    .name("first_name")
+    .expression("value.getFirstName()"));
+searchable.addSearchAttribute(new SearchAttribute().name("last_name").expression("value.getLastName()"));
+searchable.addSearchAttribute(new SearchAttribute().name("zip_code").expression("value.getZipCode()"));
+cacheManager = new CacheManager(cacheManagerConfig);
+cacheManager.addCache(new Cache(cacheConfig));
+Ehcache myCache = cacheManager.getEhcache("myCache");
+// Now create the attributes and queries, then execute.
+...
+~~~
 
 To learn more about the Ehcache Search API, see the `net.sf.ehcache.search*` packages in this [Javadoc](/apidocs/2.8.5/index.html).
 
@@ -140,24 +142,28 @@ recommended to statically import so that, in this example, you would just use `K
 
 The ReflectionAttributeExtractor is a built-in search attribute extractor which uses JavaBean conventions and also understands a simple form of expression. Where a JavaBean property is available and it is of a searchable type, it can be simply declared:
 
-    <cache>
-      <searchable>
-        <searchAttribute name="age"/>
-      </searchable>
-    </cache>
+~~~ xml
+<cache>
+  <searchable>
+    <searchAttribute name="age"/>
+  </searchable>
+</cache>
+~~~
 
  The expression language of the ReflectionAttributeExtractor also uses method/value dotted expression chains. The expression chain must start with one of either "key", "value", or "element". From the starting object a chain of either method calls or field names follows. Method calls and field names can be freely mixed in the chain. Some more examples:
 
-    <cache>
-      <searchable>
-        <searchAttribute name="age" expression="value.person.getAge()"/>
-      </searchable>
-    </cache>
-    <cache>
-      <searchable>
-         <searchAttribute name="name" expression="element.toString()"/>
-      </searchable>
-    </cache>
+~~~ xml
+<cache>
+  <searchable>
+    <searchAttribute name="age" expression="value.person.getAge()"/>
+  </searchable>
+</cache>
+<cache>
+  <searchable>
+    <searchAttribute name="name" expression="element.toString()"/>
+  </searchable>
+</cache>
+~~~
 
  *Note*: The method and field name portions of the expression are case sensitive.
 
@@ -166,22 +172,26 @@ The ReflectionAttributeExtractor is a built-in search attribute extractor which 
 
  In more complex situations, you can create your own attribute extractor by implementing the AttributeExtractor interface. Provide your extractor class, as shown in the following example:
 
-    <cache name="cache2" maxEntriesLocalHeap="0" eternal="true">
-      <persistence strategy="none"/>
-      <searchable>
-         <searchAttribute name="age" class="net.sf.ehcache.search.TestAttributeExtractor"/>
-      </searchable>
-    </cache>
+~~~ xml
+<cache name="cache2" maxEntriesLocalHeap="0" eternal="true">
+  <persistence strategy="none"/>
+  <searchable>
+    <searchAttribute name="age" class="net.sf.ehcache.search.TestAttributeExtractor"/>
+  </searchable>
+</cache>
+~~~
 
  If you need to pass state to your custom extractor, you may do so with properties, as shown in the following example:
 
-    <cache>
-      <searchable>
-        <searchAttribute name="age"
+~~~ xml
+<cache>
+  <searchable>
+    <searchAttribute name="age"
         class="net.sf.ehcache.search.TestAttributeExtractor"
         properties="foo=this,bar=that,etc=12" />
-      </searchable>
-    </cache>
+  </searchable>
+</cache>
+~~~
 
 If properties are provided, then the attribute extractor implementation must have a public constructor that accepts a single `java.util.Properties` instance.
 
@@ -191,36 +201,38 @@ The `DynamicAttributesExtractor` provides flexibility by allowing the search con
 
 Assuming that we have previously created Person objects containing attributes such as name, age, and gender, the following example shows how to create a dynamically searchable cache and register the `DynamicAttributesExtractor`:
 
-	Configuration config = new Configuration();
-	config.setName("default");
-  	CacheConfiguration cacheCfg = new CacheConfiguration(“PersonCache”);
-  	cacheCfg.setEternal(true);
-  	Searchable searchable = new Searchable().allowDynamicIndexing(true);
+~~~ java
+Configuration config = new Configuration();
+config.setName("default");
+CacheConfiguration cacheCfg = new CacheConfiguration(“PersonCache”);
+cacheCfg.setEternal(true);
+Searchable searchable = new Searchable().allowDynamicIndexing(true);
 
-	cacheCfg.addSearchable(searchable);
-	config.addCache(cacheCfg);
+cacheCfg.addSearchable(searchable);
+config.addCache(cacheCfg);
 
-	CacheManager cm = new CacheManager(config);
-	Ehcache cache = cm.getCache(“PersonCache”);
-	final String attrNames[] = {“first_name”, “age”};
-	// Now you can register a dynamic attribute extractor that would index the cache elements, using a subset of known fields
-	cache.registerDynamicAttributesExtractor(new DynamicAttributesExtractor() {
-		Map<String, Object> attributesFor(Element element) {
-			Map<String, Object> attrs = new HashMap<String, Object>();
-			Person value = (Person)element.getObjectValue();
-			// For example, extract first name only
-			String fName = value.getName() == null ? null : value.getName().split(“\\s+”)[0];
-			attrs.put(attrNames[0], fName);
-			attrs.put(attrNames[1], value.getAge());
-			return attrs;
-		"/>
-	});
-	// Now add some data to the cache
-	cache.put(new Element(10, new Person(“John Doe”, 34, Person.Gender.MALE)));
+CacheManager cm = new CacheManager(config);
+Ehcache cache = cm.getCache(“PersonCache”);
+final String attrNames[] = {“first_name”, “age”};
+// Now you can register a dynamic attribute extractor that would index the cache elements, using a subset of known fields
+cache.registerDynamicAttributesExtractor(new DynamicAttributesExtractor() {
+  Map<String, Object> attributesFor(Element element) {
+	  Map<String, Object> attrs = new HashMap<String, Object>();
+		Person value = (Person)element.getObjectValue();
+		// For example, extract first name only
+		String fName = value.getName() == null ? null : value.getName().split(“\\s+”)[0];
+		attrs.put(attrNames[0], fName);
+		attrs.put(attrNames[1], value.getAge());
+		return attrs;
+	}
+});
+// Now add some data to the cache
+cache.put(new Element(10, new Person(“John Doe”, 34, Person.Gender.MALE)));
+~~~
 
 Given the code above, the newly put element would be indexed on values of name and age fields, but not gender. If, at a later time, you would like to start indexing the element data on gender, you would need to create a new `DynamicAttributesExtractor` instance that extracts that field for indexing.
 
-#####Dynamic Search Rules
+##### Dynamic Search Rules
 
 * In order to use the `DynamicAttributesExtractor`, the cache must be configured to be searchable and dynamically indexable (refer to [Making a Cache Searchable](/documentation/2.8/apis/search.html#making-a-cache-searchable) above).
 
@@ -238,36 +250,48 @@ Given the code above, the newly put element would be indexed on values of name a
 Ehcache Search uses a fluent, object-oriented Query API, following DSL principles, which should feel familiar and natural to Java programmers.
 Here is a simple example:
 
-    Query query = cache.createQuery().addCriteria(age.eq(35)).includeKeys().end();
-    Results results = query.execute();
+~~~ java
+Query query = cache.createQuery().addCriteria(age.eq(35)).includeKeys().end();
+Results results = query.execute();
+~~~
 
 ### Using Attributes in Queries
  If declared and available, the well-known attributes are referenced by their names or the convenience attributes are used
   directly, as shown in this example:
 
-    Results results = cache.createQuery().addCriteria(Query.KEY.eq(35)).execute();
-    Results results = cache.createQuery().addCriteria(Query.VALUE.lt(10)).execute();
+~~~ java
+Results results = cache.createQuery().addCriteria(Query.KEY.eq(35)).execute();
+~~~
+
+~~~ java
+Results results = cache.createQuery().addCriteria(Query.VALUE.lt(10)).execute();
+~~~
 
 Other attributes are referenced by the names given them in the configuration. For example:
 
-    Attribute<Integer> age = cache.getSearchAttribute("age");
-    Attribute<String> gender = cache.getSearchAttribute("gender");
-    Attribute<String> name = cache.getSearchAttribute("name");
-
+~~~ java
+Attribute<Integer> age = cache.getSearchAttribute("age");
+Attribute<String> gender = cache.getSearchAttribute("gender");
+Attribute<String> name = cache.getSearchAttribute("name");
+~~~
 
 ### Expressions
 
 A Query is built up using Expressions. Expressions may include logical operators such as &lt;and&gt; and &lt;or&gt;, and comparison operators such as &lt;ge&gt; (&gt;=), &lt;between&gt;, and &lt;like&gt;.
 The configuration `addCriteria(...)` is used to add a clause to a query. Adding a further clause automatically "&lt;and&gt;s" the clauses.
 
-    query = cache.createQuery().includeKeys().addCriteria(age.le(65)).add(gender.eq("male")).end();
+~~~ java
+query = cache.createQuery().includeKeys().addCriteria(age.le(65)).add(gender.eq("male")).end();
+~~~
 
 Both logical and comparison operators implement the `Criteria` interface.
 To add a criteria with a different logical operator, explicitly nest it within a new logical operator Criteria Object. For example, to check for age = 35 or gender = female, do the following:
 
-    query.addCriteria(new Or(age.eq(35),
-                 gender.eq(Gender.FEMALE))
-                );
+~~~ java
+query.addCriteria(new Or(age.eq(35),
+                         gender.eq(Gender.FEMALE))
+);
+~~~
 
 More complex compound expressions can be further created with extra nesting.
 See the [Expression JavaDoc](/apidocs/2.8.5/net/sf/ehcache/search/expression/package-frame.html) for a complete list of expressions.
@@ -318,7 +342,9 @@ A Result object can contain:
 Aggregators are added with `query.includeAggregator(\<attribute\>.\<aggregator\>)`.
 For example, to find the sum of the age attribute:
 
-    query.includeAggregator(age.sum());
+~~~ java
+query.includeAggregator(age.sum());
+~~~
 
 For a complete list of aggregators, refer to the [Aggregators JavaDoc](/apidocs/2.8.5/net/sf/ehcache/search/aggregator/package-frame.html).
 
@@ -326,29 +352,33 @@ For a complete list of aggregators, refer to the [Aggregators JavaDoc](/apidocs/
 Query results may be ordered in ascending or descending order by adding an `addOrderBy` clause to the query, which takes
 as parameters the attribute to order by and the ordering direction. For example, to order the results by ages in ascending order:
 
-    query.addOrderBy(age, Direction.ASCENDING);
+~~~ java
+query.addOrderBy(age, Direction.ASCENDING);
+~~~
 
 
 ### Grouping Results
 With Ehcache 2.6 and higher, query results may be grouped similarly to using an SQL GROUP BY statement. The Ehcache GroupBy feature provides the option to group results according to specified attributes by adding an `addGroupBy` clause to the query, which takes as parameters the attributes to group by. For example, you can group results by department and location like this:
 
-    Query q = cache.createQuery();
-    Attribute<String> dept = cache.getSearchAttribute(“dept”);
-    Attribute<String> loc = cache.getSearchAttribute(“location”);
-    q.includeAttribute(dept);
-    q.includeAttribute(loc);
-    q.addCriteria(cache.getSearchAttribute(“salary”).gt(100000));
-    q.includeAggregator(Aggregators.count());
-    q.addGroupBy(dept, loc);
-
+~~~ java
+Query q = cache.createQuery();
+Attribute<String> dept = cache.getSearchAttribute(“dept”);
+Attribute<String> loc = cache.getSearchAttribute(“location”);
+q.includeAttribute(dept);
+q.includeAttribute(loc);
+q.addCriteria(cache.getSearchAttribute(“salary”).gt(100000));
+q.includeAggregator(Aggregators.count());
+q.addGroupBy(dept, loc);
+~~~
 
 The GroupBy clause groups the results from `includeAttribute()` and allows aggregate functions to be performed on the grouped attributes. To retrieve the attributes that are associated with the aggregator results, you can use:
 
-		String dept = singleResult.getAttribute(dept);
-		String loc = singleResult.getAttribute(loc);
+~~~ java
+String dept = singleResult.getAttribute(dept);
+String loc = singleResult.getAttribute(loc);
+~~~
 
-
-####GroupBy Rules
+#### GroupBy Rules
 Grouping query results adds another step to the query--first results are returned, and second the results are grouped. This necessitates the following rules and considerations when using GroupBy:
 
 *  In a query with a GroupBy clause, any attribute specified using `includeAttribute()` should also be included in the GroupBy clause.
@@ -364,18 +394,22 @@ Grouping query results adds another step to the query--first results are returne
 By default a query will return an unlimited number of results. For example the following
 query will return all keys in the cache.
 
-    Query query = cache.createQuery();
-    query.includeKeys();
-    query.execute();
+~~~ java
+Query query = cache.createQuery();
+query.includeKeys();
+query.execute();
+~~~
 
 If too many results are returned, it could cause an OutOfMemoryError
 The `maxResults` clause is used to limit the size of the results.
 For example, to limit the above query to the first 100 elements found:
 
-    Query query = cache.createQuery();
-    query.includeKeys();
-    query.maxResults(100);
-    query.execute();
+~~~ java
+Query query = cache.createQuery();
+query.includeKeys();
+query.maxResults(100);
+query.execute();
+~~~
 
 **Note**: When maxResults is used with GroupBy, it limits the number of groups.
 
@@ -402,29 +436,31 @@ on how to use each Ehcache Search feature.
 ## Scripting Environments
 Ehcache Search is readily amenable to scripting. The following example shows how to use it with BeanShell:
 
-    Interpreter i = new Interpreter();
-    //Auto discover the search attributes and add them to the interpreter's context
-    Map<String, SearchAttribute> attributes = cache.getCacheConfiguration().getSearchAttributes();
-    for (Map.Entry<String, SearchAttribute> entry : attributes.entrySet()) {
-    i.set(entry.getKey(), cache.getSearchAttribute(entry.getKey()));
-    LOG.info("Setting attribute " + entry.getKey());
-    "/>
-    //Define the query and results. Add things which would be set in the GUI i.e.
-    //includeKeys and add to context
-    Query query = cache.createQuery().includeKeys();
-    Results results = null;
-    i.set("query", query);
-    i.set("results", results);
-    //This comes from the freeform text field
-    String userDefinedQuery = "age.eq(35)";
-    //Add on the things that we need
-    String fullQueryString = "results = query.addCriteria(" + userDefinedQuery + ").execute()";
-    i.eval(fullQueryString);
-    results = (Results) i.get("results");
-    assertTrue(2 == results.size());
-    for (Result result : results.all()) {
-    LOG.info("" + result.getKey());
-    "/>
+~~~ java
+Interpreter i = new Interpreter();
+//Auto discover the search attributes and add them to the interpreter's context
+Map<String, SearchAttribute> attributes = cache.getCacheConfiguration().getSearchAttributes();
+for (Map.Entry<String, SearchAttribute> entry : attributes.entrySet()) {
+  i.set(entry.getKey(), cache.getSearchAttribute(entry.getKey()));
+  LOG.info("Setting attribute " + entry.getKey());
+}
+//Define the query and results. Add things which would be set in the GUI i.e.
+//includeKeys and add to context
+Query query = cache.createQuery().includeKeys();
+Results results = null;
+i.set("query", query);
+i.set("results", results);
+//This comes from the freeform text field
+String userDefinedQuery = "age.eq(35)";
+//Add on the things that we need
+String fullQueryString = "results = query.addCriteria(" + userDefinedQuery + ").execute()";
+i.eval(fullQueryString);
+results = (Results) i.get("results");
+assertTrue(2 == results.size());
+for (Result result : results.all()) {
+  LOG.info("" + result.getKey());
+}
+~~~
 
 
 ## Implementation and Performance
@@ -451,25 +487,41 @@ Search operations perform in O(n) time. Check out this [Maven-based performance 
 
 When using standalone Ehcache without BigMemory for production, it is recommended to search only caches that are less than 1 million elements. Performance of different `Criteria` vary. For example, here are some queries and their execute times on a 200,000 element cache. (Note that these results are all faster than the times given above because they execute a single Criteria).
 
-<pre><code>final Query intQuery = cache.createQuery();
-  intQuery.includeKeys();
-  intQuery.addCriteria(age.eq(35));
-  intQuery.end();
+~~~ java
+final Query intQuery = cache.createQuery();
+intQuery.includeKeys();
+intQuery.addCriteria(age.eq(35));
+intQuery.end();
+~~~
+
+~~~
 Execute Time: 62ms
+~~~
+
+~~~ java
 final Query stringQuery = cache.createQuery();
-  stringQuery.includeKeys();
-  stringQuery.addCriteria(state.eq("CA"));
-  stringQuery.end();
+stringQuery.includeKeys();
+stringQuery.addCriteria(state.eq("CA"));
+stringQuery.end();
+~~~
+
+~~~
 Execute Time: 125ms
+~~~~
+
+~~~ java
 final Query iLikeQuery = cache.createQuery();
-  iLikeQuery.includeKeys();
-  iLikeQuery.addCriteria(name.ilike("H*"));
-  iLikeQuery.end();
+iLikeQuery.includeKeys();
+iLikeQuery.addCriteria(name.ilike("H*"));
+iLikeQuery.end();
+~~~
+
+~~~
 Execute Time: 180ms
-</code></pre>
+~~~
 
 
-##Best Practices for Optimizing Searches
+## Best Practices for Optimizing Searches
 1. Construct searches wisely by including only the data that is actually required.
   *  Only use `includeKeys()` and/or `includeAttribute()` if those values are actually required for your application logic.
   *  If you don’t need values or attributes, be careful not to burden your queries with unnecessary work. For example, if `result.getValue()` is not called in the search results, then don't use `includeValues()` in the original query.
@@ -480,11 +532,13 @@ Execute Time: 180ms
 
 2. Searchable keys and values are automatically indexed by default. If you will not be including them in your query, turn off automatic indexing with the following:
 
-        <cache name="cacheName" ...>
-          <searchable keys="false" values="false"/>
-          ...
-          </searchable>
-        </cache>
+~~~ xml
+<cache name="cacheName" ...>
+  <searchable keys="false" values="false"/>
+    ...
+  </searchable>
+</cache>
+~~~
 
 3. Limit the size of the results set with `query.maxResults(int number_of_results)`. Another recommendation for managing the size of the result set is to use a built-in Aggregator function to return a summary statistic (see the `net.sf.ehcache.search.aggregator` package in this <a href="/apidocs/2.8.5/index.html">Javadoc</a>).
 

@@ -1,6 +1,6 @@
 ---
 ---
-#Recipes Overview
+# Recipes Overview
 
 The recipes here are concise examples for specific use cases that will help you get started with Ehcache. 
 
@@ -22,6 +22,7 @@ The following sections provide a documentation Table of Contents and additional 
 
 
 <br>
+
 ## Let\'s Add More
 
 If you have suggestions or ideas for more recipes, please tell us about them using the [forums](https://groups.google.com/forum/#!forum/ehcache-users).

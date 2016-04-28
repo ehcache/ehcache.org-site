@@ -4,7 +4,7 @@
 
 
 
-##Introduction
+## Introduction
 This page contains notes for users upgrading from older versions Ehcache prior to 2.0.
 
 ## Support for Hibernate 3.3 SPI

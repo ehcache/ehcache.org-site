@@ -4,7 +4,7 @@
 
 
 
-##Introduction
+## Introduction
 The ehcache-googleappengine module combines the speed of Ehcache with the scale of Google's memcache and provide the best of both worlds:
 
 * Speed - Ehcache cache operations take a few microseconds, versus around 60ms for Google's provided client-server cache, memcacheg.
@@ -28,13 +28,13 @@ Older versions will not work.
 ## Configuring ehcache.xml
 Make sure the following elements are commented out:
 
-* &lt;diskStore path="/path/to/store/data"/>
-* &lt;cacheManagerPeerProviderFactory class= ../>
-* &lt;cacheManagerPeerListenerFactory class= ../>
+* `<diskStore path="/path/to/store/data"/>`
+* `<cacheManagerPeerProviderFactory class= ../>`
+* `<cacheManagerPeerListenerFactory class= ../>`
 
 Within each cache element, ensure that:
 
-* overFlowToDisk and diskPersistent are omitted
+* `overFlowToDisk` and `diskPersistent` are omitted
 * persistence strategy=none
 * no replicators are added
 * there is no bootstrapCacheLoaderFactory
@@ -42,28 +42,29 @@ Within each cache element, ensure that:
 
 Use following Ehcache configuration to get started.
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+~~~ xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="ehcache.xsd" >
-        <cacheManagerEventListenerFactory class="" properties=""/>
-        <defaultCache
-           maxEntriesOnHeap="10000"
-           eternal="false"
-           timeToIdleSeconds="120"
-           timeToLiveSeconds="120"
-           memoryStoreEvictionPolicy="LRU">
-           <persistence strategy="none"/>
-        </defaultCache>
-    <!--Example sample cache-->
-        <cache name="sampleCache1"
-          maxEntriesOnHeap="10000"
-          maxEntriesLocalDisk="1000"
-          eternal="false"
-          timeToIdleSeconds="300"
-          timeToLiveSeconds="600"
-          memoryStoreEvictionPolicy="LFU"
-           />
-    </ehcache>
+  <cacheManagerEventListenerFactory class="" properties=""/>
+  <defaultCache
+      maxEntriesOnHeap="10000"
+      eternal="false"
+      timeToIdleSeconds="120"
+      timeToLiveSeconds="120"
+      memoryStoreEvictionPolicy="LRU">
+    <persistence strategy="none"/>
+  </defaultCache>
+  <!--Example sample cache-->
+  <cache name="sampleCache1"
+      maxEntriesOnHeap="10000"
+      maxEntriesLocalDisk="1000"
+      eternal="false"
+      timeToIdleSeconds="300"
+      timeToLiveSeconds="600"
+      memoryStoreEvictionPolicy="LFU"/>
+</ehcache>
+~~~
 
 ## Recipes
 

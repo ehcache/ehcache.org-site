@@ -1,17 +1,17 @@
 ---
 ---
-#Data Freshness and Expiration
+# Data Freshness and Expiration
 
  
 
 ## Introduction
 This page addresses how to maintain cache "freshness" by configuring TTL and data expiration properly.
 
-##Problem
+## Problem
 
 Data in the cache is out of sync with the SOR (the database).
 
-##Solution
+## Solution
 
 Databases (and other SORs) weren't built with caching outside of the database in mind, and therefore don't normally come with any default mechanism for notifying external processes when data has been updated or modified.
 
@@ -21,7 +21,7 @@ Use one of the following strategies to keep the data in the cache in sync:
 * **message bus**: use an application to make all updates to the database. When updates are made, post a message onto a message queue with a key to the item that was updated. All application instances can subscribe to the message bus and receive messages about data that is updated, and can synchronize their local copy of the data accordingly (for example by invalidating the cache entry for updated data)
 * **triggers**: Using a database trigger can accomplish a similar task as the message bus approach. Use the database trigger to execute code that can publish a message to a message bus. The advantage to this approach is that updates to the database do not have to be made only through a special application. The downside is that not all database triggers support full execution environments and it is often unadvisable to execute heavy-weight processing such as publishing messages on a queue during a database trigger.
 
-##Discussion
+## Discussion
 
 The data expiration method is the simplest and most straightforward.
 

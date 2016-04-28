@@ -4,7 +4,7 @@
 
  
 
-##Introduction
+## Introduction
 BigMemory Go's Ehcache has had excellent Spring integration for years. Spring 3.1 includes an Ehcache implementation. See the [ Spring 3.1 JavaDoc](http://static.springsource.org/spring/docs/3.1.0.M1/javadoc-api/org/springframework/cache/ehcache/package-summary.html).
 
 ## Spring 3.1
@@ -15,18 +15,18 @@ It has caching support for classes and methods using two annotations:
 Cache a method call.
 In the following example, the value is the return type, a Manual. The key is extracted from the ISBN argument using the id.
 
-<pre>
+~~~ java
 @Cacheable(value="manual", key="#isbn.id")
 public Manual findManual(ISBN isbn, boolean checkWarehouse)
-</pre>
+~~~
 
 ### @CacheEvict
 Clears the cache when called.
 
-<pre>
+~~~ java
 @CacheEvict(value = "manuals", allEntries=true)
 public void loadManuals(InputStream batch)
-</pre>
+~~~
 
 For an excellent blog post covering SpEL expressions, see <http://blog.springsource.com/2011/02/23/spring-3-1-m1-caching/>.
 
@@ -38,20 +38,20 @@ can use it with 3.1.
 As with Spring 3.1 it uses an @Cacheable annotation to cache a method. In this example calls to findMessage are stored in a cache
 named "messageCache". The values are of type `Message`. The id for each entry is the `id` argument given.
 
-<pre>
+~~~ java
 @Cacheable(cacheName = "messageCache")
 public Message findMessage(long id)
-</pre>
+~~~
 
 ### @TriggersRemove
 And for cache invalidation, there is the @TriggersRemove annotation.
 In this example, `cache.removeAll()` is called after the method is invoked.
 
-<pre>
+~~~ java
 @TriggersRemove(cacheName = "messagesCache",
 when = When.AFTER_METHOD_INVOCATION, removeAll = true)
 public void addMessage(Message message)
-</pre>
+~~~
 
 See <http://blog.goyello.com/2010/07/29/quick-start-with-ehcache-annotations-for-spring/> for a blog post explaining its use
 and providing further links.
@@ -81,16 +81,20 @@ Add the jars to your application as listed on the [Ehcache Annotations for Sprin
 
 Add the Annotation to methods you would like to cache. Lets assume you are using the Dog getDog(String name) method from above:
 
-    @Cacheable(name="getDog")
-    Dog getDog(String name)
-    {
-        ....
-    "/>
+~~~ java
+@Cacheable(name="getDog")
+Dog getDog(String name) {
+  ....
+}
+~~~
+
 **Step 3:**
 
 Configure Spring. You must add the following to your Spring configuration file in the beans declaration section:
 
-    <ehcache:annotation-driven cache-manager="ehCacheManager" />
+~~~ xml
+<ehcache:annotation-driven cache-manager="ehCacheManager" />
+~~~
 
 More details can be found at:
 

@@ -3,7 +3,7 @@
 # JDBC Caching <a name="JDBC-Caching"/>
  
 
-##Introduction
+## Introduction
 Ehcache can easily be combined with your existing JDBC code.  Whether
 you access JDBC directly, or have a DAO/DAL layer, Ehcache can be 
 combined with your existing data access pattern to speed up frequently 
@@ -31,10 +31,10 @@ Normally, you will want to cache the following kinds of method calls:
 
 Example methods that are commonly cacheable:
 
-<pre>
+~~~ java
 public V getById(final K id);
 public Collection<V> findXXX(...);
-</pre>
+~~~
 
 ### Instantiate a cache and add a member variable
 
@@ -84,94 +84,88 @@ will be available shortly.
 #### CacheWrapper.java
 Simple get/put wrapper interface.
 
-<pre>
-public interface CacheWrapper&lt;K, V&gt; 
-{
- void put(K key, V value);
- V get(K key);
-"/>
-</pre>
+~~~ java
+public interface CacheWrapper<K, V> {
+  void put(K key, V value);
+  V get(K key);
+}
+~~~
 
 #### EhcacheWrapper.java
 The wrapper implementation.  Holds the name so caches can be named.
 
-<pre>
-public class EhCacheWrapper&lt;K, V&gt; implements CacheWrapper&lt;K, V&gt; 
-{
-    private final String cacheName;
-    private final CacheManager cacheManager;
-    public EhCacheWrapper(final String cacheName, final CacheManager cacheManager)
-    {
-	this.cacheName = cacheName;
-	this.cacheManager = cacheManager;
-    "/>
-    public void put(final K key, final V value)
-    {
-	getCache().put(new Element(key, value));
-    "/>
-    public V get(final K key, CacheEntryAdapter&lt;V&gt; adapter) 
-    {
-	Element element = getCache().get(key);
-	if (element != null) {
-	    return (V) element.getValue();
-	"/>
-	return null;
-    "/>
-    public Ehcache getCache() 
-    {
-	return cacheManager.getEhcache(cacheName);
-    "/>
-"/>
-</pre>
+~~~ java
+public class EhCacheWrapper<K, V> implements CacheWrapper<K, V> {
+  private final String cacheName;
+  private final CacheManager cacheManager;
+  public EhCacheWrapper(final String cacheName, final CacheManager cacheManager) {
+    this.cacheName = cacheName;
+    this.cacheManager = cacheManager;
+  }
+
+  public void put(final K key, final V value) {
+    getCache().put(new Element(key, value));
+  }
+
+  public V get(final K key, CacheEntryAdapter<V> adapter) {
+    Element element = getCache().get(key);
+    if (element != null) {
+        return (V) element.getValue();
+    }
+    return null;
+  }
+  public Ehcache getCache() {
+    return cacheManager.getEhcache(cacheName);
+  }
+}
+~~~
 
 #### GenericDao.java
 The Generic Dao.  It implements most of the work.
 
-<pre>
-public abstract class GenericDao&lt;K, V extends BaseEntity&gt; implements Dao&lt;K, V&gt;
-{
-    protected DataSource datasource;
-    protected SimpleJdbcTemplate jdbcTemplate;
-    /* Here is the cache reference */
-    protected CacheWrapper&lt;K, V&gt; cache;
-    public void setJdbcTemplate(final SimpleJdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    "/>
-    public void setDatasource(final DataSource datasource) {
-        this.datasource = datasource;
-    "/>
-    public void setCache(final CacheWrapper&lt;K, V&gt; cache) {
-        this.cache = cache;
-    "/>
-    /* the cacheable method */
-    public V getById(final K id) {
-	V value;
-	if ((value = cache.get(id)) == null) {
-	    value = this.jdbcTemplate.queryForObject(findById, mapper, id);
-	    if (value != null) {
-		cache.put(id, value);
-	    "/>
-	"/>
-	return value;
-    "/>
-    /** rest of GenericDao implementation here **/
-    /** ... **/
-    /** ... **/
-    /** ... **/
-"/>
-</pre>
+~~~ java
+public abstract class GenericDao<K, V extends BaseEntity> implements Dao<K, V> {
+  protected DataSource datasource;
+  protected SimpleJdbcTemplate jdbcTemplate;
+  /* Here is the cache reference */
+  protected CacheWrapper<K, V> cache;
+  public void setJdbcTemplate(final SimpleJdbcTemplate jdbcTemplate) {
+      this.jdbcTemplate = jdbcTemplate;
+  }
+  public void setDatasource(final DataSource datasource) {
+    this.datasource = datasource;
+  }
+  public void setCache(final CacheWrapper<K, V> cache) {
+    this.cache = cache;
+  }
+  /* the cacheable method */
+  public V getById(final K id) {
+    V value;
+    if ((value = cache.get(id)) == null) {
+      value = this.jdbcTemplate.queryForObject(findById, mapper, id);
+      if (value != null) {
+        cache.put(id, value);
+      }
+    }
+    return value;
+  }
+  /** rest of GenericDao implementation here **/
+  /** ... **/
+  /** ... **/
+  /** ... **/
+}
+~~~
 
 #### PetDaoImpl.java
 
 The Pet Dao implementation, really it doesn't need to do anything unless
 specific methods not available via GenericDao are cacheable.
 
-<pre>
-public class PetDaoImpl extends GenericDao&lt;Integer, Pet&gt; implements PetDao 
-{
-/** ... **/
-"/>
-</pre>
+~~~ java
+public class PetDaoImpl extends GenericDao<Integer, Pet> implements PetDao {
+  /** ... **/
+}
+~~~
 
 We need to configure the JdbcTemplate, Datasource, CacheManager, PetDao, 
 and the Pet cache using the spring configuration file.
@@ -180,40 +174,40 @@ and the Pet cache using the spring configuration file.
 
 The Spring configuration file.
 
-<pre>
-&lt;!-- datasource and friends --&gt;
-&lt;bean id="dataSource" class="org.springframework.jdbc.datasource.FasterLazyConnectionDataSourceProxy"&gt;
-  &lt;property name="targetDataSource" ref="dataSourceTarget"/&gt;
-&lt;/bean&gt;
-&lt;bean id="dataSourceTarget" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-      destroy-method="close"&gt;
-  &lt;property name="user" value="${jdbc.username}"/&gt;
-  &lt;property name="password" value="${jdbc.password}"/&gt;
-  &lt;property name="driverClass" value="${jdbc.driverClassName}"/&gt;
-  &lt;property name="jdbcUrl" value="${jdbc.url}"/&gt;
-  &lt;property name="initialPoolSize" value="50"/&gt;
-  &lt;property name="maxPoolSize" value="300"/&gt;
-  &lt;property name="minPoolSize" value="30"/&gt;
-  &lt;property name="acquireIncrement" value="2"/&gt;
-  &lt;property name="acquireRetryAttempts" value="0"/&gt;
-&lt;/bean&gt;
-&lt;!-- jdbctemplate --&gt;
-&lt;bean id="jdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate"&gt;
-  &lt;constructor-arg ref="dataSource"/&gt;
-&lt;/bean&gt;
-&lt;!-- the cache manager --&gt;
-&lt;bean id="cacheManager" class="EhCacheManagerFactoryBean"&gt;
-  &lt;property name="configLocation" value="classpath:${ehcache.config}"/&gt;
-&lt;/bean&gt;
-&lt;!-- the pet cache to be injected into the pet dao --&gt;
-&lt;bean name="petCache" class="EhCacheWrapper"&gt;
-  &lt;constructor-arg value="pets"/&gt;
-  &lt;constructor-arg ref="cacheManager"/&gt;
-&lt;/bean&gt;
-&lt;!-- the pet dao --&gt;
-&lt;bean id="petDao" class="PetDaoImpl"&gt;
-  &lt;property name="cache" ref="petCache"/&gt;
-  &lt;property name="jdbcTemplate" ref="jdbcTemplate"/&gt;
-  &lt;property name="datasource" ref="dataSource"/&gt;
-&lt;/bean&gt;
-</pre>
+~~~ xml
+<!-- datasource and friends -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.FasterLazyConnectionDataSourceProxy">
+  <property name="targetDataSource" ref="dataSourceTarget"/>
+</bean>
+<bean id="dataSourceTarget" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+      destroy-method="close">
+  <property name="user" value="${jdbc.username}"/>
+  <property name="password" value="${jdbc.password}"/>
+  <property name="driverClass" value="${jdbc.driverClassName}"/>
+  <property name="jdbcUrl" value="${jdbc.url}"/>
+  <property name="initialPoolSize" value="50"/>
+  <property name="maxPoolSize" value="300"/>
+  <property name="minPoolSize" value="30"/>
+  <property name="acquireIncrement" value="2"/>
+  <property name="acquireRetryAttempts" value="0"/>
+</bean>
+<!-- jdbctemplate -->
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+  <constructor-arg ref="dataSource"/>
+</bean>
+<!-- the cache manager -->
+<bean id="cacheManager" class="EhCacheManagerFactoryBean">
+  <property name="configLocation" value="classpath:${ehcache.config}"/>
+</bean>
+<!-- the pet cache to be injected into the pet dao -->
+<bean name="petCache" class="EhCacheWrapper">
+  <constructor-arg value="pets"/>
+  <constructor-arg ref="cacheManager"/>
+</bean>
+<!-- the pet dao -->
+<bean id="petDao" class="PetDaoImpl">
+  <property name="cache" ref="petCache"/>
+  <property name="jdbcTemplate" ref="jdbcTemplate"/>
+  <property name="datasource" ref="dataSource"/>
+</bean>
+~~~

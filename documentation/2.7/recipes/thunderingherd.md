@@ -1,17 +1,17 @@
 ---
 ---
-#Thundering Herd
+# Thundering Herd
 
  
 
-##Introduction
+## Introduction
 When many readers simultaneously request the same data element, there can be a database read overload, sometimes called the "Thundering Herd" problem. This page addresses how to prevent it in a single JVM or a clustered configuration.
 
-##Problem
+## Problem
 
 Many readers read an empty value from the cache and subseqeuntly try to load it from the database. The result is unnecessary database load as all readers simultaneously execute the same query against the database.
 
-##Solution
+## Solution
 
 Implement the [cache-as-sor](/documentation/2.7/get-started/concepts#cache-as-sor) pattern by using a [BlockingCache or SelfPopulatingCache](/documentation/2.7/apis/constructs) included with Ehcache.
 
@@ -19,7 +19,7 @@ Using the BlockingCache Ehcache will automatically block all threads that are si
 
 Even better, when used in a cluster with Terracotta, Ehcache will automatically coordinate access to the cache across the cluster, and no matter how many application servers are deployed, still only one user request will be serviced by the database on cache misses.
 
-##Discussion
+## Discussion
 
 The "thundering herd" problem occurs in a highly concurrent environment (typically, many users). When many users make a request to the same piece of data at the same time, and there is a cache miss (the data for the cached element is not present in the cache) the thundering herd problem is triggered.
 
@@ -27,22 +27,23 @@ Imagine that a popular news story has just surfaced on the front page of a news 
 
 The application is using a cache using a read-through pattern with code that looks approximately like:
 
-    /* read some data, check cache first, otherwise read from sor */
-    public V readSomeData(K key)
-    {
-        Element element;
-        if ((element = cache.get(key)) != null) {
-            return element.getValue();
-        "/>
+~~~ java
+/* read some data, check cache first, otherwise read from SoR */
+public V readSomeData(K key) {
+  Element element;
+  if ((element = cache.get(key)) != null) {
+    return element.getValue();
+  }
 
-        // note here you should decide whether your cache
-        // will cache 'nulls' or not
-        if (value = readDataFromDataStore(key)) != null) {
-            cache.put(new Element(key, value));
-        "/>
+  // note here you should decide whether your cache
+  // will cache 'nulls' or not
+  if (value = readDataFromDataStore(key)) != null) {
+    cache.put(new Element(key, value));
+  }
 
-        return value;
-    "/>
+  return value;
+}
+~~~
 
 Upon publication to the front page of a website, a news story will then likely be clicked on by many users all at approximately the same time.
 

@@ -4,7 +4,7 @@
 
 
 
-##Introduction
+## Introduction
 The maintainer uses Ehcache in production with Glassfish. This page explains how to package a sample application using Ehcache and deploy to Glassfish.
 
 ## Versions
