@@ -6,7 +6,7 @@ permalink: /documentation/
 
 # Documentation
 
-<a name="current_version"/>
+<a name="current_version" class="anchor"/>
 
 #### Current Documentation
 
@@ -22,13 +22,35 @@ If you don’t find what you’re looking for in the docs, post a question to th
 
 ---
 
+<a name="resources_talks" class="anchor"/>
+
+#### Resources and Talks
+
+__Bringing javax.cache'ing to your application__
+
+* Video: [https://spring.io/blog/2015/10/19/springone2gx-2015-replay-bringing-javax-cache-ing-to-your-application](https://spring.io/blog/2015/10/19/springone2gx-2015-replay-bringing-javax-cache-ing-to-your-application){:target="_blank"}
+* Slides: [http://www.slideshare.net/SpringCentral/bringing-javaxcacheing-to-your-app](http://www.slideshare.net/SpringCentral/bringing-javaxcacheing-to-your-app){:target="_blank"}
+
+__Terracotta's OffHeap Explained__
+
+* Video: [https://www.youtube.com/watch?v=xCojSZMp_Zw](https://www.youtube.com/watch?v=xCojSZMp_Zw){:target="_blank"}
+* Slides: [http://www.slideshare.net/ChrisDennis7/terracottas-offheap-explained-55214150](http://www.slideshare.net/ChrisDennis7/terracottas-offheap-explained-55214150){:target="_blank"}
+
+__Ehcache 3: JSR-107 on steroids__
+
+* Slides: [http://www.slideshare.net/LouisJacomet/ehcache-3-jsr107-on-steroids-at-devoxx-morocco](http://www.slideshare.net/LouisJacomet/ehcache-3-jsr107-on-steroids-at-devoxx-morocco){:target="_blank"}
+
+---
+
+<a name="release_notes" class="anchor"/>
+
 #### Release Notes
 
 [Release Notes](https://confluence.terracotta.org//display/release/Home){:target="_blank"}  (all versions)
 
 ---
 
-<a name="historical_versions"/>
+<a name="historical_versions" class="anchor"/>
 
 #### Historical Versions
 
