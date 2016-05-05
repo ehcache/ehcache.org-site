@@ -1,0 +1,8 @@
+---
+title: "Ehcache 3: JSR-107 on steroids"
+headline: "Ehcache 3: JSR-107 on steroids at Devoxx Morocco by Louis Jacomet"
+categories: resources
+date: 2015-11-18T00:00:00-00:00
+---
+
+* Slides: http://www.slideshare.net/LouisJacomet/ehcache-3-jsr107-on-steroids-at-devoxx-morocco

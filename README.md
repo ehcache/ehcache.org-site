@@ -62,3 +62,28 @@ ehcache.org is served/hosted by github.   The webserver does NOT serve the conte
 * Commit your changes and make a pull request to get the content of that branch into the master branch of the ehcache.github.io repository (which will then make it "live").
 
 
+### Contributing a blog post
+
+1. Ensure you first edit `_data/authors.yml` to add you information
+
+2. Create a new ASCII Doc file under `_posts/blog`. The file should be named with the following format: `yyyy-MM-DD-title-in-lowercase.adoc`
+
+3. Add a header in your file. Modify the fields according to your post, especially for the title, headline, tags, authors and date
+
+```
+layout: post
+title: "Your blog post title"
+headline: "Your blo post headline"
+categories: blog
+hidden: false
+author: your_author_key
+tags: [ehcache, website]
+date: 2016-05-04T18:00:00-05:00
+modified:
+```
+
+4. Send your pull request :+1:
+
+### Contributing an external resource
+
+TODO: MATHIEU

@@ -1,0 +1,50 @@
+---
+layout: default
+title: Ehcache Blog
+headline: Read all blog posts about Ehcache, the most widely used Java caching library
+---
+
+<br/>
+
+<div class="container-fluid">
+
+  <div class="row row-offcanvas row-offcanvas-left">
+
+    <!-- sidebar -->
+    <div class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+
+    </div>
+
+    <!-- main area -->
+    <div class="col-xs-12 col-sm-9">
+      <header class="post-header">
+      </header>
+      <article class="post-content">
+        <ul class="post-list">
+          {% for post in site.categories.blog %}
+          <li class="entry">
+            <article>
+              <div style="float: left">
+                <img src="{{ site.data.authors[post.author].avatar }}" class="bio-photo" alt="{{ site.data.authors[post.author].name }} bio photo"></a>
+              </div>
+              <div>
+                <div>
+                  <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>
+                </div>
+                <div>
+                  <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                </div>
+                <div>
+                  <p>{{ post.headline }}</p>
+                </div>
+              </div>
+            </article>
+          </li>
+          {% endfor %}
+        </ul>
+      </article>
+    </div>
+
+  </div>
+
+</div>
