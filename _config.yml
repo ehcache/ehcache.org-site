@@ -18,8 +18,7 @@ markdown: kramdown
 
 gems:
   - jekyll-asciidoc
-
-
+  - jekyll-sitemap
 
 
 asciidoctor:

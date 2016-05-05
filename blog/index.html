@@ -22,6 +22,7 @@ headline: Read all blog posts about Ehcache, the most widely used Java caching l
       <article class="post-content">
         <ul class="post-list">
           {% for post in site.categories.blog %}
+          {% if post.hidden != true %}
           <li class="entry">
             <article>
               <div style="float: left">
@@ -40,6 +41,7 @@ headline: Read all blog posts about Ehcache, the most widely used Java caching l
               </div>
             </article>
           </li>
+          {% endif %}
           {% endfor %}
         </ul>
       </article>
