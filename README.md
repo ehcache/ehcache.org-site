@@ -86,4 +86,13 @@ modified:
 
 ### Contributing an external resource
 
-TODO: MATHIEU
+Same rules apply as above, except that you have to put your file into `_posts/resources` and add a header like this one:
+
+```
+title: "Ehcache 3: JSR-107 on steroids"
+headline: "Ehcache 3: JSR-107 on steroids at Devoxx Morocco by Louis Jacomet"
+categories: resources
+date: 2015-11-18T00:00:00-00:00
+``
+
+__IMPORTANT:__ Yout content MUST be short! Links, headline, title, that's all.
