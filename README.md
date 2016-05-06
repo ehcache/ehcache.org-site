@@ -12,6 +12,7 @@ This is the source code/files for the ehcache.org website.  The files in this re
   * nokogiri : "gem install nokogiri"
   * asciidoctor: " gem install jasciidoctor"
   * jekyll-asciidoc: " gem install jekyll-asciidoc"
+  * jekyll-sitemap: " gem install jekyll-sitemap"
 
 * Clone this repository to your local system (if you're going to contribute content, fork it first, and clone that)
 * cd into the "ehcache.github.io" directory
@@ -62,3 +63,37 @@ ehcache.org is served/hosted by github.   The webserver does NOT serve the conte
 * Commit your changes and make a pull request to get the content of that branch into the master branch of the ehcache.github.io repository (which will then make it "live").
 
 
+### Contributing a blog post
+
+1. Ensure you first edit `_data/authors.yml` to add you information
+
+2. Create a new ASCII Doc file under `_posts/blog`. The file should be named with the following format: `yyyy-MM-DD-title-in-lowercase.adoc`
+
+3. Add a header in your file. Modify the fields according to your post, especially for the title, headline, tags, authors and date
+
+```
+layout: post
+title: "Your blog post title"
+headline: "Your blo post headline"
+categories: blog
+hidden: false
+author: your_author_key
+tags: [ehcache, website]
+date: 2016-05-04T18:00:00-05:00
+modified:
+```
+
+4. Send your pull request :+1:
+
+### Contributing an external resource
+
+Same rules apply as above, except that you have to put your file into `_posts/resources` and add a header like this one:
+
+```
+title: "Ehcache 3: JSR-107 on steroids"
+headline: "Ehcache 3: JSR-107 on steroids at Devoxx Morocco by Louis Jacomet"
+categories: resources
+date: 2015-11-18T00:00:00-00:00
+``
+
+__IMPORTANT:__ Yout content MUST be short! Links, headline, title, that's all.

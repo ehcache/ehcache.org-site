@@ -8,6 +8,7 @@ twitter_username: ehcache
 github_username:  ehcache
 linkedin_username: terracotta
 facebook_username:  Terracotta
+disqus_shortname: ehcache
 
 eh3_source_dir: /_eh3
 
@@ -17,8 +18,7 @@ markdown: kramdown
 
 gems:
   - jekyll-asciidoc
-
-
+  - jekyll-sitemap
 
 
 asciidoctor:
