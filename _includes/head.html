@@ -36,6 +36,7 @@
 
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css"></script>
+  <script type="application/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
   <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
@@ -50,5 +51,20 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <script type="application/javascript">
+    $(function() {
+      $('a.anchor[href]:not(:has([name]))').each(function () {
+        var a = $(this), name = (a.attr('href') || '').substring(1);
+        a.removeAttr('href');
+        a.attr('name', name);
+        a.attr('id', name);
+        $('#' + name).removeAttr('id');
+      });
+      if((document.location.hash || '').length) {
+        document.location = document.location.hash;
+      }
+    });
+  </script>
 
 </head>
