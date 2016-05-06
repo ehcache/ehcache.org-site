@@ -667,4 +667,7 @@ pre {
     min-height: 100px;
   }
 
+  .entry:last-child {
+    border-bottom: none;
+  }
 }
