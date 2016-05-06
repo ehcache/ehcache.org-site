@@ -1,0 +1,10 @@
+---
+title: "Caching reboot: javax.cache & Ehcache 3"
+headline: "Caching reboot: javax.cache & Ehcache 3, by Louis Jacomet"
+categories: resources
+date: 2015-06-22T00:00:00-00:00
+---
+
+* Conference page: http://cfp.2015.devoxx.pl/2015/talk/QYO-0948/Caching_reboot:_javax.cache_&_Ehcache_3.html
+* Video: https://www.youtube.com/watch?v=6kW7tcqvsVs
+* Slides: http://www.slideshare.net/LouisJacomet/caching-reboot-javaxcache-ehcache-3-61757652
