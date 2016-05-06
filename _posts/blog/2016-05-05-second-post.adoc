@@ -3,7 +3,7 @@ layout: post
 title: "Second blog post"
 headline: "Checkout this super blog post also..."
 categories: blog
-hidden: false
+hidden: true
 author: mathieu_carbou
 tags: [ehcache, website]
 comments: true

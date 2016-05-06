@@ -3,7 +3,7 @@ layout: post
 title: "New Website"
 headline: "The new Ehcache website is LIVE! Checkout its first post..."
 categories: blog
-hidden: false
+hidden: true
 author: mathieu_carbou
 tags: [ehcache, website]
 comments: true
