@@ -635,7 +635,7 @@ pre {
   display: block;
   margin-top: 2em;
   text-transform: uppercase;
-  @include font-size(16);
+  font-size: $base-font-size;
   font-weight: 600;
   a {
     color: $text-color;
