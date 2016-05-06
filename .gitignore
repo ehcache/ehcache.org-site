@@ -4,3 +4,4 @@ _site
 _eh3
 documentation/3.0
 .idea
+Gemfile.lock
