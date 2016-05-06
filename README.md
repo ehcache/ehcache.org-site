@@ -12,6 +12,7 @@ This is the source code/files for the ehcache.org website.  The files in this re
   * nokogiri : "gem install nokogiri"
   * asciidoctor: " gem install jasciidoctor"
   * jekyll-asciidoc: " gem install jekyll-asciidoc"
+  * jekyll-sitemap: " gem install jekyll-sitemap"
 
 * Clone this repository to your local system (if you're going to contribute content, fork it first, and clone that)
 * cd into the "ehcache.github.io" directory
