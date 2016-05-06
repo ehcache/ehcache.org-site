@@ -9,6 +9,19 @@ active_sub_menu_id: ehc_mnu_events_events
 ## Upcoming Conferences & Events
 Meet our team and join our sessions at the following conferences and meetups.
 
+### Devoxx UK : June 8 - 10, 2016 : London, England
+
+[Aurélien Broszniowski](http://cfp.devoxx.co.uk/2016/speaker/aurelien_broszniowski) and [Louis Jacomet](http://cfp.devoxx.co.uk/2016/speaker/louis_jacomet) speak about _Caching 101: Caching on the JVM (and beyond)_
+- Full description on Devoxx UK website
+
+### Devoxx Poland : June 22 - 25, 2016 : Krakow, Poland
+
+[Louis Jacomet](http://cfp.devoxx.pl/2016/speaker/louis_jacomet) speaks about _Data consistency: Analyse, understand and decide_
+- Full description on Devoxx Poland website
+
+## Recent Events
+
+
 ### Devoxx France : April 20 - 22, 2016 : Paris, France
 
 [Louis Jacoment](http://cfp.devoxx.fr/2016/speaker/louis_jacomet) speaks about _Ehcache3: Out of It's Element_
@@ -16,9 +29,6 @@ Meet our team and join our sessions at the following conferences and meetups.
 
 [Ludovic Orban](http://cfp.devoxx.fr/2016/speaker/ludovic_orban) speaks about _Terracotta's Offheap For Dummies_
 - Full description on Devoxx FR website at link
-
-## Recent Events
-
 
 ### Devoxx Morocco : November 16-18, 2015 : Casablanca, Morocco
 [Louis Jacomet](http://cfp.devoxx.ma/2015/talk/FDX-7262/Ehcache3:_JSR107_on_steroids) speaks about _Ehcache3: JSR-107 on Steroids_
