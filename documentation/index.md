@@ -18,6 +18,8 @@ permalink: /documentation/
 |[Platform and Release Compatibility Tables](http://www.terracotta.org/confluence/display/release/Home){: target="_blank"}||
 |[License](/about/license.html) (Apache 2.0),  [3rd Party Licenses](/files/legal/TOE_3.0.pdf) (Apache 2.0), [Legal Notices](http://documentation.softwareag.com/legal/){: target="_blank"}||
 
+In addition to the documentation, there are a number of resources available online - see the [Resources page](/resources/) for links to some of them.
+
 If you don’t find what you’re looking for in the docs, post a question to the [Ehcache support forums](https://groups.google.com/forum/#!forum/ehcache-users){: target="_blank"}.
 
 ---
