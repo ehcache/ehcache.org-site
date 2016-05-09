@@ -1,0 +1,11 @@
+---
+title: "Terracotta Off-Heap pour les nuls"
+headline: "Terracotta Off-Heap pour les nuls, by Ludovic Orban"
+categories: resources
+date: 2016-04-22T00:00:00-00:00
+---
+
+This content is in French.
+
+* Conference page: https://cfp.devoxx.fr/2016/talk/LBA-4042/Terracotta_Off-Heap_pour_les_nuls
+* Video: https://www.youtube.com/watch?v=ezTrDlrIz5o
