@@ -23,7 +23,7 @@ gems:
 
 asciidoctor:
   attributes:
-#    - hardbreaks!
+    - hardbreaks!
     - source-highlighter=prettify
 #    - source-highlighter=pygments
     - pygments-css=style
