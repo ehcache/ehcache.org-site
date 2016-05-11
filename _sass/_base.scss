@@ -671,3 +671,24 @@ pre {
     border-bottom: none;
   }
 }
+
+.ehcache-documentation {
+
+  .current {
+    float: right;
+    color: limegreen;
+    font-size: 14px;
+  }
+
+  .future {
+    float: right;
+    color: orange;
+    font-size: 14px;
+  }
+
+  .old {
+    float: right;
+    color: red;
+    font-size: 14px;
+  }
+}
