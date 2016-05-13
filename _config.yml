@@ -10,6 +10,8 @@ linkedin_username: terracotta
 facebook_username:  Terracotta
 disqus_shortname: ehcache
 
+exclude: [default.gems, README.md]
+
 eh3_source_dir: /_eh3
 
 # Build settings
