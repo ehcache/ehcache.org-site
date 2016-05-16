@@ -1,4 +1,4 @@
-# Authors
+ Authors
 
 mathieu_carbou:
   name: Mathieu Carbou
@@ -11,4 +11,10 @@ albin_suresh:
   name: Albin Suresh
   web: https://www.linkedin.com/in/albinsuresh
   avatar: https://www.gravatar.com/avatar/96e343b457349974907f37d8574e97e9
+  position: Software Engineer at Terracotta
+
+geoff_gibson:
+  name: Geoff Gibson
+  avatar: https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/3/000/10c/3e2/2ed004e.jpg
+  twitter: gibsong
   position: Software Engineer at Terracotta
