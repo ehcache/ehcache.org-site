@@ -1,0 +1,275 @@
+---
+layout: post
+title: "Ehcache 3, JSR-107 and Spring 4.2"
+headline: "Learn how to use Ehcache 3 and JSR-107 to speed up your Spring 4.x MVC applications!"
+categories: blog
+hidden: false
+author: geoff_gibson
+tags: [ehcache, spring, jsr107]
+date: 2016-05-17T21:30:00-08:00
+---
+
+In this post I would like to demonstrate how to use https://github.com/ehcache/ehcache3[Ehcache 3.0] as Spring's caching implementation.
+This article will show you how to use https://github.com/ehcache/ehcache3[Ehcache 3.0], http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/[Spring 4.2] and the https://jcp.org/en/jsr/detail?id=107[JSR-107] annotations to build a simple Spring web application.
+I have also included some background reading for those of you that would like to read more in depth on the subject matter.
+
+== Background reading
+
+* Ehcache 3.0 Documentation
+** http://www.ehcache.org/documentation/3.0/
+* Spring Cache Abstraction
+** http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html
+* Spring Cache Abstraction, JCache (JSR-107) annotations
+** http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html#cache-jsr-107
+** https://spring.io/blog/2014/04/14/cache-abstraction-jcache-jsr-107-annotations-support
+* The following is the GitHub example associated with this post:
+** https://github.com/gibsong/ehcache-jsr107-spring
+
+== JSR-107(JCache) Annotations
+
+If you are familiar with Spring, you know that it provides annotations to assist in developing applications.
+In regards to caching, Spring offers support for two sets of annotations that can be used to implement caching.
+You have the original Spring annotations and the new JSR-107 annotations.
+The original Spring annotations are available to use with Spring versions 3.1+, while the JSR-107 annotations are only available in Spring 4.1+.
+In this example we are going to use the JSR-107 annotations.
+Below I have listed the most commonly used JSR-107(JCache) annotations, with brief descriptions as well as links to their API's.
+
+* *@CacheDefaults* - allows configuration of defaults at the class level.
+For instance, you can define a cache name at the class level and this will be used as the default.
+** http://static.javadoc.io/javax.cache/cache-api/1.0.0/javax/cache/annotation/CacheDefaults.html
+* *@CacheResult* - Cache the return value of the method.
+The first time the method is invoked with a particular key it will be run and the value will be cached.
+On subsequent calls with the same key if the value is still cached it will be taken from the cache instead of running the method.
+** http://static.javadoc.io/javax.cache/cache-api/1.0.0/javax/cache/annotation/CacheResult.html
+
+IMPORTANT: Remember that the value is not cached forever.
+The length of time will be influenced by how you set your eviction policy, TTL and TTI.
+Please see this discussion for the difference between TTL and TTI: http://stackoverflow.com/questions/2583429/how-to-differentiate-between-time-to-live-and-time-to-idle-in-ehcache
+
+* *@CachePut* - Cache the value specified as the @CacheValue.
+This is similar to @CacheResult but the difference is it will cache the @CacheValue every time the method is called.
+** http://static.javadoc.io/javax.cache/cache-api/1.0.0/javax/cache/annotation/CachePut.html
+* *@CacheRemove* - removes entries from the specified cache that match the provided/generated key
+** http://static.javadoc.io/javax.cache/cache-api/1.0.0/javax/cache/annotation/CacheRemove.html
+* *@CacheRemoveAll* - removes all elements in the specified cache
+** http://static.javadoc.io/javax.cache/cache-api/1.0.0/javax/cache/annotation/CacheRemoveAll.html
+* The *javax.cache.annotation* package which includes all the JSR-107 annotations:
+** http://www.javadoc.io/doc/javax.cache/cache-api/1.0.0
+
+== Steps
+
+Let's get started!
+Below are a few quick steps to get you up and running with Ehcache 3, Spring 4.1+ and JSR-107.
+The entire example can be found on GitHub at https://github.com/gibsong/ehcache-jsr107-spring
+
+. Create a maven Spring project
+. Add Ehcache 3 to your pom.xml.
++
+[source,xml]
+.pom.xml
+----
+  <dependency>
+    <groupId>org.ehcache</groupId>
+    <artifactId>ehcache</artifactId>
+    <version>3.0.0</version> <1>
+  </dependency>
+----
+<1> Be sure to substitute the version number above with the version number of Ehcache that you want to use.
++
+IMPORTANT: The Ehcache 3 jar must be on the classpath!
+Remove all existing caching provider jars from the classpath to ensure that the right implementation is used.
+. Add the jar for the JSR-107 API to the pom.xml
++
+[source,xml]
+.pom.xml
+----
+  <dependency>
+    <groupId>javax.cache</groupId>
+    <artifactId>cache-api</artifactId>
+  </dependency>
+----
+. Add Spring boot jars
++
+[source,xml]
+.pom.xml
+----
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId> <1>
+    <version>1.3.2.RELEASE</version>
+  </parent>
+  ...
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId> <2>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId> <3>
+    </dependency>
+    ...
+  <dependencies>
+----
+<1> Add the spring-boot-starter-parent parent project to use Spring boot
+<2> Add the spring-boot-starter-cache to use Spring Framework's caching support
+<3> Add spring-boot-starter-web to use Spring MVC
+. Enable caching.
+This can be done in 1 of 2 ways:
+.. Enable with @EnableCaching annotation:
++
+[source,java]
+.SpringJsr107Ehcache3Application.java
+----
+  @EnableCaching
+  public class SpringJsr107Ehcache3Application
+  {
+    public static void main(String[] args)
+    {
+        SpringApplication.run(SpringJsr107Ehcache3Application.class, args);
+    }
+  }
+----
+.. Or enable from the Spring xml configuration file by adding the following tag: <cache:annotation-driven />
++
+[source,xml]
+----
+  <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:cache="http://www.springframework.org/schema/cache"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <cache:annotation-driven />
+
+  </beans>
+----
+. Declare caching on a method by adding the @CacheResult annotation.
++
+[source,java]
+.PersonService.java
+----
+  @CacheResult <1>
+  Person getPerson(int ssn)
+  {
+    switch (ssn)
+    {
+      case 123456789:
+        return new Person(ssn, "Geoff", "Gibson");
+      case 987654321:
+        return new Person(ssn, "Cory", "Beck");
+      default:
+        return new Person(ssn,"John","Doe");
+    }
+  }
+----
+<1> Add the @CacheResult annotation above the method.
+In this case the key is the "int ssn" parameter and the value cached is a Person instance.
+So if you call this method with ssn="123456789", the Person(ssn, "Geoff", "Gibson") will be returned and cached.
+The next time the getPerson(...) method is called with ssn="123456789" (assuming the key/value wasn't evicted from the cache) the method won't run and instead it will grab Person(ssn, "Geoff", "Gibson") from the cache and return it.
+. Configure ehcache.xml
++
+[source,xml]
+.ehcache.xml
+----
+<config
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns='http://www.ehcache.org/v3'  <1>
+    xmlns:jsr107='http://www.ehcache.org/v3/jsr107'>  <2>
+
+  <service>
+    <jsr107:defaults>
+      <jsr107:cache name="people" template="heap-cache"/> <3>
+    </jsr107:defaults>
+  </service>
+
+  <cache-template name="heap-cache">
+    <listeners>     <4>
+      <listener>
+        <class>org.terracotta.ehcache.EventLogger</class>
+        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+        <event-ordering-mode>UNORDERED</event-ordering-mode>
+        <events-to-fire-on>CREATED</events-to-fire-on> <5>
+      </listener>
+      <listener>
+        <class>org.terracotta.ehcache.EventLogger</class>
+        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+        <event-ordering-mode>UNORDERED</event-ordering-mode>
+        <events-to-fire-on>UPDATED</events-to-fire-on> <6>
+      </listener>
+      <listener>
+        <class>org.terracotta.ehcache.EventLogger</class>
+        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+        <event-ordering-mode>UNORDERED</event-ordering-mode>
+        <events-to-fire-on>EXPIRED</events-to-fire-on> <7>
+      </listener>
+      <listener>
+        <class>org.terracotta.ehcache.EventLogger</class>
+        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+        <event-ordering-mode>UNORDERED</event-ordering-mode>
+        <events-to-fire-on>REMOVED</events-to-fire-on> <8>
+      </listener>
+      <listener>
+        <class>org.terracotta.ehcache.EventLogger</class>
+        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+        <event-ordering-mode>UNORDERED</event-ordering-mode>
+        <events-to-fire-on>EVICTED</events-to-fire-on> <9>
+      </listener>
+    </listeners>
+    <resources>
+      <heap unit="entries">2000</heap> <10>
+      <offheap unit="MB">100</offheap> <11>
+    </resources>
+  </cache-template>
+</config>
+----
+<1> The core namespace, the xsd can be found here: http://www.ehcache.org/schema/ehcache-core-3.0.xsd
+<2> The JSR-107 namespace, the xsd can be found here: http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd
+<3> Defines a cache with alias "people", which inherits from cache-template "heap-cache"
+<4> This section allows you to add cache event listeners.
+I have added 4 event listeners.
+Each event will be logged, by the EventLogger class, when it occurs.
+<5> Defines an event listener for when an entry is added to the cache
+<6> Defines an event listener for when an entry is updated in the cache.
+However in this example this one will never be used.
+I just added it as an example.
+<7> Defines an event listener for when an entry is expired from the cache
+<8> Defines an event listener for when an entry is removed from the cache
+<9> Defines an event listener for when an entry is evicted from the cache
+<10> The heap is configured to allow 2000 entries
+<11> The offheap storage is configured with 100 MB of space.
+Remember the unit of measure is case sensitive.
++
+NOTE: XML Configuration Documentation: http://www.ehcache.org/documentation/3.0/xml.html
+. Create a cache by implementing the JCacheManagerCustomizer.customize(CacheManager cacheManager) method, which will be invoked before the CacheManager is used.
++
+[source,java]
+.PersonService.java
+----
+  @Component
+  public static class CachingSetup implements JCacheManagerCustomizer
+  {
+    @Override
+    public void customize(CacheManager cacheManager)
+    {
+      cacheManager.createCache("people", new MutableConfiguration<>()  <1>
+        .setExpiryPolicyFactory(TouchedExpiryPolicy.factoryOf(new Duration(SECONDS, 10))) <2>
+        .setStoreByValue(false)
+        .setStatisticsEnabled(true));
+    }
+  }
+----
+<1> Creates a cache with an alias of "people".
+<2> This line sets the expiration policy.
+In this case we set it to 10 seconds.
+Thus, if an entry hasn't been touched (created, updated, or accessed) for the last 10 seconds it will be evicted.
++
+NOTE: JCacheManagerCustomizer API: https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/autoconfigure/cache/JCacheManagerCustomizer.html
+. Now you can build the project by running the following maven command: mvn clean install
+. To run the application use this maven command: mvn spring-boot:run
+. To make a get request to the application use the following url: http://localhost:8080/person/{ssn}
+IMPORTANT: Remember to replace {ssn} in the url with an integer value.  123456789 and 987654321 are mapped to unique Person instances, while anything else maps to a generic Person instance.
+== Conclusion
+
+Wow wasn't that easy!
+I hope you enjoyed my quick start tutorial on how to use Ehcache 3 with Spring 4.1+ and JSR-107.
+If you have any questions please feel free to send them to me at geoff.gibson@softwareag.com and I will be happy to help out.
