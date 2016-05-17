@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ehcache 3, JSR-107 and Spring 4.2"
-headline: "Ehcache 3 has been released!"
+headline: "Learn how to use Ehcache 3 and JSR-107 to speed up your Spring 4.x MVC applications!"
 categories: blog
 hidden: false
 author: geoff_gibson
