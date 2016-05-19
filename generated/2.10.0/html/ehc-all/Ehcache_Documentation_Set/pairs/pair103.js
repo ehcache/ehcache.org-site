@@ -12,7 +12,7 @@ var pairs =
 ,"docs.>>":{"add":1}
 ,"add":{"decorators":1}
 ,"decorators":{"cache":1}
-,"cache":{"either":1,"\u201D>>":1}
+,"cache":{"either":1,"\u0022>>":1}
 ,"either":{"declaratively":1}
 ,"declaratively":{"ehcache.xml":1}
 ,"ehcache.xml":{"configuration":1}
@@ -25,7 +25,7 @@ var pairs =
 ,".should":{"title":1}
 ,"title":{"creating":1}
 ,"decorated":{"cache":1}
-,"\u201D>>":{"<<eventually":1}
+,"\u0022>>":{"<<eventually":1}
 ,"<<eventually":{"rewrite":1}
 ,"rewrite":{"topic":1}
 ,"clarity":{"context.>>":1}

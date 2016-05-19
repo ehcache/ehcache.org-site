@@ -60,6 +60,6 @@ var pairs =
 ,"waiting":{"happen":1}
 ,"happen":{"nodes":1}
 ,"nodes":{"distributed":1}
-,"written":{"\u201D>>":1}
+,"written":{"\u0022>>":1}
 }
 ;Search.control.loadWordPairs(pairs);

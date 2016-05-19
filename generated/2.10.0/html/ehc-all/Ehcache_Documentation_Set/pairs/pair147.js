@@ -14,7 +14,7 @@ var pairs =
 ,"higher":{"temporary":1}
 ,"temporary":{"disk":1,"cleared":1}
 ,"storage":{"localtempswap":1,"temporary":1}
-,"localtempswap":{"persistence":1,"\u201D\u002F>":1,"strategy":1}
+,"localtempswap":{"persistence":1,"\u0022\u002F>":1,"strategy":1}
 ,"persistence":{"strategy":1,"disk)":1,"disk":1}
 ,"strategy":{"allows":1,"maxentrieslocaldisk":1,"none":1}
 ,"allows":{"cache":1}
@@ -27,11 +27,10 @@ var pairs =
 ,"<ehcache>":{"<diskstore":1}
 ,"<diskstore":{"path=\u0022\u002Fauto\u002Fdefault\u002Fpath":1}
 ,"path=\u0022\u002Fauto\u002Fdefault\u002Fpath":{"\u0022\u002F>":1}
-,"\u0022\u002F>":{"<cache>":1}
+,"\u0022\u002F>":{"<cache>":1,"<\u002Fcache>":1}
 ,"<cache>":{"<persistence":1}
-,"<persistence":{"strategy=\u201D":1}
-,"strategy=\u201D":{"localtempswap":1,"none":1}
-,"\u201D\u002F>":{"<\u002Fcache>":1}
+,"<persistence":{"strategy=\u0022":1}
+,"strategy=\u0022":{"localtempswap":1,"none":1}
 ,"<\u002Fcache>":{"<\u002Fehcache>":1,"programmatic":1}
 ,"<\u002Fehcache>":{"localtempswap":1}
 ,"maxentrieslocaldisk":{"maxbyteslocaldisk":1}
@@ -43,7 +42,7 @@ var pairs =
 ,"size":{"disk":1}
 ,"tier":{"in-memory":1}
 ,"in-memory":{"cache":1}
-,"none":{"cache":1,"\u201D\u002F>":1}
+,"none":{"cache":1,"\u0022\u002F>":1}
 ,"stays":{"memory":1}
 ,"memory":{"(with":1}
 ,"(with":{"overflow":1}

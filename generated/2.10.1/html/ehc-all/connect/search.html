@@ -1872,6 +1872,8 @@ Search.ASPX_Object = function () {
         container.id = 'search-results-container';
         cse.appendChild(container);
         container.innerHTML = '';
+
+        search_input.focus();
     };
 
     this.setSearchStartingCallback = function (param_object, param_method) {
@@ -1967,6 +1969,8 @@ Search.InBrowser_Object = function () {
         container.id = 'search-results-container';
         cse.appendChild(container);
         container.innerHTML = '';
+
+        search_input.focus();
     };
 
     this.setSearchStartingCallback = function (param_object, param_method) {
