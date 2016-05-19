@@ -46,7 +46,7 @@ var pairs =
 ,"data-storage":{"products":1}
 ,"terracotta":{"server":1}
 ,"server":{"array":1}
-,"array":{"provided":1,"longer":1}
+,"array":{"provided":1,"found":1}
 ,"provided":{"bigmemory":1}
 ,"enables":{"mixed":1}
 ,"mixed":{"in-process\u002Fout-of-process":1}
@@ -64,7 +64,6 @@ var pairs =
 ,"full":{"versions":1}
 ,"versions":{"open-source":1}
 ,"version":{"terracotta":1}
-,"longer":{"actively":1}
-,"actively":{"updated":1}
+,"found":{"http:\u002F\u002Fwww.terracotta.org\u002Fdownloads\u002Fopen-source\u002Fcatalog":1}
 }
 ;Search.control.loadWordPairs(pairs);

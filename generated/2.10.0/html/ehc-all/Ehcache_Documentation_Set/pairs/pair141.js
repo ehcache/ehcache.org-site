@@ -12,7 +12,7 @@ var pairs =
 ,"docs.>>":{"without":1}
 ,"without":{"pinning":1}
 ,"expired":{"cache":1,"type":1}
-,"cache":{"entries":1,"described":1,"tier":1,"data":1,"configured":1,"sizing":1,"size":1,"pinning":1,"eligible":1,"potentially":1,"maxentriesonheap":1,"unpin":1,"specific":1,"using":1,"cache.removeall":1,"itself":1,"removed":1}
+,"cache":{"entries":1,"described":1,"tier":1,"data":1,"configured":1,"sizing":1,"size":1,"pinning":1,"eligible":1,"potentially":1,"maxentrieslocalheap":1,"unpin":1,"specific":1,"using":1,"cache.removeall":1,"itself":1,"removed":1}
 ,"entries":{"flushed":1,"entire":1,"evicted":1,"<cache":1,"heap":1,"surpasses":1,"longer":1,"clear":1,"removed":1}
 ,"flushed":{"eventually":1,"evicted":1}
 ,"eventually":{"evicted":1}
@@ -121,7 +121,7 @@ var pairs =
 ,"full":{"number":1}
 ,"number":{"entries":1}
 ,"surpasses":{"configured":1}
-,"maxentriesonheap":{"maxbyteslocaloffheap":1}
+,"maxentrieslocalheap":{"maxbyteslocaloffheap":1}
 ,"maxbyteslocaloffheap":{"settings":1}
 ,"settings":{"override":1}
 ,"override":{"pinning":1}
@@ -131,8 +131,8 @@ var pairs =
 ,"terracotta":{"bigmemory":1}
 ,"bigmemory":{"products.)":1}
 ,"products.)":{"<cache":1}
-,"mycache":{"maxentriesonheap=\u0022":1}
-,"maxentriesonheap=\u0022":{"10000":1}
+,"mycache":{"maxentrieslocalheap=\u0022":1}
+,"maxentrieslocalheap=\u0022":{"10000":1}
 ,"10000":{"maxbyteslocaloffheap=\u0022":1}
 ,"maxbyteslocaloffheap=\u0022":{"<pinning":1}
 ,"scope":{"pinning":1}

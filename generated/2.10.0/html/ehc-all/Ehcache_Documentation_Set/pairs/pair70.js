@@ -42,8 +42,8 @@ var pairs =
 ,"<<ffc-should":{"say":1}
 ,"say":{"resource":1}
 ,"resource":{"adapter":1}
-,"adapter":{"\u201D>>":1}
-,"\u201D>>":{"confirm":1}
+,"adapter":{"\u0022>>":1}
+,"\u0022>>":{"confirm":1}
 ,"confirm":{"ehcache":1}
 ,"ehcache":{"succeed":1,"hibernate":1,"transactional":1,"implementation":1}
 ,"succeed":{"try":1,"ehcache":1}

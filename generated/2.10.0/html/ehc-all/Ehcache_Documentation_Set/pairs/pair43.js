@@ -137,8 +137,8 @@ var pairs =
 ,"lessthanorequal":{"comparison":1}
 ,"ilike":{"ilike":1,"regular":1,"always":1}
 ,"regular":{"expression":1}
-,"matcher":{"\u201C*\u201D":1}
-,"\u201C*\u201D":{"may":1}
+,"matcher":{"\u0022*\u0022":1}
+,"\u0022*\u0022":{"may":1}
 ,"may":{"used":1}
 ,"note":{"placing":1}
 ,"placing":{"wildcard":1}

@@ -45,8 +45,8 @@ var pairs =
 ,"<cachemanagereventlistenerfactory":{"class=\u0022":1}
 ,"class=\u0022":{"properties=\u0022":1}
 ,"properties=\u0022":{"\u0022\u002F>":1}
-,"<defaultcache":{"maxentriesonheap=\u0022":1}
-,"maxentriesonheap=\u0022":{"10000":1}
+,"<defaultcache":{"maxentrieslocalheap=\u0022":1}
+,"maxentrieslocalheap=\u0022":{"10000":1}
 ,"10000":{"eternal=\u0022":1,"maxentrieslocaldisk=\u0022":1}
 ,"eternal=\u0022":{"false":1}
 ,"false":{"timetoidleseconds=\u0022":1}
@@ -64,7 +64,7 @@ var pairs =
 ,"cache-->":{"<cache":1}
 ,"<cache":{"name=\u0022":1}
 ,"name=\u0022":{"samplecache1":1}
-,"samplecache1":{"maxentriesonheap=\u0022":1}
+,"samplecache1":{"maxentrieslocalheap=\u0022":1}
 ,"maxentrieslocaldisk=\u0022":{"1000":1}
 ,"1000":{"eternal=\u0022":1}
 ,"300":{"timetoliveseconds=\u0022":1}

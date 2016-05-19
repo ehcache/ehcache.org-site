@@ -27,8 +27,8 @@ var pairs =
 ,"uses":{"first":1}
 ,"first":{"configuration":1}
 ,"found":{"note":1}
-,"note":{"\u201C\u002Fehcache.xml":1}
-,"\u201C\u002Fehcache.xml":{"requires":1}
+,"note":{"\u0022\u002Fehcache.xml":1}
+,"\u0022\u002Fehcache.xml":{"requires":1}
 ,"requires":{"ehcache.xml":1}
 ,"placed":{"root":1}
 ,"root":{"classpath":1}

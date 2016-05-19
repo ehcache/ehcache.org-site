@@ -22,7 +22,7 @@ var pairs =
 ,"ehcache":{"raffle":1}
 ,"cache":{"writers":1,"loaders":1}
 ,"writers":{"cache":1}
-,"loaders":{"github.com":1,"\u201D>>":1}
+,"loaders":{"github.com":1,"\u0022>>":1}
 ,"github.com":{"<<ffc-this":1}
 ,"<<ffc-this":{"paragraph":1}
 ,"paragraph":{"confusing":1}
