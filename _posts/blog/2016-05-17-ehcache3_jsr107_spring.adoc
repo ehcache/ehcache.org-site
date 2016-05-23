@@ -62,7 +62,8 @@ Let's get started!
 Below are a few quick steps to get you up and running with Ehcache 3, Spring 4.1+ and JSR-107.
 The entire example can be found on GitHub at https://github.com/gibsong/ehcache-jsr107-spring
 
-. Create a maven Spring project
+. Create a maven Spring project.  
+Maven 3.2 or greater is required.
 . Add Ehcache 3 to your pom.xml.
 +
 [source,xml]
@@ -267,7 +268,9 @@ NOTE: JCacheManagerCustomizer API: https://docs.spring.io/spring-boot/docs/curre
 . Now you can build the project by running the following maven command: mvn clean install
 . To run the application use this maven command: mvn spring-boot:run
 . To make a get request to the application use the following url: http://localhost:8080/person/{ssn}
-IMPORTANT: Remember to replace {ssn} in the url with an integer value.  123456789 and 987654321 are mapped to unique Person instances, while anything else maps to a generic Person instance.
+IMPORTANT: Remember to replace {ssn} in the url with an integer value.  
+123456789 and 987654321 are mapped to unique Person instances, while anything else maps to a generic Person instance.
+
 == Conclusion
 
 Wow wasn't that easy!
