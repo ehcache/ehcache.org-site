@@ -62,7 +62,8 @@ Let's get started!
 Below are a few quick steps to get you up and running with Ehcache 3, Spring 4.1+ and JSR-107.
 The entire example can be found on GitHub at https://github.com/gibsong/ehcache-jsr107-spring
 
-. Create a maven Spring project
+. Create a maven Spring project.  
+Maven 3.2 or greater is required.
 . Add Ehcache 3 to your pom.xml.
 +
 [source,xml]
@@ -114,6 +115,13 @@ Remove all existing caching provider jars from the classpath to ensure that the 
 <1> Add the spring-boot-starter-parent parent project to use Spring boot
 <2> Add the spring-boot-starter-cache to use Spring Framework's caching support
 <3> Add spring-boot-starter-web to use Spring MVC
+. Set the *spring.cache.jcache.config* property to include the classpath and ehcache.xml file. 
+This needs to be done in the application.properties file.
++
+.application.properties
+----
+spring.cache.jcache.config=classpath:ehcache.xml
+----
 . Enable caching.
 This can be done in 1 of 2 ways:
 .. Enable with @EnableCaching annotation:
@@ -183,38 +191,18 @@ The next time the getPerson(...) method is called with ssn="123456789" (assuming
   </service>
 
   <cache-template name="heap-cache">
-    <listeners>     <4>
-      <listener>
-        <class>org.terracotta.ehcache.EventLogger</class>
-        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
-        <event-ordering-mode>UNORDERED</event-ordering-mode>
-        <events-to-fire-on>CREATED</events-to-fire-on> <5>
-      </listener>
-      <listener>
-        <class>org.terracotta.ehcache.EventLogger</class>
-        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
-        <event-ordering-mode>UNORDERED</event-ordering-mode>
-        <events-to-fire-on>UPDATED</events-to-fire-on> <6>
-      </listener>
-      <listener>
-        <class>org.terracotta.ehcache.EventLogger</class>
-        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
-        <event-ordering-mode>UNORDERED</event-ordering-mode>
-        <events-to-fire-on>EXPIRED</events-to-fire-on> <7>
-      </listener>
-      <listener>
-        <class>org.terracotta.ehcache.EventLogger</class>
-        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
-        <event-ordering-mode>UNORDERED</event-ordering-mode>
-        <events-to-fire-on>REMOVED</events-to-fire-on> <8>
-      </listener>
-      <listener>
-        <class>org.terracotta.ehcache.EventLogger</class>
-        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
-        <event-ordering-mode>UNORDERED</event-ordering-mode>
-        <events-to-fire-on>EVICTED</events-to-fire-on> <9>
-      </listener>
-    </listeners>
+    <listeners>    <4>
+      <listener>
+        <class>org.terracotta.ehcache.EventLogger</class>
+        <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
+        <event-ordering-mode>UNORDERED</event-ordering-mode>
+        <events-to-fire-on>CREATED</events-to-fire-on> <5>
+        <events-to-fire-on>UPDATED</events-to-fire-on> <6>
+        <events-to-fire-on>EXPIRED</events-to-fire-on> <7>
+        <events-to-fire-on>REMOVED</events-to-fire-on> <8>
+        <events-to-fire-on>EVICTED</events-to-fire-on> <9>
+      </listener>
+    </listeners>
     <resources>
       <heap unit="entries">2000</heap> <10>
       <offheap unit="MB">100</offheap> <11>
@@ -226,15 +214,15 @@ The next time the getPerson(...) method is called with ssn="123456789" (assuming
 <2> The JSR-107 namespace, the xsd can be found here: http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd
 <3> Defines a cache with alias "people", which inherits from cache-template "heap-cache"
 <4> This section allows you to add cache event listeners.
-I have added 4 event listeners.
+I added a listener for 5 events.
 Each event will be logged, by the EventLogger class, when it occurs.
-<5> Defines an event listener for when an entry is added to the cache
-<6> Defines an event listener for when an entry is updated in the cache.
+<5> Defines a CREATED event, when an entry is added to the cache, with this listener.
+<6> Defines an UPDATED event, when an entry is updated in the cache, with this listener. 
 However in this example this one will never be used.
 I just added it as an example.
-<7> Defines an event listener for when an entry is expired from the cache
-<8> Defines an event listener for when an entry is removed from the cache
-<9> Defines an event listener for when an entry is evicted from the cache
+<7> Defines an EXPIRED event, when an entry is expired from the cache, with this listener.
+<8> Defines an REMOVED event, when an entry is removed from the cache, with this listener.
+<9> Defines an EVICTED event, when an entry is evicted from the cache, with this listener.
 <10> The heap is configured to allow 2000 entries
 <11> The offheap storage is configured with 100 MB of space.
 Remember the unit of measure is case sensitive.
@@ -267,7 +255,9 @@ NOTE: JCacheManagerCustomizer API: https://docs.spring.io/spring-boot/docs/curre
 . Now you can build the project by running the following maven command: mvn clean install
 . To run the application use this maven command: mvn spring-boot:run
 . To make a get request to the application use the following url: http://localhost:8080/person/{ssn}
-IMPORTANT: Remember to replace {ssn} in the url with an integer value.  123456789 and 987654321 are mapped to unique Person instances, while anything else maps to a generic Person instance.
+IMPORTANT: Remember to replace {ssn} in the url with an integer value.  
+123456789 and 987654321 are mapped to unique Person instances, while anything else maps to a generic Person instance.
+
 == Conclusion
 
 Wow wasn't that easy!
