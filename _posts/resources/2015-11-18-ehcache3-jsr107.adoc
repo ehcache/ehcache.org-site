@@ -5,5 +5,5 @@ categories: resources
 date: 2015-11-18T00:00:00-00:00
 ---
 
-* Conference page: http://cfp.devoxx.ma/2015/talk/FDX-7262/Ehcache3:_JSR107_on_steroids
+* Conference page: http://cfp2015.devoxx.ma/2015/talk/FDX-7262/Ehcache3:_JSR107_on_steroids
 * Slides: http://www.slideshare.net/LouisJacomet/ehcache-3-jsr107-on-steroids-at-devoxx-morocco
