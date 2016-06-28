@@ -13,8 +13,11 @@ This is the source code/files for the ehcache.org website.  The files in this re
 * Clone this repository to your local system (if you're going to contribute content, fork it first, and clone that)
   * Create a branch to contribute content
 * To generate the *full* site including Ehcache 3 docs, you need to do the following:
-  * the contents of ehcache3 repository needs to be linked/or copied as `_eh3`
-  * the contents of ehcache3 repository's docs/src/docs/asciidoc/user folder needs to be linked/or copied as `documentation/3.0`
+  * the contents of ehcache3 release/3.0 branch or a 3.0 tag needs to be linked/or copied as `_eh3`
+  * the contents of ehcache3 release/3.0 branch or a 3.0 tag's docs/src/docs/asciidoc/user folder needs to be linked/or copied as `documentation/3.0`
+  * the same must be done with all other releases, using the major and minor versions as folder names.
+    * So with 3.1, it means linking to `_eh31` and `documentation/3.1`
+    * This can be achieved easily with [`git worktree`](https://git-scm.com/docs/git-worktree)
 * To generate and view (locally serve) the site `jekyll serve` then point your browser at `http://localhost:4000`
 * To simply generate the site `jekyll build`
 

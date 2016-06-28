@@ -12,8 +12,6 @@ disqus_shortname: ehcache
 
 exclude: [default.gems, README.md]
 
-eh3_source_dir: /_eh3
-
 # Build settings
 markdown: kramdown
 
@@ -31,6 +29,7 @@ asciidoctor:
     - pygments-css=style
     - icons=font
     - sourcedir=/_eh3
+    - sourcedir31=/_eh31
     - imagesdir=images
     - sectanchors
     - idprefix
@@ -38,8 +37,8 @@ asciidoctor:
 
 documentation:
     ehcache:
-      current: "3.0"
-      future: "3.1"
+      current: "3.1"
+      future: "3.2"
 
 defaults:
   -
@@ -97,3 +96,11 @@ defaults:
       layout: "docs3x_page"
       ehc_version: "3.0"
       ehc_javadoc_version: "3.0.2"
+  -
+    scope:
+      path: "documentation/3.1"
+      type: "pages"
+    values:
+      layout: "docs3x_page"
+      ehc_version: "3.1"
+      ehc_javadoc_version: "3.1.0"

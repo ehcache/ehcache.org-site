@@ -12,11 +12,11 @@ permalink: /documentation/
 
 | | |
 |:----|:--|
-|[Ehcache 3.0 User Guide](/documentation/3.0/) |[JavaDoc](/apidocs/3.0.2/index.html){:target="_blank"} |
+|[Ehcache 3.1 User Guide](/documentation/3.1/) |[Core JavaDoc](/apidocs/3.1.0/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.1.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.1.0/transactions/index.html){:target="_blank"}|
 |[Ehcache 2.10.x User Guide](/generated/2.10.2/html/ehc-all)   also available as [PDF](/documentation/2.10.2/pdf/index.html)|[JavaDoc](/apidocs/2.10.2/index.html){:target="_blank"} |
 |---| &nbsp; |
 |[Platform and Release Compatibility Tables](http://www.terracotta.org/confluence/display/release/Home){: target="_blank"}||
-|[License](/about/license.html) (Apache 2.0),  [3rd Party Licenses](/files/legal/TOE_3.0.pdf) (Apache 2.0), [Legal Notices](http://documentation.softwareag.com/legal/){: target="_blank"}||
+|[License](/about/license.html) (Apache 2.0),  [3rd Party Licenses](https://confluence.terracotta.org/display/release/Third+Party+Licenses){: target="_blank"} (Apache 2.0), [Legal Notices](http://documentation.softwareag.com/legal/){: target="_blank"}||
 
 In addition to the documentation, there are a number of resources available online - see the [Resources page](/resources/) for links to some of them.
 
@@ -36,6 +36,7 @@ If you don’t find what you’re looking for in the docs, post a question to th
 
 | | |
 |:----|:--|
+|[Ehcache 3.0 User Guide](/documentation/3.0/) |[JavaDoc](/apidocs/3.0.2/index.html){:target="_blank"} |
 |[Ehcache 2.9.x User Guide](/documentation/2.9/)|[JavaDoc](/apidocs/2.9/index.html){:target="_blank"}|
 |[Ehcache 2.8.x User Guide](/documentation/2.8/)|[JavaDoc](/apidocs/2.8.5/index.html){:target="_blank"}|
 |Ehcache 2.7.x |[JavaDoc](/apidocs/2.7.6/index.html){:target="_blank"}|
