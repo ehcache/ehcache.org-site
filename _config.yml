@@ -35,6 +35,10 @@ asciidoctor:
     - idprefix
     - idseparator=-
 
+documentation:
+    ehcache:
+      current: "3.0"
+      future: "3.1"
 
 defaults:
   -

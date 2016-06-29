@@ -8,7 +8,7 @@ active_menu_id: ehc_mnu_docs
 
 <br/>
 
-<div class="container-fluid">
+<div class="container-fluid ehcache-documentation v{{ page.ehc_version }} {% if site.documentation.ehcache.current == page.ehc_version %} current {% else %} {% if site.documentation.ehcache.future == page.ehc_version %} future {% else %} old {% endif %} {% endif %}">
 
 
   <div class="row row-offcanvas row-offcanvas-left">
@@ -53,7 +53,18 @@ active_menu_id: ehc_mnu_docs
     <div class="col-xs-12 col-sm-9">
       <header class="post-header">
         {% if page.no_title_on_main_layout %} {% else %}
-        <h1 class="post-title">{% if page.visible_title %}{{ page.visible_title  | replace: '!DOC_VERSION!', page.ehc_version }} {% else %}{{ page.title  | replace: '!DOC_VERSION!', page.ehc_version }}{% endif %}</h1>
+        <h1 class="post-title">
+            <span>{% if page.visible_title %}{{ page.visible_title  | replace: '!DOC_VERSION!', page.ehc_version }} {% else %}{{ page.title  | replace: '!DOC_VERSION!', page.ehc_version }}{% endif %}</span>
+            {% if site.documentation.ehcache.current == page.ehc_version %}
+            <span class="current">CURRENT</span>
+            {% else %}
+            {% if site.documentation.ehcache.future == page.ehc_version %}
+            <span class="future">CURRENT:&nbsp;&nbsp;<a href="/documentation/{{site.documentation.ehcache.current}}">{{site.documentation.ehcache.current}}</a></span>
+            {% else %}
+            <span class="old">CURRENT:&nbsp;&nbsp;<a href="/documentation/{{site.documentation.ehcache.current}}">{{site.documentation.ehcache.current}}</a></span>
+            {% endif %}
+            {% endif %}
+        </h1>
         <hr/>
         {% endif %}
       </header>
