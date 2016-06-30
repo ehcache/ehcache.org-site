@@ -27,6 +27,9 @@ active_menu_id: ehc_mnu_docs
           <li class="submenu"><a href="107.html">javax.cache aka JSR-107</a></li>
           <li class="submenu"><a href="examples.html">Java Examples</a></li>
           <li class="submenu"><a href="xsds.html">Configuration XSD</a></li>
+          {% if page.ehc_version != '3.0' %}
+          <li class="submenu"><a href="clustered-cache.html">Clustering with Terracotta</a></li>
+          {% endif %}
         </ul>
 
         General topics:
