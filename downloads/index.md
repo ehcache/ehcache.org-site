@@ -13,6 +13,11 @@ active_menu_id: ehc_mnu_download
 
 > [Ehcache 3.1 latest](https://github.com/ehcache/ehcache3/releases/download/v3.1.0/ehcache-3.1.0.jar) .jar
 
+#### Ehcache 3 with clustering support
+
+> [Ehcache 3.1 (with clustering) kit](https://github.com/ehcache/ehcache3/releases/download/v3.1.0/ehcache-clustered-3.1.0-kit.zip) .zip
+
+
 More files related to releases of Ehcache 3 are available on the project's [GitHub release page](https://github.com/ehcache/ehcache3/releases).
 
 [License](/about/license.html) (Apache 2.0),  [3rd Party Licenses](https://confluence.terracotta.org/display/release/Third+Party+Licenses){: target="_blank"} (Apache 2.0),  [Legal Notices](http://documentation.softwareag.com/legal/){: target="_blank"}
