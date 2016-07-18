@@ -11,11 +11,11 @@ active_menu_id: ehc_mnu_download
 
 #### Ehcache 3
 
-> [Ehcache 3.1 latest](https://github.com/ehcache/ehcache3/releases/download/v3.1.0/ehcache-3.1.0.jar) .jar
+> [Ehcache 3.1 latest](https://github.com/ehcache/ehcache3/releases/download/v3.1.1/ehcache-3.1.1.jar) .jar
 
 #### Ehcache 3 with clustering support
 
-> [Ehcache 3.1 (with clustering) kit](https://github.com/ehcache/ehcache3/releases/download/v3.1.0/ehcache-clustered-3.1.0-kit.zip) .zip
+> [Ehcache 3.1 (with clustering) kit](https://github.com/ehcache/ehcache3/releases/download/v3.1.1/ehcache-clustered-3.1.1-kit.zip) .zip
 
 
 More files related to releases of Ehcache 3 are available on the project's [GitHub release page](https://github.com/ehcache/ehcache3/releases).
@@ -49,7 +49,7 @@ To include Ehcache 3.x in your project, use:
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;3.1.0&lt;/version&gt;
+      &lt;version&gt;3.1.1&lt;/version&gt;
     &lt;/dependency&gt;
 </code></pre>
 
