@@ -103,4 +103,4 @@ defaults:
     values:
       layout: "docs3x_page"
       ehc_version: "3.1"
-      ehc_javadoc_version: "3.1.0"
+      ehc_javadoc_version: "3.1.1"
