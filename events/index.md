@@ -9,6 +9,23 @@ active_sub_menu_id: ehc_mnu_events_events
 ## Upcoming Conferences & Events
 Meet our team and join our sessions at the following conferences and meetups.
 
+### Distributed Systems Meet-up Group : June 30, 2016; 10:00 AM - 1:00 PM : Bangalore, India
+
+Find full information about this meetup (location, etc.) here: [http://www.meetup.com/Bangalore-Distributed-Systems-Meetup/events/232275233/](http://www.meetup.com/Bangalore-Distributed-Systems-Meetup/events/232275233/)
+
+Presentations will cover:
+
+* The Availability & Scale Conundrum for Distributed Databases
+
+* Ehcache 3 and Terracotta 5: better, faster and clustered caching
+
+Plus snacks and great conversation with other folks interested in distributed computing.
+
+___
+
+
+## Recent Events
+
 ### Devoxx UK : June 8 - 10, 2016 : London, England
 
 [Aurélien Broszniowski](http://cfp.devoxx.co.uk/2016/speaker/aurelien_broszniowski) and [Louis Jacomet](http://cfp.devoxx.co.uk/2016/speaker/louis_jacomet) speak about _Caching 101: Caching on the JVM (and beyond)_
@@ -18,8 +35,6 @@ Meet our team and join our sessions at the following conferences and meetups.
 
 [Louis Jacomet](http://cfp.devoxx.pl/2016/speaker/louis_jacomet) speaks about _Data consistency: Analyse, understand and decide_
 - Full description on Devoxx Poland website
-
-## Recent Events
 
 
 ### Devoxx France : April 20 - 22, 2016 : Paris, France
