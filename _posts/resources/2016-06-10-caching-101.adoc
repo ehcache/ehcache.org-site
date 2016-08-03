@@ -1,0 +1,11 @@
+---
+title: "Caching 101: Caching on the JVM (and beyond)"
+headline: "Caching 101: Caching on the JVM (and beyond), by Aurélien Broszniowski and Louis Jacomet"
+categories: resources
+date: 2016-06-10T00:00:00-00:00
+---
+
+This session, while similar to the previous one with the same title, has been improved based on feedback and experience.
+
+* Conference page: https://cfp.devoxx.co.uk/2016/talk/FWR-0829/Caching_101:_Caching_on_the_JVM_(and_beyond)
+* Video: https://www.youtube.com/watch?v=FQfd8x29Ud8

@@ -9,7 +9,13 @@ active_sub_menu_id: ehc_mnu_events_events
 ## Upcoming Conferences & Events
 Meet our team and join our sessions at the following conferences and meetups.
 
-### Distributed Systems Meet-up Group : June 30, 2016; 10:00 AM - 1:00 PM : Bangalore, India
+No planned events for now ... but expect news in the weeks to come as several conference  call for papers are pending!
+
+___
+
+## Recent Events
+
+### Distributed Systems Meet-up Group : July 31, 2016; 10:00 AM - 1:00 PM : Bangalore, India
 
 Find full information about this meetup (location, etc.) here: [http://www.meetup.com/Bangalore-Distributed-Systems-Meetup/events/232275233/](http://www.meetup.com/Bangalore-Distributed-Systems-Meetup/events/232275233/)
 
@@ -20,11 +26,6 @@ Presentations will cover:
 * Ehcache 3 and Terracotta 5: better, faster and clustered caching
 
 Plus snacks and great conversation with other folks interested in distributed computing.
-
-___
-
-
-## Recent Events
 
 ### Devoxx UK : June 8 - 10, 2016 : London, England
 
