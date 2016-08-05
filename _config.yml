@@ -95,7 +95,7 @@ defaults:
     values:
       layout: "docs3x_page"
       ehc_version: "3.0"
-      ehc_javadoc_version: "3.0.2"
+      ehc_javadoc_version: "3.0.3"
   -
     scope:
       path: "documentation/3.1"
