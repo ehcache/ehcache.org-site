@@ -20,6 +20,7 @@ This is the source code/files for the ehcache.org website.  The files in this re
     * This can be achieved easily with [`git worktree`](https://git-scm.com/docs/git-worktree)
 * To generate and view (locally serve) the site `jekyll serve` then point your browser at `http://localhost:4000`
 * To simply generate the site `jekyll build`
+* To generate the site including all production elements (ie analytics) `JEKYLL_ENV=production jekyll build`  
 
 NOTE: if you used links to include Ehcache 3 documentation, you may see an error about watching the same folder twice - it can be ignored.
 
