@@ -104,5 +104,5 @@ defaults:
     values:
       layout: "docs3x_page"
       ehc_version: "3.1"
-      ehc_javadoc_version: "3.1.1"
+      ehc_javadoc_version: "3.1.2"
       ehc_checkout_dir_var: "sourcedir31"
