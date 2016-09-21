@@ -9,11 +9,47 @@ active_sub_menu_id: ehc_mnu_events_events
 ## Upcoming Conferences & Events
 Meet our team and join our sessions at the following conferences and meetups.
 
-No planned events for now ... but expect news in the weeks to come as several conference  call for papers are pending!
+### Distributed Systems Meet-up Group : Sept 24, 2016; 10:00 AM - 1:00 PM : Bangalore, India
+
+Join us at Bangalore-Distributed-Systems-Meetup on Meetup.com
+
+#### This months's AGENDA -
+
+- "Virtual Synchrony In Practice" By: Ramesh Kavanappillil, Principal Architect, Terracotta R&D
+- "Distributed Caching With Ehcache3"  By: Ehcache Team, Terracotta R&D
+- Organizing future meet-ups : call for topics and volunteer speakers
+
+#### Venue -
+
+Software AG Bangalore Technologies Pvt. Ltd.,
+Embassy Tech Village
+5th Floor, 2A East Tower
+Devarabisanahalli
+Bangalore – 560103
+
+### Devoxx Morocco : November 1 (approx) : Casablanca, Morocco
+
+Louis Jacomet will be making a presentation on adding scale and performance to applicaitons.  
+
+More details of time and topic will be posted here soon.
+
+### Devoxx Belgium : November 7-11 : Antwerp, Belgium
+
+The Terracotta / Software AG team will be out in full force.  Join us at our booth, see demos, get technical assistance, and win prizes.
+
+Also, don't forget to catch talks given by the Ehcache / Terracotta / Software AG crew!
+
+Detailed schedule to be posted here soon.
 
 ___
 
 ## Recent Events
+
+### JavaOne : Sept 19, 2016 : San Francisco, California, USA
+
+Henri Tremblay presents his talk ["Learn Java 8: Lambdas and Functional Programming"](https://www.youtube.com/watch?v=zolbIZS4SRQ).
+
+And chat with Ehcache and Terracotta developers around the JavaOne floor throughout the week!
 
 ### Distributed Systems Meet-up Group : July 31, 2016; 10:00 AM - 1:00 PM : Bangalore, India
 
