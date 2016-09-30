@@ -1,6 +1,13 @@
 ---
 ---
-
+  <script type="text/javascript">
+    var splittedURL = window.location.href.split('//')[1].split('/'),
+      len = splittedURL.length;
+    if (splittedURL[1] === 'documentation' && !isNaN(Number(splittedURL[2])) 
+      && /\.html$/gi.test(splittedURL[len - 1].split('#')[0])) {
+      window.location.href = 'http://' + splittedURL.slice(0, 3).join('/');
+    }
+  </script>
 
   <div id="intro" class="jumbotron breaker">
     <div class="container">
