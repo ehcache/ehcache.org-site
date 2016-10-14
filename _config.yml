@@ -95,8 +95,8 @@ defaults:
         values:
           layout: "docs2x_page"
           ehc_version: "2.10"
-          ehc_javadoc_version: "2.10.3"
-      -
+          ehc_javadoc_version: "2.10"
+  -
 
     scope:
       path: "documentation/3.0"
