@@ -26,7 +26,7 @@ More files related to releases of Ehcache 3 are available on the project's [GitH
 
 #### Ehcache 2.x
 
-> [Ehcache 2.10.2](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.2-distribution.tar.gz)  .tar.gz
+> [Ehcache 2.10.3](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.3-distribution.tar.gz)  .tar.gz
 
 
 For more information on this release, see the [release notes](http://www.terracotta.org/confluence/display/release/Home).
