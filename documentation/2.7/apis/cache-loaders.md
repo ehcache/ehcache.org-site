@@ -32,10 +32,12 @@ cacheLoaderFactory - Specifies a CacheLoader, which can be used both asynchronou
  can be added, in which case the loaders form a chain which are executed in order. If a
  loader returns null, the next in chain is called.
 
-    <cache ...>
-     <cacheLoaderFactory class="com.example.ExampleCacheLoaderFactory"
-                                 properties="type=int,startCounter=10"/>
-    </cache>
+~~~ xml
+<cache ...>
+ <cacheLoaderFactory class="com.example.ExampleCacheLoaderFactory"
+                             properties="type=int,startCounter=10"/>
+</cache>
+~~~
 
 ## Implementing a CacheLoaderFactory and CacheLoader <a name="CacheLoaderFactory"/>
 CacheLoaderFactory is an abstract factory for creating CacheLoaders. Implementers should
@@ -44,127 +46,135 @@ ehcache.xml
 The factory class needs to be a concrete subclass of the abstract
 factory class CacheLoaderFactory, which is reproduced below:
 
-<pre><code>
+~~~ java
 /**
-* An abstract factory for creating cache loaders. Implementers should provide their own
-* concrete factory extending this factory.
-* 
-* There is one factory method for JSR107 Cache Loaders and one for Ehcache ones. The Ehcache
-* loader is a sub interface of the JSR107 Cache Loader.
-* 
-* Note that both the JCache and Ehcache APIs also allow the CacheLoader to be set
-* programmatically.
-* @author Greg Luck
-* @version $Id: cache_loaders.apt 4369 2011-07-15 19:59:14Z ilevy $
-*/
+ * An abstract factory for creating cache loaders. Implementers should provide their own
+ * concrete factory extending this factory.
+ *
+ * There is one factory method for JSR107 Cache Loaders and one for Ehcache ones. The Ehcache
+ * loader is a sub interface of the JSR107 Cache Loader.
+ *
+ * Note that both the JCache and Ehcache APIs also allow the CacheLoader to be set
+ * programmatically.
+ * @author Greg Luck
+ * @version $Id: cache_loaders.apt 4369 2011-07-15 19:59:14Z ilevy $
+ */
 public abstract class CacheLoaderFactory {
-/**
-* Creates a CacheLoader using the JSR107 creational mechanism.
-* This method is called from {@link net.sf.ehcache.jcache.JCacheFactory"/>
-*
-* @param environment the same environment passed into
-* {@link net.sf.ehcache.jcache.JCacheFactory}.
-* This factory can extract any properties it needs from the environment.
-* @return a constructed CacheLoader
-*/
-public abstract net.sf.jsr107cache.CacheLoader createCacheLoader(Map environment);
-/**
-* Creates a CacheLoader using the Ehcache configuration mechanism at the time
-* the associated cache is created.
-*
-* @param properties implementation specific properties. These are configured as comma
-*                   separated name value pairs in ehcache.xml
-* @return a constructed CacheLoader
-*/
-public abstract net.sf.ehcache.loader.CacheLoader createCacheLoader(Properties properties);
-/**
-* @param cache the cache this extension should hold a reference to,
-* and to whose lifecycle it should be bound.
-* @param properties implementation specific properties configured as delimiter
-*  separated name value pairs in ehcache.xml
-* @return a constructed CacheLoader
-*/
-public abstract CacheLoader createCacheLoader(Ehcache cache, Properties properties);
-"/>
-</code></pre>
+	/**
+	 * Creates a CacheLoader using the JSR107 creational mechanism.
+	 * This method is called from {@link net.sf.ehcache.jcache.JCacheFactory"/>
+	 *
+	 * @param environment the same environment passed into
+	 * {@link net.sf.ehcache.jcache.JCacheFactory}.
+	 * This factory can extract any properties it needs from the environment.
+	 * @return a constructed CacheLoader
+	 */
+	public abstract net.sf.jsr107cache.CacheLoader createCacheLoader(Map environment);
+
+	/**
+	 * Creates a CacheLoader using the Ehcache configuration mechanism at the time
+	 * the associated cache is created.
+	 *
+	 * @param properties implementation specific properties. These are configured as comma
+	 *                   separated name value pairs in ehcache.xml
+	 * @return a constructed CacheLoader
+	 */
+	public abstract net.sf.ehcache.loader.CacheLoader createCacheLoader(Properties properties);
+
+	/**
+	 * @param cache the cache this extension should hold a reference to,
+	 * and to whose lifecycle it should be bound.
+	 * @param properties implementation specific properties configured as delimiter
+	 *  separated name value pairs in ehcache.xml
+	 * @return a constructed CacheLoader
+	 */
+	public abstract CacheLoader createCacheLoader(Ehcache cache, Properties properties);
+}
+~~~
 
 The factory creates a concrete implementation of the CacheLoader
 interface, which is reproduced below.
 A CacheLoader is bound to the lifecycle of a cache, so that `init()` is called
 during cache initialization, and `dispose()` is called on disposal of a cache.
 
-<pre><code>
+~~~ java
 /**
-* Extends JCache CacheLoader with load methods that take an argument in addition to a key
-* @author Greg Luck
-* @version $Id: cache_loaders.apt 4369 2011-07-15 19:59:14Z ilevy $
-*/
+ * Extends JCache CacheLoader with load methods that take an argument in addition to a key
+ * @author Greg Luck
+ * @version $Id: cache_loaders.apt 4369 2011-07-15 19:59:14Z ilevy $
+ */
 public interface CacheLoader extends net.sf.jsr107cache.CacheLoader {
-/**
-* Load using both a key and an argument.
-* 
-* JCache will call through to the load(key) method, rather than this method,
-* where the argument is null.
-*
-* @param key      the key to load the object for
-* @param argument can be anything that makes sense to the loader
-* @return the Object loaded
-* @throws CacheException
-*/
-Object load(Object key, Object argument) throws CacheException;
-/**
-* Load using both a key and an argument.
-* 
-* JCache will use the loadAll(key) method where the argument is null.
-*
-* @param keys     the keys to load objects for
-* @param argument can be anything that makes sense to the loader
-* @return a map of Objects keyed by the collection of keys passed in.
-* @throws CacheException
-*/
-Map loadAll(Collection keys, Object argument) throws CacheException;
-/**
-* Gets the name of a CacheLoader
-*
-* @return the name of this CacheLoader
-*/
-String getName();
-/**
-* Creates a clone of this extension. This method will only be called by Ehcache before a
-* cache is initialized.
-* 
-* Implementations should throw CloneNotSupportedException if they do not support clone
-* but that will stop them from being used with defaultCache.
-*
-* @return a clone
-* @throws CloneNotSupportedException if the extension could not be cloned.
-*/
-public CacheLoader clone(Ehcache cache) throws CloneNotSupportedException;
-/**
-* Notifies providers to initialise themselves.
-* 
-* This method is called during the Cache's initialise method after it has changed it's
-* status to alive. Cache operations are legal in this method.
-*
-* @throws net.sf.ehcache.CacheException
-*/
-void init();
-/**
-* Providers may be doing all sorts of exotic things and need to be able to clean up on
-* dispose.
-* 
-* Cache operations are illegal when this method is called. The cache itself is partly
-* disposed when this method is called.
-*
-* @throws net.sf.ehcache.CacheException
-*/
-void dispose() throws net.sf.ehcache.CacheException;
-/**
-* @return the status of the extension
-*/
-public Status getStatus();
-"/>
-</code></pre>
+	/**
+	 * Load using both a key and an argument.
+	 *
+	 * JCache will call through to the load(key) method, rather than this method,
+	 * where the argument is null.
+	 *
+	 * @param key      the key to load the object for
+	 * @param argument can be anything that makes sense to the loader
+	 * @return the Object loaded
+	 * @throws CacheException
+	 */
+	Object load(Object key, Object argument) throws CacheException;
+
+	/**
+	 * Load using both a key and an argument.
+	 *
+	 * JCache will use the loadAll(key) method where the argument is null.
+	 *
+	 * @param keys     the keys to load objects for
+	 * @param argument can be anything that makes sense to the loader
+	 * @return a map of Objects keyed by the collection of keys passed in.
+	 * @throws CacheException
+	 */
+	Map loadAll(Collection keys, Object argument) throws CacheException;
+
+	/**
+	 * Gets the name of a CacheLoader
+	 *
+	 * @return the name of this CacheLoader
+	 */
+	String getName();
+
+	/**
+	 * Creates a clone of this extension. This method will only be called by Ehcache before a
+	 * cache is initialized.
+	 *
+	 * Implementations should throw CloneNotSupportedException if they do not support clone
+	 * but that will stop them from being used with defaultCache.
+	 *
+	 * @return a clone
+	 * @throws CloneNotSupportedException if the extension could not be cloned.
+	 */
+	public CacheLoader clone(Ehcache cache) throws CloneNotSupportedException;
+
+	/**
+	 * Notifies providers to initialise themselves.
+	 *
+	 * This method is called during the Cache's initialise method after it has changed it's
+	 * status to alive. Cache operations are legal in this method.
+	 *
+	 * @throws net.sf.ehcache.CacheException
+	 */
+	void init();
+
+	/**
+	 * Providers may be doing all sorts of exotic things and need to be able to clean up on
+	 * dispose.
+	 *
+	 * Cache operations are illegal when this method is called. The cache itself is partly
+	 * disposed when this method is called.
+	 *
+	 * @throws net.sf.ehcache.CacheException
+	 */
+	void dispose() throws net.sf.ehcache.CacheException;
+
+	/**
+	 * @return the status of the extension
+	 */
+	public Status getStatus();
+}
+~~~
 
 The implementations need to be placed in the classpath accessible to ehcache.
 See the chapter on [Classloading](/documentation/2.7/user-guide/class-loading) for details on how classloading
@@ -174,31 +184,33 @@ of these classes will be done.
 The following methods on `Cache` allow runtime interrogation, registration and unregistration
 of loaders:
 
-<pre><code>
+~~~ java
 /**
-* Register a {@link CacheLoader} with the cache. It will then be tied into the cache
-*   lifecycle.
-* 
-* If the CacheLoader is not initialised, initialise it.
-*
-* @param cacheLoader A Cache Loader to register
-*/
+ * Register a {@link CacheLoader} with the cache. It will then be tied into the cache
+ *   lifecycle.
+ *
+ * If the CacheLoader is not initialised, initialise it.
+ *
+ * @param cacheLoader A Cache Loader to register
+ */
 public void registerCacheLoader(CacheLoader cacheLoader) {
-registeredCacheLoaders.add(cacheLoader);
-"/>
+	registeredCacheLoaders.add(cacheLoader);
+}
+
 /**
-* Unregister a {@link CacheLoader} with the cache. It will then be detached from the cache
-* lifecycle.
-*
-* @param cacheLoader A Cache Loader to unregister
-*/
+ * Unregister a {@link CacheLoader} with the cache. It will then be detached from the cache
+ * lifecycle.
+ *
+ * @param cacheLoader A Cache Loader to unregister
+ */
 public void unregisterCacheLoader(CacheLoader cacheLoader) {
-registeredCacheLoaders.remove(cacheLoader);
-"/>
+	registeredCacheLoaders.remove(cacheLoader);
+}
+
 /**
-* @return the cache loaders as a live list
-*/
-public List&lt;CacheLoader> getRegisteredCacheLoaders() {
-return registeredCacheLoaders;
-"/>
-</code></pre>
+ * @return the cache loaders as a live list
+ */
+public List<CacheLoader> getRegisteredCacheLoaders() {
+	return registeredCacheLoaders;
+}
+~~~

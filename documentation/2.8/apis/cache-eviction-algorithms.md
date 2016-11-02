@@ -79,27 +79,27 @@ Ehcache 1.6 and higher allows you to plugin in your own eviction algorithm. You 
 any Element metadata which makes possible some very interesting approaches. For example, evict
 an Element if it has been hit more than 10 times.
 
-<pre>
+~~~ java
 /**
-* Sets the eviction policy strategy. The Cache will use a policy at startup.
-* There are three policies which can be configured: LRU, LFU and FIFO. However
-* many other policies are possible. That the policy has access to the whole element
-* enables policies based on the key, value, metadata, statistics, or a combination
-* of any of the above.
-*
-* It is safe to change the policy of a store at any time. The new policy takes
-* effect immediately.
-*
-* @param policy the new policy
-*/
+ * Sets the eviction policy strategy. The Cache will use a policy at startup.
+ * There are three policies which can be configured: LRU, LFU and FIFO. However
+ * many other policies are possible. That the policy has access to the whole element
+ * enables policies based on the key, value, metadata, statistics, or a combination
+ * of any of the above.
+ *
+ * It is safe to change the policy of a store at any time. The new policy takes
+ * effect immediately.
+ *
+ * @param policy the new policy
+ */
 public void setMemoryStoreEvictionPolicy(Policy policy) {
   memoryStore.setEvictionPolicy(policy);
-"/>
-</pre>
+}
+~~~
 
 A Policy must implement the following interface:
 
-<pre>
+~~~ java
 public interface Policy {
   /**
    * @return the name of the Policy. Inbuilt examples are LRU, LFU and FIFO.
@@ -127,8 +127,8 @@ public interface Policy {
    * element under ths policy
    */
   boolean compare(Element element1, Element element2);
-"/>
-</pre>
+}
+~~~
 
 ## DiskStore Eviction Algorithms
 

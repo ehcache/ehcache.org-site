@@ -63,16 +63,16 @@ The following examples illustrate both pooled and individual cache-sizing config
 The following configuration sets pools for all of this CacheManager's caches:
 
 ~~~ xml
-<ehcache xmlns...
+<ehcache xmlns="..."
     name="CM1"
     maxBytesLocalHeap="100M"
     maxBytesLocalOffHeap="10G"
     maxBytesLocalDisk="50G">
   ...
 
-  <cache name="Cache1" ... </cache>
-  <cache name="Cache2" ... </cache>
-  <cache name="Cache3" ... </cache>
+  <cache name="Cache1" ...> </cache>
+  <cache name="Cache2" ...> </cache>
+  <cache name="Cache3" ...> </cache>
 
 </ehcache>
 ~~~
@@ -83,7 +83,7 @@ CacheManager CM1 automatically allocates these pools equally among its three cac
 You can explicitly allocate resources to specific caches:
 
 ~~~ xml
-<ehcache xmlns...
+<ehcache xmlns="..."
     name="CM1"
     maxBytesLocalHeap="100M"
     maxBytesLocalOffHeap="10G"
@@ -91,16 +91,17 @@ You can explicitly allocate resources to specific caches:
   ...
 
   <cache name="Cache1" ...
-      maxBytesLocalHeap="50M"
+      maxBytesLocalHeap="50M">
     ...
   </cache>
 
   <cache name="Cache2" ...
-      maxBytesLocalOffHeap="5G"
+      maxBytesLocalOffHeap="5G">
     ...
   </cache>
   
-  <cache name="Cache3" ... 
+  <cache name="Cache3">
+    ... 
   </cache>
 </ehcache>
 ~~~
@@ -115,22 +116,22 @@ Note that caches must use the same sizing attributes used to create the pool. Ca
 If a CacheManager does not pool a particular resource, that resource can still be allocated in cache configuration, as shown in the following example.
 
 ~~~ xml
-<ehcache xmlns...
+<ehcache xmlns="..."
     name="CM2"
     maxBytesLocalHeap="100M">
   ...
 
   <cache name="Cache4" ...
       maxBytesLocalHeap="50M"
-      maxEntriesLocalDisk="100000"
+      maxEntriesLocalDisk="100000">
     ...
   </cache>
 
   <cache name="Cache5" ...
-      maxBytesLocalOffHeap="10G"
+      maxBytesLocalOffHeap="10G">
     ...
   </cache>
-  <cache name="Cache6" ... </cache>
+  <cache name="Cache6"> ... </cache>
 </ehcache>
 ~~~
 
@@ -173,24 +174,24 @@ The following configuration sets pools for each tier:
 The CacheManager in this example does not pool any resources.
 
 ~~~ xml
-<ehcache xmlns...
+<ehcache xmlns="..."
     name="CM3"
     ... >
   ...
 
   <cache name="Cache7" ...
       maxBytesLocalHeap="50M"
-      maxEntriesLocalDisk="100000"
+      maxEntriesLocalDisk="100000">
     ...
   </cache>
 
   <cache name="Cache8" ...
       maxEntriesLocalHeap="1000"
-      maxBytesLocalOffHeap="10G"
+      maxBytesLocalOffHeap="10G">
     ...
   </cache>
   <cache name="Cache9" ...
-      maxBytesLocalHeap="50M"
+      maxBytesLocalHeap="50M">
     ...
   </cache>
 

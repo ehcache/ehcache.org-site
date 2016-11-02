@@ -43,34 +43,36 @@ system-of-record, store the data in the cache, and then return it.
 When data is written, the cache must be updated with the system-of-record.
 This results in code that often looks like the following pseudo-code:
 
-    public class MyDataAccessClass
-    {
-      private final Ehcache cache;
-      public MyDataAccessClass(Ehcache cache)
-      {
-        this.cache = cache;
-      "/>
+~~~ java
+public class MyDataAccessClass
+{
+  private final Ehcache cache;
+  public MyDataAccessClass(Ehcache cache)
+  {
+    this.cache = cache;
+  }
 
-      /* read some data, check cache first, otherwise read from sor */
-      public V readSomeData(K key)
-      {
-         Element element;
-         if ((element = cache.get(key)) != null) {
-             return element.getValue();
-         "/>
-          // note here you should decide whether your cache
-         // will cache 'nulls' or not
-         if (value = readDataFromDataStore(key)) != null) {
-             cache.put(new Element(key, value));
-         "/>
-         return value;
-      "/>
-      /* write some data, write to sor, then update cache */
-      public void writeSomeData(K key, V value)
-      {
-         writeDataToDataStore(key, value);
-         cache.put(new Element(key, value);
-      "/>
+  /* read some data, check cache first, otherwise read from sor */
+  public V readSomeData(K key)
+  {
+     Element element;
+     if ((element = cache.get(key)) != null) {
+         return element.getValue();
+     }
+      // note here you should decide whether your cache
+     // will cache 'nulls' or not
+     if (value = readDataFromDataStore(key)) != null) {
+         cache.put(new Element(key, value));
+     }
+     return value;
+  }
+  /* write some data, write to sor, then update cache */
+  public void writeSomeData(K key, V value)
+  {
+     writeDataToDataStore(key, value);
+     cache.put(new Element(key, value);
+  }
+~~~
 
 ### cache-as-sor
 
@@ -137,74 +139,78 @@ Guide chapter on [Write-through and Write-behind Caching](/documentation/2.7/api
 
 ### cache-as-sor example
 
-<pre>
-public class MyDataAccessClass
-{
-private final Ehcache cache;
-public MyDataAccessClass(Ehcache cache)
-{
-   cache.registerCacheWriter(new MyCacheWriter());
-   this.cache = new SelfPopulatingCache(cache);
-"/>
-/* read some data - notice the cache is treated as an SOR.
-* the application code simply assumes the key will always be available
-*/
-public V readSomeData(K key)
-{
-   return cache.get(key);
-"/>
-/* write some data - notice the cache is treated as an SOR, it is
-* the cache's responsibility to write the data to the SOR.
-*/
-public void writeSomeData(K key, V value)
-{
-   cache.put(new Element(key, value);
-"/>
-/**
-* Implement the CacheEntryFactory that allows the cache to provide
-* the read-through strategy
-*/
-private class MyCacheEntryFactory implements CacheEntryFactory
-{
-   public Object createEntry(Object key) throws Exception
-   {
-       return readDataFromDataStore(key);
-   "/>
-"/>
-/**
-* Implement the CacheWriter interface which allows the cache to provide
-* the write-through or write-behind strategy.
-*/
-private class MyCacheWriter implements CacheWriter
-   public CacheWriter clone(Ehcache cache) throws CloneNotSupportedException;
-   {
-       throw new CloneNotSupportedException();
-   "/>
-    public void init() { "/>
-   void dispose() throws CacheException { "/>
-    void write(Element element) throws CacheException;
-   {
-       writeDataToDataStore(element.getKey(), element.getValue());
-   "/>
-    void writeAll(Collection<Element> elements) throws CacheException
-   {
-       for (Element element : elements) {
-           write(element);
-       "/>
-   "/>
-    void delete(CacheEntry entry) throws CacheException
-   {
-       deleteDataFromDataStore(element.getKey());
-   "/>
-    void deleteAll(Collection<CacheEntry> entries) throws CacheException
-   {
-       for (Element element : elements) {
-           delete(element);
-       "/>
-   "/>
-"/>
-"/>
-</pre>
+~~~ java
+public class MyDataAccessClass {
+  private final Ehcache cache;
+
+  public MyDataAccessClass(Ehcache cache)
+  {
+     cache.registerCacheWriter(new MyCacheWriter());
+     this.cache = new SelfPopulatingCache(cache);
+  }
+
+  /* read some data - notice the cache is treated as an SOR.
+  * the application code simply assumes the key will always be available
+  */
+  public V readSomeData(K key)
+  {
+     return cache.get(key);
+  }
+
+  /* write some data - notice the cache is treated as an SOR, it is
+  * the cache's responsibility to write the data to the SOR.
+  */
+  public void writeSomeData(K key, V value)
+  {
+     cache.put(new Element(key, value);
+  }
+
+  /**
+  * Implement the CacheEntryFactory that allows the cache to provide
+  * the read-through strategy
+  */
+  private class MyCacheEntryFactory implements CacheEntryFactory
+  {
+     public Object createEntry(Object key) throws Exception
+     {
+         return readDataFromDataStore(key);
+     }
+  }
+
+  /**
+  * Implement the CacheWriter interface which allows the cache to provide
+  * the write-through or write-behind strategy.
+  */
+  private class MyCacheWriter implements CacheWriter {
+     public CacheWriter clone(Ehcache cache) throws CloneNotSupportedException;
+     {
+         throw new CloneNotSupportedException();
+     }
+      public void init() { }
+     void dispose() throws CacheException { }
+      void write(Element element) throws CacheException;
+     {
+         writeDataToDataStore(element.getKey(), element.getValue());
+     }
+      void writeAll(Collection<Element> elements) throws CacheException
+     {
+         for (Element element : elements) {
+             write(element);
+         }
+     }
+      void delete(CacheEntry entry) throws CacheException
+     {
+         deleteDataFromDataStore(element.getKey());
+     }
+      void deleteAll(Collection<CacheEntry> entries) throws CacheException
+     {
+         for (Element element : elements) {
+             delete(element);
+         }
+     }
+  }
+}
+~~~
 
 ### Copy Cache
 A Copy Cache can have two behaviors: it can copy Element instances it returns, when `copyOnRead` is true and copy elements it stores,
