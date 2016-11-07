@@ -11,7 +11,7 @@ Since ehcache-1.2, all classloading is done in a standard way in one utility cla
 
 Ehcache allows plugins for events and distribution. These are loaded and created as follows:
 
-<pre>
+~~~ java
 /**
  * Creates a new class instance. Logs errors along the way. Classes are loaded
  * using the Ehcache standard classloader.
@@ -26,14 +26,14 @@ public static Object createNewInstance(String className) throws CacheException {
     try {
 	clazz = Class.forName(className, true, getStandardClassLoader());
     } catch (ClassNotFoundException e) {
-	//try fallback
-	try {
-	    clazz = Class.forName(className, true, getFallbackClassLoader());
-	} catch (ClassNotFoundException ex) {
-	    throw new CacheException("Unable to load class " + className +
-				     ". Initial cause was " + e.getMessage(), e);
-	"/>
-    "/>
+		//try fallback
+		try {
+		    clazz = Class.forName(className, true, getFallbackClassLoader());
+		} catch (ClassNotFoundException ex) {
+		    throw new CacheException("Unable to load class " + className +
+					     ". Initial cause was " + e.getMessage(), e);
+		}
+    }
     try {
 	newInstance = clazz.newInstance();
     } catch (IllegalAccessException e) {
@@ -42,9 +42,10 @@ public static Object createNewInstance(String className) throws CacheException {
     } catch (InstantiationException e) {
 	throw new CacheException("Unable to load class " + className +
 				 ". Initial cause was " + e.getMessage(), e);
-    "/>
+    }
     return newInstance;
-"/>
+}
+
 
 /**
  * Gets the <code>ClassLoader</code> that all classes in ehcache, and extensions,
@@ -55,7 +56,7 @@ public static Object createNewInstance(String className) throws CacheException {
  */
 public static ClassLoader getStandardClassLoader() {
     return Thread.currentThread().getContextClassLoader();
-"/>
+}
 
 /**
  * Gets a fallback <code>ClassLoader</code> that all classes in ehcache, and
@@ -65,8 +66,8 @@ public static ClassLoader getStandardClassLoader() {
  */
 public static ClassLoader getFallbackClassLoader() {
     return ClassLoaderUtil.class.getClassLoader();
-"/>
-</pre>
+}
+~~~
 
 If this does not work for some reason a CacheException is thrown with a
 detailed error message.

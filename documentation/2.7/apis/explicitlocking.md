@@ -20,104 +20,114 @@ Note that prior to Ehcache 2.4, this API was implemented as a CacheDecorator and
 ## The API
 The following methods are available on `Cache` and `Ehcache`.
 
-<pre><code>/**
-* Acquires the proper read lock for a given cache key
-*
-* @param key - The key that retrieves a value that you want to protect via locking
-*/
+~~~ java
+/**
+ * Acquires the proper read lock for a given cache key
+ *
+ * @param key - The key that retrieves a value that you want to protect via locking
+ */
 public void acquireReadLockOnKey(Object key) {
    this.acquireLockOnKey(key, LockType.READ);
-"/>
+}
+
 /**
-* Acquires the proper write lock for a given cache key
-*
-* @param key - The key that retrieves a value that you want to protect via locking
-*/
+ * Acquires the proper write lock for a given cache key
+ *
+ * @param key - The key that retrieves a value that you want to protect via locking
+ */
 public void acquireWriteLockOnKey(Object key) {
    this.acquireLockOnKey(key, LockType.WRITE);
-"/>
+}
+
 /**
-* Try to get a read lock on a given key. If can't get it in timeout millis then
-* return a boolean telling that it didn't get the lock
-*
-* @param key - The key that retrieves a value that you want to protect via locking
-* @param timeout - millis until giveup on getting the lock
-* @return whether the lock was awarded
-* @throws InterruptedException
-*/
+ * Try to get a read lock on a given key. If can't get it in timeout millis then
+ * return a boolean telling that it didn't get the lock
+ *
+ * @param key - The key that retrieves a value that you want to protect via locking
+ * @param timeout - millis until giveup on getting the lock
+ * @return whether the lock was awarded
+ * @throws InterruptedException
+ */
 public boolean tryReadLockOnKey(Object key, long timeout) throws InterruptedException {
    Sync s = getLockForKey(key);
    return s.tryLock(LockType.READ, timeout);
-"/>
+}
+
 /**
-* Try to get a write lock on a given key. If can't get it in timeout millis then
-* return a boolean telling that it didn't get the lock
-*
-* @param key - The key that retrieves a value that you want to protect via locking
-* @param timeout - millis until giveup on getting the lock
-* @return whether the lock was awarded
-* @throws InterruptedException
-*/
+ * Try to get a write lock on a given key. If can't get it in timeout millis then
+ * return a boolean telling that it didn't get the lock
+ *
+ * @param key - The key that retrieves a value that you want to protect via locking
+ * @param timeout - millis until giveup on getting the lock
+ * @return whether the lock was awarded
+ * @throws InterruptedException
+ */
 public boolean tryWriteLockOnKey(Object key, long timeout) throws InterruptedException {
    Sync s = getLockForKey(key);
    return s.tryLock(LockType.WRITE, timeout);
-"/>
+}
+
 /**
-* Release a held read lock for the passed in key
-*
-* @param key - The key that retrieves a value that you want to protect via locking
-*/
+ * Release a held read lock for the passed in key
+ *
+ * @param key - The key that retrieves a value that you want to protect via locking
+ */
 public void releaseReadLockOnKey(Object key) {
    releaseLockOnKey(key, LockType.READ);
-"/>
+}
+
 /**
-* Release a held write lock for the passed in key
-*
-* @param key - The key that retrieves a value that you want to protect via locking
-*/
+ * Release a held write lock for the passed in key
+ *
+ * @param key - The key that retrieves a value that you want to protect via locking
+ */
 public void releaseWriteLockOnKey(Object key) {
    releaseLockOnKey(key, LockType.WRITE);
-"/>
+}
+
 /**
-* Returns true if a read lock for the key is held by the current thread
-*
-* @param key
-* @return true if a read lock for the key is held by the current thread
-*/
+ * Returns true if a read lock for the key is held by the current thread
+ *
+ * @param key
+ * @return true if a read lock for the key is held by the current thread
+ */
 boolean isReadLockedByCurrentThread(Object key);
+
 /**
-* Returns true if a write lock for the key is held by the current thread
-*
-* Only Terracotta clustered cache instances currently support querying a thread's read lock hold status.
-*
-* @param key
-* @return true if a write lock for the key is held by the current thread
-*/
+ * Returns true if a write lock for the key is held by the current thread
+ *
+ * Only Terracotta clustered cache instances currently support querying a thread's read lock hold status.
+ *
+ * @param key
+ * @return true if a write lock for the key is held by the current thread
+ */
 boolean isWriteLockedByCurrentThread(Object key);
-</code></pre>
+~~~
 
 ## Example
 Here is a brief example:
 
-<pre><code>String key = "123";
+~~~ java
+String key = "123";
 Foo val = new Foo();
 cache.acquireWriteLockOnKey(key);
 try {
-	cache.put(new Element(key, val));
+   cache.put(new Element(key, val));
 } finally {
-	cache.releaseWriteLockOnKey(key);
-"/>
-...sometime later
+   cache.releaseWriteLockOnKey(key);
+}
+// ...sometime later
 String key = "123";
 cache.acquireWriteLockOnKey(key);
 try {
-	Object cachedVal = cache.get(key).getValue();
-	cachedVal.setSomething("abc");
- 	cache.put(new Element(key, cachedVal));
- } finally {
-cache.releaseWriteLockOnKey(key);
- "/>
-</code></pre>
+   Object cachedVal = cache.get(key).getValue();
+   cachedVal.setSomething("abc");
+   cache.put(new Element(key, cachedVal));
+} finally {
+   cache.releaseWriteLockOnKey(key);
+}
+~~~
+
 
 ## Supported Topologies
 Except as noted in the Javadoc (see above), explicit locking is supported in Ehcache standalone and also in Distributed Ehcache. It is not supported in Replicated Ehcache.

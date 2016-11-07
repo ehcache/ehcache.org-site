@@ -19,7 +19,6 @@ The Table of Contents provides an overview of the Ehcache 2.7 documentation on t
 |[Modules](/documentation/2.7/modules/index)|The Modules menu includes pages about the Cache Server web services and web caching.|
 |[Hibernate 2nd-Level Cache](/documentation/2.7/hibernate/index)|The Hibernate overview page provides links to the important topics for integrating Ehcache with Hibernate.|
 |[Integrations](/documentation/2.7/integrations)|The Integrations menu includes a page for each container or platform supported. See also the [note](#integrating-ehcache) below on Ehcache versions.|
-|[WAN Replication](/documentation/2.7/wan-replication)|All you need to get started with Terracotta distributed Ehcache WAN replication.|
 |[Recipes](/documentation/2.7/recipes)|Specific use cases and solutions to common problems.|
 |[Code Samples](/documentation/2.7/code-samples)|Examples that will help you get started with Ehcache.|
 |[FAQ](/documentation/2.7/faq)|A clearinghouse of frequently asked questions about distributed caching, replicated caching, and Ehcache in general.|
