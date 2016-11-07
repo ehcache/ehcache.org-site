@@ -31,6 +31,16 @@ If you don’t find what you’re looking for in the docs, post a question to th
 
 ---
 
+<a name="future_versions"/>
+
+#### Upcoming Versions
+
+| | |
+|:----|:--|
+|[Ehcache 3.2 User Guide](/documentation/3.2/) |[Core JavaDoc](/apidocs/3.2.0.beta1/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.2.0.beta1/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.2.0.beta1/transactions/index.html){:target="_blank"}|
+
+---
+
 <a name="historical_versions"/>
 
 #### Historical Versions
