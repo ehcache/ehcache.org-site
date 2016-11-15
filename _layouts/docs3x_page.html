@@ -62,9 +62,9 @@ active_menu_id: ehc_mnu_docs
             <span class="current">CURRENT</span>
             {% else %}
             {% if site.documentation.ehcache.future == page.ehc_version %}
-            <span class="future">CURRENT:&nbsp;&nbsp;<a href="{{ page.url  | replace: page.ehc_version, site.documentation.ehcache.future }}">{{site.documentation.ehcache.current}}</a></span>
+            <span class="future">CURRENT:&nbsp;&nbsp;<a href="{{ page.url  | replace: page.ehc_version, site.documentation.ehcache.future }}?redirect=true">{{site.documentation.ehcache.current}}</a></span>
             {% else %}
-            <span class="old">CURRENT:&nbsp;&nbsp;<a href="{{ page.url  | replace: page.ehc_version, site.documentation.ehcache.current }}">{{site.documentation.ehcache.current}}</a></span>
+            <span class="old">CURRENT:&nbsp;&nbsp;<a href="{{ page.url  | replace: page.ehc_version, site.documentation.ehcache.current }}?redirect=true">{{site.documentation.ehcache.current}}</a></span>
             {% endif %}
             {% endif %}
         </h1>

@@ -1,11 +1,25 @@
 ---
 ---
   <script type="text/javascript">
-    var splittedURL = window.location.href.split('//')[1].split('/'),
-      len = splittedURL.length;
-    if (splittedURL[1] === 'documentation' && !isNaN(Number(splittedURL[2])) 
-      && /\.html$/gi.test(splittedURL[len - 1].split('#')[0])) {
-      window.location.href = 'http://' + splittedURL.slice(0, 3).join('/');
+    function isRedirect(paramStr) {
+      var splitParamStr = paramStr.split('='),
+        name = splitParamStr[0],
+        value = splitParamStr[1];
+      if (name === 'redirect' && value === 'true') {
+        return true;
+      }
+      return false;
+    }
+
+    var rawSplitURL = window.location.href.split('?'),
+      splitURL = rawSplitURL[0].split('//')[1].split('/');
+
+    if (rawSplitURL.length === 2 && rawSplitURL[1].split('&').some(isRedirect)) {
+        if (splitURL[1] === 'documentation' &&
+          !isNaN(Number(splitURL[2])) &&
+          /\.html$/gi.test(splitURL[splitURL.length - 1].split('#')[0])) {
+          window.location.href = 'http://' + splitURL.slice(0, 3).join('/');
+        }
     }
   </script>
 
