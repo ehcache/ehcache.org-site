@@ -682,22 +682,25 @@ pre {
 }
 
 .ehcache-documentation {
-
+  #versionIndicator {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    background-color: antiquewhite;
+    text-align: center;
+    color: gray;
+    font-size: 14px;
+    z-index: 10;
+    border-radius: 10px;
+    padding: .5em .5em .5em .5em;
+  }
   .current {
-    float: right;
     color: limegreen;
-    font-size: 14px;
   }
-
   .future {
-    float: right;
     color: orange;
-    font-size: 14px;
   }
-
   .old {
-    float: right;
     color: red;
-    font-size: 14px;
   }
 }
