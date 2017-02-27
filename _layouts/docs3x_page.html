@@ -25,6 +25,9 @@ active_menu_id: ehc_mnu_docs
           <li class="submenu"><a href="xml.html">XML Configuration</a></li>
           <li class="submenu"><a href="usermanaged.html">User Managed Caches</a></li>
           <li class="submenu"><a href="107.html">javax.cache aka JSR-107</a></li>
+          {% if page.ehc_version != '3.0' %}
+          <li class="submenu"><a href="tiering.html">Tiering options</a></li>
+          {% endif %}
           <li class="submenu"><a href="examples.html">Java Examples</a></li>
           <li class="submenu"><a href="xsds.html">Configuration XSD</a></li>
           {% if page.ehc_version != '3.0' %}
