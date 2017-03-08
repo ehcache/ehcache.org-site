@@ -51,6 +51,10 @@ active_menu_id: ehc_mnu_docs
           <li class="submenu"><a href="writers.html">Cache Writers</a></li>
           <li class="submenu"><a href="cache-event-listeners.html">Cache Event Listeners</a></li>
           <li class="submenu"><a href="eviction-advisor.html">Eviction Advisors</a></li>
+          {% if page.ehc_version != "3.0" %}
+          <li class="submenu"><a href="class-loading.html">Class loading</a></li>
+          <li class="submenu"><a href="migration-guide.html">Migration Guide</a></li>
+          {% endif %}
         </ul>
     </div>
 
