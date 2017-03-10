@@ -7,3 +7,4 @@ permalink: /v3/tx/
 * [ehcache-tx-ext-3.0.xsd](/schema/ehcache-tx-ext-3.0.xsd)
 * [ehcache-tx-ext-3.1.xsd](/schema/ehcache-tx-ext-3.1.xsd)
 * [ehcache-tx-ext-3.2.xsd](/schema/ehcache-tx-ext-3.2.xsd)
+* [ehcache-tx-ext-3.2.xsd](/schema/ehcache-tx-ext-3.3.xsd)
