@@ -5,3 +5,4 @@ _site
 /documentation/3*
 .idea
 Gemfile.lock
+/events/
