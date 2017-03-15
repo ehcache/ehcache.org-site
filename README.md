@@ -43,6 +43,16 @@ ln -s $PWD/${version_dir}/docs/src/docs/asciidoc/user documentation/${version}
 
 Of course, if for some reason you want a specific tag for a version, just create a worktree based on the tag instead.
 
+### Linking with Terracotta events repository
+
+The content of the [events menu](http://www.ehcache.org/events/) is coming from another repository. To see it in local, 
+just clone the repository and add a link to it.
+
+```bash
+git clone `git@github.com:Terracotta-OSS/terracotta.org-site-events.git
+ln -s $PWD/terracotta.org-site-events ${ehcache.org_root_directory}/events
+```
+
 ### Jekyll
 
 The website is rendered by [Jekyll](https://jekyllrb.com/). It is built locally and the result is pushed to the 
