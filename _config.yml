@@ -95,7 +95,7 @@ defaults:
       path: "documentation/3.0"
       type: "pages"
     values:
-      layout: "docs3x_page"
+      layout: "docs30_page"
       ehc_version: "3.0"
       ehc_javadoc_version: "3.0.3"
       ehc_checkout_dir_var: "sourcedir"
@@ -104,7 +104,7 @@ defaults:
       path: "documentation/3.1"
       type: "pages"
     values:
-      layout: "docs3x_page"
+      layout: "docs30_page"
       ehc_version: "3.1"
       ehc_javadoc_version: "3.1.4"
       ehc_checkout_dir_var: "sourcedir31"
@@ -113,16 +113,16 @@ defaults:
       path: "documentation/3.2"
       type: "pages"
     values:
-      layout: "docs3x_page"
+      layout: "docs30_page"
       ehc_version: "3.2"
-      ehc_javadoc_version: "3.2.1"
+      ehc_javadoc_version: "3.2.2"
       ehc_checkout_dir_var: "sourcedir32"
   -
     scope:
       path: "documentation/3.3"
       type: "pages"
     values:
-      layout: "docs3x_page"
+      layout: "docs33_page"
       ehc_version: "3.3"
-      ehc_javadoc_version: "3.3.0"
+      ehc_javadoc_version: "3.3.1"
       ehc_checkout_dir_var: "sourcedir33"
