@@ -47,7 +47,7 @@ If you don’t find what you’re looking for in the docs, post a question to th
 
 | | |
 |:----|:--|
-|[Ehcache 3.2 User Guide](/documentation/3.2/) |[Core JavaDoc](/apidocs/3.2.1/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.2.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.2.1/transactions/index.html){:target="_blank"}|
+|[Ehcache 3.2 User Guide](/documentation/3.2/) |[Core JavaDoc](/apidocs/3.2.2/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.2.2/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.2.2/transactions/index.html){:target="_blank"}|
 |[Ehcache 3.1 User Guide](/documentation/3.1/) |[Core JavaDoc](/apidocs/3.1.4/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.1.4/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.1.4/transactions/index.html){:target="_blank"}|
 |[Ehcache 3.0 User Guide](/documentation/3.0/) |[JavaDoc](/apidocs/3.0.3/index.html){:target="_blank"} |
 |[Ehcache 2.9.x User Guide](/documentation/2.9/)|[JavaDoc](/apidocs/2.9/index.html){:target="_blank"}|
