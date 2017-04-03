@@ -73,6 +73,11 @@ To generate the site including all production elements (ie analytics) `JEKYLL_EN
 
 **NOTE:** If you used links to include Ehcache 3 documentation, you may see an error about watching the same folder twice - it can be ignored.
 
+### Html-proofer
+
+Html-proofer is used to validate the content of the website. After building the site with jekyll you can run [html-proofer](https://github.com/gjtorikian/html-proofer) 
+through `./run_proofer.sh`.
+
 ---
 
 See the [issue tracker](https://github.com/ehcache/ehcache.org-site) if you are interested in improving the site in general.
