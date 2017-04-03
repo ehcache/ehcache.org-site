@@ -15,11 +15,15 @@ On Mac OS X, install Xcode command line tools by executing: `xcode-select --inst
 
 ### Ruby
 
-* Install [rvm](https://rvm.io) for handling Ruby locally, following instructions are designed for that
-* Install Ruby 2.2.1 - `rvm install 2.2.1`
-* Create a new gemset in that ruby version - `rvm gemset create ehcache`
-* Make sure you are using the version and gemset - `rvm use 2.2.1@ehcache`
-* Import the gems found in `default.gems` - `rvm gemset import`
+Ruby versions are not as nicely backward compatible as Java. We recommend to use something like [rbenv](https://github.com/rbenv/rbenv) 
+that will allow you to select a specific Ruby version. We also recommend to run jekyll through [bundler](http://bundler.io/) to insure  
+the right jekyll version will be used.
+
+* Install rbenv, ruby-build and rbenv-gemset - `brew install rbenv ruby-build rbenv-gemset` (on OS X)
+* Configure it - `rbenv init` and follow the instructions
+* Install Ruby 2.2.1 - `rbenv install` (the version is specified in `.ruby-version`) 
+* Install bundler - `gem install bundler`
+* Install dependencies - `gem install` (the will be installed in the `.gems` directory as configured in `.rbenv-gemsets`
 
 ### Linking with Ehcache 3 repository
 
@@ -61,11 +65,11 @@ ln -s $PWD/terracotta.org-site-events ${ehcache.org_root_directory}/events
 The website is rendered by [Jekyll](https://jekyllrb.com/). It is built locally and the result is pushed to the
 [website repository](https://github.com/ehcache/ehcache.github.io).
 
-To generate and view (locally serve) the site `jekyll serve` then point your browser at `http://localhost:4000`.
+To generate and view (locally serve) the site `bundle exec jekyll serve` then point your browser at `http://localhost:4000`.
 
-To simply generate the site use `jekyll build`.
+To simply generate the site use `bundle exec jekyll build`.
 
-To generate the site including all production elements (ie analytics) `JEKYLL_ENV=production jekyll build`  
+To generate the site including all production elements (ie analytics) `JEKYLL_ENV=production bundle exec jekyll build`  
 
 **NOTE:** If you used links to include Ehcache 3 documentation, you may see an error about watching the same folder twice - it can be ignored.
 

@@ -4,6 +4,7 @@ _site
 /_eh3*
 /documentation/3*
 .idea
+.gems
 Gemfile.lock
 /events/
 *~
