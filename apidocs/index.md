@@ -20,9 +20,10 @@ permalink: /apidocs/
 
 | 2.10.x | 2.9.x | 2.8.x |
 |:---|:---|:---|
-|[2.10.3](/apidocs/2.10.3/index.html){:target="_blank"}|[2.9.1](/apidocs/2.9.1/index.html){:target="_blank"}|[2.8.5](/apidocs/2.8.5/index.html){:target="_blank"}|
-|[2.10.2](/apidocs/2.10.2/index.html){:target="_blank"}|[2.9.0](/apidocs/2.9/index.html){:target="_blank"}|[2.8.4](/apidocs/2.8.4/index.html){:target="_blank"}|
-|[2.10.1](/apidocs/2.10.1/index.html){:target="_blank"}||[2.8.3](/apidocs/2.8.3/index.html){:target="_blank"}|
+|[2.10.4](/apidocs/2.10.4/index.html){:target="_blank"}|[2.9.1](/apidocs/2.9.1/index.html){:target="_blank"}|[2.8.5](/apidocs/2.8.5/index.html){:target="_blank"}|
+|[2.10.3](/apidocs/2.10.3/index.html){:target="_blank"}|[2.9.0](/apidocs/2.9/index.html){:target="_blank"}|[2.8.4](/apidocs/2.8.4/index.html){:target="_blank"}|
+|[2.10.2](/apidocs/2.10.2/index.html){:target="_blank"}||[2.8.3](/apidocs/2.8.3/index.html){:target="_blank"}|
+|[2.10.1](/apidocs/2.10.1/index.html){:target="_blank"}|||
 |[2.10.0](/apidocs/2.10/index.html){:target="_blank"}|||
 
 ## Historical Ehcache 3.x
