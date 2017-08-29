@@ -115,7 +115,7 @@ defaults:
     values:
       layout: "docs30_page"
       ehc_version: "3.2"
-      ehc_javadoc_version: "3.2.2"
+      ehc_javadoc_version: "3.2.3"
       ehc_checkout_dir_var: "sourcedir32"
   -
     scope:
@@ -124,5 +124,5 @@ defaults:
     values:
       layout: "docs33_page"
       ehc_version: "3.3"
-      ehc_javadoc_version: "3.3.1"
+      ehc_javadoc_version: "3.3.2"
       ehc_checkout_dir_var: "sourcedir33"

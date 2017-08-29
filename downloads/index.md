@@ -11,11 +11,11 @@ active_menu_id: ehc_mnu_download
 
 #### Ehcache 3
 
-> [Ehcache 3.3 latest](https://github.com/ehcache/ehcache3/releases/download/v3.3.1/ehcache-3.3.1.jar) .jar
+> [Ehcache 3.3 latest](https://github.com/ehcache/ehcache3/releases/download/v3.3.2/ehcache-3.3.2.jar) .jar
 
 #### Ehcache 3 with clustering support
 
-> [Ehcache 3.3 (with clustering) kit](https://github.com/ehcache/ehcache3/releases/download/v3.3.1/ehcache-clustered-3.3.1-kit.zip) .zip
+> [Ehcache 3.3 (with clustering) kit](https://github.com/ehcache/ehcache3/releases/download/v3.3.2/ehcache-clustered-3.3.2-kit.zip) .zip
 
 
 More files related to releases of Ehcache 3 are available on the project's [GitHub release page](https://github.com/ehcache/ehcache3/releases).
@@ -26,7 +26,7 @@ More files related to releases of Ehcache 3 are available on the project's [GitH
 
 #### Ehcache 2.x
 
-> [Ehcache 2.10.3](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.3-distribution.tar.gz)  .tar.gz
+> [Ehcache 2.10.4](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.4-distribution.tar.gz)  .tar.gz
 
 
 For more information on this release, see the [release notes](http://www.terracotta.org/confluence/display/release/Home).
@@ -49,7 +49,7 @@ To include Ehcache 3.x in your project, use:
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;3.3.1&lt;/version&gt;
+      &lt;version&gt;3.3.2&lt;/version&gt;
     &lt;/dependency&gt;
 </code></pre>
 
@@ -62,7 +62,7 @@ To include Ehcache 2.x in your project, use:
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;2.10.2&lt;/version&gt;
+      &lt;version&gt;2.10.4&lt;/version&gt;
       &lt;type&gt;pom&lt;/type&gt;
     &lt;/dependency&gt;
 </code></pre>

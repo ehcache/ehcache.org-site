@@ -10,8 +10,10 @@ permalink: /apidocs/
 
 | Main API | Additional APIs |
 |:----|:--|
+|[3.3.2](/apidocs/3.3.2/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.3.2/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.3.2/transactions/index.html){:target="_blank"}|
 |[3.3.1](/apidocs/3.3.1/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.3.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.3.1/transactions/index.html){:target="_blank"}|
 |[3.3.0](/apidocs/3.3.0/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.3.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.3.0/transactions/index.html){:target="_blank"}|
+|[3.2.3](/apidocs/3.2.3/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.2.3/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.2.3/transactions/index.html){:target="_blank"}|
 |[3.2.2](/apidocs/3.2.2/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.2.2/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.2.2/transactions/index.html){:target="_blank"}|
 |[3.2.1](/apidocs/3.2.1/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.2.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.2.1/transactions/index.html){:target="_blank"}|
 |[3.2.0](/apidocs/3.2.0/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.2.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.2.0/transactions/index.html){:target="_blank"}|
