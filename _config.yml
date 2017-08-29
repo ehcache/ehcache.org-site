@@ -32,6 +32,7 @@ asciidoctor:
     - sourcedir31=/_eh31
     - sourcedir32=/_eh32
     - sourcedir33=/_eh33
+    - sourcedir34=/_eh34
     - imagesdir=images
     - sectanchors
     - idprefix
@@ -39,8 +40,8 @@ asciidoctor:
 
 documentation:
     ehcache:
-      current: "3.3"
-      future: "3.4"
+      current: "3.4"
+      future: "3.5"
 
 defaults:
   -
@@ -115,7 +116,7 @@ defaults:
     values:
       layout: "docs30_page"
       ehc_version: "3.2"
-      ehc_javadoc_version: "3.2.2"
+      ehc_javadoc_version: "3.2.3"
       ehc_checkout_dir_var: "sourcedir32"
   -
     scope:
@@ -124,5 +125,14 @@ defaults:
     values:
       layout: "docs33_page"
       ehc_version: "3.3"
-      ehc_javadoc_version: "3.3.1"
+      ehc_javadoc_version: "3.3.2"
       ehc_checkout_dir_var: "sourcedir33"
+  -
+    scope:
+      path: "documentation/3.4"
+      type: "pages"
+    values:
+      layout: "docs33_page"
+      ehc_version: "3.4"
+      ehc_javadoc_version: "3.4.0-docfix"
+      ehc_checkout_dir_var: "sourcedir34"
