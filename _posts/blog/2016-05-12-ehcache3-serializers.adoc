@@ -470,10 +470,8 @@ public class KryoSerializer implements Serializer<Employee> {
 
   @Override
   public ByteBuffer serialize(final Employee object) throws SerializerException {
-    Output output = new Output(new ByteArrayOutputStream());
+    Output output = new Output(4096);
     kryo.writeObject(output, object);
-    output.close();
-
     return ByteBuffer.wrap(output.getBuffer());
   }
 
