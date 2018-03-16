@@ -10,3 +10,4 @@ permalink: /v3/jsr107/
 * [ehcache-107-ext-3.2.xsd](/schema/ehcache-107-ext-3.2.xsd)
 * [ehcache-107-ext-3.3.xsd](/schema/ehcache-107-ext-3.3.xsd)
 * [ehcache-107-ext-3.4.xsd](/schema/ehcache-107-ext-3.4.xsd)
+* [ehcache-107-ext-3.5.xsd](/schema/ehcache-107-ext-3.5.xsd)
