@@ -10,3 +10,4 @@ permalink: /v3/
 * [ehcache-core-3.2.xsd](/schema/ehcache-core-3.2.xsd)
 * [ehcache-core-3.3.xsd](/schema/ehcache-core-3.3.xsd)
 * [ehcache-core-3.4.xsd](/schema/ehcache-core-3.4.xsd)
+* [ehcache-core-3.5.xsd](/schema/ehcache-core-3.5.xsd)
