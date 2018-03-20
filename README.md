@@ -1,5 +1,5 @@
-This is the source code/files for the ehcache.org website. The files in this repository are source files, some of which 
-include templating and other raw bits that need to be "compiled"/"built" in order to have files that are suitable to go 
+This is the source code/files for the ehcache.org website. The files in this repository are source files, some of which
+include templating and other raw bits that need to be "compiled"/"built" in order to have files that are suitable to go
 onto a webserver.
 
 ## Instructions for building/previewing
@@ -39,23 +39,25 @@ ln -s $PWD/${version_dir}/docs/src/docs/asciidoc/user documentation/${version}
 |3.0    |\_eh3      |release/3.0|
 |3.1    |\_eh31     |release/3.1|
 |3.2    |\_eh32     |release/3.2|
-|3.3    |\_eh33     |master     |
+|3.3    |\_eh33     |release/3.3|
+|3.4    |\_eh34     |release/3.4|
+|3.5    |\_eh35     |master     |
 
 Of course, if for some reason you want a specific tag for a version, just create a worktree based on the tag instead.
 
 ### Linking with Terracotta events repository
 
-The content of the [events menu](http://www.ehcache.org/events/) is coming from another repository. To see it in local, 
+The content of the [events menu](http://www.ehcache.org/events/) is coming from another repository. To see it in local,
 just clone the repository and add a link to it.
 
 ```bash
-git clone `git@github.com:Terracotta-OSS/terracotta.org-site-events.git
+git clone git@github.com:Terracotta-OSS/terracotta.org-site-events.git
 ln -s $PWD/terracotta.org-site-events ${ehcache.org_root_directory}/events
 ```
 
 ### Jekyll
 
-The website is rendered by [Jekyll](https://jekyllrb.com/). It is built locally and the result is pushed to the 
+The website is rendered by [Jekyll](https://jekyllrb.com/). It is built locally and the result is pushed to the
 [website repository](https://github.com/ehcache/ehcache.github.io).
 
 To generate and view (locally serve) the site `jekyll serve` then point your browser at `http://localhost:4000`.
@@ -80,8 +82,8 @@ For instance:
 
 * If there is a new release being made, generated javadoc (from the product build) should be put into the `apidocs` directory
 * New official docs should be put into the `documentation` and/or `generated` directories as appropriate
-* Pay attention to the content of the `_config.yml` file in the root of this repository as there are properties there that 
-control various things just as which exact version of javadoc to show for what (e.g. at the time of this writing we link 
+* Pay attention to the content of the `_config.yml` file in the root of this repository as there are properties there that
+control various things just as which exact version of javadoc to show for what (e.g. at the time of this writing we link
 to `2.8.5` javadoc for all `2.8` documentation).
 * After making your changes, commit them (remember to do your work in a branch) and create a pull request.
 
@@ -89,29 +91,29 @@ to `2.8.5` javadoc for all `2.8` documentation).
 
 ### Deploying changes to the live webserver
 
-[ehcache.org](http://www.ehcache.org/) is served/hosted by github. The webserver does NOT serve the content from this 
+[ehcache.org](http://www.ehcache.org/) is served/hosted by github. The webserver does NOT serve the content from this
 repository. It serves the exact content of [another repository](https://github.com/ehcache/ehcache.github.io).
 
 Once your pull request has been merged, the site is deployed automatically.
 
 ### Contributing a blog post
 
-1. Ensure you first edit `_data/authors.yml` to add you information
+1. Ensure you first edit `_data/authors.yml` to add your information
 2. Create a new ASCII Doc file under `_posts/blog`. The file should be named with the following format: `yyyy-MM-DD-title-in-lowercase.adoc`
 3. Add a header in your file. Modify the fields according to your post, especially for the title, headline, tags, authors and date
-```
----
-layout: post
-title: "Your blog post title"
-headline: "Your blo post headline"
-categories: blog
-hidden: false
-author: your_author_key
-tags: [ehcache, website]
-date: 2016-05-04T18:00:00-05:00
-modified:
----
-```
+   ```
+   ---
+   layout: post
+   title: "Your blog post title"
+   headline: "Your blo post headline"
+   categories: blog
+   hidden: false
+   author: your_author_key
+   tags: [ehcache, website]
+   date: 2016-05-04T18:00:00-05:00
+   modified:
+   ---
+   ```
 4. Send your pull request :+1:
 
 ### Contributing an external resource
