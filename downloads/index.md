@@ -26,10 +26,12 @@ More files related to releases of Ehcache 3 are available on the project's [GitH
 
 #### Ehcache 2.x
 
-> [Ehcache 2.10.4](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.4-distribution.tar.gz)  .tar.gz
+> [Ehcache 2.10.5](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.5-distribution.tar.gz)  .tar.gz
 
 
 For more information on this release, see the [release notes](http://www.terracotta.org/confluence/display/release/Home).
+
+The clustered cache samples (colorcache, events) are now only available from the [Terracotta Server Open Source Kit ](http://www.terracotta.org/open-source/); look for the Terracotta Server 4.x and Older paragraph.
 
 For JSR107 support with Ehcache 2, use the [ehcache-jcache](https://github.com/ehcache/ehcache-jcache/releases) module.
 
