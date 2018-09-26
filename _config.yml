@@ -34,6 +34,7 @@ asciidoctor:
     - sourcedir33=/_eh33
     - sourcedir34=/_eh34
     - sourcedir35=/_eh35
+    - sourcedir36=/_eh36
     - imagesdir=images
     - sectanchors
     - idprefix
@@ -41,8 +42,8 @@ asciidoctor:
 
 documentation:
     ehcache:
-      current: "3.5"
-      future: "3.6"
+      current: "3.6"
+      future: "3.7"
 
 defaults:
   -
@@ -146,3 +147,12 @@ defaults:
       ehc_version: "3.5"
       ehc_javadoc_version: "3.5.3"
       ehc_checkout_dir_var: "sourcedir35"
+  -
+    scope:
+      path: "documentation/3.6"
+      type: "pages"
+    values:
+      layout: "docs35_page"
+      ehc_version: "3.6"
+      ehc_javadoc_version: "3.6.1-docfix"
+      ehc_checkout_dir_var: "sourcedir36"

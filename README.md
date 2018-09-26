@@ -28,9 +28,9 @@ To generate the *full* site including Ehcache 3 docs, you need to link some Ehca
 You should do it for every version you want to work on.
 
 ```bash
-cd ${ehcache3_root_directory}
-git worktree add ${branch} ehcache.org_root_directory/${version_dir}
-cd ${ehcache.org_root_directory}
+pushd ${ehcache3_root_directory}
+git worktree add ${ehcache.org_root_directory}/${version_dir} ${branch}
+popd
 ln -s $PWD/${version_dir}/docs/src/docs/asciidoc/user documentation/${version}
 ```
 
@@ -41,7 +41,8 @@ ln -s $PWD/${version_dir}/docs/src/docs/asciidoc/user documentation/${version}
 |3.2    |\_eh32     |release/3.2|
 |3.3    |\_eh33     |release/3.3|
 |3.4    |\_eh34     |release/3.4|
-|3.5    |\_eh35     |master     |
+|3.5    |\_eh35     |release/3.5|
+|3.6    |\_eh36     |master     |
 
 Of course, if for some reason you want a specific tag for a version, just create a worktree based on the tag instead.
 
