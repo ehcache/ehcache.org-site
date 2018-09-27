@@ -12,7 +12,7 @@ permalink: /documentation/
 
 | | |
 |:----|:--|
-|[Ehcache 3.5 User Guide](/documentation/3.5/) |[Core JavaDoc](/apidocs/3.5.2/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.5.2/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.5.2/transactions/index.html){:target="_blank"}|
+|[Ehcache 3.6 User Guide](/documentation/3.6/) |[Core JavaDoc](/apidocs/3.6.1/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.6.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.6.1/transactions/index.html){:target="_blank"}|
 |[Ehcache 2.10.x User Guide](/generated/2.10.4/html/ehc-all)   also available as [PDF](/documentation/2.10.4/pdf/index.html)|[JavaDoc](/apidocs/2.10.4/index.html){:target="_blank"} |
 
 |---| &nbsp; |
@@ -23,7 +23,7 @@ In addition to the documentation, there are a number of resources available onli
 
 If you don’t find what you’re looking for in the docs, post a question to the [Ehcache support forums](https://groups.google.com/forum/#!forum/ehcache-users){: target="_blank"}.
 
----
+--- 
 
 #### Release Notes
 
@@ -47,6 +47,7 @@ If you don’t find what you’re looking for in the docs, post a question to th
 
 | | |
 |:----|:--|
+|[Ehcache 3.5 User Guide](/documentation/3.5/) |[Core JavaDoc](/apidocs/3.5.3/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.5.3/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.5.3/transactions/index.html){:target="_blank"}|
 |[Ehcache 3.4 User Guide](/documentation/3.4/) |[Core JavaDoc](/apidocs/3.4.0/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.4.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.4.0/transactions/index.html){:target="_blank"}|
 |[Ehcache 3.3 User Guide](/documentation/3.3/) |[Core JavaDoc](/apidocs/3.3.2/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.3.2/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.3.2/transactions/index.html){:target="_blank"}|
 |[Ehcache 3.2 User Guide](/documentation/3.2/) |[Core JavaDoc](/apidocs/3.2.3/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.2.3/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.2.3/transactions/index.html){:target="_blank"}|
