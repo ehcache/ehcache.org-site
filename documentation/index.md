@@ -25,9 +25,12 @@ If you don’t find what you’re looking for in the docs, post a question to th
 
 --- 
 
+<a name="release_notes"/>
+
 #### Release Notes
 
-[Release Notes](https://confluence.terracotta.org//display/release/Home){:target="_blank"}  (all versions)
+[Ehcache 3 Release Notes](https://github.com/ehcache/ehcache3/releases){:target="_blank"}
+[All other Release Notes](http://www.terracotta.org/confluence/display/release/Home){:target="_blank"}
 
 ---
 
