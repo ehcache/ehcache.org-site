@@ -23,7 +23,7 @@ the right jekyll version will be used.
 * Configure it - `rbenv init` and follow the instructions
 * Install Ruby 2.2.1 - `rbenv install` (the version is specified in `.ruby-version`) 
 * Install bundler - `gem install bundler`
-* Install dependencies - `gem install` (the will be installed in the `.gems` directory as configured in `.rbenv-gemsets`
+* Install dependencies - `bundle install` (the will be installed in the `.gems` directory as configured in `.rbenv-gemsets`
 
 ### Linking with Ehcache 3 repository
 
