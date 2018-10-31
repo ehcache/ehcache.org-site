@@ -5,6 +5,5 @@ _site
 /documentation/3*
 .idea
 .gems
-Gemfile.lock
 /events/
 *~

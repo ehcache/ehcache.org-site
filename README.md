@@ -21,7 +21,7 @@ the right jekyll version will be used.
 
 * Install rbenv, ruby-build and rbenv-gemset - `brew install rbenv ruby-build rbenv-gemset` (on OS X)
 * Configure it - `rbenv init` and follow the instructions
-* Install Ruby 2.2.1 - `rbenv install` (the version is specified in `.ruby-version`) 
+* Install Ruby - `rbenv install` (the version is specified in `.ruby-version`) 
 * Install bundler - `gem install bundler`
 * Install dependencies - `bundle install` (the will be installed in the `.gems` directory as configured in `.rbenv-gemsets`
 

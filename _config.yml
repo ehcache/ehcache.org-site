@@ -10,31 +10,42 @@ linkedin_username: terracotta
 facebook_username:  Terracotta
 disqus_shortname: ehcache
 
-exclude: [default.gems, README.md]
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - run_cmd_each_javadoc_version.rb
+  - run_proofer.sh
+
+exclude_from_watch:
+  - .idea/
+  - _eh*/
 
 # Build settings
 markdown: kramdown
 
 
-gems:
+plugins:
   - jekyll-asciidoc
   - jekyll-sitemap
 
 
 asciidoctor:
+  # We need safe since we go fetch code examples in directories lower than where the adoc file is
+  safe: 0
   attributes:
     - hardbreaks!
     - source-highlighter=prettify
 #    - source-highlighter=pygments
     - pygments-css=style
     - icons=font
-    - sourcedir=/_eh3
-    - sourcedir31=/_eh31
-    - sourcedir32=/_eh32
-    - sourcedir33=/_eh33
-    - sourcedir34=/_eh34
-    - sourcedir35=/_eh35
-    - sourcedir36=/_eh36
+    - sourcedir=_eh3
+    - sourcedir31=_eh31
+    - sourcedir32=_eh32
+    - sourcedir33=_eh33
+    - sourcedir34=_eh34
+    - sourcedir35=_eh35
+    - sourcedir36=_eh36
 #needle_for_sourcedir
     - imagesdir=images
     - sectanchors
