@@ -19,7 +19,7 @@ steps:
     date > akom.was.here
     git add akom.was.here
     git commit -m 'test commit'
-    git push
+    git push "git@github.com:ehcache/ehcache.github.io.git" gh-pages
   displayName: 'Test commit capability'
 - task: Docker@0
   displayName: 'Run Jekyll'
