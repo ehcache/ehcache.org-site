@@ -18,7 +18,7 @@ steps:
     volumes: |
       $(build.sourcesDirectory):/srv/jekyll
       $(build.binariesDirectory):/srv/jekyll/_site
-    containerCommand: 'bundle install ; jekyll build"'
+    containerCommand: 'bundle install ; JEKYLL_ENV=production jekyll build"'
     detached: false
 - bash: |
     ls -ltr
