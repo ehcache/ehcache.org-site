@@ -1,9 +1,0 @@
-_site
-.sass-cache
-.DS_Store
-/_eh3*
-/documentation/3*
-.idea
-Gemfile.lock
-/events/
-*~
