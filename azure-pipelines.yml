@@ -20,7 +20,8 @@ steps:
     date > akom.was.here
     git add akom.was.here
     git commit -m 'test commit'
-    git remote set-url --all origin https://github.com/ehcache/ehcache.org-site
+    git remote set-url origin https://github.com/ehcache/ehcache.org-site
+    git remote set-url --push origin https://github.com/ehcache/ehcache.org-site
     git push
   displayName: 'Test commit capability'
 - task: Docker@0
