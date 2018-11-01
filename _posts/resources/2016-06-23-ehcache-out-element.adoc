@@ -1,9 +1,0 @@
----
-title: "Ehcache out of his Element"
-headline: "Ehcache out of his Element, by Louis Jacomet"
-categories: resources
-date: 2016-06-23T00:00:00-00:00
----
-
-* Conference page: http://cfp.devoxx.pl/2016/talk/DIW-5033/Ehcache%20out%20of%20his%20Element
-* Video: https://www.youtube.com/watch?v=RSpgLZ1U75g

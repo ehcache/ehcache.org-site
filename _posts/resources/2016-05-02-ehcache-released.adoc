@@ -1,8 +1,0 @@
----
-title: "Ehcache 3.0 Released with Revamped API and Off-Heap Storage"
-headline: "Ehcache 3.0 Released with Revamped API and Off-Heap Storage, by Matt Raible"
-categories: resources
-date: 2016-05-02T00:00:00-00:00
----
-
-An https://www.infoq.com/news/2016/05/ehcache-3.0[article about the Ehcache 3 release] on InfoQ by https://twitter.com/mraible[Matt Raible]

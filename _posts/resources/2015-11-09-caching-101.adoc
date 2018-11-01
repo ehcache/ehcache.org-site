@@ -1,9 +1,0 @@
----
-title: "Caching 101: Caching on the JVM (and beyond)"
-headline: "Caching 101: Caching on the JVM (and beyond), by Alex Snaps and Louis Jacomet"
-categories: resources
-date: 2015-11-09T00:00:00-00:00
----
-
-* Conference page: https://cfp.devoxx.be/2015/talk/KVW-1306/Caching_101:_Caching_on_the_JVM_(and_beyond).html
-* Video: https://www.youtube.com/watch?v=HtrU07c17JQ
