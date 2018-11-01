@@ -13,11 +13,13 @@ steps:
 - bash: |
     git config --local user.name "autogen"
     git config --local user.email "autogen-noreply@no-reply.softwareag.com"
+    cat .git/config
     git checkout gh-pages
     date > akom.was.here
     git add akom.was.here
     git commit -m 'test commit'
     git push
+  displayName: 'Test commit capability'
 - task: Docker@0
   displayName: 'Run Jekyll'
   inputs:
