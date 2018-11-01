@@ -18,7 +18,7 @@ steps:
     volumes: |
       $(build.sourcesDirectory):/srv/jekyll
       $(build.sourcesDirectory)/live:/srv/jekyll/_site
-    containerCommand: 'sh -c "bundle -V install ; JEKYLL_ENV=production jekyll -V build"'
+    containerCommand: 'sh -c "bundle install -V ; JEKYLL_ENV=production jekyll build -V"'
     detached: false
 - bash: |
     git config --local user.name "autogen"
