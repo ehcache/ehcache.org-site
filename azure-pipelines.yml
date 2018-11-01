@@ -8,8 +8,8 @@ pool:
 
 steps:
 - checkout: self
-  persistCredentials: true
-  clean: true
+  persistCredentials: 'true'
+  clean: 'true'
 - task: Docker@0
   displayName: 'Run Jekyll'
   inputs:
