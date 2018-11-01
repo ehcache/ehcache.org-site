@@ -14,6 +14,7 @@ steps:
     git config --local user.name "autogen"
     git config --local user.email "autogen-noreply@no-reply.softwareag.com"
     cat .git/config
+    git remote -v
     git checkout gh-pages
     date > akom.was.here
     git add akom.was.here
