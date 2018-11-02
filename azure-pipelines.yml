@@ -31,7 +31,7 @@ steps:
     volumes: |
       $(build.sourcesDirectory):/srv/jekyll
       $(build.binariesDirectory):/srv/jekyll/_site
-    containerCommand: 'sh -x -c "bundle install -V ; bash -e get-deps.sh ; JEKYLL_ENV=production jekyll build -V"'
+    containerCommand: 'sh -x -c "bundle install -V && bash -e get-deps.sh && JEKYLL_ENV=production jekyll build -V && bundle exec htmlproofer --extension .html ./_site"'
     detached: false
 - bash: |
     echo disabled ; exit
