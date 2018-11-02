@@ -45,6 +45,9 @@ steps:
     echo Will push as $U
     COMMIT=$(git rev-parse HEAD)
     git checkout gh-pages
+    ls -l 
+    chmod -R a+r .
+    find . -type d -exec chmod -R a+rx {} \;
     rsync -a --delete --exclude .git --exclude CNAME $BUILD_BINARIESDIRECTORY/* "${BUILD_SOURCESDIRECTORY}/"
     git add -A .
     git status
