@@ -1,3 +1,0 @@
-org.ehcache.clustered.client.internal.ClusterTierManagerClientEntityService
-org.ehcache.clustered.client.internal.store.ClusterTierClientEntityService
-org.ehcache.clustered.client.internal.lock.VoltronReadWriteLockEntityClientService
