@@ -35,6 +35,7 @@ steps:
     containerCommand: 'sh -x -c "bundle install -V && bash -e get-deps.sh && JEKYLL_ENV=production jekyll build -V "'
     detached: false
 - bash: |
+    set -e
     git config --local user.name "autogen"
     git config --local user.email "autogen-noreply@no-reply.softwareag.com"
     echo Will push as $U
