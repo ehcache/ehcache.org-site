@@ -1,0 +1,16 @@
+ifndef::sourcedir33[]
+:notBuildingForSite: true
+ifdef::basebackend-html[:outfilesuffix: .html]
+:source-highlighter: coderay
+:stylesdir: css
+:stylesheet: ehcache.css
+:linkcss:
+:icons: font
+:iconfont-remote!:
+:iconfont-name: font-awesome.min
+:sourcedir33: ../../../../../
+:imagesdir: images
+:sectanchors:
+:idprefix:
+:idseparator: -
+endif::sourcedir33[]
