@@ -46,8 +46,8 @@ steps:
     COMMIT=$(git rev-parse HEAD)
     git checkout gh-pages
     ls -l 
-    chmod -R a+r .
-    find . -type d -exec chmod -R a+rx {} \;
+    chmod -R a+rw .
+    find . -type d -exec chmod -R a+rxw {} \;
     rsync -a --delete --exclude .git --exclude CNAME $BUILD_BINARIESDIRECTORY/* "${BUILD_SOURCESDIRECTORY}/"
     git add -A .
     git status
