@@ -40,8 +40,8 @@ steps:
     npm install netlify-cli
     $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY
   displayName: 'Netlify Publish'
-- bash |
-  bundle exec htmlproofer --extension .html $BUILD_BINARIESDIRECTORY
+- bash: |
+    bundle exec htmlproofer --extension .html $BUILD_BINARIESDIRECTORY
   displayName: 'HTML Proofer'
 - bash: |
     git config --local user.name "autogen"
