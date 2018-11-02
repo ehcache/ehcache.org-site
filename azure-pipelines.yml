@@ -39,11 +39,11 @@ steps:
     git config --local user.email "autogen-noreply@no-reply.softwareag.com"
     echo Will push as $U
     COMMIT=$(git rev-parse HEAD)
+    sudo chown -R $(id -u):$(id -g) .
     rm -rf * .git*  # start clean
     git clone --single-branch -b gh-pages https://$U:$P@github.com/ehcache/ehcache.org-site remote-site
     cd remote-site
     ls -l 
-    sudo chown -R $(id -u):$(id -g) .
     rsync -a --delete --exclude .git --exclude CNAME $BUILD_BINARIESDIRECTORY/* .
     git add -A .
     git status
