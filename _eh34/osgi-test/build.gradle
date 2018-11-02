@@ -1,0 +1,73 @@
+/*
+ * Copyright Terracotta, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+dependencies {
+  ext {
+    paxExamVersion = '3.5.0'
+    felixVersion = '4.4.0'
+  }
+
+  testCompile project(':impl'), project(':xml'), project(':107'),
+          "org.apache.felix:org.apache.felix.framework:$felixVersion",
+          "javax.cache:cache-api:$parent.jcacheVersion"
+  testCompile ("org.ops4j.pax.exam:pax-exam-junit4:$paxExamVersion") {
+    exclude group:'junit', module:'junit'
+    exclude group:'org.slf4j', module:'slf4j-api'
+  }
+
+  testRuntime "org.slf4j:slf4j-simple:$parent.slf4jVersion",
+  testRuntime ("org.ops4j.pax.exam:pax-exam-container-native:$paxExamVersion") {
+    exclude group:'org.slf4j', module:'slf4j-api'
+  }
+  testRuntime ("org.ops4j.pax.exam:pax-exam-link-mvn:$paxExamVersion") {
+    exclude group:'org.slf4j', module:'slf4j-api'
+  }
+}
+
+configurations.all {
+   resolutionStrategy {
+     force 'org.apache.maven.wagon:wagon-provider-api:2.5'
+     force 'org.codehaus.plexus:plexus-utils:3.0.15'
+     force 'org.eclipse.aether:aether-api:0.9.0.M4'
+     force 'org.eclipse.aether:aether-impl:0.9.0.M4'
+     force 'org.eclipse.aether:aether-spi:0.9.0.M4'
+     force 'org.eclipse.aether:aether-util:0.9.0.M4'
+     force 'org.sonatype.plexus:plexus-cipher:1.7'
+     force 'org.sonatype.plexus:plexus-sec-dispatcher:1.4'
+   }
+}
+
+tasks.withType(JavaCompile) {
+  options.compilerArgs += ['-Werror']
+}
+
+sourceSets {
+  test {
+    // Needed for PaxExam which makes the dynamic bundle load content of a single dir
+    // matching the package of the test class
+    output.resourcesDir = java.outputDir
+  }
+}
+
+test {
+  systemProperty 'ehcache.osgi.jar', project(':dist').jar.archivePath.getPath()
+  systemProperty 'ehcache.osgi.jcache.version', parent.jcacheVersion
+  systemProperty 'ehcache.osgi.slf4j.version', parent.slf4jVersion
+}.doFirst {
+  if (testJava.javaVersion.isJava9Compatible()) throw new StopExecutionException("OSGi Tests Not Working in Java 9")
+}
+
+test.dependsOn ':dist:jar'
