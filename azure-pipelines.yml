@@ -35,8 +35,7 @@ steps:
     detached: false
 - bash: |
     npm install netlify-cli
-    cd $BUILD_BINARIESDIRECTORY
-    $(cd ~ ; npm bin)/netlify deploy -d .
+    $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY
   displayName: 'Netlify Publish'
 - bash: |
     return # don't do this right now
