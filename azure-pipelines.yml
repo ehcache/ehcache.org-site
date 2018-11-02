@@ -10,9 +10,8 @@ steps:
 - checkout: self
   persistCredentials: 'true'
   clean: 'true'
-- bash: |
-  bash -e get-deps.sh
-displayName: 'Get Deps'
+- bash: get-deps.sh
+  displayName: 'Get Deps'
 - task: YodLabs.VariableTasks.SetVariablesWithCredentials.SetVariablesWithCredentials@0
   displayName: 'Github auth'
   inputs:
