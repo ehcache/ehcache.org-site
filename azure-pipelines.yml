@@ -37,10 +37,7 @@ steps:
     echo disabled ; exit
     npm install netlify-cli
     $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY
-  displayName: 'Netlify Publish'
-- bash: |
-    bundle exec htmlproofer --extension .html $BUILD_BINARIESDIRECTORY
-  displayName: 'HTML Proofer'
+  displayName: 'Netlify Publish (disabled)'
 - bash: |
     git config --local user.name "autogen"
     git config --local user.email "autogen-noreply@no-reply.softwareag.com"
