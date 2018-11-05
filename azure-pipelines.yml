@@ -36,6 +36,11 @@ steps:
     detached: false
 - bash: |
     set -e
+    # not sure why some files are root owned, maybe docker
+    sudo chown -R $(id -u):$(id -g) $BUILD_SOURCESDIRECTORY $BUILD_BINARIESDIRECTORY
+
+    COMMIT=$(git rev-parse HEAD)
+
     # Determine whether to publish staging or live site
     if [ -n "$SYSTEM_PULLREQUEST_PULLREQUESTNUMBER" ] ; then
       gh_url="https://$U:$P@github.com/ehcache/ehcache.org-site.git"
@@ -53,8 +58,6 @@ steps:
       exit 5
     fi
 
-    COMMIT=$(git rev-parse HEAD)
-    sudo chown -R $(id -u):$(id -g) .
     rm -rf * .git*  # start clean in source directory
     git clone --single-branch -b $gh_branch $gh_url remote-site
     cd remote-site
