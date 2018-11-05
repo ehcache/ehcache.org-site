@@ -27,7 +27,8 @@ steps:
   inputs:
     containerRegistryType: 'Container Registry'
     action: 'Run an image'
-    imageName: 'jekyll/builder:latest'
+    # should match Gemfile:
+    imageName: 'jekyll/builder:3.7.3'
     volumes: |
       $(build.sourcesDirectory):/srv/jekyll
       $(build.binariesDirectory):/srv/jekyll/_site

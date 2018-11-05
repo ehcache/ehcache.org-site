@@ -6,7 +6,7 @@ gem 'asciidoctor', '1.5.8'
 # Use to check broken links during build
 gem 'html-proofer', '3.9.2'
 
-# Website redering engine
+# Website redering engine.  Note: also change azure-pipelines.yml (docker tag) if changing this version.
 gem 'jekyll', '3.7.3'
 
 # By default, jekyll does markdown, so we need the asciidoc plugin
