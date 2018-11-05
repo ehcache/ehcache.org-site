@@ -52,7 +52,7 @@ steps:
       gh_branch=master
       gh_source=master
       echo "Publishing Live site"
-      (cd $BUILD_BINARIESDIRECTORY && bash $BUILD_SOURCESDIRECTORY/add-analytics.sh)
+      (bash add-analytics.sh $BUILD_SOURCESDIRECTORY $BUILD_BINARIESDIRECTORY)
     else
       echo "Unknown branch to deploy: $BUILD_SOURCEBRANCHNAME"
       exit 5
