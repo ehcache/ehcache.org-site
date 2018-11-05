@@ -16,6 +16,9 @@ exclude:
   - Gemfile.lock
   - run_cmd_each_javadoc_version.rb
   - run_proofer.sh
+  - azure-pipelines.yml
+  - get-deps.sh
+  - add-analytics.sh
 
 exclude_from_watch:
   - .idea/
