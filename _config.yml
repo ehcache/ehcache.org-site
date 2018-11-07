@@ -9,6 +9,7 @@ github_username:  ehcache
 linkedin_username: terracotta
 facebook_username:  Terracotta
 disqus_shortname: ehcache
+timezone: GMT
 
 exclude:
   - README.md
