@@ -4,7 +4,7 @@
 # WARNING: This script is also used by the build system when publishing the
 # website. Do not modify it without making sure publishing it still working.
 #
-# Current publishing build is http://jenkins.terracotta.eur.ad.sag:8080/job/websites/job/ehcache.org-site-publisher
+# Current publishing build is https://dev.azure.com/TerracottaCI/ehcache/_build?definitionId=21
 #
 # The script parses _config.yml and figure out automatically what branches of
 # # ehcache should be checked out and to what local directories.
