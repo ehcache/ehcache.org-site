@@ -13,6 +13,7 @@ permalink: /schema/
   * [ehcache-core-3.4.xsd](/schema/ehcache-core-3.4.xsd)
   * [ehcache-core-3.5.xsd](/schema/ehcache-core-3.5.xsd)
   * [ehcache-core-3.6.xsd](/schema/ehcache-core-3.6.xsd)  
+  * [ehcache-core-3.7.xsd](/schema/ehcache-core-3.7.xsd)
 [//]: # (needle_core)
 
 * JSR-107 integration extension
@@ -24,6 +25,7 @@ permalink: /schema/
   * [ehcache-107-ext-3.4.xsd](/schema/ehcache-107-ext-3.4.xsd)
   * [ehcache-107-ext-3.5.xsd](/schema/ehcache-107-ext-3.5.xsd)
   * [ehcache-107-ext-3.6.xsd](/schema/ehcache-107-ext-3.6.xsd)
+  * [ehcache-107-ext-3.7.xsd](/schema/ehcache-107-ext-3.7.xsd)
 [//]: # (needle_107)
   
 * Transactions integration extension
@@ -35,6 +37,7 @@ permalink: /schema/
   * [ehcache-tx-ext-3.4.xsd](/schema/ehcache-tx-ext-3.4.xsd)
   * [ehcache-tx-ext-3.5.xsd](/schema/ehcache-tx-ext-3.5.xsd)
   * [ehcache-tx-ext-3.6.xsd](/schema/ehcache-tx-ext-3.6.xsd)
+  * [ehcache-tx-ext-3.7.xsd](/schema/ehcache-tx-ext-3.7.xsd)
 [//]: # (needle_tx)
   
 * Clustering integration extension
@@ -45,4 +48,5 @@ permalink: /schema/
   * [ehcache-clustered-ext-3.4.xsd](/schema/ehcache-clustered-ext-3.4.xsd)
   * [ehcache-clustered-ext-3.5.xsd](/schema/ehcache-clustered-ext-3.5.xsd)
   * [ehcache-clustered-ext-3.6.xsd](/schema/ehcache-clustered-ext-3.6.xsd)
+  * [ehcache-clustered-ext-3.7.xsd](/schema/ehcache-clustered-ext-3.7.xsd)
 [//]: # (needle_clustered)
