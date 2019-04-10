@@ -31,8 +31,12 @@ markdown: kramdown
 
 plugins:
   - jekyll-asciidoc
+  - asciidoctor-diagram
   - jekyll-sitemap
 
+# Ehcache 3.8+ uses asciidoctor-diagram rendered images
+keep_files:
+- documentation/3.8/images
 
 asciidoctor:
   # We need safe since we go fetch code examples in directories lower than where the adoc file is
