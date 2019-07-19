@@ -8,7 +8,7 @@ The Gladstone Technology Preview program is now over. The Technology Preview int
 * **Terracotta Management Console** - 
 The Terracotta Management Console (TMC) is a web-based administration and monitoring application providing with a wealth of advantages, including:
 
-    * [Multilevel security architecture](http://terracotta.org/documentation/2.7/tms/tms-security), with end-to-end SSL secure connections available
+    * [Multilevel security architecture](https://documentation.softwareag.com/onlinehelp/Rohan/terracotta_437/bigmemory-max/webhelp/index.html#page/bigmemory-max-webhelp%2Fto-sec_setting_up_security.html%23), with end-to-end SSL secure connections available
     * Feature-rich and easy-to-use in-browser interface
     * Remote management capabilities requiring only a web browser and network connection
     * Cross-platform deployment

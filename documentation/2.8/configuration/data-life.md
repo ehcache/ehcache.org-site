@@ -63,7 +63,7 @@ Pinning as a setting exists in the local Ehcache client memory. It is never repl
 ### Unpinning Caches
 To unpin all of a cache's pinned entries, clear the cache. Specific entries can be removed from a cache using `Cache.remove()`. To empty the entire cache, use `Cache.removeAll()`. If the cache itself is removed (`Cache.dispose()` or `CacheManager.removeCache()`), then any data still remaining in the cache is also removed locally.
 
-Caches can also be cleared using the [Terracotta Management Console](http://www.terracotta.org/documentation/2.8/tms/tms).
+Caches can also be cleared using the [Terracotta Management Console](https://documentation.softwareag.com/onlinehelp/Rohan/terracotta_437/bigmemory-max/webhelp/index.html#page/bigmemory-max-webhelp%2Fto-title_tcm_user_guide.html%23).
 
 ## How Configuration Affects Element Flushing and Eviction <a name="30343"/>
 The following example shows a cache with certain expiration settings:
