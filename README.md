@@ -46,7 +46,9 @@ ln -s $PWD/${version_dir}/docs/src/docs/asciidoc/user documentation/${version}
 |3.3    |\_eh33     |release/3.3|
 |3.4    |\_eh34     |release/3.4|
 |3.5    |\_eh35     |release/3.5|
-|3.6    |\_eh36     |master     |
+|3.6    |\_eh36     |release/3.6|
+|3.7    |\_eh37     |release/3.7|
+|3.8    |\_eh36     |master     |
 
 Of course, if for some reason you want a specific tag for a version, just create a worktree based on the tag instead.
 
