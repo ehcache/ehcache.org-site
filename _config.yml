@@ -190,5 +190,5 @@ defaults:
     values:
       layout: "docs35_page"
       ehc_version: "3.8"
-      ehc_javadoc_version: "3.8.0"
+      ehc_javadoc_version: "3.8.0-fixdoc"
       ehc_checkout_dir_var: "sourcedir38"
