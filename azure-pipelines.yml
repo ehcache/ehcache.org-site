@@ -75,3 +75,8 @@ steps:
     git push $gh_url $gh_branch
   condition: not(eq(variables['Build.Reason'], 'PullRequest'))
   displayName: 'Publish'
+- bash: |	
+    npm install netlify-cli	
+    $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY	
+  displayName: 'Netlify Publish'
+  condition: eq(variables['Build.Reason'], 'PullRequest')
