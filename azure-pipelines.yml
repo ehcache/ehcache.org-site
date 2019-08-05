@@ -35,6 +35,10 @@ steps:
     #containerCommand: 'sh -x -c "bundle install && bash -e get-deps.sh && JEKYLL_ENV=production jekyll build && bundle exec htmlproofer --only-4xx --empty-alt-ignore --check-html --checks-to-ignore ImageCheck --file-ignore \"/apidocs/,/generated/\" --log-level debug _site"'
     containerCommand: 'sh -x -c "bundle install && bash -e get-deps.sh && JEKYLL_ENV=production jekyll build"'
     detached: false
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'generated_site' 
+    targetPath: $(build.binariesDirectory)
 - bash: |
     set -e
     # not sure why some files are root owned, maybe docker
