@@ -79,6 +79,10 @@ jobs:
     condition: not(eq(variables['Build.Reason'], 'PullRequest'))
     displayName: 'Publish'
   - bash: |	
+      set -x
+      uname -a
+      cat /etc/*elease*
+      npm -v
       npm install netlify-cli	
       $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY	
     displayName: 'Netlify Publish'
