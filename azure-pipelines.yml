@@ -83,6 +83,7 @@ jobs:
       uname -a
       cat /etc/*elease*
       npm -v
+      nodejs -v
       npm install netlify-cli	
       du -sh $BUILD_BINARIESDIRECTORY
       find $BUILD_BINARIESDIRECTORY | wc -l
