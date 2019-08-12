@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 jobs:
-- job: 
+- job:
   timeoutInMinutes: 120
   pool:
     vmImage: 'ubuntu-latest'
@@ -47,7 +47,7 @@ jobs:
 
       # Determine whether to publish staging or live site
       if [ -n "$SYSTEM_PULLREQUEST_PULLREQUESTNUMBER" ] ; then
-        gh_url="https://$U:$P@github.com/ehcache/ehcache.org-site.git"nd JavaScript apps.
+        gh_url="https://$U:$P@github.com/ehcache/ehcache.org-site.git"
         gh_branch=gh-pages
         gh_source="#${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}"
         echo "Publishing staging from $gh_source"
@@ -78,15 +78,15 @@ jobs:
       git push $gh_url $gh_branch
     condition: not(eq(variables['Build.Reason'], 'PullRequest'))
     displayName: 'Publish'
-  - bash: |	
+  - bash: |
       set -x
       uname -a
       cat /etc/*elease*
       npm -v
       node -v
-      npm install netlify-cli	
+      npm install netlify-cli
       du -sh $BUILD_BINARIESDIRECTORY
       find $BUILD_BINARIESDIRECTORY | wc -l
-      $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY	
+      $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY
     displayName: 'Netlify Publish'
     condition: eq(variables['Build.Reason'], 'PullRequest')
