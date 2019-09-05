@@ -12,7 +12,7 @@ permalink: /documentation/
 
 | | |
 |:----|:--|
-|[Ehcache 3.8 User Guide](/documentation/3.8/) |[Core JavaDoc](/apidocs/3.8.0/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.8.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.8.0/transactions/index.html){:target="_blank"}|
+|[Ehcache 3.8 User Guide](/documentation/3.8/) |[Core JavaDoc](/apidocs/3.8.1/index.html){:target="_blank"} <br /> [Clustered Module JavaDoc](/apidocs/3.8.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module JavaDoc](/apidocs/3.8.1/transactions/index.html){:target="_blank"}|
 |[Ehcache 2.10.x User Guide](/generated/2.10.4/html/ehc-all)   also available as [PDF](/documentation/2.10.4/pdf/index.html)|[JavaDoc](/apidocs/2.10.4/index.html){:target="_blank"} |
 
 |---| &nbsp; |
