@@ -19,14 +19,6 @@
 
       <div class="footer-col  footer-col-2">
         <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            <a href="https://github.com/{{ site.github_username }}">
-              <i class="fa fa-github"></i> GitHub
-            </a>
-          </li>
-          {% endif %}
-
           {% if site.twitter_username %}
           <li>
             <a href="https://twitter.com/{{ site.twitter_username }}">
@@ -50,24 +42,31 @@
             </a>
           </li>
           {% endif %}
-
+          <!--
           <li>
             <a href="/feed.xml" title="Atom/RSS Feed">
               <i class="fa fa-rss-square"></i> Atom/RSS Feed
             </a>
           </li>
+          -->
         </ul>
       </div>
 
     <div class="footer-col  footer-col-3">
+      {% if site.github_username %}
+        <a href="https://github.com/{{ site.github_username }}"><i class="fa fa-github"></i> GitHub</a>
+      {% endif %}
+
       <a href="/downloads/"><i class="fa fa-download"></i> Download Now</a>
       <br/>
       <a href="/documentation/"><i class="fa fa-book"></i> Documentation</a>
       <br/>
+      <!--
       <a href="/resources/"><i class="fa fa-external-link-square"></i> Resources</a>
       <br/>
       <a href="/blog/"><i class="fa fa-rss-square"></i> Ehcache Blog</a>
       <br/>
+      -->
       <a href="/community/"><i class="fa fa-users"></i> Join the Community</a>
     </div>
 
