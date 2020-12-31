@@ -95,8 +95,12 @@ jobs:
           $(npm bin)/netlify deploy -d $BUILD_BINARIESDIRECTORY --json | tee netlify.json
 
           NETLIFY_URL=$(jq -r '.deploy_url' netlify.json)
-          echo "Informing GitHub about deploy url: ${NETLIFY_URL}"
-          curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST -d "{\"body\": \"[A Live Preview](${NETLIFY_URL}) of this Pull Request at commit ${SYSTEM_PULLREQUEST_SOURCECOMMITID} is now available\", \"commit_id\": \"${SYSTEM_PULLREQUEST_SOURCECOMMITID}\"}" "https://api.github.com/repos/ehcache/ehcache.org-site/issues/${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}/comments"
+          if [ -n "$NETLIFY_URL" ] ; then 
+            echo "Informing GitHub about deploy url: ${NETLIFY_URL}"
+            curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST -d "{\"body\": \"[A Live Preview](${NETLIFY_URL}) of this Pull Request at commit ${SYSTEM_PULLREQUEST_SOURCECOMMITID} is now available\", \"commit_id\": \"${SYSTEM_PULLREQUEST_SOURCECOMMITID}\"}" "https://api.github.com/repos/ehcache/ehcache.org-site/issues/${SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}/comments"
+          else
+            echo "Failed to deploy to netlify for preview"
+          fi
 
         displayName: 'Netlify Publish'
         condition: eq(variables['Build.Reason'], 'PullRequest')
