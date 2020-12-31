@@ -98,8 +98,10 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">We Love Contributors</li>
                 <li><a href="/community/contribute.html"><i class="fa fa-code"></i> Contributing</a></li>
+                <!--
                 <li><a href="/resources/"><i class="fa fa-external-link-square"></i> External Resources</a></li>
                 <li><a href="http://blog.terracotta.org" target="_blank"><i class="fa fa-rss-square"></i> Terracotta Blog</a></li>
+                -->
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Forums</li>
                 <li><a href="https://groups.google.com/forum/#!forum/ehcache-users" target="_blank"><i class="fa fa-commenting"></i> Users' Forum</a></li>
@@ -115,10 +117,12 @@
               </ul>
             </li>
           </ul>
+          <!--
           <ul class="nav navbar-nav navbar-right">
             <li id="ehc_mnu_events"><a href="/events"><i class="fa fa-calendar"></i> News & Events</a></li>
             <li><a href="/blog"><i class="fa fa-rss-square"></i> Ehcache Blog</a></li>
           </ul>
+          -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -135,7 +139,7 @@
       <div>
         <br/>
 
-<div class="container-fluid ehcache-documentation v3.6  current ">
+<div class="container-fluid ehcache-documentation v3.6   old  ">
 
 
   <div class="row row-offcanvas row-offcanvas-left">
@@ -188,7 +192,9 @@
         <h1 class="post-title">
             <span>Clustered Cache</span>
             
-            <span class="current">CURRENT</span>
+            
+            <span class="old">CURRENT:&nbsp;&nbsp;<a href="/documentation/3.8">3.8</a></span>
+            
             
         </h1>
         <hr/>
@@ -276,7 +282,7 @@ It contains the bare minimum configuration required for the samples in the rest 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;tc-config xmlns="http://www.terracotta.org/config"
            xmlns:ohr="http://www.terracotta.org/config/offheap-resource"&gt;
   &lt;plugins&gt;
@@ -317,7 +323,7 @@ Change to your extracted directory and then execute the <strong>start-tc-server<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-cmd" data-lang="cmd">cd &lt;path/to/terracotta/kit&gt;/server/bin
+<pre class="prettyprint highlight"><code data-lang="cmd">cd &lt;path/to/terracotta/kit&gt;/server/bin
 start-tc-server.bat -f &lt;path/to/server/config&gt;/tc-config.xml</code></pre>
 </div>
 </div>
@@ -326,7 +332,7 @@ start-tc-server.bat -f &lt;path/to/server/config&gt;/tc-config.xml</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cd &lt;path/to/terracotta/kit&gt;/server/bin
+<pre class="prettyprint highlight"><code data-lang="bash">cd &lt;path/to/terracotta/kit&gt;/server/bin
 ./start-tc-server.sh -f &lt;path/to/server/config&gt;/tc-config.xml</code></pre>
 </div>
 </div>
@@ -358,7 +364,7 @@ Here is a code sample that shows how to configure a cache manager with clusterin
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; clusteredCacheManagerBuilder =
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; clusteredCacheManagerBuilder =
     CacheManagerBuilder.newCacheManagerBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
         .with(ClusteringServiceConfigurationBuilder.cluster(URI.create("terracotta://localhost/my-application")) <i class="conum" data-value="2"></i><b>(2)</b>
             .autoCreate()); <i class="conum" data-value="3"></i><b>(3)</b>
@@ -402,7 +408,7 @@ Sample <code>URI</code> provided in the example is pointing to the clustered sto
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; clusteredCacheManagerBuilder =
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; clusteredCacheManagerBuilder =
     CacheManagerBuilder.newCacheManagerBuilder()
         .with(ClusteringServiceConfigurationBuilder.cluster(URI.create("terracotta://localhost/my-application")).autoCreate()
             .defaultServerResource("primary-server-resource") <i class="conum" data-value="1"></i><b>(1)</b>
@@ -486,7 +492,7 @@ reallocated to another cache sharing the pool.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; autoCreate = CacheManagerBuilder.newCacheManagerBuilder()
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; autoCreate = CacheManagerBuilder.newCacheManagerBuilder()
         .with(ClusteringServiceConfigurationBuilder.cluster(URI.create("terracotta://localhost/my-application"))
             .autoCreate() <i class="conum" data-value="1"></i><b>(1)</b>
             .resourcePool("resource-pool", 8, MemoryUnit.MB, "primary-server-resource"))
@@ -539,7 +545,7 @@ If it does not exist then the cache manager will fail to initialize.</td>
 <h3 id="clustered-storage-tier"><a class="anchor" href="#clustered-storage-tier"></a>Clustered Storage Tier</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheConfiguration&lt;Long, String&gt; config = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheConfiguration&lt;Long, String&gt; config = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
     ResourcePoolsBuilder.newResourcePoolsBuilder()
         .heap(2, MemoryUnit.MB) <i class="conum" data-value="1"></i><b>(1)</b>
         .with(ClusteredResourcePoolBuilder.clusteredDedicated("primary-server-resource", 8, MemoryUnit.MB))) <i class="conum" data-value="2"></i><b>(2)</b>
@@ -567,7 +573,7 @@ cache.put(42L, "All you need to know!");</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">&lt;cache alias="clustered-cache-tiered"&gt;
+<pre class="prettyprint highlight nowrap"><code data-lang="xml">&lt;cache alias="clustered-cache-tiered"&gt;
   &lt;resources&gt;
     &lt;heap unit="MB"&gt;10&lt;/heap&gt; <i class="conum" data-value="1"></i><b>(1)</b>
     &lt;tc:clustered-dedicated unit="MB"&gt;50&lt;/tc:clustered-dedicated&gt; <i class="conum" data-value="2"></i><b>(2)</b>
@@ -611,7 +617,7 @@ This comes with a latency penalty on the write operation required to give this g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheConfiguration&lt;Long, String&gt; config = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheConfiguration&lt;Long, String&gt; config = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
         ResourcePoolsBuilder.newResourcePoolsBuilder()
                 .with(ClusteredResourcePoolBuilder.clusteredDedicated("primary-server-resource", 2, MemoryUnit.MB)))
     .add(ClusteredStoreConfigurationBuilder.withConsistency(Consistency.STRONG)) <i class="conum" data-value="1"></i><b>(1)</b>
@@ -638,7 +644,7 @@ cache.put(42L, "All you need to know!"); <i class="conum" data-value="2"></i><b>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">&lt;cache alias="clustered-cache"&gt;
+<pre class="prettyprint highlight nowrap"><code data-lang="xml">&lt;cache alias="clustered-cache"&gt;
   &lt;resources&gt;
     &lt;tc:clustered-dedicated unit="MB"&gt;50&lt;/tc:clustered-dedicated&gt;
   &lt;/resources&gt;
@@ -686,7 +692,7 @@ Thus any programmer can use the cache without having to worry about using matchi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; cacheManagerBuilderAutoCreate = CacheManagerBuilder.newCacheManagerBuilder()
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheManagerBuilder&lt;PersistentCacheManager&gt; cacheManagerBuilderAutoCreate = CacheManagerBuilder.newCacheManagerBuilder()
         .with(ClusteringServiceConfigurationBuilder.cluster(URI.create("terracotta://localhost/my-application"))
             .autoCreate()  <i class="conum" data-value="1"></i><b>(1)</b>
             .resourcePool("resource-pool", 8, MemoryUnit.MB, "primary-server-resource"));
@@ -783,14 +789,6 @@ Cache&lt;Long, String&gt; cacheUnspecified = cacheManager2.createCache("my-dedic
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/ehcache">
-              <i class="fa fa-github"></i> GitHub
-            </a>
-          </li>
-          
-
-          
-          <li>
             <a href="https://twitter.com/ehcache">
               <i class="fa fa-twitter"></i> Twitter
             </a>
@@ -812,24 +810,32 @@ Cache&lt;Long, String&gt; cacheUnspecified = cacheManager2.createCache("my-dedic
             </a>
           </li>
           
-
+          <!--
           <li>
             <a href="/feed.xml" title="Atom/RSS Feed">
               <i class="fa fa-rss-square"></i> Atom/RSS Feed
             </a>
           </li>
+          -->
         </ul>
       </div>
 
     <div class="footer-col  footer-col-3">
+      
+        <a href="https://github.com/ehcache"><i class="fa fa-github"></i> GitHub</a>
+        <br/>
+      
+
       <a href="/downloads/"><i class="fa fa-download"></i> Download Now</a>
       <br/>
       <a href="/documentation/"><i class="fa fa-book"></i> Documentation</a>
       <br/>
+      <!--
       <a href="/resources/"><i class="fa fa-external-link-square"></i> Resources</a>
       <br/>
       <a href="/blog/"><i class="fa fa-rss-square"></i> Ehcache Blog</a>
       <br/>
+      -->
       <a href="/community/"><i class="fa fa-users"></i> Join the Community</a>
     </div>
 
@@ -851,7 +857,7 @@ Cache&lt;Long, String&gt; cacheUnspecified = cacheManager2.createCache("my-dedic
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>

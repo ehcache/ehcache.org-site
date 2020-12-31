@@ -98,8 +98,10 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">We Love Contributors</li>
                 <li><a href="/community/contribute.html"><i class="fa fa-code"></i> Contributing</a></li>
+                <!--
                 <li><a href="/resources/"><i class="fa fa-external-link-square"></i> External Resources</a></li>
                 <li><a href="http://blog.terracotta.org" target="_blank"><i class="fa fa-rss-square"></i> Terracotta Blog</a></li>
+                -->
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Forums</li>
                 <li><a href="https://groups.google.com/forum/#!forum/ehcache-users" target="_blank"><i class="fa fa-commenting"></i> Users' Forum</a></li>
@@ -115,10 +117,12 @@
               </ul>
             </li>
           </ul>
+          <!--
           <ul class="nav navbar-nav navbar-right">
             <li id="ehc_mnu_events"><a href="/events"><i class="fa fa-calendar"></i> News & Events</a></li>
             <li><a href="/blog"><i class="fa fa-rss-square"></i> Ehcache Blog</a></li>
           </ul>
+          -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -372,7 +376,7 @@ Maven 3.2 or greater is required.</p>
 <div class="listingblock">
 <div class="title">pom.xml</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">  &lt;dependency&gt;
+<pre class="prettyprint highlight"><code data-lang="xml">  &lt;dependency&gt;
     &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
     &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
     &lt;version&gt;3.0.0&lt;/version&gt; <i class="conum" data-value="1"></i><b>(1)</b>
@@ -406,7 +410,7 @@ Remove all existing caching provider jars from the classpath to ensure that the 
 <div class="listingblock">
 <div class="title">pom.xml</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">  &lt;dependency&gt;
+<pre class="prettyprint highlight"><code data-lang="xml">  &lt;dependency&gt;
     &lt;groupId&gt;javax.cache&lt;/groupId&gt;
     &lt;artifactId&gt;cache-api&lt;/artifactId&gt;
   &lt;/dependency&gt;</code></pre>
@@ -418,7 +422,7 @@ Remove all existing caching provider jars from the classpath to ensure that the 
 <div class="listingblock">
 <div class="title">pom.xml</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">  &lt;parent&gt;
+<pre class="prettyprint highlight"><code data-lang="xml">  &lt;parent&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; <i class="conum" data-value="1"></i><b>(1)</b>
     &lt;version&gt;1.3.2.RELEASE&lt;/version&gt;
@@ -474,7 +478,7 @@ This can be done in 1 of 2 ways:</p>
 <div class="listingblock">
 <div class="title">SpringJsr107Ehcache3Application.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">  @EnableCaching
+<pre class="prettyprint highlight"><code data-lang="java">  @EnableCaching
   public class SpringJsr107Ehcache3Application
   {
     public static void main(String[] args)
@@ -489,7 +493,7 @@ This can be done in 1 of 2 ways:</p>
 <p>Or enable from the Spring xml configuration file by adding the following tag: &lt;cache:annotation-driven /&gt;</p>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">  &lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<pre class="prettyprint highlight"><code data-lang="xml">  &lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:cache="http://www.springframework.org/schema/cache"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"&gt;
@@ -508,7 +512,7 @@ This can be done in 1 of 2 ways:</p>
 <div class="listingblock">
 <div class="title">PersonService.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">  @CacheResult <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight"><code data-lang="java">  @CacheResult <i class="conum" data-value="1"></i><b>(1)</b>
   Person getPerson(int ssn)
   {
     switch (ssn)
@@ -540,7 +544,7 @@ The next time the getPerson(&#8230;&#8203;) method is called with ssn="123456789
 <div class="listingblock">
 <div class="title">ehcache.xml</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">&lt;config
+<pre class="prettyprint highlight"><code data-lang="xml">&lt;config
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xmlns='http://www.ehcache.org/v3'  <i class="conum" data-value="1"></i><b>(1)</b>
     xmlns:jsr107='http://www.ehcache.org/v3/jsr107'&gt;  <i class="conum" data-value="2"></i><b>(2)</b>
@@ -643,7 +647,7 @@ XML Configuration Documentation: <a href="http://www.ehcache.org/documentation/3
 <div class="listingblock">
 <div class="title">PersonService.java</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-java" data-lang="java">  @Component
+<pre class="prettyprint highlight"><code data-lang="java">  @Component
   public static class CachingSetup implements JCacheManagerCustomizer
   {
     @Override
@@ -773,14 +777,6 @@ If you have any questions please feel free to send them to me at <a href="mailto
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/ehcache">
-              <i class="fa fa-github"></i> GitHub
-            </a>
-          </li>
-          
-
-          
-          <li>
             <a href="https://twitter.com/ehcache">
               <i class="fa fa-twitter"></i> Twitter
             </a>
@@ -802,24 +798,32 @@ If you have any questions please feel free to send them to me at <a href="mailto
             </a>
           </li>
           
-
+          <!--
           <li>
             <a href="/feed.xml" title="Atom/RSS Feed">
               <i class="fa fa-rss-square"></i> Atom/RSS Feed
             </a>
           </li>
+          -->
         </ul>
       </div>
 
     <div class="footer-col  footer-col-3">
+      
+        <a href="https://github.com/ehcache"><i class="fa fa-github"></i> GitHub</a>
+        <br/>
+      
+
       <a href="/downloads/"><i class="fa fa-download"></i> Download Now</a>
       <br/>
       <a href="/documentation/"><i class="fa fa-book"></i> Documentation</a>
       <br/>
+      <!--
       <a href="/resources/"><i class="fa fa-external-link-square"></i> Resources</a>
       <br/>
       <a href="/blog/"><i class="fa fa-rss-square"></i> Ehcache Blog</a>
       <br/>
+      -->
       <a href="/community/"><i class="fa fa-users"></i> Join the Community</a>
     </div>
 
@@ -841,7 +845,7 @@ If you have any questions please feel free to send them to me at <a href="mailto
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>

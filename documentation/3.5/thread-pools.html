@@ -98,8 +98,10 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">We Love Contributors</li>
                 <li><a href="/community/contribute.html"><i class="fa fa-code"></i> Contributing</a></li>
+                <!--
                 <li><a href="/resources/"><i class="fa fa-external-link-square"></i> External Resources</a></li>
                 <li><a href="http://blog.terracotta.org" target="_blank"><i class="fa fa-rss-square"></i> Terracotta Blog</a></li>
+                -->
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Forums</li>
                 <li><a href="https://groups.google.com/forum/#!forum/ehcache-users" target="_blank"><i class="fa fa-commenting"></i> Users' Forum</a></li>
@@ -115,10 +117,12 @@
               </ul>
             </li>
           </ul>
+          <!--
           <ul class="nav navbar-nav navbar-right">
             <li id="ehc_mnu_events"><a href="/events"><i class="fa fa-calendar"></i> News & Events</a></li>
             <li><a href="/blog"><i class="fa fa-rss-square"></i> Ehcache Blog</a></li>
           </ul>
+          -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -189,7 +193,7 @@
             <span>Thread Pools</span>
             
             
-            <span class="old">CURRENT:&nbsp;&nbsp;<a href="/documentation/3.6">3.6</a></span>
+            <span class="old">CURRENT:&nbsp;&nbsp;<a href="/documentation/3.8">3.8</a></span>
             
             
         </h1>
@@ -322,7 +326,7 @@ When a service is not told anything about which thread pool to use, the default 
 <h3 id="disk-store"><a class="anchor" href="#disk-store"></a>Disk store</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">    CacheManager cacheManager
+<pre class="prettyprint highlight nowrap"><code data-lang="java">    CacheManager cacheManager
         = CacheManagerBuilder.newCacheManagerBuilder()
         .using(PooledExecutionServiceConfigurationBuilder.newPooledExecutionServiceConfigurationBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
             .defaultPool("dflt", 0, 10)
@@ -373,7 +377,7 @@ When a service is not told anything about which thread pool to use, the default 
 <h3 id="write-behind"><a class="anchor" href="#write-behind"></a>Write Behind</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">    CacheManager cacheManager
+<pre class="prettyprint highlight nowrap"><code data-lang="java">    CacheManager cacheManager
         = CacheManagerBuilder.newCacheManagerBuilder()
         .using(PooledExecutionServiceConfigurationBuilder.newPooledExecutionServiceConfigurationBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
             .defaultPool("dflt", 0, 10)
@@ -429,7 +433,7 @@ When a service is not told anything about which thread pool to use, the default 
 <h3 id="events"><a class="anchor" href="#events"></a>Events</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">    CacheManager cacheManager
+<pre class="prettyprint highlight nowrap"><code data-lang="java">    CacheManager cacheManager
         = CacheManagerBuilder.newCacheManagerBuilder()
         .using(PooledExecutionServiceConfigurationBuilder.newPooledExecutionServiceConfigurationBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
             .pool("defaultEventPool", 1, 3)
@@ -484,7 +488,7 @@ When a service is not told anything about which thread pool to use, the default 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">  &lt;thread-pools&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight nowrap"><code data-lang="xml">  &lt;thread-pools&gt; <i class="conum" data-value="1"></i><b>(1)</b>
     &lt;thread-pool alias="defaultDiskPool" min-size="1" max-size="3"/&gt;
     &lt;thread-pool alias="defaultWriteBehindPool" min-size="1" max-size="3"/&gt;
     &lt;thread-pool alias="cache2Pool" min-size="2" max-size="2"/&gt;
@@ -592,14 +596,6 @@ When a service is not told anything about which thread pool to use, the default 
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/ehcache">
-              <i class="fa fa-github"></i> GitHub
-            </a>
-          </li>
-          
-
-          
-          <li>
             <a href="https://twitter.com/ehcache">
               <i class="fa fa-twitter"></i> Twitter
             </a>
@@ -621,24 +617,32 @@ When a service is not told anything about which thread pool to use, the default 
             </a>
           </li>
           
-
+          <!--
           <li>
             <a href="/feed.xml" title="Atom/RSS Feed">
               <i class="fa fa-rss-square"></i> Atom/RSS Feed
             </a>
           </li>
+          -->
         </ul>
       </div>
 
     <div class="footer-col  footer-col-3">
+      
+        <a href="https://github.com/ehcache"><i class="fa fa-github"></i> GitHub</a>
+        <br/>
+      
+
       <a href="/downloads/"><i class="fa fa-download"></i> Download Now</a>
       <br/>
       <a href="/documentation/"><i class="fa fa-book"></i> Documentation</a>
       <br/>
+      <!--
       <a href="/resources/"><i class="fa fa-external-link-square"></i> Resources</a>
       <br/>
       <a href="/blog/"><i class="fa fa-rss-square"></i> Ehcache Blog</a>
       <br/>
+      -->
       <a href="/community/"><i class="fa fa-users"></i> Join the Community</a>
     </div>
 
@@ -660,7 +664,7 @@ When a service is not told anything about which thread pool to use, the default 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>

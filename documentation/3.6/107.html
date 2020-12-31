@@ -98,8 +98,10 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">We Love Contributors</li>
                 <li><a href="/community/contribute.html"><i class="fa fa-code"></i> Contributing</a></li>
+                <!--
                 <li><a href="/resources/"><i class="fa fa-external-link-square"></i> External Resources</a></li>
                 <li><a href="http://blog.terracotta.org" target="_blank"><i class="fa fa-rss-square"></i> Terracotta Blog</a></li>
+                -->
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Forums</li>
                 <li><a href="https://groups.google.com/forum/#!forum/ehcache-users" target="_blank"><i class="fa fa-commenting"></i> Users' Forum</a></li>
@@ -115,10 +117,12 @@
               </ul>
             </li>
           </ul>
+          <!--
           <ul class="nav navbar-nav navbar-right">
             <li id="ehc_mnu_events"><a href="/events"><i class="fa fa-calendar"></i> News & Events</a></li>
             <li><a href="/blog"><i class="fa fa-rss-square"></i> Ehcache Blog</a></li>
           </ul>
+          -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -135,7 +139,7 @@
       <div>
         <br/>
 
-<div class="container-fluid ehcache-documentation v3.6  current ">
+<div class="container-fluid ehcache-documentation v3.6   old  ">
 
 
   <div class="row row-offcanvas row-offcanvas-left">
@@ -188,7 +192,9 @@
         <h1 class="post-title">
             <span>The Ehcache 3.x JSR-107 Provider</span>
             
-            <span class="current">CURRENT</span>
+            
+            <span class="old">CURRENT:&nbsp;&nbsp;<a href="/documentation/3.8">3.8</a></span>
+            
             
         </h1>
         <hr/>
@@ -275,7 +281,7 @@ Similarly a <code>CachingProvider</code> is required to get/access a <code>Cache
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CachingProvider provider = Caching.getCachingProvider();  <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CachingProvider provider = Caching.getCachingProvider();  <i class="conum" data-value="1"></i><b>(1)</b>
 CacheManager cacheManager = provider.getCacheManager();   <i class="conum" data-value="2"></i><b>(2)</b>
 MutableConfiguration&lt;Long, String&gt; configuration =
     new MutableConfiguration&lt;Long, String&gt;()  <i class="conum" data-value="3"></i><b>(3)</b>
@@ -350,7 +356,7 @@ you can still get to the underlying Ehcache <code>CacheRuntimeConfiguration</cod
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">MutableConfiguration&lt;Long, String&gt; configuration = new MutableConfiguration&lt;&gt;();
+<pre class="prettyprint highlight nowrap"><code data-lang="java">MutableConfiguration&lt;Long, String&gt; configuration = new MutableConfiguration&lt;&gt;();
 configuration.setTypes(Long.class, String.class);
 Cache&lt;Long, String&gt; cache = cacheManager.createCache("someCache", configuration); <i class="conum" data-value="1"></i><b>(1)</b>
 
@@ -394,7 +400,7 @@ CacheRuntimeConfiguration&lt;Long, String&gt; runtimeConfiguration = eh107Config
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CachingProvider cachingProvider = Caching.getCachingProvider();
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CachingProvider cachingProvider = Caching.getCachingProvider();
 EhcacheCachingProvider ehcacheProvider = (EhcacheCachingProvider) cachingProvider; <i class="conum" data-value="1"></i><b>(1)</b>
 
 DefaultConfiguration configuration = new DefaultConfiguration(ehcacheProvider.getDefaultClassLoader(),
@@ -428,7 +434,7 @@ When using this mechanism, no JCache <code>CompleteConfiguration</code> is used 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheConfiguration&lt;Long, String&gt; cacheConfiguration = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheConfiguration&lt;Long, String&gt; cacheConfiguration = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
     ResourcePoolsBuilder.heap(10)).build(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Cache&lt;Long, String&gt; cache = cacheManager.createCache("myCache",
@@ -485,7 +491,7 @@ See <a href="xml.html">the XML documentation</a> for more details on configuring
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">&lt;config
+<pre class="prettyprint highlight nowrap"><code data-lang="xml">&lt;config
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xmlns='http://www.ehcache.org/v3'
     xsi:schemaLocation="
@@ -508,7 +514,7 @@ See <a href="xml.html">the XML documentation</a> for more details on configuring
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CachingProvider cachingProvider = Caching.getCachingProvider();
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CachingProvider cachingProvider = Caching.getCachingProvider();
 CacheManager manager = cachingProvider.getCacheManager( <i class="conum" data-value="1"></i><b>(1)</b>
     getClass().getResource("/org/ehcache/docs/ehcache-jsr107-config.xml").toURI(), <i class="conum" data-value="2"></i><b>(2)</b>
     getClass().getClassLoader()); <i class="conum" data-value="3"></i><b>(3)</b>
@@ -575,7 +581,7 @@ This gives you control over the following:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">&lt;config
+<pre class="prettyprint highlight nowrap"><code data-lang="xml">&lt;config
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xmlns='http://www.ehcache.org/v3'
     xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
@@ -654,7 +660,7 @@ To do this, add a <code>jsr107</code> service in your XML configuration file:</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">&lt;config
+<pre class="prettyprint highlight nowrap"><code data-lang="xml">&lt;config
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xmlns='http://www.ehcache.org/v3'
     xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
@@ -751,7 +757,7 @@ The XSD schema definitions that describe the syntax used for the Ehcache XML con
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">MutableConfiguration&lt;Long, Client&gt; mutableConfiguration = new MutableConfiguration&lt;&gt;();
+<pre class="prettyprint highlight nowrap"><code data-lang="java">MutableConfiguration&lt;Long, Client&gt; mutableConfiguration = new MutableConfiguration&lt;&gt;();
 mutableConfiguration.setTypes(Long.class, Client.class); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Cache&lt;Long, Client&gt; anyCache = manager.createCache("anyCache", mutableConfiguration); <i class="conum" data-value="2"></i><b>(2)</b>
@@ -910,7 +916,7 @@ This enables the <code>putIfAbsent(K, V)</code> in cache-through to behave as an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-xml" data-lang="xml">&lt;service&gt;
+<pre class="prettyprint highlight nowrap"><code data-lang="xml">&lt;service&gt;
   &lt;jsr107:defaults jsr-107-compliant-atomics="true"/&gt;
 &lt;/service&gt;</code></pre>
 </div>
@@ -951,14 +957,6 @@ This enables the <code>putIfAbsent(K, V)</code> in cache-through to behave as an
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/ehcache">
-              <i class="fa fa-github"></i> GitHub
-            </a>
-          </li>
-          
-
-          
-          <li>
             <a href="https://twitter.com/ehcache">
               <i class="fa fa-twitter"></i> Twitter
             </a>
@@ -980,24 +978,32 @@ This enables the <code>putIfAbsent(K, V)</code> in cache-through to behave as an
             </a>
           </li>
           
-
+          <!--
           <li>
             <a href="/feed.xml" title="Atom/RSS Feed">
               <i class="fa fa-rss-square"></i> Atom/RSS Feed
             </a>
           </li>
+          -->
         </ul>
       </div>
 
     <div class="footer-col  footer-col-3">
+      
+        <a href="https://github.com/ehcache"><i class="fa fa-github"></i> GitHub</a>
+        <br/>
+      
+
       <a href="/downloads/"><i class="fa fa-download"></i> Download Now</a>
       <br/>
       <a href="/documentation/"><i class="fa fa-book"></i> Documentation</a>
       <br/>
+      <!--
       <a href="/resources/"><i class="fa fa-external-link-square"></i> Resources</a>
       <br/>
       <a href="/blog/"><i class="fa fa-rss-square"></i> Ehcache Blog</a>
       <br/>
+      -->
       <a href="/community/"><i class="fa fa-users"></i> Join the Community</a>
     </div>
 
@@ -1019,7 +1025,7 @@ This enables the <code>putIfAbsent(K, V)</code> in cache-through to behave as an
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>

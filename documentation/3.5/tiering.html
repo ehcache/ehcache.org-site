@@ -98,8 +98,10 @@
               <ul class="dropdown-menu">
                 <li class="dropdown-header">We Love Contributors</li>
                 <li><a href="/community/contribute.html"><i class="fa fa-code"></i> Contributing</a></li>
+                <!--
                 <li><a href="/resources/"><i class="fa fa-external-link-square"></i> External Resources</a></li>
                 <li><a href="http://blog.terracotta.org" target="_blank"><i class="fa fa-rss-square"></i> Terracotta Blog</a></li>
+                -->
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Forums</li>
                 <li><a href="https://groups.google.com/forum/#!forum/ehcache-users" target="_blank"><i class="fa fa-commenting"></i> Users' Forum</a></li>
@@ -115,10 +117,12 @@
               </ul>
             </li>
           </ul>
+          <!--
           <ul class="nav navbar-nav navbar-right">
             <li id="ehc_mnu_events"><a href="/events"><i class="fa fa-calendar"></i> News & Events</a></li>
             <li><a href="/blog"><i class="fa fa-rss-square"></i> Ehcache Blog</a></li>
           </ul>
+          -->
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -189,7 +193,7 @@
             <span>Ehcache Tiering Options</span>
             
             
-            <span class="old">CURRENT:&nbsp;&nbsp;<a href="/documentation/3.6">3.6</a></span>
+            <span class="old">CURRENT:&nbsp;&nbsp;<a href="/documentation/3.8">3.8</a></span>
             
             
         </h1>
@@ -264,7 +268,7 @@ For example, you can have caches with data only in <em>offheap</em> or only <em>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class, <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class, <i class="conum" data-value="1"></i><b>(1)</b>
   ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(2, MemoryUnit.GB)).build(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
@@ -292,7 +296,7 @@ You can optionally use copiers (see the section <a href="serializers-copiers.htm
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">ResourcePoolsBuilder.newResourcePoolsBuilder().heap(10, EntryUnit.ENTRIES); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight nowrap"><code data-lang="java">ResourcePoolsBuilder.newResourcePoolsBuilder().heap(10, EntryUnit.ENTRIES); <i class="conum" data-value="1"></i><b>(1)</b>
 // or
 ResourcePoolsBuilder.newResourcePoolsBuilder().heap(10); <i class="conum" data-value="2"></i><b>(2)</b>
 // or
@@ -338,7 +342,7 @@ Byte sizing has a runtime performance impact that depends on the size and graph 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">CacheConfiguration&lt;Long, String&gt; usesConfiguredInCacheConfig = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+<pre class="prettyprint highlight nowrap"><code data-lang="java">CacheConfiguration&lt;Long, String&gt; usesConfiguredInCacheConfig = CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
   ResourcePoolsBuilder.newResourcePoolsBuilder()
     .heap(10, MemoryUnit.KB) <i class="conum" data-value="1"></i><b>(1)</b>
     .offheap(10, MemoryUnit.MB)) <i class="conum" data-value="2"></i><b>(2)</b>
@@ -393,7 +397,7 @@ If the sizing goes above any of these two limits, the entry won&#8217;t be store
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="prettyprint highlight nowrap"><code data-lang="java">ResourcePoolsBuilder.newResourcePoolsBuilder().offheap(10, MemoryUnit.MB); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -427,7 +431,7 @@ The faster and more dedicated the disk is, the faster accessing the data will be
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight nowrap"><code data-lang="java">PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder() <i class="conum" data-value="1"></i><b>(1)</b>
   .with(CacheManagerBuilder.persistence(new File(getStoragePath(), "myData"))) <i class="conum" data-value="2"></i><b>(2)</b>
   .withCache("persistent-cache", CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
     ResourcePoolsBuilder.newResourcePoolsBuilder().disk(10, MemoryUnit.MB, true)) <i class="conum" data-value="3"></i><b>(3)</b>
@@ -519,7 +523,7 @@ In some cases, you might want to reduce the concurrency and save resources by re
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">String storagePath = getStoragePath();
+<pre class="prettyprint highlight nowrap"><code data-lang="java">String storagePath = getStoragePath();
 PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder()
   .with(CacheManagerBuilder.persistence(new File(storagePath, "myData")))
   .withCache("less-segments",
@@ -627,7 +631,7 @@ While Ehcache cannot verify at configuration time that a count-based sizing for 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+<pre class="prettyprint highlight nowrap"><code data-lang="java">PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder()
   .with(cluster(CLUSTER_URI).autoCreate()) <i class="conum" data-value="1"></i><b>(1)</b>
   .withCache("threeTierCache",
     CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
@@ -673,7 +677,7 @@ Let&#8217;s revisit an example used earlier:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+<pre class="prettyprint highlight nowrap"><code data-lang="java">PersistentCacheManager persistentCacheManager = CacheManagerBuilder.newCacheManagerBuilder()
   .with(CacheManagerBuilder.persistence(new File(getStoragePath(), "myData")))
   .withCache("threeTieredCache",
     CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
@@ -698,7 +702,7 @@ Consider for instance this code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">ResourcePools pool = ResourcePoolsBuilder.newResourcePoolsBuilder().heap(10).build();
+<pre class="prettyprint highlight nowrap"><code data-lang="java">ResourcePools pool = ResourcePoolsBuilder.newResourcePoolsBuilder().heap(10).build();
 
 CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
   .withCache("test-cache1", CacheConfigurationBuilder.newCacheConfigurationBuilder(Integer.class, String.class, pool))
@@ -732,7 +736,7 @@ Thus you can&#8217;t change the sizing of off-heap or disk tiers.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight nowrap"><code class="language-java" data-lang="java">ResourcePools pools = ResourcePoolsBuilder.newResourcePoolsBuilder().heap(20L, EntryUnit.ENTRIES).build(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="prettyprint highlight nowrap"><code data-lang="java">ResourcePools pools = ResourcePoolsBuilder.newResourcePoolsBuilder().heap(20L, EntryUnit.ENTRIES).build(); <i class="conum" data-value="1"></i><b>(1)</b>
 cache.getRuntimeConfiguration().updateResourcePools(pools); <i class="conum" data-value="2"></i><b>(2)</b>
 assertThat(cache.getRuntimeConfiguration().getResourcePools()
   .getPoolForResource(ResourceType.Core.HEAP).getSize(), is(20L));</code></pre>
@@ -873,14 +877,6 @@ The opposite would mean you probably shouldn&#8217;t be using a cache in the fir
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/ehcache">
-              <i class="fa fa-github"></i> GitHub
-            </a>
-          </li>
-          
-
-          
-          <li>
             <a href="https://twitter.com/ehcache">
               <i class="fa fa-twitter"></i> Twitter
             </a>
@@ -902,24 +898,32 @@ The opposite would mean you probably shouldn&#8217;t be using a cache in the fir
             </a>
           </li>
           
-
+          <!--
           <li>
             <a href="/feed.xml" title="Atom/RSS Feed">
               <i class="fa fa-rss-square"></i> Atom/RSS Feed
             </a>
           </li>
+          -->
         </ul>
       </div>
 
     <div class="footer-col  footer-col-3">
+      
+        <a href="https://github.com/ehcache"><i class="fa fa-github"></i> GitHub</a>
+        <br/>
+      
+
       <a href="/downloads/"><i class="fa fa-download"></i> Download Now</a>
       <br/>
       <a href="/documentation/"><i class="fa fa-book"></i> Documentation</a>
       <br/>
+      <!--
       <a href="/resources/"><i class="fa fa-external-link-square"></i> Resources</a>
       <br/>
       <a href="/blog/"><i class="fa fa-rss-square"></i> Ehcache Blog</a>
       <br/>
+      -->
       <a href="/community/"><i class="fa fa-users"></i> Join the Community</a>
     </div>
 
@@ -941,7 +945,7 @@ The opposite would mean you probably shouldn&#8217;t be using a cache in the fir
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
