@@ -26,7 +26,7 @@ More files related to releases of Ehcache 3 are available on the project's [GitH
 
 #### Ehcache 2.x
 
-> [Ehcache 2.10.5](http://d2zwv9pap9ylyd.cloudfront.net/ehcache-2.10.5-distribution.tar.gz)  .tar.gz
+> [Ehcache 2.10.8](https://d2zwv9pap9ylyd.cloudfront.net/bigmemory-max-4.3.8.4.2.tar.gz)  .tar.gz
 
 
 For more information on this release, see the [release notes](http://www.terracotta.org/confluence/display/release/Home).
