@@ -10,7 +10,7 @@ permalink: /apidocs/
 
 | Main API | Additional APIs |
 |:----|:--|
-|[3.8.1](/apidocs/3.8.1/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.8.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.8.1/transactions/index.html){:target="_blank"}|
+|[3.9.6](/apidocs/3.9.6/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.9.6/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.9.6/transactions/index.html){:target="_blank"}|
 
 
 ## Recent Ehcache 2.x
@@ -27,6 +27,13 @@ permalink: /apidocs/
 
 | Main API | Additional APIs |
 |:----|:--|
+|[3.9.5](/apidocs/3.9.5/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.9.5/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.9.5/transactions/index.html){:target="_blank"}|
+|[3.9.4](/apidocs/3.9.4/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.9.4/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.9.4/transactions/index.html){:target="_blank"}|
+|[3.9.3](/apidocs/3.9.3/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.9.3/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.9.3/transactions/index.html){:target="_blank"}|
+|[3.9.2](/apidocs/3.9.2/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.9.2/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.9.2/transactions/index.html){:target="_blank"}|
+|[3.9.1](/apidocs/3.9.1/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.9.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.9.1/transactions/index.html){:target="_blank"}|
+|[3.9.0](/apidocs/3.9.0/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.9.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.9.0/transactions/index.html){:target="_blank"}|
+|[3.8.1](/apidocs/3.8.1/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.8.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.8.1/transactions/index.html){:target="_blank"}|
 |[3.8.0](/apidocs/3.8.0/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.8.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.8.0/transactions/index.html){:target="_blank"}|
 |[3.7.0](/apidocs/3.7.0/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.7.0/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.7.0/transactions/index.html){:target="_blank"}|
 |[3.6.1](/apidocs/3.6.1/index.html){:target="_blank"}|[Clustered Module](/apidocs/3.6.1/clustered/index.html){:target="_blank"} <br /> [Transactions Module](/apidocs/3.6.1/transactions/index.html){:target="_blank"}|

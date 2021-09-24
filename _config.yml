@@ -37,6 +37,7 @@ plugins:
 # Ehcache 3.8+ uses asciidoctor-diagram rendered images
 keep_files:
 - documentation/3.8/images
+- documentation/3.9/images
 
 asciidoctor:
   # We need safe since we go fetch code examples in directories lower than where the adoc file is
@@ -56,6 +57,7 @@ asciidoctor:
     - sourcedir36=_eh36
     - sourcedir37=_eh37
     - sourcedir38=_eh38
+    - sourcedir39=_eh39
 #needle_for_sourcedir
     - imagesdir=images
     - sectanchors
@@ -64,8 +66,8 @@ asciidoctor:
 
 documentation:
     ehcache:
-      current: "3.8"
-      future: "3.9"
+      current: "3.9"
+      future: "3.10"
 
 defaults:
   -
@@ -176,7 +178,7 @@ defaults:
     values:
       layout: "docs35_page"
       ehc_version: "3.6"
-      ehc_javadoc_version: "3.6.1-docfix"
+      ehc_javadoc_version: "3.6.3"
       ehc_checkout_dir_var: "sourcedir36"
   -
     scope:
@@ -185,7 +187,7 @@ defaults:
     values:
       layout: "docs35_page"
       ehc_version: "3.7"
-      ehc_javadoc_version: "3.7.0-fixdoc"
+      ehc_javadoc_version: "3.7.1"
       ehc_checkout_dir_var: "sourcedir37"
   -
     scope:
@@ -194,5 +196,14 @@ defaults:
     values:
       layout: "docs35_page"
       ehc_version: "3.8"
-      ehc_javadoc_version: "3.8.0-fixdoc"
+      ehc_javadoc_version: "3.8.1-fixdoc"
       ehc_checkout_dir_var: "sourcedir38"
+  -
+    scope:
+      path: "documentation/3.9"
+      type: "pages"
+    values:
+      layout: "docs35_page"
+      ehc_version: "3.9"
+      ehc_javadoc_version: "3.9.6-fixdoc"
+      ehc_checkout_dir_var: "sourcedir39"
