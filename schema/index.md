@@ -16,6 +16,7 @@ permalink: /schema/
   * [ehcache-core-3.7.xsd](/schema/ehcache-core-3.7.xsd)  
   * [ehcache-core-3.8.xsd](/schema/ehcache-core-3.8.xsd)
   * [ehcache-core-3.9.xsd](/schema/ehcache-core-3.9.xsd)
+  * [ehcache-core-3.10.xsd](/schema/ehcache-core-3.10.xsd)
 
 * JSR-107 integration extension
   * [ehcache-107-ext.xsd](/schema/ehcache-107-ext.xsd) - latest, without version number
@@ -29,6 +30,7 @@ permalink: /schema/
   * [ehcache-107-ext-3.7.xsd](/schema/ehcache-107-ext-3.7.xsd)
   * [ehcache-107-ext-3.8.xsd](/schema/ehcache-107-ext-3.8.xsd)
   * [ehcache-107-ext-3.9.xsd](/schema/ehcache-107-ext-3.9.xsd)
+  * [ehcache-107-ext-3.10.xsd](/schema/ehcache-107-ext-3.10.xsd)
   
 * Transactions integration extension
   * [ehcache-tx-ext.xsd](/schema/ehcache-tx-ext.xsd) - latest, without version number
@@ -42,6 +44,7 @@ permalink: /schema/
   * [ehcache-tx-ext-3.7.xsd](/schema/ehcache-tx-ext-3.7.xsd)
   * [ehcache-tx-ext-3.8.xsd](/schema/ehcache-tx-ext-3.8.xsd)
   * [ehcache-tx-ext-3.9.xsd](/schema/ehcache-tx-ext-3.9.xsd)
+  * [ehcache-tx-ext-3.10.xsd](/schema/ehcache-tx-ext-3.10.xsd)
   
 * Clustering integration extension
   * [ehcache-clustered-ext.xsd](/schema/ehcache-clustered-ext.xsd) - latest, without version number
@@ -54,9 +57,11 @@ permalink: /schema/
   * [ehcache-clustered-ext-3.7.xsd](/schema/ehcache-clustered-ext-3.7.xsd)
   * [ehcache-clustered-ext-3.8.xsd](/schema/ehcache-clustered-ext-3.8.xsd)
   * [ehcache-clustered-ext-3.9.xsd](/schema/ehcache-clustered-ext-3.9.xsd)
+  * [ehcache-clustered-ext-3.10.xsd](/schema/ehcache-clustered-ext-3.10.xsd)
 
 * Multi-Configuration XSDs
   * [ehcache-multi.xsd](/schema/ehcache-multi.xsd) - latest, without version number
   * [ehcache-multi-3.7.xsd](/schema/ehcache-multi-3.7.xsd)
   * [ehcache-multi-3.8.xsd](/schema/ehcache-multi-3.8.xsd)
   * [ehcache-multi-3.9.xsd](/schema/ehcache-multi-3.9.xsd)
+  * [ehcache-multi-3.10.xsd](/schema/ehcache-multi-3.10.xsd)
