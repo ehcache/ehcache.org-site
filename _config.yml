@@ -38,6 +38,7 @@ plugins:
 keep_files:
 - documentation/3.8/images
 - documentation/3.9/images
+- documentation/3.10/images
 
 asciidoctor:
   # We need safe since we go fetch code examples in directories lower than where the adoc file is
