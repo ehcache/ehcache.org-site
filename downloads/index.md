@@ -12,11 +12,13 @@ active_menu_id: ehc_mnu_download
 #### Ehcache 3
 
 > [Ehcache 3.10 latest stable] (https://github.com/ehcache/ehcache3/releases/download/v3.10.0/ehcache-clustered-3.10.0-kit.tgz) .jar
+
 > [Ehcache 3.9 previous stable] (https://github.com/ehcache/ehcache3/releases/download/v3.9.6/ehcache-3.9.6.jar) .jar
 
 #### Ehcache 3 with clustering support
 
 > [Ehcache 3.10 (with clustering) kit](https://github.com/ehcache/ehcache3/releases/download/v3.10.0/ehcache-3.10.0.jar) .zip
+
 > [Ehcache 3.9 (with clustering) kit](https://github.com/ehcache/ehcache3/releases/download/v3.9.6/ehcache-clustered-3.9.6-kit.zip) .zip
 
 
