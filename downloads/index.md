@@ -50,12 +50,12 @@ For JSR107 support with Ehcache 2, use the [ehcache-jcache](https://github.com/e
 
 #### Ehcache 3
 
-To include Ehcache 3.x in your project, use:
+To include Ehcache 3.x in your project, use (for example):
 
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;org.ehcache&lt;/groupId&gt;
       &lt;artifactId&gt;ehcache&lt;/artifactId&gt;
-      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;version&gt;3.9.6&lt;/version&gt;
     &lt;/dependency&gt;
 </code></pre>
 
@@ -63,7 +63,7 @@ _Note: Be sure to substitute the version number above with the version number of
 
 #### Ehcache 2
 
-To include Ehcache 2.x in your project, use:
+To include Ehcache 2.x in your project, use (for example):
 
 <pre class="prettyprint highlight"><code class="language-xml" data-lang="xml">    &lt;dependency&gt;
       &lt;groupId&gt;net.sf.ehcache&lt;/groupId&gt;
