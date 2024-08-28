@@ -1,6 +1,6 @@
 # Site settings
 title: Ehcache
-email: tc-oss@softwareag.com
+email: tc-oss@wwpdl.vnet.ibm.com
 description: Java's most widely used cache.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://www.ehcache.org" # the base hostname & protocol for your site

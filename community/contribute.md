@@ -6,6 +6,10 @@ active_sub_menu_id: ehc_mnu_community_contribute
 
 # Contributing
 
+Contributions cannot be accepted at this time as we are currently transitioning to IBM processes and policies.
+
+Please check back for updates.
+
 
 ## Welcome aboard!
 
@@ -53,15 +57,7 @@ The following are examples that would still require a signed CLA before your sub
 * A translation; or
 * Extensive or creative documentation or comments.
 
-If you’re not sure if your fix is obvious you can ask us by sending an email to: tc-oss@softwareag.com.
-
-#### Agreement and Grant of Copyright<a name="grant"></a>
-
-For those contributions that do not require a CLA: _upon submission of Your Contribution you hereby grant Software AG and to recipients of the software distributed by Software AG a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to install, use, reproduce, prepare derivative works of, publicly display, publicly perform, offer to sell, sell, import, sublicense, transfer, and distribute Your Contribution and any such derivative works._
-
-### Contributions which do require a full Contributor's License Agreement (CLA)
-
-Substantial contributions require a CLA, in this case, a "[Contributor Agreement](https://confluence.terracotta.org/download/attachments/27918462/TerracottaIndividualContributorAgreementv4.pdf)" document must be filled-out and [sent to Terracotta](mailto:contributors@terracotta.org) -- indicating that you assign the copyright of the work to the Ehcache project. This document only needs to be filled out once per contributor - not once for each contribution.
+If you’re not sure if your fix is obvious you can ask us by sending an email to: tc-oss@wwpdl.vnet.ibm.com.
 
 
 ## Becoming an Ehcache Developer
