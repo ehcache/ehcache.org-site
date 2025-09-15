@@ -13,7 +13,7 @@ active_menu_id: ehc_mnu_download
 
 > [Ehcache 3.11 jar](https://github.com/ehcache/ehcache3/releases/download/v3.11.1/ehcache-3.11.1.jar) .jar
 
-> [Ehcache 3.10 previous stable ](https://github.com/ehcache/ehcache3/releases/download/v3.10.0/ehcache-3.10.9.jar) .jar
+> [Ehcache 3.10 previous stable ](https://github.com/ehcache/ehcache3/releases/download/v3.10.9/ehcache-3.10.9.jar) .jar
 
 > [Ehcache 3.9 previous stable](https://github.com/ehcache/ehcache3/releases/download/v3.9.6/ehcache-3.9.6.jar) .jar
 
@@ -21,7 +21,7 @@ active_menu_id: ehc_mnu_download
 
 > [Ehcache 3.11 (with clustering) kit latest stable](https://github.com/ehcache/ehcache3/releases/download/v3.11.1/ehcache-clustered-3.11.1-kit.zip) .zip
 
-> [Ehcache 3.10 (with clustering) kit previous stable](https://github.com/ehcache/ehcache3/releases/download/v3.10.0/ehcache-clustered-3.10.9-kit.tgz) .tgz
+> [Ehcache 3.10 (with clustering) kit previous stable](https://github.com/ehcache/ehcache3/releases/download/v3.10.9/ehcache-clustered-3.10.9-kit.tgz) .tgz
 
 > [Ehcache 3.9 (with clustering) kit previous stable](https://github.com/ehcache/ehcache3/releases/download/v3.9.6/ehcache-clustered-3.9.6-kit.zip) .zip
 
@@ -33,6 +33,8 @@ More files related to releases of Ehcache 3 are available on the project's [GitH
 ---
 
 #### Ehcache 2.x
+
+NOTE:  FOSS Ehcache 2.x is no longer actively maintained.
 
 > [Ehcache 2.10.8](https://d2zwv9pap9ylyd.cloudfront.net/bigmemory-max-4.3.8.4.2.tar.gz)  .tar.gz
 
